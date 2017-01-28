@@ -1,0 +1,3 @@
+graft decky/templates
+graft decky/static
+include decky/schema.sql

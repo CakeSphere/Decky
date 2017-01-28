@@ -1,0 +1,8 @@
+<!doctype html>
+<title>Decky</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.scss.css') }}">
+<h1>Decky</h1>
+{% for message in get_flashed_messages() %}
+  <div class=flash>{{ message }}</div>
+{% endfor %}
+{% block body %}{% endblock %}
