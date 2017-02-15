@@ -1,6 +1,8 @@
-import os, sqlite3, sass, json, sys
+import os, sqlite3, sass, json, sys, click, datetime
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
+
 from pprint import pprint
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 from sassutils.wsgi import SassMiddleware
@@ -10,87 +12,216 @@ app.config.from_object(__name__)
 
 
 app.wsgi_app = SassMiddleware(app.wsgi_app, {
-    'decky': ('static/sass', 'static/css', '/static/css')
+	'decky': ('static/sass', 'static/css', '/static/css')
 })
 
 app.config.update(dict(
-    DATABASE=os.path.join(app.root_path, 'decky.db'),
-    SECRET_KEY='development key',
-    USERNAME='admin',
-    PASSWORD='default'
+	DATABASE=os.path.join(app.root_path, 'decky.db'),
+	SECRET_KEY='development key',
+	USERNAME='admin',
+	PASSWORD='default'
 ))
 
 print app.root_path
 
+path_to_json = 'static/json'
+
 app.config.from_envvar('DECKY_SETTINGS', silent=True)
 def connect_db():
-    rv = sqlite3.connect(app.config['DATABASE'])
-    rv.row_factory = sqlite3.Row
-    return rv
+	rv = sqlite3.connect(app.config['DATABASE'])
+	rv.row_factory = sqlite3.Row
+	return rv
 
 def get_db():
-    if not hasattr(g, 'sqlite_db'):
-        g.sqlite_db = connect_db()
-    return g.sqlite_db
+	if not hasattr(g, 'sqlite_db'):
+		g.sqlite_db = connect_db()
+	return g.sqlite_db
 
 @app.teardown_appcontext
 def close_db(error):
-    if hasattr(g, 'sqlite_db'):
-        g.sqlite_db.close()
+	if hasattr(g, 'sqlite_db'):
+		g.sqlite_db.close()
 
 def init_db():
-    db = get_db()
-    with app.open_resource('schema.sql', mode='r') as f:
-        db.cursor().executescript(f.read())
-    db.commit()
+	db = get_db()
+	with app.open_resource('schema.sql', mode='r') as f:
+		db.cursor().executescript(f.read())
+	db.commit()
+
+def format_set(raw_set):
+	out_set = {}
+	fields = {
+		"name", \
+		"code", \
+		"gathererCode", \
+		"oldCode", \
+		"magicCardsInfoCode", \
+		"releaseDate", \
+		"border", \
+		"type", \
+		"block", \
+		"cards"}
+	for field in fields:
+		if field in raw_set:
+			out_set[field] = raw_set[field]
+		else:
+			out_set[field] = ""
+	return out_set
 
 def format_card(raw_card):
-    out_card = {}
-    fields = {"name", "manaCost", "cmc", "colors", "type", "supertypes", "types", "subtypes", "rarity", "text", "flavor", "artist", "number", "power", "toughness", "layout", "multiverseid", "imageName"}
-    for field in fields:
-        if field in raw_card:
-            out_card[field] = raw_card[field]
-            if isinstance(out_card[field], basestring):
-                out_card[field] = out_card[field].replace('"', '\\')
-        else:
-            out_card[field] = None
-    return out_card
+	out_card = {}
+	fields = {
+		"layout", \
+		"name", \
+		"names", \
+		"manaCost", \
+		"cmc", \
+		"colors", \
+		"colorIdentity", \
+		"type", \
+		"supertypes", \
+		"types", \
+		"subtypes", \
+		"rarity", \
+		"text", \
+		"flavor", \
+		"artist", \
+		"number", \
+		"power", \
+		"toughness", \
+		"loyalty", \
+		"multiverseid", \
+		"variations", \
+		"watermark", \
+		"border", \
+		"timeshifted", \
+		"hand", \
+		"life", \
+		"reserved", \
+		"releaseDate", \
+		"starter", \
+		"mciNumber", \
+		"imageName"}
+	for field in fields:
+		if field in raw_card:
+			out_card[field] = raw_card[field]
+			if isinstance(out_card[field], list): 
+				out_card[field] = unicode(", ".join([str(out_card[field][x]) for x in range(len(out_card[field]))]))
+		else:
+			out_card[field] = ""
+	return out_card
 
 @app.cli.command('initdb')
 def initdb_command():
-    init_db()
-    print('Initialized the database.')
+	init_db();
+	print('\033[92m\033[1mInitialized the database.\033[0m')
 
-@app.cli.command('card_import')
-def card_import():
-    path_to_json = 'decky/static/json'
-    json_files = [pos_json for pos_json in os.listdir(path_to_json) if pos_json.endswith('.json')]
-    for js in json_files:
-        with open(os.path.join(path_to_json, js)) as json_file:
-            set_data = json.load(json_file)
-            db = get_db()
-            import_sets_query = 'INSERT INTO `sets` (name, code, releaseDate, border, type, block) VALUES ("{}", "{}", "{}", "{}", "{}", "{}")'.format(set_data["name"], set_data["code"], set_data["releaseDate"], set_data["border"], set_data["type"], set_data["block"])
-            db.cursor().executescript(import_sets_query)
-            for card in set_data["cards"]:
-                card = format_card(card)
-                import_cards_query = 'INSERT INTO `cards` (name, manaCost, cmc, colors, type, supertypes, types, subtypes, rarity, text, flavor, artist, number, power, toughness, layout, multiverseid, imageName) VALUES ("{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}")'.format(card["name"], card["manaCost"], card["cmc"], card["colors"], card["type"], card["supertypes"], card["types"], card["subtypes"], card["rarity"], card["text"], card["flavor"], card["artist"], card["number"], card["power"], card["toughness"], card["layout"], card["multiverseid"], card["imageName"])
-                print import_cards_query
-                db.cursor().executescript(import_cards_query)
-            db.commit()
+@app.cli.command('import_colors')
+def import_colors():
+	init_db();
+	colors_query = "INSERT INTO 'colors' (name) VALUES ('White'), ('Black'), ('Blue'), ('Red'), ('Green');"
+	db = get_db()
+	db.execute(colors_query)
+	db.commit()
+	print "\033[92m\033[1mColors imported.\033[0m"
+
+@app.cli.command('import_sets')
+def import_sets():
+	init_db();
+	print('\033[92m\033[1mInitialized the database.\033[0m')
+	json_files = [pos_json for pos_json in os.listdir(path_to_json) if pos_json.endswith('.json')]
+	for js in json_files:
+		with open(os.path.join(path_to_json, js)) as json_file:
+			set_data = json.load(json_file)
+			set_data = format_set(set_data)
+			print "\033[95m"
+			pprint(set_data["name"])
+			db = get_db()
+			import_sets_query = "INSERT INTO 'sets' (name, code, gathererCode, oldCode, magicCardsInfoCode, releaseDate, border, type, block) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);"
+			db.execute(import_sets_query, \
+				(set_data["name"], \
+				set_data["code"], \
+				set_data["gathererCode"], \
+				set_data["oldCode"], \
+				set_data["magicCardsInfoCode"], \
+				set_data["releaseDate"], \
+				set_data["border"], \
+				set_data["type"], \
+				set_data["block"]))
+			db.commit()
+	print "\033[92m\033[1mSets imported.\033[0m"
+
+@app.cli.command('import_cards')
+def import_cards():
+	init_db();
+	print('\033[92m\033[1mInitialized the database.\033[0m')
+	db = get_db()
+	colors_query = "INSERT INTO 'colors' (name) VALUES ('White'), ('Black'), ('Blue'), ('Red'), ('Green');"
+	db.execute(colors_query)
+	print "\033[92m\033[1mColors imported.\033[0m"
+	json_files = [pos_json for pos_json in os.listdir(path_to_json) if pos_json.endswith('.json')]
+	for js in json_files:
+		with open(os.path.join(path_to_json, js)) as json_file:
+			set_data = json.load(json_file)
+			set_data = format_set(set_data)
+			print "\033[95m"
+			pprint(set_data["name"])
+			import_sets_query = "INSERT INTO 'sets' (name, code, gathererCode, oldCode, magicCardsInfoCode, releaseDate, border, type, block) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);"
+			db.execute(import_sets_query, \
+				(set_data["name"],\
+				set_data["code"],\
+				set_data["gathererCode"],\
+				set_data["oldCode"],\
+				set_data["magicCardsInfoCode"],\
+				set_data["releaseDate"],\
+				set_data["border"],\
+				set_data["type"],\
+				set_data["block"]))
+			for card_data in set_data["cards"]:
+				card_data = format_card(card_data)
+				print"\033[94m"
+				pprint(card_data)
+				import_cards_query = 'INSERT INTO `cards` (layout, name, names, manaCost, cmc, colors, colorIdentity, type, supertypes, types, subtypes, rarity, text, flavor, artist, number, power, toughness, loyalty, multiverseid, variations, watermark, border, timeshifted, hand, life, reserved, releaseDate, starter, mciNumber, imageName) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);'
+				db.execute(import_cards_query, \
+					(card_data["layout"], \
+						card_data["name"], \
+						card_data["names"], \
+						card_data["manaCost"], \
+						card_data["cmc"], \
+						card_data["colors"], \
+						card_data["colorIdentity"], \
+						card_data["type"], \
+						card_data["supertypes"], \
+						card_data["types"], \
+						card_data["subtypes"], \
+						card_data["rarity"], \
+						card_data["text"], \
+						card_data["flavor"], \
+						card_data["artist"], \
+						card_data["number"], \
+						card_data["power"], \
+						card_data["toughness"], \
+						card_data["loyalty"], \
+						card_data["multiverseid"], \
+						card_data["variations"], \
+						card_data["watermark"], \
+						card_data["border"], \
+						card_data["timeshifted"], \
+						card_data["hand"], \
+						card_data["life"], \
+						card_data["reserved"], \
+						card_data["releaseDate"], \
+						card_data["starter"], \
+						card_data["mciNumber"], \
+						card_data["imageName"]))
+			db.commit()
+			print "\033[92m\033[1mCards imported.\033[0m"
 
 @app.route('/')
 def show_entries():
-    db = get_db()
-    cur = db.execute('select title, text from entries order by id desc')
-    entries = cur.fetchall()
-    return render_template('show_entries.html', entries=entries)
-
-@app.route('/add', methods=['POST'])
-def add_entry():
-    db = get_db()
-    db.execute('insert into entries (title, text) values (?, ?)',
-                  [request.form['title'], request.form['text']])
-    db.commit()
-    flash('New entry was successfully posted.')
-    return redirect(url_for('show_entries'))
-
+	db = get_db()
+	cur = db.execute('select layout, name, names, manaCost, cmc, colors, colorIdentity, type, supertypes, types, subtypes, rarity, text, flavor, artist, number, power, toughness, loyalty, multiverseid, variations, watermark, border, timeshifted, hand, life, reserved, releaseDate, starter, mciNumber, imageName from cards order by name asc limit 100')
+	cur_sets = db.execute('select name, code, gathererCode, oldCode, magicCardsInfoCode, releaseDate, border, type, block from sets order by releaseDate desc limit 10')
+	cards = cur.fetchall()
+	sets = cur_sets.fetchall()
+	return render_template('show_entries.html', cards=cards, sets=sets)
