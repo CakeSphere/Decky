@@ -169,7 +169,7 @@ def import_cards():
 			import_sets_query = "INSERT INTO 'sets' (name, code, gathererCode, oldCode, magicCardsInfoCode, releaseDate, border, type, block) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);"
 			db.execute(import_sets_query, \
 				(set_data["name"],\
-				set_data["code"],\
+				set_data["code"].lower(),\
 				set_data["gathererCode"],\
 				set_data["oldCode"],\
 				set_data["magicCardsInfoCode"],\
@@ -225,3 +225,12 @@ def show_entries():
 	cards = cur.fetchall()
 	sets = cur_sets.fetchall()
 	return render_template('show_entries.html', cards=cards, sets=sets)
+
+@app.route('/search')
+def search():
+	db = get_db()
+	cur = db.execute('select layout, name, names, manaCost, cmc, colors, colorIdentity, type, supertypes, types, subtypes, rarity, text, flavor, artist, number, power, toughness, loyalty, multiverseid, variations, watermark, border, timeshifted, hand, life, reserved, releaseDate, starter, mciNumber, imageName from cards order by name asc limit 100')
+	cur_sets = db.execute('select name, code, gathererCode, oldCode, magicCardsInfoCode, releaseDate, border, type, block from sets order by releaseDate desc limit 5')
+	cards = cur.fetchall()
+	sets = cur_sets.fetchall()
+	return render_template('search.html', cards=cards, sets=sets)

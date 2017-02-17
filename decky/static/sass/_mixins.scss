@@ -1,0 +1,12 @@
+@mixin btn($color) {
+  color: $color;
+  border-color: $color;
+  &:hover {
+    color: lighten($color, 5%);
+    border-color: lighten($color, 5%);
+  }
+  &:active {
+    color: darken($color, 5%);
+    border-color: darken($color, 5%);
+  }
+}

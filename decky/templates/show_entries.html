@@ -1,53 +1,6 @@
 {% extends "layout.html" %}
 {% block body %}
 	<div class="container">
-		<aside>
-			<h3>Color</h3>
-			<a href="#" class="btn b">Black</a>
-			<a href="#" class="btn u">Blue</a>
-			<a href="#" class="btn w">White</a>
-			<a href="#" class="btn r">Red</a>
-			<a href="#" class="btn g">Green</a>
-			<a href="#" class="btn">Colorless</a>
-			<h3>Legal Format</h3>
-			<a href="#" class="btn">Standard</a>
-			<a href="#" class="btn">Modern</a>
-			<a href="#" class="btn">Legacy</a>
-			<a href="#" class="btn">Vintage</a>
-			<a href="#" class="btn">Commander</a>
-			<a href="#" class="btn">Casual</a>
-			<a href="#" class="btn">Other&hellip;</a>
-			<h3>Set</h3>
-			<a href="#" class="btn">Planechase Anthology</a>
-			<a href="#" class="btn">Commander</a>
-			<a href="#" class="btn">Kaladesh</a>
-			<a href="#" class="btn">Conspiracy: Take the Crown</a>
-			<a href="#" class="btn">Eldritch Moon</a>
-			<a href="#" class="btn">Other&hellip;</a>
-			<h3>Deck Type</h3>
-			<a href="#" class="btn">Control</a>
-			<a href="#" class="btn">Spirits</a>
-			<a href="#" class="btn">Competitive</a>
-			<a href="#" class="btn">Aggro</a>
-			<a href="#" class="btn">Dredge</a>
-			<a href="#" class="btn">Rakdos</a>
-			<a href="#" class="btn">Other&hellip;</a>
-			<h3>Price</h3>
-			<div class="input-group">
-				<span class="input-group-addon">$</span>
-				<input type="text" placeholder="From">
-			</div>
-			<div class="input-group">
-				<span class="input-group-addon">$</span>
-				<input type="text" placeholder="To">
-			</div>
-		</aside>
-		<section>
-			Main content goes here.
-		</section>
-	</div>
-	<hr>
-	<div class="container">
 		<a href="#" class="btn">I’m a button.</a>
 		<a href="#" class="btn primary">I’m a primary button.</a>
 		<a href="#" class="btn u">I’m a blue button.</a>
@@ -70,7 +23,7 @@
 	<hr>
 	{% for set in sets %}
 	<div class="container">
-		<h1>{{ set.name }} <small>{{today}}</small></h1>
+		<h2>{{ set.name }} <small>{{today}}</small></h2>
 		{{ set.code }} <br>
 		{{ set.gathererCode }} <br>
 		{{ set.oldCode }} <br>
@@ -85,7 +38,7 @@
 	{% endfor %}
 	{% for card in cards %}
 	<div class="container">
-		<h1>{{ card.name }}</h1>
+		<h2>{{ card.name }}</h2>
 		<p class="text">{{ card.text }}</p>
 		<p class="flavor">{{ card.flavor }}</p>
 		<ul class="cards-info list-unstyled">

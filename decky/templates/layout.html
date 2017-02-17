@@ -1,7 +1,16 @@
 <!doctype html>
-<title>Decky</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/main.scss.css') }}">
-{% for message in get_flashed_messages() %}
-  <div class=flash>{{ message }}</div>
-{% endfor %}
-{% block body %}{% endblock %}
+<html>
+	<head>
+		<title>Decky</title>
+		<script src="https://use.typekit.net/snr0hgu.js"></script>
+		<script>try{Typekit.load({ async: true });}catch(e){}</script>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.scss.css') }}">
+		<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}?v=3" type="image/png"/>
+	</head>
+	<body>
+		{% for message in get_flashed_messages() %}
+			{{ message }}
+		{% endfor %}
+		{% block body %}{% endblock %}
+	</body>
+</html>
