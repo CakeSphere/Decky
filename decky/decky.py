@@ -1,9 +1,9 @@
-import os, sqlite3, sass, json, sys, click, datetime
-
+import os, sqlite3, sass, json, sys, click, datetime, smartypants, re
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 from pprint import pprint
+from HTMLParser import HTMLParser
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 from sassutils.wsgi import SassMiddleware
 
@@ -109,6 +109,9 @@ def format_card(raw_card):
 				out_card[field] = unicode(", ".join([str(out_card[field][x]) for x in range(len(out_card[field]))]))
 		else:
 			out_card[field] = ""
+	out_card['manaCost'] = " ".join(e for e in out_card['manaCost'] if e.isalnum()).lower()
+	out_card['text'] = HTMLParser().unescape(smartypants.smartypants(out_card['text']))
+	out_card['flavor'] = HTMLParser().unescape(smartypants.smartypants(out_card['flavor']))
 	return out_card
 
 @app.cli.command('initdb')
@@ -220,8 +223,8 @@ def import_cards():
 @app.route('/')
 def show_entries():
 	db = get_db()
-	cur = db.execute('select layout, name, names, manaCost, cmc, colors, colorIdentity, type, supertypes, types, subtypes, rarity, text, flavor, artist, number, power, toughness, loyalty, multiverseid, variations, watermark, border, timeshifted, hand, life, reserved, releaseDate, starter, mciNumber, imageName from cards order by name asc limit 100')
-	cur_sets = db.execute('select name, code, gathererCode, oldCode, magicCardsInfoCode, releaseDate, border, type, block from sets order by releaseDate desc limit 10')
+	cur = db.execute('select * from cards order by name asc limit 100')
+	cur_sets = db.execute('select *, block from sets order by releaseDate desc limit 10')
 	cards = cur.fetchall()
 	sets = cur_sets.fetchall()
 	return render_template('show_entries.html', cards=cards, sets=sets)
@@ -229,8 +232,20 @@ def show_entries():
 @app.route('/search')
 def search():
 	db = get_db()
-	cur = db.execute('select layout, name, names, manaCost, cmc, colors, colorIdentity, type, supertypes, types, subtypes, rarity, text, flavor, artist, number, power, toughness, loyalty, multiverseid, variations, watermark, border, timeshifted, hand, life, reserved, releaseDate, starter, mciNumber, imageName from cards order by name asc limit 100')
-	cur_sets = db.execute('select name, code, gathererCode, oldCode, magicCardsInfoCode, releaseDate, border, type, block from sets order by releaseDate desc limit 5')
+	cur = db.execute('select * from cards order by name asc limit 100')
+	cur_sets = db.execute('select * from sets order by releaseDate desc limit 5')
 	cards = cur.fetchall()
 	sets = cur_sets.fetchall()
 	return render_template('search.html', cards=cards, sets=sets)
+
+@app.route('/card')
+def card():
+	db = get_db()
+	cur = db.execute('select * from cards where name="Spell Queller"')
+	card = cur.fetchall()
+	card = card[0]
+	return render_template('card.html', card=card)
+
+@app.route('/deck')
+def deck():
+	return render_template('deck.html');

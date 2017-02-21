@@ -61,6 +61,9 @@ a.btn, .btn, button {
 		bottom: 3px;
 		margin-right: 0.25rem;
 		-webkit-text-stroke: 0.03em $text-color;
+		&.ss-rare {
+			-webkit-text-stroke: 0.02em #000;
+		}
 	}
 	.mana.small { // Mana Icons
 		position: relative;

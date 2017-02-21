@@ -39,12 +39,19 @@
 	{% for card in cards %}
 	<div class="container">
 		<h2>{{ card.name }}</h2>
+		<img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseid}}&type=card" alt="{{ card.name }}">
 		<p class="text">{{ card.text }}</p>
 		<p class="flavor">{{ card.flavor }}</p>
 		<ul class="cards-info list-unstyled">
 			<li><label>Names</label> <div class="value">{{ card.names }}</div></li>
 			<li><label>Layout</label> <div class="value">{{ card.layout }}</div></li>
-			<li><label>Mana Cost</label> <div class="value">{{ card.manaCost }}</div></li>
+			<li><label>Mana Cost</label> 
+				<div class="value">
+					{% for mana in card.manaCost.split() %}
+						<span class="mana small shadow s{{ mana }}"></span>
+					{% endfor %}
+				</div>
+			</li>
 			<li><label>Converted Mana Cost</label> <div class="value">{{ card.cmc }}</div></li>
 			<li><label>Colors</label> <div class="value">{{ card.colors }}</div></li>
 			<li><label>Color Identity</label> <div class="value">{{ card.colorIdentity }}</div></li>

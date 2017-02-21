@@ -1,0 +1,256 @@
+// Deck tiles
+
+.row {
+	margin: 0 -0.5rem;
+	.deck {
+		margin: 0.5rem;
+		width: calc(50% - 0.5rem - 11px);
+		display: inline-block;
+		background: #2d2d2d;
+		box-shadow: 0 0 75px rgba(0,0,0,0.15);
+		border-radius: 2px;
+		height: 120px;
+		position: relative;
+		cursor: pointer;
+		transition: 0.2s;
+		&:after {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: linear-gradient(to bottom, transparent, rgba($brand-primary, 0.15));
+			opacity: 0.35;
+			transition: opacity 0.1s;
+			z-index: 1;
+		}
+		&:hover:after {
+			opacity: 1;
+		}
+		.deck-info {
+			display: inline-block;
+			padding: 0.5rem;
+			vertical-align: top;
+			.title {
+				font-family: $font-family-serif;
+				font-size: 1.33rem;
+				width: 275px;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			.tags {
+				margin-top: 0.5rem;
+				span {
+					margin-right: 0.2rem;
+				}
+				.tag {
+					opacity: 0.5;
+				}
+			}
+		}
+		.img {
+			width: 166px;
+			display: inline-block;
+			height: 120px;
+			overflow: hidden;
+			margin-left: 2px;
+			box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+			background: darken(#2d2d2d, 2.5%);
+			position: relative;
+			z-index: 2;
+			img {
+				position: relative;
+				bottom: 2px;
+			}
+		}
+	}
+}
+
+.stats {
+	div {
+		display: inline-block;
+		margin-right: 1rem;
+		opacity: 0.8;
+		margin-top: 1.25rem;
+		position: relative;
+		z-index: 3;
+		svg {
+			fill: transparent;
+			stroke: $text-color;
+			stroke-width: 50px;
+			width: 20px;
+			height: 20px;
+			position: relative;
+			top: 6px;
+			transition: fill 0.1s, stroke 0.1s;
+			cursor: pointer;
+		}
+		&:hover svg{
+			fill: $text-color;
+		}
+		&:focus svg, &:active svg {
+			fill: $brand-primary;
+			stroke: $brand-primary;
+		}
+	}
+}
+
+.color-bar {
+	width: 2px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	border-radius: 2px 0 0 2px;
+	background: none;
+	height: 120px;
+	transition: 0.1s;
+	transition-timing-function: ease-in-out;
+	z-index: 3;
+	overflow: hidden;
+	&:hover {
+		width: 50px;
+		box-shadow: 0 0 20px rgba(0,0,0,1);
+		div {
+			color: rgba($text-color, 0.8);
+			&.w {
+				color: darken($mtg-w, 25%);
+			}
+		}
+	}
+	.u { background: $mtg-u; color: $mtg-u; }
+	.w { background: $mtg-w; color: $mtg-w; }
+	.r { background: $mtg-r; color: $mtg-r; }
+	.g { background: $mtg-g; color: $mtg-g; }
+	.b { background: $mtg-b; color: $mtg-b; }
+	div {
+		color: $text-color;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: default;
+		transition: 0.1s;
+		transition-delay: 0.1s, 0s;
+		user-select: none;
+		box-shadow: inset 0 0 5px rgba(0,0,0,0.15);
+		&:first-child {
+			border-radius: 2px 0 0 0;
+		}
+		&:last-child {
+			border-radius: 0 0 0 2px;
+		}
+	}
+}
+
+.deck-header {
+	position: relative;
+	background: #292929;
+	box-shadow: 0 0 50px rgba(0,0,0,0.15);
+	height: 162px;
+	.color-bar {
+		height: 162px;
+		width: 3px;
+		&:hover {
+			width: 50px;
+			+ hgroup {
+				left: calc(50px + 1rem);
+			}
+			~ .deck-img {
+				left: 50px;
+			}
+		}
+	}
+	.deck-img {
+		height: 162px;
+		-webkit-mask-image: linear-gradient(to right, black 80%, transparent);
+		mask-image: linear-gradient(to right, black 80%, transparent);
+		position: relative;
+		left: 0;
+		transition: left 0.1s;
+		transition-timing-function: ease-in-out;
+		z-index: 0;
+	}
+	hgroup {
+		position: absolute;
+		bottom: 1rem;
+		left: 1rem;
+		z-index: 1;
+		transition: left 0.1s;
+		transition-timing-function: ease-in-out;
+		h1, h2 {
+			margin: 0;
+			font-family: $font-family-serif;
+		}
+		h1 {
+			font-style: italic;
+			font-size: 2.66rem;
+		}
+		h2 {
+			font-weight: normal;
+			opacity: 0.8;
+		}
+	}
+	.deck-info {
+		position: absolute;
+		bottom: 1rem;
+		right: 1rem;
+		text-align: right;
+		.date-created {
+			opacity: 0.5;
+		}
+		.date-updated {
+			opacity: 0.8;
+		}
+		.stats {
+			margin-bottom: 1rem;
+			div:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+.deck-contents {
+	margin: 0 -0.5rem;
+	padding-top: 2rem;
+	li {
+		font-size: 1.333rem;
+	}
+	h2 {
+		font-family: $font-family-serif;
+	}
+	.column {
+		margin: 0.5rem;
+		width: calc(33.3% - 1rem - 14px);
+		display: inline-block;
+	}
+	.sideboard {
+		border-radius: 5px;
+		background: darken($body-bg, 2.5%);
+		box-shadow: inset 1px 0 3px rgba(0,0,0,0.25);
+		padding: 1rem;
+		margin-top: 0.7rem;
+		h2 {
+			margin-top: 0;
+		}
+	}
+}
+
+.deck-description p {
+	font-family: $font-family-sans;
+	font-size: 1.5rem;
+}
+
+.count {
+	color: $brand-grey;
+}
+
+.card-costs, .mana-avilable {
+	width: 100%;
+	a {
+		text-align: center;
+	}
+}

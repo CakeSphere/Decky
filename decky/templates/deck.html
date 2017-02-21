@@ -1,0 +1,152 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="container deck">
+	<section>
+		<div class="deck-header">
+			<div class="deck-info">
+				<!-- Likes and comments -->
+				<div class="stats">
+					<div class="likes">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 640" x="0px" y="0px"><path d="M450.26,428c-3.62,2.24-6.36,3.89-4.4,9.29,14.33,39.33-18.48,68.86-47.71,73.45a92.26,92.26,0,0,1-13.95,1.1c-77.19.06-154.39,0.43-231.59-.1C104.29,511.4,69,489,47.56,445.53c-7.18-14.58-10.12-30.35-10.12-46.61q0-58.51,0-117a111.75,111.75,0,0,1,21.93-67.12Q127.68,121,196.12,27.25c4.65-6.35,9.69-12.72,15.69-17.7,17.7-14.73,43.3-12.08,59.11,5.66,16.68,18.7,20.91,40.35,11.66,63.39-13.75,34.24-28.74,68-43.2,101.92-0.78,1.83-1.52,3.66-2.79,6.72,3.65,0,6,0,8.44,0q71.6,0.51,143.21,1c15.56,0.1,30.25,3,42.86,12.89,12.31,9.67,18.7,22.28,18.19,38-0.23,6.88-1.71,13.69-2.18,20.57-0.12,1.73.93,4.58,2.27,5.24,29.13,14.41,32.9,56.44,10.57,79.57a6.36,6.36,0,0,0-1.19,1.55c5,9.1,10.92,16.87,13.63,25.68C479.14,393.72,469.91,415.78,450.26,428Z"/></svg>
+						11
+					</div>
+					<div class="comments">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 640" x="0px" y="0px"><path d="M361.58,42.09c-2.1-.2-4.2-0.4-6.4-0.5q-45.6.15-91.2,0.1c-7.7,0-50.2,0-98.6-.1-12.5.6-21.6,1.3-24.8,1.9-91.9,16.1-154,106.5-138.1,198.6,14.9,86.5,84.5,145.6,172.3,146.1,23.7,0.1,47.4-.3,71.1.3a27.76,27.76,0,0,1,15.4,5.3c24.4,19,48.2,38.9,72.6,57.9,8.4,6.5,17.7,12.4,27.4,16.2,18.1,7,33.5-.9,39.8-19.5a81.21,81.21,0,0,0,4.1-21.2c0.7-13.7.8-27.5,0.3-41.3-0.3-7.4,1.9-11.4,8.8-14.9,67.5-34.4,102.9-98.1,97.1-173.6C505.18,117.59,441,49.49,361.58,42.09Z"/></svg>
+						5
+					</div>
+				</div>
+				<div class="date-created">Created on January 5, 2017</div>
+				<div class="date-updated">Last updated yesterday</div>
+			</div>
+			<div class="color-bar">
+				<div class="u" style="height: 34.78%">35%</div>
+				<div class="r" style="height: 32.61%">33%</div>
+				<div class="w" style="height: 32.61%">33%</div>
+			</div>
+			<hgroup>
+				<h1>Jeskai Fog</h1>
+				<h2>Blotterhead</h2>
+			</hgroup>
+			<img class="deck-img" src="{{ url_for('static', filename='images/spell_queller_art.jpg') }}" alt="Spell Queller">
+		</div>
+		<div class="deck-contents">
+			<div class="column">
+				<h2>Lands <span class="count">&mdash; 24</span></h2>
+				<ul class="list-unstyled">
+					<li>4 <a href="#">Aether Hub</a></li>
+					<li>4 <a href="#">Inspiring Vantage</a></li>
+					<li>2 <a href="#">Island</a></li>
+					<li>4 <a href="#">Plains</a></li>
+					<li>3 <a href="#">Port Town</a></li>
+					<li>4 <a href="#">Spirebluff Canal</a></li>
+					<li>3 <a href="#">Wandering Fumarole</a></li>
+				</ul>
+				<h2>Planeswalkers <span class="count">&mdash; 4</span></h2>
+				<ul class="list-unstyled">
+					<li>2 <a href="#">Chandra, Torch of Defiance</a></li>
+					<li>2 <a href="#">Gideon, Ally of Zendikar</a></li>
+				</ul>
+				<h2>Creatures <span class="count">&mdash; 12</span></h2>
+				<ul class="list-unstyled">
+					<li>4 <a href="#">Reflector Mage</a></li>
+					<li>4 <a href="#">Selfless Spirit</a></li>
+					<li>4 <a href="#">Spell Queller</a></li>
+				</ul>
+			</div>
+			<div class="column">
+				<h2>Sorceries <span class="count">&mdash; 4</span></h2>
+				<ul class="list-unstyled">
+					<li>4 <a href="#">Incendiary Flow</a></li>
+				</ul>
+				<h2>Instants <span class="count">&mdash; 8</span></h2>
+				<ul class="list-unstyled">
+					<li>4 <a href="#">Galvanic Bombardment</a></li>
+					<li>4 <a href="#">Immolating Glare</a></li>
+				</ul>
+				<h2>Enchantments <span class="count">&mdash; 8</span></h2>
+				<ul class="list-unstyled">
+					<li>8 <a href="#">Fevered Visions</a></li>
+				</ul>
+			</div>
+			<div class="column sideboard">
+				<h2>Sideboard <span class="count">&mdash; 15</span></h2>
+				<ul class="list-unstyled">
+					<li>4 <a href="#">Ceremonious Rejection</a></li>
+					<li>3 <a href="#">Disperse</a></li>
+					<li>2 <a href="#">Fumigate</a></li>
+					<li>2 <a href="#">Nahiri’s Wrath</a></li>
+					<li>2 <a href="#">Negate</a></li>
+					<li>2 <a href="#">Unsubstantiate</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="deck-description">
+			<p>
+				Great card advantage with a lot of control. Chuck out what you don’t need and get to what you do need quickly. Don’t be afraid to counter things early, you want to lock down the board.
+			</p>
+			<p>
+				If you’re successful in locking down the board, <a href="#">Fevered Visions </a>will pretty much win it for you. Kill creatures with <a href="#">Lightning Axe</a> and <a href="#">Fiery Temper</a>. (9 out of the 10 most played creatures in Standard right now have a toughness of under 3, and that doesn’t even include <a href="#">Smuggler’s Copter</a> and <a href="#">Fleetwheel Cruiser</a>. See MTGGoldfish.)
+			</p>
+			<p>
+				Swing with <a href="#">Wandering Fumarole</a>, refuel your hand with <a href="#">Bedlam Reveler</a> or toss it with <a href="#">Nahiri’s Wrath</a> for some major damage against both creatures and planeswalkers. <a href="#">Collective Defiance</a> will also do the trick.
+			</p>
+			<p>
+				DO NOT FORGET: You can change <a href="#">Wandering Fumarole</a>'s zero ability at any time. If you attack as a 4/1, and your opponent throws down a <a href="#">Galvanic Bombardment</a> on the stack for three damage, you just switch it back to a 1/4.
+			</p>
+			<p>
+				<a href="#">Chandra, Torch of Defiance</a> is best used with its ramp ability, and is practically a two drop on turn four. Drop a <a href="#">Chandra, Torch of Defiance</a> AND a <a href="#">Fevered Visions</a> on turn five. You'll hit your land drops with the card advantage from <a href="#">Cathartic Reunion</a> and the Visions.
+			</p>
+			<p>
+				Here's the fun part: drop <a href="#">Combustible Gearhulk</a>. You're either going to gain massive card advantage or do massive damage. If you can keep it alive (not too hard) until the next turn, drop <a href="#">Saheeli's Artistry</a> to make TWO copies of <a href="#">Combustible Gearhulk</a>.
+			</p>
+			<p>
+				Remember to choose BOTH ;-) Aren't enter the battlefield effects just the best? Since your opponent will probably choose draw, you'll have exactly what you need in-hand to finish them off.
+			</p>
+			<p>
+				And that's how you win.
+			</p>
+		</div>
+	</section>
+	<aside>
+		<h3>Card Costs</h3>
+		<div class="btn-group card-costs">
+			<a href="#" class="btn u" style="width: calc(28% - 1.5rem)">
+				<span class="mana small su shadow"></span>28%
+			</a>
+			<a href="#" class="btn w" style="width: calc(35% - 1.5rem)">
+				<span class="mana small sw shadow"></span>35%
+			</a>
+			<a href="#" class="btn r" style="width: calc(35% - 1.5rem)">
+				<span class="mana small sr shadow"></span>35%
+			</a>
+		</div>
+		<h3>Mana Available</h3>
+		<div class="btn-group mana-avilable">
+			<a href="#" class="btn u" style="width: calc(34% - 1.5rem)">
+				<span class="mana small su shadow"></span>35%
+			</a>
+			<a href="#" class="btn w" style="width: calc(32% - 1.5rem)">
+				<span class="mana small sw shadow"></span>32%
+			</a>
+			<a href="#" class="btn r" style="width: calc(32% - 1.5rem)">
+				<span class="mana small sr shadow"></span>32%
+			</a>
+		</div>
+		<h3>Legal Formats</h3>
+		<a href="#" class="btn">Standard</a>
+		<h3>Deck Type</h3>
+		<a href="#" class="btn">Control</a>
+		<a href="#" class="btn">Discard</a>
+		<a href="#" class="btn">Izzet</a>
+		<h3>Price</h3>
+		<a href="#" class="btn">
+			$ <span class="price">286.27</span>
+		</a>
+		<span class="price-source">TCGPlayer</span> <br>
+		<a href="#" class="btn">
+			$ <span class="price">283.98</span>
+		</a>
+		<span class="price-source">Isle of Cards</span>
+	</aside>
+</div>
+{% endblock %}
