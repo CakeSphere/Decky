@@ -1,64 +1,87 @@
 input[type="text"] {
-  display: inline-block;
-  border-radius: 2px;
-  background: none;
-  color: $brand-grey;
-  text-decoration: none;
-  border: 1px solid $brand-grey;
-  padding: 0.5rem 0.7rem;
-  font-size: 1rem;
-  font-family: $font-family-sans;
-  margin-right: 6px;
-  margin-bottom: 10px;
-  transition: 0.2s;
-  vertical-align: middle;
-  white-space: nowrap;
-  user-select: none;
-  width: 77px;
-  &:focus {
-    outline: none;
-  }
-  &.search {
-    border-color: rgba($brand-primary, 0.25);
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
-    background: #2d2d2d;
-    width: calc(100% - 1.5rem);
-    font-size: 1.33rem;
-    color: $text-color;
-    &:focus {
-      box-shadow: inset 0 4px 8px rgba(0,0,0,0.15);
-      background: darken(#2d2d2d, 1%);
-      border-color: rgba($brand-primary, 0.5);
-    }
-  }
+	display: inline-block;
+	border-radius: 2px;
+	background: none;
+	color: $color-text-weak;
+	text-decoration: none;
+	border: 1px solid $color-text-weak;
+	padding: 0.5rem 0.7rem;
+	font-size: 1rem;
+	font-family: $font-family-text;
+	margin-right: 6px;
+	margin-bottom: 10px;
+	transition: 0.2s;
+	vertical-align: middle;
+	white-space: nowrap;
+	user-select: none;
+	width: 77px;
+	&:focus {
+		outline: none;
+	}
 }
 
 .input-group {
-  display: inline-block;
-  margin-right: 6px;
-  input {
-    margin-right: 0;
-    &:last-child {
-      border-left: 0;
-    }
-  }
+	display: inline-block;
+	margin-right: 6px;
+	input {
+		margin-right: 0;
+		&:last-child {
+			border-left: 0;
+		}
+	}
 }
 
 .input-group-addon {
-  border-radius: 2px;
-  border: 1px solid $brand-grey;
-  display: inline-block;
-  padding: 0.5rem 0.7rem;
-  padding-right: 0;
-  vertical-align: top;
-  margin-right: -4px;
-  pointer-events: none;
-  user-select: none;
-  cursor: default;
+	border-radius: 2px;
+	border: 1px solid $color-text-weak;
+	display: inline-block;
+	padding: 0.5rem 0.7rem;
+	padding-right: 0;
+	vertical-align: top;
+	margin-right: -4px;
+	pointer-events: none;
+	user-select: none;
+	cursor: default;
 }
 
 .input-group-addon:not(:last-child) {
-  border-right: 0;
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
+	border-right: 0;
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+}
+.search {
+	input {
+		border-color: rgba($color-primary, 0.25);
+		box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
+		background: #2d2d2d;
+		width: calc(100% - 1.5rem - 100px);
+		margin-right: -4px;
+		font-size: 1.33rem;
+		color: $color-text;
+		border-radius: 2px 0 0 2px;
+		&:focus {
+			box-shadow: inset 0 4px 8px rgba(0,0,0,0.15);
+			background: darken(#2d2d2d, 1%);
+			border-color: rgba($color-primary, 0.5);
+		}
+	}
+	a.btn {
+		height: 27px;
+		border-color: rgba($color-primary, 0.25);
+		font-size: 1.33rem;
+		margin-right: 0;
+		width: 73px;
+		text-align: center;
+		border-radius: 0 2px 2px 0;
+		box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
+		background: #2d2d2d;
+		&:hover {
+			border-color: rgba($color-primary, 0.35);
+		}
+		&:active {
+			box-shadow: inset 0 4px 8px rgba(0,0,0,0.15);
+			background: darken(#2d2d2d, 1%);
+			border-color: rgba($color-primary, 0.5);
+		}
+	}
 }

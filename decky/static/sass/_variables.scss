@@ -1,17 +1,21 @@
 // Colors
 
-$body-bg: #272727;
-$brand-primary: #dd5ef8;
-$brand-grey: #777777;
-$text-color: #f7f7f7;
+// Brand Colors
 
-$mtg-u: #0082a6;
-$mtg-w: #d5dbe3;
-$mtg-r: #da4657;
-$mtg-g: #69bd65;
-$mtg-b: #504955;
+$color-background:     #272727;
+$color-primary:        #dd5ef8;
+$color-text-weak:      #777;
+$color-text:           #f7f7f7;
+
+// Magic Color Colors
+
+$color-mtg-u:          #0082a6;
+$color-mtg-w:          #d5dbe3;
+$color-mtg-r:          #da4657;
+$color-mtg-g:          #69bd65;
+$color-mtg-b:          #504955;
 
 // Fonts
 
-$font-family-sans: 'mr-eaves-sans', 'helvetica neue', helvetica, arial, sans-serif;
-$font-family-serif: 'mrs-eaves-xl-serif', Georgia, Times, 'Times New Roman', serif;
+$font-family-display:  'mrs-eaves-xl-serif', Georgia, Times, 'Times New Roman', serif;
+$font-family-text:     'mr-eaves-sans', 'helvetica neue', helvetica, arial, sans-serif;

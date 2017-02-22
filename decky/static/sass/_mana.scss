@@ -1,20 +1,20 @@
 .mana {
-    background-image: url('../images/mana.svg');
-    background-repeat: no-repeat;
-    background-size: auto 700%;
-    display: inline-block;
+	background-image: url('../images/mana.svg');
+	background-repeat: no-repeat;
+	background-size: auto 700%;
+	display: inline-block;
 }
 .mana.small {
-    height: 1em;
-    width: 1em;
+	height: 1em;
+	width: 1em;
 }
 .mana.medium {
-    height: 2em;
-    width: 2em;
+	height: 2em;
+	width: 2em;
 }
 .mana.large {
-    height: 4em;
-    width: 4em;
+	height: 4em;
+	width: 4em;
 }
 .mana.s0 { background-position: 0 0; }
 .mana.s1 { background-position: 11.1% 0; }
@@ -101,8 +101,8 @@
 
 
 .shadow {
-    filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=-1, OffY=1, Color='#000')";
-    filter: url(#shadow);
-    -webkit-filter: drop-shadow(-1px 1px 0px #000);
-    filter: drop-shadow(-1px 1px 0px #000);
+	filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=-1, OffY=1, Color='#000')";
+	filter: url(#shadow);
+	-webkit-filter: drop-shadow(-1px 1px 0px #000);
+	filter: drop-shadow(-1px 1px 0px #000);
 }

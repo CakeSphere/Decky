@@ -3,10 +3,10 @@ html {
 }
 
 body {
-	background: $body-bg;
-	font-family: $font-family-sans;
+	background: $color-background;
+	font-family: $font-family-text;
 	font-size: 1rem;
-	color: $text-color;
+	color: $color-text;
 	-webkit-font-smoothing: antialiased;
 	font-variant-numeric: lining-nums;
 	font-variant-ligatures: discretionary-ligatures;
@@ -16,7 +16,7 @@ body {
 }
 
 ::selection {
-	background: $brand-primary;
+	background: $color-primary;
 }
 
 nav {
@@ -29,7 +29,7 @@ nav {
 	}
 	a.btn.nav-search {
 		svg {
-			fill: $brand-primary;
+			fill: $color-primary;
 			width: 20px;
 			height: 20px;
 			position: relative;
@@ -37,7 +37,7 @@ nav {
 			transition: fill 0.2s;
 		}
 		&:hover svg {
-			fill: darken($brand-primary, 15%);
+			fill: darken($color-primary, 15%);
 		}
 	}
 }
@@ -62,16 +62,18 @@ section {
 }
 
 footer {
-	background: lighten($body-bg, 5%);
+	background: lighten($color-background, 5%);
 	padding: 3rem 0;
 	margin-top: 3rem;
+	text-align: center;
+	color: rgba($color-text, 0.75);
 	a {
-		color: $text-color;
+		color: $color-text;
 		&:hover {
-			background: linear-gradient(lighten($body-bg, 5%),lighten($body-bg, 5%)),linear-gradient(lighten($body-bg, 5%),lighten($body-bg, 5%)),linear-gradient($text-color,$text-color);
+			background: linear-gradient(lighten($color-background, 5%),lighten($color-background, 5%)),linear-gradient(lighten($color-background, 5%),lighten($color-background, 5%)),linear-gradient($color-text,$color-text);
 			background-size: .05em 1px,.05em 1px,1px 1px;
 			background-repeat: no-repeat,no-repeat,repeat-x;
-			text-shadow: 0.03em 0 lighten($body-bg, 5%), -0.03em 0 lighten($body-bg, 5%), 0 0.03em lighten($body-bg, 5%), 0 -0.03em lighten($body-bg, 5%), 0.06em 0 lighten($body-bg, 5%), -0.06em 0 lighten($body-bg, 5%), 0.09em 0 lighten($body-bg, 5%), -0.09em 0 lighten($body-bg, 5%), 0.12em 0 lighten($body-bg, 5%), -0.12em 0 lighten($body-bg, 5%), 0.15em 0 lighten($body-bg, 5%), -0.15em 0 lighten($body-bg, 5%);
+			text-shadow: 0.03em 0 lighten($color-background, 5%), -0.03em 0 lighten($color-background, 5%), 0 0.03em lighten($color-background, 5%), 0 -0.03em lighten($color-background, 5%), 0.06em 0 lighten($color-background, 5%), -0.06em 0 lighten($color-background, 5%), 0.09em 0 lighten($color-background, 5%), -0.09em 0 lighten($color-background, 5%), 0.12em 0 lighten($color-background, 5%), -0.12em 0 lighten($color-background, 5%), 0.15em 0 lighten($color-background, 5%), -0.15em 0 lighten($color-background, 5%);
 			background-position: 0 89%,100% 89%,0 89%;
 		}
 	}
@@ -83,25 +85,25 @@ h3 {
 }
 
 a {
-	color: $brand-primary;
+	color: $color-primary;
 	text-decoration: none;
 	&:hover {
-		background: linear-gradient($body-bg,$body-bg),linear-gradient($body-bg,$body-bg),linear-gradient($brand-primary,$brand-primary);
+		background: linear-gradient($color-background,$color-background),linear-gradient($color-background,$color-background),linear-gradient($color-primary,$color-primary);
 		background-size: .05em 1px,.05em 1px,1px 1px;
 		background-repeat: no-repeat,no-repeat,repeat-x;
-		text-shadow: 0.03em 0 $body-bg, -0.03em 0 $body-bg, 0 0.03em $body-bg, 0 -0.03em $body-bg, 0.06em 0 $body-bg, -0.06em 0 $body-bg, 0.09em 0 $body-bg, -0.09em 0 $body-bg, 0.12em 0 $body-bg, -0.12em 0 $body-bg, 0.15em 0 $body-bg, -0.15em 0 $body-bg;
+		text-shadow: 0.03em 0 $color-background, -0.03em 0 $color-background, 0 0.03em $color-background, 0 -0.03em $color-background, 0.06em 0 $color-background, -0.06em 0 $color-background, 0.09em 0 $color-background, -0.09em 0 $color-background, 0.12em 0 $color-background, -0.12em 0 $color-background, 0.15em 0 $color-background, -0.15em 0 $color-background;
 		background-position: 0 89%,100% 89%,0 89%;
 	}
 	&:active {
-		color: darken($brand-primary, 5%);
-		background: linear-gradient($body-bg,$body-bg),linear-gradient($body-bg,$body-bg),linear-gradient(darken($brand-primary, 5%),darken($brand-primary, 5%));
+		color: darken($color-primary, 5%);
+		background: linear-gradient($color-background,$color-background),linear-gradient($color-background,$color-background),linear-gradient(darken($color-primary, 5%),darken($color-primary, 5%));
 		background-size: .05em 1px,.05em 1px,1px 1px;
 		background-repeat: no-repeat,no-repeat,repeat-x;
-		text-shadow: 0.03em 0 $body-bg, -0.03em 0 $body-bg, 0 0.03em $body-bg, 0 -0.03em $body-bg, 0.06em 0 $body-bg, -0.06em 0 $body-bg, 0.09em 0 $body-bg, -0.09em 0 $body-bg, 0.12em 0 $body-bg, -0.12em 0 $body-bg, 0.15em 0 $body-bg, -0.15em 0 $body-bg;
+		text-shadow: 0.03em 0 $color-background, -0.03em 0 $color-background, 0 0.03em $color-background, 0 -0.03em $color-background, 0.06em 0 $color-background, -0.06em 0 $color-background, 0.09em 0 $color-background, -0.09em 0 $color-background, 0.12em 0 $color-background, -0.12em 0 $color-background, 0.15em 0 $color-background, -0.15em 0 $color-background;
 		background-position: 0 89%,100% 89%,0 89%;
 	}
 	&::selection {
-		color: $text-color;
+		color: $color-text;
 		&:hover {
 			background: none;
 			text-shadow: none;
@@ -110,7 +112,7 @@ a {
 }
 
 hr {
-	border-top: 1px solid lighten($body-bg, 10%);
+	border-top: 1px solid lighten($color-background, 10%);
 	border-bottom: 0;
 }
 
@@ -123,7 +125,7 @@ label {
 }
 
 p {
-	font-family: $font-family-serif;
+	font-family: $font-family-display;
 	font-weight: 300;
 }
 
@@ -133,11 +135,11 @@ p {
 
 // Magic colors
 
-.u { color: $mtg-u }
-.w { color: $mtg-w }
-.r { color: $mtg-r }
-.g { color: $mtg-g }
-.b { color: $mtg-b }
+.u { color: $color-mtg-u }
+.w { color: $color-mtg-w }
+.r { color: $color-mtg-r }
+.g { color: $color-mtg-g }
+.b { color: $color-mtg-b }
 
 // Utility classes
 
@@ -171,7 +173,7 @@ ul.cards-info {
 	margin-top: 3rem;
 	column-count: 3;
 	column-gap: 1rem;
-	column-rule: solid lighten($body-bg, 10%) 1px;
+	column-rule: solid lighten($color-background, 10%) 1px;
 }
 
 .value {

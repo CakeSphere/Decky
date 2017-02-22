@@ -2,12 +2,12 @@ a.btn, .btn, button {
 	display: inline-block;
 	border-radius: 2px;
 	background: none;
-	color: $brand-grey;
+	color: $color-text-weak;
 	text-decoration: none;
-	border: 1px solid $brand-grey;
+	border: 1px solid $color-text-weak;
 	padding: 0.5rem 0.7rem;
 	font-size: 1rem;
-	font-family: $font-family-sans;
+	font-family: $font-family-text;
 	cursor: pointer;
 	margin-right: 6px;
 	margin-bottom: 10px;
@@ -19,48 +19,48 @@ a.btn, .btn, button {
 		outline: none;
 	}
 	&:hover {
-		background: lighten($body-bg, 2.5%);
-		color: lighten($brand-grey, 5%);
-		border-color: lighten($brand-grey, 5%);
+		background: lighten($color-background, 2.5%);
+		color: lighten($color-text-weak, 5%);
+		border-color: lighten($color-text-weak, 5%);
 		text-shadow: none;
 	}
 	&:active {
-		background: lighten($body-bg, 5%);
+		background: lighten($color-background, 5%);
 		text-shadow: none;
 	}
 	&.link {
 		border-color: transparent;
-		color: $brand-primary;
+		color: $color-primary;
 		&:hover {
 			background: none;
 			span {
-				background: linear-gradient($body-bg,$body-bg),linear-gradient($body-bg,$body-bg),linear-gradient($brand-primary,$brand-primary);
+				background: linear-gradient($color-background,$color-background),linear-gradient($color-background,$color-background),linear-gradient($color-primary,$color-primary);
 				background-size: .05em 1px,.05em 1px,1px 1px;
 				background-repeat: no-repeat,no-repeat,repeat-x;
-				text-shadow: 0.03em 0 $body-bg, -0.03em 0 $body-bg, 0 0.03em $body-bg, 0 -0.03em $body-bg, 0.06em 0 $body-bg, -0.06em 0 $body-bg, 0.09em 0 $body-bg, -0.09em 0 $body-bg, 0.12em 0 $body-bg, -0.12em 0 $body-bg, 0.15em 0 $body-bg, -0.15em 0 $body-bg;
+				text-shadow: 0.03em 0 $color-background, -0.03em 0 $color-background, 0 0.03em $color-background, 0 -0.03em $color-background, 0.06em 0 $color-background, -0.06em 0 $color-background, 0.09em 0 $color-background, -0.09em 0 $color-background, 0.12em 0 $color-background, -0.12em 0 $color-background, 0.15em 0 $color-background, -0.15em 0 $color-background;
 				background-position: 0 89%,100% 89%,0 89%;
 			}
 		}
 		&:active span {
-			color: darken($brand-primary, 5%);
-			background: linear-gradient($body-bg,$body-bg),linear-gradient($body-bg,$body-bg),linear-gradient(darken($brand-primary, 5%),darken($brand-primary, 5%));
+			color: darken($color-primary, 5%);
+			background: linear-gradient($color-background,$color-background),linear-gradient($color-background,$color-background),linear-gradient(darken($color-primary, 5%),darken($color-primary, 5%));
 			background-size: .05em 1px,.05em 1px,1px 1px;
 			background-repeat: no-repeat,no-repeat,repeat-x;
-			text-shadow: 0.03em 0 $body-bg, -0.03em 0 $body-bg, 0 0.03em $body-bg, 0 -0.03em $body-bg, 0.06em 0 $body-bg, -0.06em 0 $body-bg, 0.09em 0 $body-bg, -0.09em 0 $body-bg, 0.12em 0 $body-bg, -0.12em 0 $body-bg, 0.15em 0 $body-bg, -0.15em 0 $body-bg;
+			text-shadow: 0.03em 0 $color-background, -0.03em 0 $color-background, 0 0.03em $color-background, 0 -0.03em $color-background, 0.06em 0 $color-background, -0.06em 0 $color-background, 0.09em 0 $color-background, -0.09em 0 $color-background, 0.12em 0 $color-background, -0.12em 0 $color-background, 0.15em 0 $color-background, -0.15em 0 $color-background;
 			background-position: 0 89%,100% 89%,0 89%;
 		}
 	}
-	&.primary { @include btn($brand-primary); }
-	&.u       { @include btn($mtg-u); }
-	&.w       { @include btn($mtg-w); }
-	&.r       { @include btn($mtg-r); }
-	&.g       { @include btn($mtg-g); }
-	&.b       { @include btn($mtg-b); }
+	&.primary { @include btn($color-primary); }
+	&.u       { @include btn($color-mtg-u); }
+	&.w       { @include btn($color-mtg-w); }
+	&.r       { @include btn($color-mtg-r); }
+	&.g       { @include btn($color-mtg-g); }
+	&.b       { @include btn($color-mtg-b); }
 	i { // Set Icons
 		position: relative;
 		bottom: 3px;
 		margin-right: 0.25rem;
-		-webkit-text-stroke: 0.03em $text-color;
+		-webkit-text-stroke: 0.03em $color-text;
 		&.ss-rare {
 			-webkit-text-stroke: 0.02em #000;
 		}
@@ -71,8 +71,8 @@ a.btn, .btn, button {
 		margin-right: 0.25rem;
 	}
 	.caret {
-		color: $body-bg;
-		-webkit-text-stroke: 1px $brand-grey;
+		color: $color-background;
+		-webkit-text-stroke: 1px $color-text-weak;
 		font-size: 10px;
 		margin-left: 0.25rem;
 		position: relative;

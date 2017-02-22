@@ -1,14 +1,14 @@
 .container {
-  width: 1280px;
-  margin: auto;
+	width: 1280px;
+	margin: auto;
 }
 
 .column {
-  width: calc(50% - 2rem);
-  display: inline-block;
-  vertical-align: top;
+	width: calc(50% - 2rem);
+	display: inline-block;
+	vertical-align: top;
 }
 
 .column:first-child {
-  margin-right: 2rem;
+	margin-right: 2rem;
 }
