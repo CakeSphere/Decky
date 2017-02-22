@@ -23,7 +23,7 @@
 		}
 		&.flavor {
 			font-style: italic;
-			color: darken($color-text, 20%);
+			color: shade($color-text, 20%);
 			font-size: 1.3rem;
 			line-height: 1.1;
 			cite {

@@ -44,7 +44,7 @@ nav {
 			transition: fill 0.2s;
 		}
 		&:hover svg {
-			fill: darken($color-primary, 15%);
+			fill: shade($color-primary, 15%);
 		}
 	}
 }
@@ -94,8 +94,8 @@ a {
 		@include underline($color-primary, $color-background);
 	}
 	&:active {
-		@include underline(darken($color-primary, 5%), $color-background)
-		color: darken($color-primary, 5%);
+		@include underline(shade($color-primary, 5%), $color-background)
+		color: shade($color-primary, 5%);
 	}
 	&::-moz-selection {
 		color: $color-text;
@@ -114,7 +114,7 @@ a {
 }
 
 hr {
-	border-top: 1px solid lighten($color-background, 10%);
+	border-top: 1px solid $color-background-tint;
 	border-bottom: 0;
 }
 
@@ -179,9 +179,9 @@ ul.cards-info {
 	-webkit-column-gap: 1rem;
 		 -moz-column-gap: 1rem;
 					column-gap: 1rem;
-	-webkit-column-rule: solid lighten($color-background, 10%) 1px;
-		 -moz-column-rule: solid lighten($color-background, 10%) 1px;
-					column-rule: solid lighten($color-background, 10%) 1px;
+	-webkit-column-rule: solid $color-background-tint 1px;
+		 -moz-column-rule: solid $color-background-tint 1px;
+					column-rule: solid $color-background-tint 1px;
 }
 
 .value {

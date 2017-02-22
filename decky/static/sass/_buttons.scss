@@ -25,13 +25,13 @@ button {
 		outline: none;
 	}
 	&:hover {
-		background: lighten($color-background, 2.5%);
+		background: tint($color-background, 2.5%);
 		color: $color-text;
-		border-color: lighten($color-text-weak, 5%);
+		border-color: tint($color-text-weak, 5%);
 		text-shadow: none;
 	}
 	&:active {
-		background: lighten($color-background, 5%);
+		background: tint($color-background, 5%);
 		text-shadow: none;
 	}
 	&.link {
@@ -46,8 +46,8 @@ button {
 		}
 		&:active span {
 			// Hacky span that we add to make underlines on text buttons work.
-			@include underline(darken($color-primary, 5%), $color-background);
-			color: darken($color-primary, 5%);
+			@include underline(shade($color-primary, 5%), $color-background);
+			color: shade($color-primary, 5%);
 		}
 	}
 	&.primary { @include btn($color-primary); }
@@ -56,6 +56,12 @@ button {
 	&.r       { @include btn($color-mtg-r); }
 	&.g       { @include btn($color-mtg-g); }
 	&.b       { @include btn($color-mtg-b); }
+	// Black is a special case here because Black text is hard to read on a 
+	// black background.
+	&.b       { 
+							color: lighten($color-mtg-b, 25%); 
+							&:hover { color: lighten($color-mtg-b, 35%); }
+						}
 	i { /* Set Icons*/
 		position: relative;
 		bottom: 3px;

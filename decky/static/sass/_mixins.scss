@@ -3,15 +3,17 @@
 // states.
 
 @mixin btn($color) {
+	$color-tint: tint($color, 5%);
+	$color-shade: shade($color, 5%);
 	color: $color;
 	border-color: $color;
 	&:hover {
-		color: lighten($color, 5%);
-		border-color: lighten($color, 5%);
+		color: $color-tint;
+		border-color: $color-tint;
 	}
 	&:active {
-		color: darken($color, 5%);
-		border-color: darken($color, 5%);
+		color: $color-shade;
+		border-color: $color-shade;
 	}
 }
 
@@ -38,7 +40,7 @@
 	}
 }
 
-/// Slightly lighten a color
+/// Slightly ting a color
 /// @access public
 /// @param {Color} $color - color to tint
 /// @param {Number} $percentage - percentage of `$color` in returned color
