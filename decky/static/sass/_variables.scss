@@ -1,21 +1,27 @@
 // Colors
 
 // Brand Colors
+// Colors chosen specifically for Decky and not associated with Magic: The
+// Gathering Colors.
 
-$color-background:     #272727;
-$color-primary:        #dd5ef8;
-$color-text-weak:      #777;
-$color-text:           #f7f7f7;
+$color-background:     hsl(0, 0%, 15%);
+$color-primary:        hsl(289, 92%, 67%);
+$color-text-weak:      hsl(0, 0%, 47%);
+$color-text:           hsl(0, 0%, 97%);
 
 // Magic Color Colors
+// As Magic doesn't have specific colors chosen for it's Colors as far as I
+// can tell, these have been chosen for use in Decky.
 
-$color-mtg-u:          #0082a6;
-$color-mtg-w:          #d5dbe3;
-$color-mtg-r:          #da4657;
-$color-mtg-g:          #69bd65;
-$color-mtg-b:          #504955;
+$color-mtg-u:          hsl(193, 100%, 33%);
+$color-mtg-w:          hsl(214, 20%, 86%);
+$color-mtg-r:          hsl(353, 67%, 56%);
+$color-mtg-g:          hsl(117, 40%, 57%);
+$color-mtg-b:          hsl(275, 8%, 31%);
 
 // Fonts
+// The Display font is used primarily in the names of objects (decks, cards,
+// etc.).  The Text font is used for everything else.
 
-$font-family-display:  'mrs-eaves-xl-serif', Georgia, Times, 'Times New Roman', serif;
-$font-family-text:     'mr-eaves-sans', 'helvetica neue', helvetica, arial, sans-serif;
+$font-family-display:  ('mrs-eaves-xl-serif', Georgia, Times, 'Times New Roman', serif);
+$font-family-text:     ('mr-eaves-sans', 'helvetica neue', helvetica, arial, sans-serif);

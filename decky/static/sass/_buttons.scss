@@ -1,4 +1,6 @@
-a.btn, .btn, button {
+a.btn, 
+.btn, 
+button {
 	display: inline-block;
 	border-radius: 2px;
 	background: none;
@@ -11,16 +13,20 @@ a.btn, .btn, button {
 	cursor: pointer;
 	margin-right: 6px;
 	margin-bottom: 10px;
+	-webkit-transition: 0.2s;
 	transition: 0.2s;
 	vertical-align: middle;
 	white-space: nowrap;
-	user-select: none;
+	-webkit-user-select: none;
+		 -moz-user-select: none;
+			-ms-user-select: none;
+					user-select: none;
 	&:focus {
 		outline: none;
 	}
 	&:hover {
 		background: lighten($color-background, 2.5%);
-		color: lighten($color-text-weak, 5%);
+		color: $color-text;
 		border-color: lighten($color-text-weak, 5%);
 		text-shadow: none;
 	}
@@ -33,21 +39,15 @@ a.btn, .btn, button {
 		color: $color-primary;
 		&:hover {
 			background: none;
+			// Hacky span that we add to make underlines on text buttons work.
 			span {
-				background: linear-gradient($color-background,$color-background),linear-gradient($color-background,$color-background),linear-gradient($color-primary,$color-primary);
-				background-size: .05em 1px,.05em 1px,1px 1px;
-				background-repeat: no-repeat,no-repeat,repeat-x;
-				text-shadow: 0.03em 0 $color-background, -0.03em 0 $color-background, 0 0.03em $color-background, 0 -0.03em $color-background, 0.06em 0 $color-background, -0.06em 0 $color-background, 0.09em 0 $color-background, -0.09em 0 $color-background, 0.12em 0 $color-background, -0.12em 0 $color-background, 0.15em 0 $color-background, -0.15em 0 $color-background;
-				background-position: 0 89%,100% 89%,0 89%;
+				@include underline($color-primary, $color-background);
 			}
 		}
 		&:active span {
+			// Hacky span that we add to make underlines on text buttons work.
+			@include underline(darken($color-primary, 5%), $color-background);
 			color: darken($color-primary, 5%);
-			background: linear-gradient($color-background,$color-background),linear-gradient($color-background,$color-background),linear-gradient(darken($color-primary, 5%),darken($color-primary, 5%));
-			background-size: .05em 1px,.05em 1px,1px 1px;
-			background-repeat: no-repeat,no-repeat,repeat-x;
-			text-shadow: 0.03em 0 $color-background, -0.03em 0 $color-background, 0 0.03em $color-background, 0 -0.03em $color-background, 0.06em 0 $color-background, -0.06em 0 $color-background, 0.09em 0 $color-background, -0.09em 0 $color-background, 0.12em 0 $color-background, -0.12em 0 $color-background, 0.15em 0 $color-background, -0.15em 0 $color-background;
-			background-position: 0 89%,100% 89%,0 89%;
 		}
 	}
 	&.primary { @include btn($color-primary); }
@@ -56,7 +56,7 @@ a.btn, .btn, button {
 	&.r       { @include btn($color-mtg-r); }
 	&.g       { @include btn($color-mtg-g); }
 	&.b       { @include btn($color-mtg-b); }
-	i { // Set Icons
+	i { /* Set Icons*/
 		position: relative;
 		bottom: 3px;
 		margin-right: 0.25rem;
@@ -65,7 +65,7 @@ a.btn, .btn, button {
 			-webkit-text-stroke: 0.02em #000;
 		}
 	}
-	.mana.small { // Mana Icons
+	.mana.small { /* Mana Icons*/
 		position: relative;
 		top: 3px;
 		margin-right: 0.25rem;
@@ -82,7 +82,9 @@ a.btn, .btn, button {
 
 .btn-group {
 	display: inline-block;
-	.btn, a.btn, button {
+	.btn, 
+	a.btn, 
+	button {
 		border-radius: 0;
 		margin-right: -4px;
 		position: relative;
@@ -90,7 +92,11 @@ a.btn, .btn, button {
 		&.primary {
 			z-index: 3;
 		}
-		&.u, &.w, &.r, &.g, &.b {
+		&.u, 
+		&.w, 
+		&.r, 
+		&.g, 
+		&.b {
 			z-index: 2;
 		}
 		&:first-child {

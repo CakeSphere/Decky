@@ -1,4 +1,4 @@
-input[type="text"] {
+input[type='text'] {
 	display: inline-block;
 	border-radius: 2px;
 	background: none;
@@ -10,10 +10,14 @@ input[type="text"] {
 	font-family: $font-family-text;
 	margin-right: 6px;
 	margin-bottom: 10px;
+	-webkit-transition: 0.2s;
 	transition: 0.2s;
 	vertical-align: middle;
 	white-space: nowrap;
-	user-select: none;
+	-webkit-user-select: none;
+		 -moz-user-select: none;
+			-ms-user-select: none;
+					user-select: none;
 	width: 77px;
 	&:focus {
 		outline: none;
@@ -40,7 +44,10 @@ input[type="text"] {
 	vertical-align: top;
 	margin-right: -4px;
 	pointer-events: none;
-	user-select: none;
+	-webkit-user-select: none;
+		 -moz-user-select: none;
+			-ms-user-select: none;
+					user-select: none;
 	cursor: default;
 }
 

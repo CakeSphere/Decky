@@ -7,8 +7,7 @@
 	width: calc(50% - 2rem);
 	display: inline-block;
 	vertical-align: top;
-}
-
-.column:first-child {
-	margin-right: 2rem;
+	&:first-child {
+		margin-right: 2rem;
+	}
 }

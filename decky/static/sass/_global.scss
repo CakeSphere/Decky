@@ -1,3 +1,11 @@
+::-moz-selection {
+	background: $color-primary;
+}
+
+::selection {
+	background: $color-primary;
+}
+
 html {
 	font-size: 18px;
 }
@@ -9,20 +17,18 @@ body {
 	color: $color-text;
 	-webkit-font-smoothing: antialiased;
 	font-variant-numeric: lining-nums;
-	font-variant-ligatures: discretionary-ligatures;
-	-moz-font-feature-settings: "lnum", "dlig";
-	-webkit-font-feature-settings: "lnum", "dlig";
-	font-feature-settings: "lnum", "dlig";
-}
-
-::selection {
-	background: $color-primary;
+	-webkit-font-variant-ligatures: discretionary-ligatures;
+					font-variant-ligatures: discretionary-ligatures;
+	-webkit-font-feature-settings: 'lnum', 'dlig';
+	font-feature-settings: 'lnum', 'dlig';
 }
 
 nav {
 	margin-top: 3rem;
 	margin-bottom: 1rem;
-	.btn, a.btn, button {
+	.btn, 
+	a.btn, 
+	button {
 		&:last-child {
 			margin-right: 0;
 		}
@@ -34,6 +40,7 @@ nav {
 			height: 20px;
 			position: relative;
 			top: 0.25rem;
+			-webkit-transition: fill 0.2s;
 			transition: fill 0.2s;
 		}
 		&:hover svg {
@@ -62,7 +69,7 @@ section {
 }
 
 footer {
-	background: lighten($color-background, 5%);
+	border-top: 1px solid $color-text-weak;
 	padding: 3rem 0;
 	margin-top: 3rem;
 	text-align: center;
@@ -70,11 +77,7 @@ footer {
 	a {
 		color: $color-text;
 		&:hover {
-			background: linear-gradient(lighten($color-background, 5%),lighten($color-background, 5%)),linear-gradient(lighten($color-background, 5%),lighten($color-background, 5%)),linear-gradient($color-text,$color-text);
-			background-size: .05em 1px,.05em 1px,1px 1px;
-			background-repeat: no-repeat,no-repeat,repeat-x;
-			text-shadow: 0.03em 0 lighten($color-background, 5%), -0.03em 0 lighten($color-background, 5%), 0 0.03em lighten($color-background, 5%), 0 -0.03em lighten($color-background, 5%), 0.06em 0 lighten($color-background, 5%), -0.06em 0 lighten($color-background, 5%), 0.09em 0 lighten($color-background, 5%), -0.09em 0 lighten($color-background, 5%), 0.12em 0 lighten($color-background, 5%), -0.12em 0 lighten($color-background, 5%), 0.15em 0 lighten($color-background, 5%), -0.15em 0 lighten($color-background, 5%);
-			background-position: 0 89%,100% 89%,0 89%;
+			@include underline(rgba($color-text, 0.75), $color-background);
 		}
 	}
 }
@@ -88,19 +91,18 @@ a {
 	color: $color-primary;
 	text-decoration: none;
 	&:hover {
-		background: linear-gradient($color-background,$color-background),linear-gradient($color-background,$color-background),linear-gradient($color-primary,$color-primary);
-		background-size: .05em 1px,.05em 1px,1px 1px;
-		background-repeat: no-repeat,no-repeat,repeat-x;
-		text-shadow: 0.03em 0 $color-background, -0.03em 0 $color-background, 0 0.03em $color-background, 0 -0.03em $color-background, 0.06em 0 $color-background, -0.06em 0 $color-background, 0.09em 0 $color-background, -0.09em 0 $color-background, 0.12em 0 $color-background, -0.12em 0 $color-background, 0.15em 0 $color-background, -0.15em 0 $color-background;
-		background-position: 0 89%,100% 89%,0 89%;
+		@include underline($color-primary, $color-background);
 	}
 	&:active {
+		@include underline(darken($color-primary, 5%), $color-background)
 		color: darken($color-primary, 5%);
-		background: linear-gradient($color-background,$color-background),linear-gradient($color-background,$color-background),linear-gradient(darken($color-primary, 5%),darken($color-primary, 5%));
-		background-size: .05em 1px,.05em 1px,1px 1px;
-		background-repeat: no-repeat,no-repeat,repeat-x;
-		text-shadow: 0.03em 0 $color-background, -0.03em 0 $color-background, 0 0.03em $color-background, 0 -0.03em $color-background, 0.06em 0 $color-background, -0.06em 0 $color-background, 0.09em 0 $color-background, -0.09em 0 $color-background, 0.12em 0 $color-background, -0.12em 0 $color-background, 0.15em 0 $color-background, -0.15em 0 $color-background;
-		background-position: 0 89%,100% 89%,0 89%;
+	}
+	&::-moz-selection {
+		color: $color-text;
+		&:hover {
+			background: none;
+			text-shadow: none;
+		}
 	}
 	&::selection {
 		color: $color-text;
@@ -133,7 +135,7 @@ p {
 	border-radius: 7px;
 }
 
-// Magic colors
+/* Magic colors*/
 
 .u { color: $color-mtg-u }
 .w { color: $color-mtg-w }
@@ -141,11 +143,11 @@ p {
 .g { color: $color-mtg-g }
 .b { color: $color-mtg-b }
 
-// Utility classes
+/* Utility classes*/
 
 .pull-left   { float: left; }
 .pull-right  { float: right; }
-.clearfix    { clear: both; }
+.clearfix    { @include clearfix; }
 
 .text-left   { text-align: left; }
 .text-center { text-align: center; }
@@ -166,14 +168,20 @@ p {
 	height: 1.4rem;
 }
 
-// Lists
+/* Lists*/
 
 ul.cards-info {
 	margin-bottom: 3rem;
 	margin-top: 3rem;
-	column-count: 3;
-	column-gap: 1rem;
-	column-rule: solid lighten($color-background, 10%) 1px;
+	-webkit-column-count: 3;
+		 -moz-column-count: 3;
+					column-count: 3;
+	-webkit-column-gap: 1rem;
+		 -moz-column-gap: 1rem;
+					column-gap: 1rem;
+	-webkit-column-rule: solid lighten($color-background, 10%) 1px;
+		 -moz-column-rule: solid lighten($color-background, 10%) 1px;
+					column-rule: solid lighten($color-background, 10%) 1px;
 }
 
 .value {

@@ -1,3 +1,7 @@
+// Buttons mixin
+// Generates some fairly simple button styles, and their hover and active
+// states.
+
 @mixin btn($color) {
 	color: $color;
 	border-color: $color;
@@ -9,4 +13,45 @@
 		color: darken($color, 5%);
 		border-color: darken($color, 5%);
 	}
+}
+
+// Underline mixin
+
+@mixin underline($color-text, $color-background) {
+	background: -webkit-linear-gradient($color-background,$color-background),-webkit-linear-gradient($color-background,$color-background),-webkit-linear-gradient($color-text,$color-text);
+	background: linear-gradient($color-background,$color-background),linear-gradient($color-background,$color-background),linear-gradient($color-text,$color-text);
+	background-size: .05em 1px,.05em 1px,1px 1px;
+	background-repeat: no-repeat,no-repeat,repeat-x;
+	text-shadow: 0.03em 0 $color-background, -0.03em 0 $color-background, 0 0.03em $color-background, 0 -0.03em $color-background, 0.06em 0 $color-background, -0.06em 0 $color-background, 0.09em 0 $color-background, -0.09em 0 $color-background, 0.12em 0 $color-background, -0.12em 0 $color-background, 0.15em 0 $color-background, -0.15em 0 $color-background;
+	background-position: 0 89%,100% 89%,0 89%;
+}
+
+
+/// Helper to clear inner floats
+/// @author Nicolas Gallagher
+/// @link http://nicolasgallagher.com/micro-clearfix-hack/ Micro Clearfix
+@mixin clearfix {
+	&::after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+}
+
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function tint($color, $percentage) {
+	@return mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function shade($color, $percentage) {
+	@return mix(black, $color, $percentage);
 }

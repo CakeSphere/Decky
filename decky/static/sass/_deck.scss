@@ -1,7 +1,8 @@
-// Common Deck Elements
+/* Common Deck Elements*/
 
 .stats {
-	div {
+	.likes,
+	.comments {
 		display: inline-block;
 		margin-right: 1rem;
 		opacity: 0.8;
@@ -16,6 +17,7 @@
 			height: 20px;
 			position: relative;
 			top: 6px;
+			-webkit-transition: fill 0.1s, stroke 0.1s;
 			transition: fill 0.1s, stroke 0.1s;
 			cursor: pointer;
 		}
@@ -38,34 +40,52 @@
 	border-radius: 2px 0 0 2px;
 	background: none;
 	height: 120px;
+	-webkit-transition: 0.1s;
 	transition: 0.1s;
-	transition-timing-function: ease-in-out;
+	-webkit-transition-timing-function: ease-in-out;
+					transition-timing-function: ease-in-out;
 	z-index: 3;
 	overflow: hidden;
 	&:hover {
 		width: 50px;
 		box-shadow: 0 0 20px rgba(0,0,0,1);
-		div {
+		.u,
+		.w,
+		.r,
+		.g,
+		.b {
 			color: rgba($color-text, 0.8);
-			&.w {
-				color: darken($color-mtg-w, 25%);
-			}
+		// White is a special case because text becomes hard to read.  Therefore,
+		// we darken it quite a bit.
+		.w {
+			color: darken($color-mtg-w, 25%);
+		}
 		}
 	}
-	.u { background: $color-mtg-u; color: $color-mtg-u; }
-	.w { background: $color-mtg-w; color: $color-mtg-w; }
-	.r { background: $color-mtg-r; color: $color-mtg-r; }
-	.g { background: $color-mtg-g; color: $color-mtg-g; }
-	.b { background: $color-mtg-b; color: $color-mtg-b; }
-	div {
+	.u,
+	.w,
+	.r,
+	.g,
+	.b {
 		color: $color-text;
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
-		align-items: center;
-		justify-content: center;
+		-webkit-box-align: center;
+				-ms-flex-align: center;
+						align-items: center;
+		-webkit-box-pack: center;
+				-ms-flex-pack: center;
+						justify-content: center;
 		cursor: default;
+		-webkit-transition: 0.1s;
 		transition: 0.1s;
-		transition-delay: 0.1s, 0s;
-		user-select: none;
+		-webkit-transition-delay: 0.1s, 0s;
+						transition-delay: 0.1s, 0s;
+		-webkit-user-select: none;
+			 -moz-user-select: none;
+				-ms-user-select: none;
+						user-select: none;
 		box-shadow: inset 0 0 5px rgba(0,0,0,0.15);
 		&:first-child {
 			border-radius: 2px 0 0 0;
@@ -74,9 +94,14 @@
 			border-radius: 0 0 0 2px;
 		}
 	}
+	.u { background: $color-mtg-u; color: $color-mtg-u; }
+	.w { background: $color-mtg-w; color: $color-mtg-w; }
+	.r { background: $color-mtg-r; color: $color-mtg-r; }
+	.g { background: $color-mtg-g; color: $color-mtg-g; }
+	.b { background: $color-mtg-b; color: $color-mtg-b; }
 }
 
-// Deck tiles
+/* Deck tiles*/
 
 .row {
 	margin: 0 -0.5rem;
@@ -90,6 +115,7 @@
 		height: 120px;
 		position: relative;
 		cursor: pointer;
+		-webkit-transition: 0.2s;
 		transition: 0.2s;
 		&:after {
 			content: '';
@@ -99,8 +125,10 @@
 			left: 0;
 			right: 0;
 			bottom: 0;
+			background: -webkit-linear-gradient(top, transparent, rgba($color-primary, 0.15));
 			background: linear-gradient(to bottom, transparent, rgba($color-primary, 0.15));
 			opacity: 0.35;
+			-webkit-transition: opacity 0.1s;
 			transition: opacity 0.1s;
 			z-index: 1;
 		}
@@ -121,7 +149,8 @@
 			}
 			.tags {
 				margin-top: 0.5rem;
-				span {
+				.author,
+				.tag {
 					margin-right: 0.2rem;
 				}
 				.tag {
@@ -145,7 +174,8 @@
 			}
 		}
 		.stats {
-			div {
+			.likes,
+			.comments {
 				&:hover svg, &:active svg {
 					fill: transparent;
 					stroke: $color-text;
@@ -155,7 +185,7 @@
 	}
 }
 
-// Deck Page
+/* Deck Page*/
 
 .deck-header {
 	position: relative;
@@ -177,12 +207,14 @@
 	}
 	.deck-img {
 		height: 162px;
-		-webkit-mask-image: linear-gradient(to right, black 80%, transparent);
+		-webkit-mask-image: -webkit-linear-gradient(left, black 80%, transparent);
 		mask-image: linear-gradient(to right, black 80%, transparent);
 		position: relative;
 		left: 0;
+		-webkit-transition: left 0.1s;
 		transition: left 0.1s;
-		transition-timing-function: ease-in-out;
+		-webkit-transition-timing-function: ease-in-out;
+						transition-timing-function: ease-in-out;
 		z-index: 0;
 	}
 	hgroup {
@@ -190,9 +222,12 @@
 		bottom: 1rem;
 		left: 1rem;
 		z-index: 1;
+		-webkit-transition: left 0.1s;
 		transition: left 0.1s;
-		transition-timing-function: ease-in-out;
-		h1, h2 {
+		-webkit-transition-timing-function: ease-in-out;
+						transition-timing-function: ease-in-out;
+		h1, 
+		h2 {
 			margin: 0;
 			font-family: $font-family-display;
 		}
@@ -218,7 +253,7 @@
 		}
 		.stats {
 			margin-bottom: 1rem;
-			div:last-child {
+			:last-child {
 				margin-right: 0;
 			}
 		}
@@ -260,7 +295,8 @@
 	color: $color-text-weak;
 }
 
-.card-costs, .mana-avilable {
+.card-costs, 
+.mana-avilable {
 	width: 100%;
 	a {
 		text-align: center;

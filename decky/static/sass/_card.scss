@@ -39,7 +39,8 @@
 		&.r:after { content: 'Red'; }
 		&.b:after { content: 'Black'; }
 	}
-	.price, .rarity {
+	.price, 
+	.rarity {
 		color: $color-text;
 	}
 	.price-source {
