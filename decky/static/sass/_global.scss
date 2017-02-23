@@ -188,3 +188,18 @@ ul.cards-info {
 	display: inline-block;
 	width: calc(50% - 1rem);
 }
+
+// Pagination
+
+.pagination {
+	margin-top: 2rem;
+	.next {
+		margin-right: 0;
+		line-height: 1;
+	}
+	.btn {
+		line-height: 1.15;
+	}
+	color: $color-text-weak;
+	line-height: 40px;
+}

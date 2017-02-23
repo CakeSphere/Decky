@@ -223,7 +223,7 @@ def import_cards():
 @app.route('/')
 def show_entries():
 	db = get_db()
-	cur = db.execute('select * from cards order by name asc limit 100')
+	cur = db.execute('select * from cards order by name asc limit 50')
 	cur_sets = db.execute('select *, block from sets order by releaseDate desc limit 10')
 	cards = cur.fetchall()
 	sets = cur_sets.fetchall()
@@ -232,7 +232,7 @@ def show_entries():
 @app.route('/search')
 def search():
 	db = get_db()
-	cur = db.execute('select * from cards order by name asc limit 100')
+	cur = db.execute('select * from cards order by name asc limit 50')
 	cur_sets = db.execute('select * from sets order by releaseDate desc limit 5')
 	cards = cur.fetchall()
 	sets = cur_sets.fetchall()
