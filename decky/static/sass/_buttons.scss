@@ -2,21 +2,23 @@ a.btn,
 .btn, 
 button {
 	display: inline-block;
-	border-radius: 2px;
-	background: none;
-	color: $color-text-weak;
-	text-decoration: none;
-	border: 1px solid $color-text-weak;
-	padding: 0.5rem 0.7rem;
-	font-size: 1rem;
-	font-family: $font-family-text;
-	cursor: pointer;
 	margin-right: 6px;
 	margin-bottom: 10px;
-	-webkit-transition: 0.2s;
-	transition: 0.2s;
+	padding: 0.5rem 0.7rem;
+
+	background: none;
+	border: 1px solid $color-text-weak;
+	border-radius: 2px;
+	color: $color-text-weak;
+	font-family: $font-family-text;
+	font-size: 1rem;
+	text-decoration: none;
+
+	cursor: pointer;
 	vertical-align: middle;
 	white-space: nowrap;
+	-webkit-transition: 0.2s;
+					transition: 0.2s;
 	-webkit-user-select: none;
 		 -moz-user-select: none;
 			-ms-user-select: none;
@@ -26,8 +28,8 @@ button {
 	}
 	&:hover {
 		background: tint($color-background, 2.5%);
-		color: $color-text;
 		border-color: tint($color-text-weak, 5%);
+		color: $color-text;
 		text-shadow: none;
 	}
 	&:active {
@@ -77,12 +79,12 @@ button {
 		margin-right: 0.25rem;
 	}
 	.caret {
-		color: $color-background;
-		-webkit-text-stroke: 1px $color-text-weak;
-		font-size: 10px;
-		margin-left: 0.25rem;
 		position: relative;
 		bottom: 1px;
+		margin-left: 0.25rem;
+		color: $color-background;
+		font-size: 10px;
+		-webkit-text-stroke: 1px $color-text-weak;
 	}
 }
 
@@ -91,10 +93,10 @@ button {
 	.btn, 
 	a.btn, 
 	button {
-		border-radius: 0;
-		margin-right: -4px;
 		position: relative;
 		z-index: 1;
+		margin-right: -4px;
+		border-radius: 0;
 		&.primary {
 			z-index: 3;
 		}
@@ -109,8 +111,8 @@ button {
 			border-radius: 2px 0 0 2px;
 		}
 		&:last-child {
-			border-radius: 0 2px 2px 0;
 			margin-right: 6px;
+			border-radius: 0 2px 2px 0;
 		}
 	}
 }

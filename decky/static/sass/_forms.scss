@@ -1,24 +1,25 @@
 input[type='text'] {
 	display: inline-block;
-	border-radius: 2px;
-	background: none;
-	color: $color-text-weak;
-	text-decoration: none;
-	border: 1px solid $color-text-weak;
 	padding: 0.5rem 0.7rem;
-	font-size: 1rem;
-	font-family: $font-family-text;
 	margin-right: 6px;
 	margin-bottom: 10px;
-	-webkit-transition: 0.2s;
-	transition: 0.2s;
+	width: 77px;
+
+	background: none;
+	border: 1px solid $color-text-weak;
+	border-radius: 2px;
+	color: $color-text-weak;
+	font-family: $font-family-text;
+	font-size: 1rem;
+	text-decoration: none;
 	vertical-align: middle;
 	white-space: nowrap;
+	-webkit-transition: 0.2s;
+					transition: 0.2s;
 	-webkit-user-select: none;
 		 -moz-user-select: none;
 			-ms-user-select: none;
 					user-select: none;
-	width: 77px;
 	&:focus {
 		outline: none;
 	}
@@ -36,19 +37,19 @@ input[type='text'] {
 }
 
 .input-group-addon {
+	display: inline-block;
+	margin-right: -4px;
+	padding-right: 0;
 	border-radius: 2px;
 	border: 1px solid $color-text-weak;
-	display: inline-block;
 	padding: 0.5rem 0.7rem;
-	padding-right: 0;
-	vertical-align: top;
-	margin-right: -4px;
+	cursor: default;
 	pointer-events: none;
+	vertical-align: top;
 	-webkit-user-select: none;
 		 -moz-user-select: none;
 			-ms-user-select: none;
 					user-select: none;
-	cursor: default;
 }
 
 .input-group-addon:not(:last-child) {
@@ -58,37 +59,37 @@ input[type='text'] {
 }
 .search {
 	input {
-		border-color: rgba($color-primary, 0.25);
-		box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
-		background: #2d2d2d;
-		width: calc(100% - 1.5rem - 100px);
 		margin-right: -4px;
-		font-size: 1.33rem;
-		color: $color-text;
+		width: calc(100% - 1.5rem - 100px);
+		background: #2d2d2d;
+		border-color: rgba($color-primary, 0.25);
 		border-radius: 2px 0 0 2px;
+		box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
+		color: $color-text;
+		font-size: 1.33rem;
 		&:focus {
-			box-shadow: inset 0 4px 8px rgba(0,0,0,0.15);
 			background: shade(#2d2d2d, 1%);
 			border-color: rgba($color-primary, 0.5);
+			box-shadow: inset 0 4px 8px rgba(0,0,0,0.15);
 		}
 	}
 	a.btn {
 		height: 27px;
-		border-color: rgba($color-primary, 0.25);
-		font-size: 1.33rem;
-		margin-right: 0;
 		width: 73px;
-		text-align: center;
+		margin-right: 0;
+		background: #2d2d2d;
+		border-color: rgba($color-primary, 0.25);
 		border-radius: 0 2px 2px 0;
 		box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
-		background: #2d2d2d;
+		font-size: 1.33rem;
+		text-align: center;
 		&:hover {
 			border-color: rgba($color-primary, 0.35);
 		}
 		&:active {
-			box-shadow: inset 0 4px 8px rgba(0,0,0,0.15);
 			background: shade(#2d2d2d, 1%);
 			border-color: rgba($color-primary, 0.5);
+			box-shadow: inset 0 4px 8px rgba(0,0,0,0.15);
 		}
 	}
 }

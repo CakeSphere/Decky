@@ -12,20 +12,20 @@ html {
 
 body {
 	background: $color-background;
+	color: $color-text;
 	font-family: $font-family-text;
 	font-size: 1rem;
-	color: $color-text;
-	-webkit-font-smoothing: antialiased;
 	font-variant-numeric: lining-nums;
+	-webkit-font-feature-settings: 'lnum', 'dlig';
+					font-feature-settings: 'lnum', 'dlig';
+	-webkit-font-smoothing: antialiased;
 	-webkit-font-variant-ligatures: discretionary-ligatures;
 					font-variant-ligatures: discretionary-ligatures;
-	-webkit-font-feature-settings: 'lnum', 'dlig';
-	font-feature-settings: 'lnum', 'dlig';
 }
 
 nav {
-	margin-top: 3rem;
 	margin-bottom: 1rem;
+	margin-top: 3rem;
 	.btn, 
 	a.btn, 
 	button {
@@ -35,13 +35,13 @@ nav {
 	}
 	a.btn.nav-search {
 		svg {
-			fill: $color-primary;
-			width: 20px;
-			height: 20px;
 			position: relative;
 			top: 0.25rem;
+			width: 20px;
+			height: 20px;
+			fill: $color-primary;
 			-webkit-transition: fill 0.2s;
-			transition: fill 0.2s;
+							transition: fill 0.2s;
 		}
 		&:hover svg {
 			fill: shade($color-primary, 15%);
@@ -50,9 +50,9 @@ nav {
 }
 
 aside {
+	display: inline-block;
 	width: 280px;
 	margin-right: 44px;
-	display: inline-block;
 	&:last-child {
 		margin-left: 44px;
 		margin-right: 0;
@@ -63,17 +63,17 @@ aside {
 }
 
 section {
-	width: 952px;
 	display: inline-block;
+	width: 952px;
 	vertical-align: top;
 }
 
 footer {
-	border-top: 1px solid $color-text-weak;
 	padding: 3rem 0;
 	margin-top: 3rem;
-	text-align: center;
+	border-top: 1px solid $color-text-weak;
 	color: rgba($color-text, 0.75);
+	text-align: center;
 	a {
 		color: $color-text;
 		&:hover {
@@ -121,9 +121,9 @@ hr {
 label {
 	display: inline-block;
 	width: calc(50% - 2rem);
-	vertical-align: top;
 	margin-right: 2rem;
 	opacity: 0.7;
+	vertical-align: top;
 }
 
 p {

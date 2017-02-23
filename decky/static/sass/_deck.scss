@@ -3,23 +3,23 @@
 .stats {
 	.likes,
 	.comments {
-		display: inline-block;
-		margin-right: 1rem;
-		opacity: 0.8;
-		margin-top: 1.25rem;
 		position: relative;
 		z-index: 3;
+		display: inline-block;
+		margin-right: 1rem;
+		margin-top: 1.25rem;
+		opacity: 0.8;
 		svg {
-			fill: transparent;
-			stroke: $color-text;
-			stroke-width: 50px;
 			width: 20px;
 			height: 20px;
 			position: relative;
 			top: 6px;
-			-webkit-transition: fill 0.1s, stroke 0.1s;
-			transition: fill 0.1s, stroke 0.1s;
+			fill: transparent;
+			stroke: $color-text;
+			stroke-width: 50px;
 			cursor: pointer;
+			-webkit-transition: fill 0.1s, stroke 0.1s;
+							transition: fill 0.1s, stroke 0.1s;
 		}
 		&:hover svg{
 			fill: $color-text;
@@ -32,20 +32,20 @@
 }
 
 .color-bar {
-	width: 2px;
 	position: absolute;
 	top: 0;
 	left: 0;
 	bottom: 0;
-	border-radius: 2px 0 0 2px;
-	background: none;
+	z-index: 3;
+	width: 2px;
 	height: 120px;
+	overflow: hidden;
+	background: none;
+	border-radius: 2px 0 0 2px;
 	-webkit-transition: 0.1s;
-	transition: 0.1s;
+					transition: 0.1s;
 	-webkit-transition-timing-function: ease-in-out;
 					transition-timing-function: ease-in-out;
-	z-index: 3;
-	overflow: hidden;
 	&:hover {
 		width: 50px;
 		box-shadow: 0 0 20px rgba(0,0,0,1);
@@ -67,26 +67,26 @@
 	.r,
 	.g,
 	.b {
-		color: $color-text;
 		display: -webkit-box;
 		display: -ms-flexbox;
 		display: flex;
+		box-shadow: inset 0 0 5px rgba(0,0,0,0.15);
+		color: $color-text;
+		cursor: default;
 		-webkit-box-align: center;
 				-ms-flex-align: center;
 						align-items: center;
 		-webkit-box-pack: center;
 				-ms-flex-pack: center;
 						justify-content: center;
-		cursor: default;
 		-webkit-transition: 0.1s;
-		transition: 0.1s;
+						transition: 0.1s;
 		-webkit-transition-delay: 0.1s, 0s;
 						transition-delay: 0.1s, 0s;
 		-webkit-user-select: none;
 			 -moz-user-select: none;
 				-ms-user-select: none;
 						user-select: none;
-		box-shadow: inset 0 0 5px rgba(0,0,0,0.15);
 		&:first-child {
 			border-radius: 2px 0 0 0;
 		}
@@ -106,31 +106,31 @@
 .row {
 	margin: 0 -0.5rem;
 	.deck {
-		margin: 0.5rem;
-		width: calc(50% - 0.5rem - 11px);
-		display: inline-block;
-		background: #2d2d2d;
-		box-shadow: 0 0 75px rgba(0,0,0,0.15);
-		border-radius: 2px;
-		height: 120px;
 		position: relative;
+		display: inline-block;
+		height: 120px;
+		width: calc(50% - 0.5rem - 11px);
+		margin: 0.5rem;
+		background: #2d2d2d;
+		border-radius: 2px;
+		box-shadow: 0 0 75px rgba(0,0,0,0.15);
 		cursor: pointer;
 		-webkit-transition: 0.2s;
-		transition: 0.2s;
+						transition: 0.2s;
 		&:after {
-			content: '';
-			display: block;
 			position: absolute;
+			z-index: 1;
 			top: 0;
 			left: 0;
 			right: 0;
 			bottom: 0;
+			content: '';
+			display: block;
 			background: -webkit-linear-gradient(top, transparent, rgba($color-primary, 0.15));
 			background: linear-gradient(to bottom, transparent, rgba($color-primary, 0.15));
 			opacity: 0.35;
 			-webkit-transition: opacity 0.1s;
-			transition: opacity 0.1s;
-			z-index: 1;
+							transition: opacity 0.1s;
 		}
 		&:hover:after {
 			opacity: 1;
@@ -140,12 +140,12 @@
 			padding: 0.5rem;
 			vertical-align: top;
 			.title {
+				width: 275px;
+				overflow: hidden;
 				font-family: $font-family-display;
 				font-size: 1.33rem;
-				width: 275px;
-				white-space: nowrap;
-				overflow: hidden;
 				text-overflow: ellipsis;
+				white-space: nowrap;
 			}
 			.tags {
 				margin-top: 0.5rem;
@@ -159,15 +159,15 @@
 			}
 		}
 		.img {
-			width: 166px;
+			position: relative;
+			z-index: 2;
 			display: inline-block;
+			width: 166px;
 			height: 120px;
 			overflow: hidden;
 			margin-left: 2px;
-			box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
 			background: shade(#2d2d2d, 2.5%);
-			position: relative;
-			z-index: 2;
+			box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
 			img {
 				position: relative;
 				bottom: 2px;
@@ -189,9 +189,9 @@
 
 .deck-header {
 	position: relative;
+	height: 162px;
 	background: #292929;
 	box-shadow: 0 0 50px rgba(0,0,0,0.15);
-	height: 162px;
 	.color-bar {
 		height: 162px;
 		width: 3px;
@@ -206,16 +206,16 @@
 		}
 	}
 	.deck-img {
+		position: relative;
+		z-index: 0;
+		left: 0;
 		height: 162px;
 		-webkit-mask-image: -webkit-linear-gradient(left, black 80%, transparent);
-		mask-image: linear-gradient(to right, black 80%, transparent);
-		position: relative;
-		left: 0;
+						mask-image: linear-gradient(to right, black 80%, transparent);
 		-webkit-transition: left 0.1s;
-		transition: left 0.1s;
+						transition: left 0.1s;
 		-webkit-transition-timing-function: ease-in-out;
 						transition-timing-function: ease-in-out;
-		z-index: 0;
 	}
 	hgroup {
 		position: absolute;
@@ -223,7 +223,7 @@
 		left: 1rem;
 		z-index: 1;
 		-webkit-transition: left 0.1s;
-		transition: left 0.1s;
+						transition: left 0.1s;
 		-webkit-transition-timing-function: ease-in-out;
 						transition-timing-function: ease-in-out;
 		h1, 
@@ -232,8 +232,8 @@
 			font-family: $font-family-display;
 		}
 		h1 {
-			font-style: italic;
 			font-size: 2.66rem;
+			font-style: italic;
 		}
 		h2 {
 			font-weight: normal;
@@ -270,16 +270,16 @@
 		font-family: $font-family-display;
 	}
 	.column {
-		margin: 0.5rem;
-		width: calc(33.3% - 1rem - 14px);
 		display: inline-block;
+		width: calc(33.3% - 1rem - 14px);
+		margin: 0.5rem;
 	}
 	.sideboard {
-		border-radius: 5px;
-		background: shade($color-background, 2.5%);
-		box-shadow: inset 1px 0 3px rgba(0,0,0,0.25);
-		padding: 1rem;
 		margin-top: 0.7rem;
+		padding: 1rem;
+		background: shade($color-background, 10%);
+		border-radius: 5px;
+		box-shadow: inset 1px 0 3px rgba(0,0,0,0.25);
 		h2 {
 			margin-top: 0;
 		}
