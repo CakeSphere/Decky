@@ -47,6 +47,11 @@ nav {
 			fill: shade($color-primary, 15%);
 		}
 	}
+	svg {
+		fill: $color-text;
+		width: 168px;
+		shape-rendering="optimizeQuality" 
+	}
 }
 
 aside {
