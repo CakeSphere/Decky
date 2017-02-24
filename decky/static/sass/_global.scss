@@ -71,7 +71,9 @@ section {
 footer {
 	padding: 3rem 0;
 	margin-top: 3rem;
-	border-top: 1px solid $color-text-weak;
+	background: tint($color-background, 2.5%);
+	border-top: 1px solid tint($color-background, 5%);
+	box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.15);
 	color: rgba($color-text, 0.75);
 	text-align: center;
 	a {
@@ -189,17 +191,42 @@ ul.cards-info {
 	width: calc(50% - 1rem);
 }
 
-// Pagination
+/* Pagination*/
 
 .pagination {
-	margin-top: 2rem;
+	margin-top: 3rem;
 	.next {
 		margin-right: 0;
-		line-height: 1;
 	}
-	.btn {
-		line-height: 1.15;
+	.current-page {
+		position: relative;
+		font-family: $font-family-display;
+		font-size: 1.5rem;
+		width: 100px;
+		margin: auto;
+		pointer-events: none;
+		-webkit-user-select: none;
+			 -moz-user-select: none;
+				-ms-user-select: none;
+						user-select: none;
+		&:before {
+			content: '';
+			position: absolute;
+			right: 33px;
+			width: 32px;
+			height: 32px;
+			border: 1px solid $color-primary;
+			-webkit-transform: rotate(45deg);
+							transform: rotate(45deg);
+		}
+		&:after {
+			content: 'Page';
+			position: absolute;
+			top: 45px;
+			right: 35px;
+			color: $color-text-weak;
+			font-size: 1rem;
+			font-family: $font-family-text;
+		}
 	}
-	color: $color-text-weak;
-	line-height: 40px;
 }

@@ -49,6 +49,18 @@
 											 -0.15em 0 $color-background;
 }
 
+// Demo animation mixin
+
+@mixin demo-mixin($animation-name) {
+	-webkit-animation-name: $animation-name;
+					animation-name: $animation-name;
+	-webkit-animation-duration: 1s;
+					animation-duration: 1s;
+	-webkit-animation-iteration-count: 1;
+					animation-iteration-count: 1;
+	-webkit-animation-timing-function: cubic-bezier(0.17,0.67,0.83,0.67);
+					animation-timing-function: cubic-bezier(0.17,0.67,0.83,0.67);
+}
 
 /// Helper to clear inner floats
 /// @author Nicolas Gallagher
@@ -61,7 +73,7 @@
 	}
 }
 
-/// Slightly ting a color
+/// Slightly tint a color
 /// @access public
 /// @param {Color} $color - color to tint
 /// @param {Number} $percentage - percentage of `$color` in returned color

@@ -1,0 +1,65 @@
+/* CSS Animations*/
+
+@-webkit-keyframes demo {
+	from { width: 3px; }
+	80%  { width: 50px; }
+	to   { width: 3px; }
+}
+
+@keyframes demo {
+	from { width: 3px; }
+	80%  { width: 50px; }
+	to   { width: 3px; }
+}
+
+@-webkit-keyframes demo-fade {
+	from { color: rgba($color-text, 0); }
+	20%  { color: rgba($color-text, 0); }
+	80%  { color: rgba($color-text, 0.8); }
+	to   { color: rgba($color-text, 0); }
+}
+
+@keyframes demo-fade {
+	from { color: rgba($color-text, 0); }
+	20%  { color: rgba($color-text, 0); }
+	80%  { color: rgba($color-text, 0.8); }
+	to   { color: rgba($color-text, 0); }
+}
+
+@-webkit-keyframes demo-fade-w {
+	from { color: rgba($color-text, 0); }
+	20%  { color: rgba($color-text, 0); }
+	80%  { color: shade($color-mtg-w, 35%); }
+	to   { color: rgba($color-text, 0); }
+}
+
+@keyframes demo-fade-w {
+	from { color: rgba($color-text, 0); }
+	20%  { color: rgba($color-text, 0); }
+	80%  { color: shade($color-mtg-w, 35%); }
+	to   { color: rgba($color-text, 0); }
+}
+
+@-webkit-keyframes demo-slide {
+	from { left: 0px; }
+	80%  { left: 50px; }
+	to   { left: 0px; }
+}
+
+@keyframes demo-slide {
+	from { left: 0px; }
+	80%  { left: 50px; }
+	to   { left: 0px; }
+}
+
+@-webkit-keyframes demo-slide-hgroup {
+	from { left: 1rem }
+	80%  { left: calc(50px + 1rem); }
+	to   { left: 1rem; }
+}
+
+@keyframes demo-slide-hgroup {
+	from { left: 1rem }
+	80%  { left: calc(50px + 1rem); }
+	to   { left: 1rem; }
+}
