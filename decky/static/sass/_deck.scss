@@ -112,6 +112,7 @@
 	margin: 0 -0.5rem;
 	.deck {
 		position: relative;
+		z-index: 1;
 		display: inline-block;
 		height: 120px;
 		width: calc(50% - 0.5rem - 11px);
@@ -119,7 +120,6 @@
 		background: #2d2d2d;
 		border-radius: 2px;
 		overflow: hidden;
-		-webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC); /* this fixes the overflow:hidden in Chrome/Opera */
 		box-shadow: 0 0 75px rgba(0, 0, 0, 0.15);
 		cursor: pointer;
 		-webkit-transition: 0.2s;
@@ -215,10 +215,10 @@
 .deck-header {
 	position: relative;
 	overflow: hidden;
+	z-index: 1;
 	height: 162px;
 	background: #292929;
 	box-shadow: 0 0 50px rgba(0,0,0,0.15);
-	-webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC); /* this fixes the overflow:hidden in Chrome/Opera */
 	.color-bar {
 		@include demo-mixin(demo);
 		height: 162px;
@@ -254,7 +254,7 @@
 						transition-timing-function: ease-in-out;
 	}
 	hgroup {
-		@include demo-mixin(demo-slide-hgroup);
+		@include demo-mixin(demo-slide);
 		position: absolute;
 		bottom: 1rem;
 		left: 1rem;
