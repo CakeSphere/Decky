@@ -69,8 +69,8 @@ button {
 		bottom: 3px;
 		margin-right: 0.25rem;
 		-webkit-text-stroke: 0.03em $color-text;
-		&.ss-rare {
-			-webkit-text-stroke: 0.02em #000;
+		&.ss-rare, &.ss-uncommon, &.ss-mythic {
+			-webkit-text-stroke: 0.01em #000;
 		}
 	}
 	.mana.small { /* Mana Icons*/

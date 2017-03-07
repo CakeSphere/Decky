@@ -46,13 +46,15 @@
 	height: 120px;
 	overflow: hidden;
 	background: none;
-	transform: translate3d(0, 0, 0) translateX(-47px);
+	-webkit-transform: translate3d(0, 0, 0) translateX(-47px);
+	        transform: translate3d(0, 0, 0) translateX(-47px);
 	-webkit-transition: 0.1s;
 					transition: 0.1s;
 	-webkit-transition-timing-function: ease-in-out;
 					transition-timing-function: ease-in-out;
 	&:hover {
-		transform: translateX(0);
+		-webkit-transform: translateX(0);
+		        transform: translateX(0);
 		box-shadow: 0 0 20px rgba(0, 0, 0, 1);
 		.u,
 		.w,
@@ -61,8 +63,8 @@
 		.b {
 			color: rgba($color-text, 0.8);
 		}
-		// White is a special case because text becomes hard to read.  Therefore,
-		// we darken it quite a bit.
+		/* White is a special case because text becomes hard to read.  Therefore,*/
+		/* we darken it quite a bit.*/
 		.w {
 			color: shade($color-mtg-w, 35%);
 		}
@@ -132,8 +134,8 @@
 			.b {
 				@include demo-mixin(demo-fade);
 			}
-			.w { // White is a special case, as always, because otherwise it would 
-				   // be illegible
+			.w { /* White is a special case, as always, because otherwise it would */
+				   /* be illegible*/
 				@include demo-mixin(demo-fade-w);
 			}
 		}
@@ -342,7 +344,7 @@
 	}
 }
 
-// Comments
+/* Comments*/
 
 .comment {
 	border: 1px solid $color-border;
