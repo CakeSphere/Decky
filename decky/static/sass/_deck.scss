@@ -42,18 +42,18 @@
 	left: 0;
 	bottom: 0;
 	z-index: 3;
-	width: 3px;
+	width: 50px;
 	height: 120px;
 	overflow: hidden;
 	background: none;
-	border-radius: 2px 0 0 2px;
+	transform: translate3d(0, 0, 0) translateX(-47px);
 	-webkit-transition: 0.1s;
 					transition: 0.1s;
 	-webkit-transition-timing-function: ease-in-out;
 					transition-timing-function: ease-in-out;
 	&:hover {
-		width: 50px;
-		box-shadow: 0 0 20px rgba(0,0,0,1);
+		transform: translateX(0);
+		box-shadow: 0 0 20px rgba(0, 0, 0, 1);
 		.u,
 		.w,
 		.r,
@@ -75,7 +75,7 @@
 		display: -webkit-box;
 		display: -ms-flexbox;
 		display: flex;
-		box-shadow: inset 0 0 5px rgba(0,0,0,0.15);
+		box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15);
 		color: $color-text;
 		cursor: default;
 		-webkit-box-align: center;
@@ -118,7 +118,9 @@
 		margin: 0.5rem;
 		background: #2d2d2d;
 		border-radius: 2px;
-		box-shadow: 0 0 75px rgba(0,0,0,0.15);
+		overflow: hidden;
+		-webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC); /* this fixes the overflow:hidden in Chrome/Opera */
+		box-shadow: 0 0 75px rgba(0, 0, 0, 0.15);
 		cursor: pointer;
 		-webkit-transition: 0.2s;
 						transition: 0.2s;
@@ -153,8 +155,13 @@
 		&:hover:after {
 			opacity: 1;
 		}
+		.color-bar {
+			text-shadow: none;
+		}
 		.deck-info {
 			display: inline-block;
+			color: $color-text;
+			text-shadow: none;
 			padding: 0.5rem;
 			vertical-align: top;
 			.title {
@@ -207,9 +214,11 @@
 
 .deck-header {
 	position: relative;
+	overflow: hidden;
 	height: 162px;
 	background: #292929;
 	box-shadow: 0 0 50px rgba(0,0,0,0.15);
+	-webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC); /* this fixes the overflow:hidden in Chrome/Opera */
 	.color-bar {
 		@include demo-mixin(demo);
 		height: 162px;
@@ -223,7 +232,6 @@
 			@include demo-mixin(demo-fade-w);
 		}
 		&:hover {
-			width: 50px;
 			+ hgroup {
 				left: calc(50px + 1rem);
 			}

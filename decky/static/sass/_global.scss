@@ -50,7 +50,10 @@ nav {
 	svg {
 		fill: $color-text;
 		width: 168px;
-		shape-rendering="optimizeQuality" 
+		shape-rendering: "optimizeQuality" 
+	}
+	> a:first-child:hover {
+		background: none;
 	}
 }
 
