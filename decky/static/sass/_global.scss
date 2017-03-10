@@ -232,9 +232,10 @@ ul.cards-info {
 		&:before {
 			content: '';
 			position: absolute;
-			right: 33px;
-			width: 32px;
-			height: 32px;
+			top: -2px;
+			right: 31px;
+			width: 37px;
+			height: 37px;
 			border: 1px solid $color-primary;
 			-webkit-transform: rotate(45deg);
 							transform: rotate(45deg);

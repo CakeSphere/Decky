@@ -14,7 +14,7 @@
 			<h2>Most Liked Decks Including <em>{{card.name}}</em></h2>
 				<div class="row">
 					{% for deck in card.types %}
-						<div class="deck">
+						<a href="deck" class="deck" title="{{deck.name}}">
 							<div class="color-bar">
 								<div class="u" style="height: 30%">30%</div>
 								<div class="g" style="height: 30%">30%</div>
@@ -42,7 +42,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</a>
 					{% endfor %}
 				</div>
 		</div>
