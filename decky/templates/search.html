@@ -76,12 +76,12 @@
 				{% for deck in cards %}
 				<a class="deck" href="deck" title="{{deck.name}}">
 					<div class="color-bar">
-						<div class="u" style="height: 30%">30%</div>
-						<div class="g" style="height: 30%">30%</div>
-						<div class="b" style="height: 40%">40%</div>
+						<div class="u" style="height: 30%"><span>30%</span></div>
+						<div class="g" style="height: 30%"><span>30%</span></div>
+						<div class="b" style="height: 40%"><span>40%</span></div>
 					</div>
 					<div class="img">
-						<img alt="{{deck.name}}" src="{{ url_for('static', filename='images/spell_queller.png') }}" alt="Spell Queller">
+						<img alt="{{deck.name}}" src="{{ url_for('static', filename='images/spell_queller.png') }}">
 					</div>
 					<div class="deck-info">
 						<div class="title">{{deck.name}}</div>

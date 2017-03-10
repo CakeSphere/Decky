@@ -13,17 +13,17 @@
 }
 
 @-webkit-keyframes demo-fade {
-	from { color: rgba($color-text, 0); }
-	20%  { color: rgba($color-text, 0); }
-	80%  { color: rgba($color-text, 0.8); }
-	to   { color: rgba($color-text, 0); }
+	from { opacity: 0; }
+	20%  { opacity: 0; }
+	80%  { opacity: 0.8; }
+	to   { opacity: 0; }
 }
 
 @keyframes demo-fade {
-	from { color: rgba($color-text, 0); }
-	20%  { color: rgba($color-text, 0); }
-	80%  { color: rgba($color-text, 0.8); }
-	to   { color: rgba($color-text, 0); }
+	from { opacity: 0; }
+	20%  { opacity: 0; }
+	80%  { opacity: 0.8; }
+	to   { opacity: 0; }
 }
 
 @-webkit-keyframes demo-fade-w {
