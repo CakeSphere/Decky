@@ -85,7 +85,7 @@ footer {
 	margin-top: 3rem;
 	background: tint($color-background, 2.5%);
 	border-top: 1px solid tint($color-background, 5%);
-	box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.15);
+	box-shadow: 0 -2px 4px shade($color-background, 5%);
 	color: rgba($color-text, 0.75);
 	text-align: center;
 	a {
