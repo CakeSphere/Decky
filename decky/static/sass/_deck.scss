@@ -106,7 +106,9 @@
 	.b { background: $color-mtg-b; color: $color-mtg-b; box-shadow: inset 0 0 5px darken($color-mtg-b, 5%); }
 }
 
-/* Deck tiles*/
+// Deck tiles
+// These styles are specific to the deck tiles that show up in searches or on
+// card pages
 
 .row {
 	margin: 0 -0.5rem;
@@ -149,6 +151,7 @@
 			opacity: 0.25;
 		}
 		.color-bar {
+			// Fixes text in a link element having a black shadow
 			text-shadow: none;
 		}
 		.deck-info {

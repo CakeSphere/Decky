@@ -124,6 +124,9 @@ a {
 		@include underline(shade($color-primary, 5%), $color-background)
 		color: shade($color-primary, 5%);
 	}
+	&:hover::selection {
+		text-shadow: none;
+	}
 }
 
 hr {
