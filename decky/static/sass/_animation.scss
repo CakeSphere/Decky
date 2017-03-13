@@ -1,25 +1,14 @@
 /* CSS Animations*/
 
-@-webkit-keyframes demo {
-	from { transform: translateX(-47px); }
-	80%  { transform: translateX(0); }
-	to   { transform: translateX(-47px); }
-}
+// Fallbacks for color-bar demo in webkit
 
-@keyframes demo {
-	from { transform: translateX(-47px); }
-	80%  { transform: translateX(0); }
-	to   { transform: translateX(-47px); }
+@-webkit-keyframes demo {
+	from { -webkit-transform: translateX(-47px); transform: translateX(-47px); }
+	80%  { -webkit-transform: translateX(0); transform: translateX(0); }
+	to   { -webkit-transform: translateX(-47px); transform: translateX(-47px); }
 }
 
 @-webkit-keyframes demo-fade {
-	from { opacity: 0; }
-	20%  { opacity: 0; }
-	80%  { opacity: 0.8; }
-	to   { opacity: 0; }
-}
-
-@keyframes demo-fade {
 	from { opacity: 0; }
 	20%  { opacity: 0; }
 	80%  { opacity: 0.8; }
@@ -33,6 +22,27 @@
 	to   { color: rgba($color-text, 0); }
 }
 
+@-webkit-keyframes demo-slide {
+	from { -webkit-transform: translateX(0); transform: translateX(0); }
+	80%  { -webkit-transform: translateX(50px); transform: translateX(50px); }
+	to   { -webkit-transform: translateX(0); transform: translateX(0); }
+}
+
+// Color-bar demo animations
+
+@keyframes demo {
+	from { -webkit-transform: translateX(-47px); transform: translateX(-47px); }
+	80%  { -webkit-transform: translateX(0); transform: translateX(0); }
+	to   { -webkit-transform: translateX(-47px); transform: translateX(-47px); }
+}
+
+@keyframes demo-fade {
+	from { opacity: 0; }
+	20%  { opacity: 0; }
+	80%  { opacity: 0.8; }
+	to   { opacity: 0; }
+}
+
 @keyframes demo-fade-w {
 	from { color: rgba($color-text, 0); }
 	20%  { color: rgba($color-text, 0); }
@@ -40,14 +50,8 @@
 	to   { color: rgba($color-text, 0); }
 }
 
-@-webkit-keyframes demo-slide {
-	from { transform: translateX(0); }
-	80%  { transform: translateX(50px); }
-	to   { transform: translateX(0); }
-}
-
 @keyframes demo-slide {
-	from { transform: translateX(0); }
-	80%  { transform: translateX(50px); }
-	to   { transform: translateX(0); }
+	from { -webkit-transform: translateX(0); transform: translateX(0); }
+	80%  { -webkit-transform: translateX(50px); transform: translateX(50px); }
+	to   { -webkit-transform: translateX(0); transform: translateX(0); }
 }

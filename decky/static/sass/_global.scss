@@ -1,20 +1,21 @@
-::-moz-selection {
-	background: $color-primary;
-}
+// Styles that apply globally or to chrome/nav
 
-::selection {
-	background: $color-primary;
-}
+::-moz-selection { background: $color-primary; }
+::selection { background: $color-primary; }
 
 html {
+	// Setting a base font-size. All other font-sizes should be in rems 
+	// (multiples of this font-size)
 	font-size: 18px;
 }
 
 body {
 	background: $color-background;
 	color: $color-text;
+
 	font-family: $font-family-text;
 	font-size: 1rem;
+	// Opentype options
 	font-variant-numeric: lining-nums;
 	-webkit-font-feature-settings: 'lnum', 'dlig';
 					font-feature-settings: 'lnum', 'dlig';
@@ -33,54 +34,57 @@ nav {
 			margin-right: 0;
 		}
 	}
-	a.btn.nav-search {
+	.nav-search svg {
+		// Icon btn link sizes and positioning.
+		position: relative;
+		top: 0.25rem;
+		width: 20px;
+		height: 20px;
+	}
+	.logo {
+		// Main Decky logo
 		svg {
-			position: relative;
-			top: 0.25rem;
-			width: 20px;
-			height: 20px;
-			fill: $color-primary;
-			-webkit-transition: fill 0.2s;
-							transition: fill 0.2s;
+			width: 168px;
+			fill: $color-text;
+			shape-rendering: "optimizeQuality" 
 		}
-		&:hover svg {
-			fill: shade($color-primary, 15%);
+		&:hover {
+			// Remove default underline from main logo
+			background: none;
 		}
-	}
-	svg {
-		fill: $color-text;
-		width: 168px;
-		shape-rendering: "optimizeQuality" 
-	}
-	> a:first-child:hover {
-		background: none;
 	}
 }
 
 aside {
+	// Sidebars for search filters or card/deck info
 	display: inline-block;
 	width: 280px;
 	margin-right: 44px;
 	&:last-child {
+		// Spacing for right sidebars
 		margin-left: 44px;
 		margin-right: 0;
 	}
 	> h3:first-child {
+		// Making sure things like up with the main content
 		margin-top: 0.6rem;
 	}
 	h3 {
+		// Headings in sidebars use text font instead of display font
 		font-family: $font-family-text;
 		font-weight: normal;
 	}
 }
 
 section {
+	// Main content section
 	display: inline-block;
 	width: 952px;
 	vertical-align: top;
 }
 
 footer {
+	// Footer with some legal info
 	padding: 3rem 0;
 	margin-top: 3rem;
 	background: tint($color-background, 2.5%);
@@ -106,6 +110,7 @@ h5 {
 }
 
 h3 {
+	// These may need to be customized for all other headers
 	font-size: 1.33rem;
 }
 
@@ -119,20 +124,6 @@ a {
 		@include underline(shade($color-primary, 5%), $color-background)
 		color: shade($color-primary, 5%);
 	}
-	&::-moz-selection {
-		color: $color-text;
-		&:hover {
-			background: none;
-			text-shadow: none;
-		}
-	}
-	&::selection {
-		color: $color-text;
-		&:hover {
-			background: none;
-			text-shadow: none;
-		}
-	}
 }
 
 hr {
@@ -140,24 +131,16 @@ hr {
 	border-bottom: 0;
 }
 
-label {
-	display: inline-block;
-	width: calc(50% - 2rem);
-	margin-right: 2rem;
-	opacity: 0.7;
-	vertical-align: top;
-}
 
 p {
+	// Currently only used on card.html; May need to be more specific
 	font-family: $font-family-display;
 	font-weight: 300;
 }
 
-.card-img {
-	border-radius: 7px;
-}
-
-/* Magic colors*/
+// Magic colors
+// These classes are used to easily color text referring to the five Magic 
+// colors
 
 .u { color: $color-mtg-u }
 .w { color: $color-mtg-w }
@@ -165,21 +148,25 @@ p {
 .g { color: $color-mtg-g }
 .b { color: $color-mtg-b }
 
-/* Utility classes*/
+// Utility classes
 
+// Easily float elements or clear those floats with these classes
 .pull-left   { float: left; }
 .pull-right  { float: right; }
 .clearfix    { @include clearfix; }
 
+// Text alignment classes; justify is not used
 .text-left   { text-align: left; }
 .text-center { text-align: center; }
 .text-right  { text-align: right; }
 
+// Remove all styling (bullets or numbers) from a ul or ol element
 .list-unstyled {
 	list-style: none; 
 	padding-left: 0;
 }
 
+// Adjustments to the sizes of mana symbols; see _mana.scss
 .mana.small {
 	width: 0.888rem;
 	height: 0.888rem;
@@ -190,7 +177,62 @@ p {
 	height: 1.4rem;
 }
 
-/* Lists*/
+// Pagination
+
+.pagination {
+	margin-top: 3rem;
+	.next {
+		// Remove margin-right from next button
+		margin-right: 0;
+	}
+	.current-page {
+		position: relative;
+		font-family: $font-family-display;
+		font-size: 1.5rem;
+		line-height: 1.25;
+		width: 100px;
+		margin: auto;
+		pointer-events: none;
+		-webkit-user-select: none;
+			 -moz-user-select: none;
+				-ms-user-select: none;
+						user-select: none;
+		&:before {
+			// Diamond decoration
+			content: '';
+			position: absolute;
+			top: -2px;
+			right: 31px;
+			width: 37px;
+			height: 37px;
+			border: 1px solid $color-primary;
+			-webkit-transform: rotate(45deg);
+							transform: rotate(45deg);
+		}
+		&:after {
+			// Pagination expanation text
+			// Content tag should usually not be used for actual page content 
+			// because it cannot be localized easily
+			content: 'Page';
+			position: absolute;
+			top: 45px;
+			right: 35px;
+			color: $color-text-weak;
+			font-size: 1rem;
+			font-family: $font-family-text;
+		}
+	}
+}
+
+// These styles are only used on show_entries.html; will be deprecated
+
+label {
+	display: inline-block;
+	width: calc(50% - 2rem);
+	margin-right: 2rem;
+	opacity: 0.7;
+	vertical-align: top;
+}
 
 ul.cards-info {
 	margin-bottom: 3rem;
@@ -209,45 +251,4 @@ ul.cards-info {
 .value {
 	display: inline-block;
 	width: calc(50% - 1rem);
-}
-
-/* Pagination*/
-
-.pagination {
-	margin-top: 3rem;
-	.next {
-		margin-right: 0;
-	}
-	.current-page {
-		position: relative;
-		font-family: $font-family-display;
-		font-size: 1.5rem;
-		width: 100px;
-		margin: auto;
-		pointer-events: none;
-		-webkit-user-select: none;
-			 -moz-user-select: none;
-				-ms-user-select: none;
-						user-select: none;
-		&:before {
-			content: '';
-			position: absolute;
-			top: -2px;
-			right: 31px;
-			width: 37px;
-			height: 37px;
-			border: 1px solid $color-primary;
-			-webkit-transform: rotate(45deg);
-							transform: rotate(45deg);
-		}
-		&:after {
-			content: 'Page';
-			position: absolute;
-			top: 45px;
-			right: 35px;
-			color: $color-text-weak;
-			font-size: 1rem;
-			font-family: $font-family-text;
-		}
-	}
 }

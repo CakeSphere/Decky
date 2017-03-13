@@ -3,8 +3,8 @@
 // states.
 
 @mixin btn($color) {
-	$color-tint: tint($color, 5%);
-	$color-shade: shade($color, 5%);
+	$color-tint: tint($color, 15%);
+	$color-shade: shade($color, 15%);
 	color: $color;
 	border-color: $color;
 	&:hover {
@@ -17,7 +17,7 @@
 	}
 }
 
-// Underline mixin
+// Underline mixin, borrowed from Medium
 
 @mixin underline($color-text, $color-background) {
 					 background: -webkit-linear-gradient($color-background,$color-background),
@@ -49,7 +49,7 @@
 											 -0.15em 0 $color-background;
 }
 
-// Demo animation mixin
+// Demo animation mixin for color-bar
 
 @mixin demo-mixin($animation-name) {
 	-webkit-animation-name: $animation-name;
@@ -73,7 +73,7 @@
 	}
 }
 
-/// Slightly tint a color
+/// Slightly lighten a color
 /// @access public
 /// @param {Color} $color - color to tint
 /// @param {Number} $percentage - percentage of `$color` in returned color

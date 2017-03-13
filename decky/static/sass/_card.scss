@@ -1,6 +1,11 @@
+.card-img {
+	border-radius: 7px;
+}
+
+// Styles specific to card.html
 .card {
 	.card-img	{
-		float: left;
+		@extend .pull-left;
 		margin-right: 1rem;
 		box-shadow: 0 2px 4px shade($color-background, 15%);
 	}
@@ -34,14 +39,16 @@
 		}
 	}
 	.color-identity {
+		// These should be moved into HTML; content should not be set in css
 		&.u:after { content: 'Blue'; }
 		&.g:after { content: 'Green'; }
 		&.w:after { content: 'White'; }
 		&.r:after { content: 'Red'; }
 		&.b:after { content: 'Black'; }
 	}
-	.price, 
-	.rarity {
+	.price,
+	.rarity,
+	h2 em {
 		color: $color-text;
 	}
 	.price-source {
@@ -49,12 +56,7 @@
 		bottom: 3px;
 		color: $color-text-weak;
 	}
-	h2 em {
-		color: $color-text;
-	}
-	.most-liked {
-		h2 {
-			margin-top: 3rem;
-		}
+	.most-liked h2 {
+		margin-top: 3rem;
 	}
 }
