@@ -1,3 +1,6 @@
+// Common form elements
+
+// For the most part inputs and textareas should be styled similarly
 input[type='text'], input[type="email"], input[type="search"], textarea {
 	display: inline-block;
 	padding: 0.5rem 0.7rem;
@@ -25,6 +28,8 @@ input[type='text'], input[type="email"], input[type="search"], textarea {
 	}
 }
 
+// Input groups
+// These are currently only used to indicate currency when searching
 .input-group {
 	display: inline-block;
 	margin-right: 6px;
@@ -57,6 +62,9 @@ input[type='text'], input[type="email"], input[type="search"], textarea {
 	border-bottom-right-radius: 0;
 	border-top-right-radius: 0;
 }
+
+// Search bar styles
+// For the large search bar at the top of the Search page
 
 .search {
 	input {
@@ -94,6 +102,9 @@ input[type='text'], input[type="email"], input[type="search"], textarea {
 		}
 	}
 }
+
+// Textareas are currently only used for comments; changes will have to be
+// made for other uses
 
 textarea {
 	display: block;
