@@ -49,11 +49,10 @@
 	height: 120px;
 	overflow: hidden;
 	background: none;
-	box-shadow: 0 0 20px shade($color-background, 15%);
 	-webkit-transform: translate3d(0, 0, 0) translateX(-47px);
 					transform: translate3d(0, 0, 0) translateX(-47px);
-	-webkit-transition: 0.1s;
-					transition: 0.1s;
+	-webkit-transition: 0.1s transform;
+					transition: 0.1s transform;
 	-webkit-transition-timing-function: ease-in-out;
 					transition-timing-function: ease-in-out;
 	span {
@@ -73,15 +72,12 @@
 	&:hover {
 		-webkit-transform: translateX(0);
 						transform: translateX(0);
+						box-shadow: 0 0 20px shade($color-background, 15%);
 		span {
 			opacity: 0.8;
 		}
 	}
-	.u,
-	.w,
-	.r,
-	.g,
-	.b {
+	div {
 		/* Centering text inside the color-bar segments*/
 		display: -webkit-box;
 		display: -ms-flexbox;
@@ -180,7 +176,7 @@
 				}
 			}
 		}
-		.img {
+		.deck-img {
 			position: relative;
 			z-index: 2;
 			display: inline-block;
@@ -188,11 +184,23 @@
 			height: 120px;
 			overflow: hidden;
 			margin-left: 2px;
-			background: $color-background;
-			box-shadow: inset 0 0 20px shade($color-background, 10%);
+			background: shade($color-background, 10%);
+			&:before {
+				display: block;
+				content: '';
+				position: absolute;
+				z-index: 3;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				box-shadow: inset 0 0 20px hsla(182, 58, 0, 0.15);
+			}
 			img {
 				position: relative;
-				bottom: 2px;
+				bottom: 45px;
+				left: -30px;
+				z-index: 1;
 			}
 		}
 		.stats {
@@ -313,8 +321,8 @@
 	}
 	.card-type, .sideboard {
 		&:hover .color-bar {
-			-webkit-transform: scaleY(1);
-			        transform: scaleY(1);
+			-webkit-transform: scaleX(1);
+			        transform: scaleX(1);
 			opacity: 1;
 			div span {
 				opacity: 1;
@@ -323,10 +331,10 @@
 		.color-bar {
 			position: relative;
 			width: 100%;
-			height: 15px;
+			height: 20px;
 			border-radius: 2px;
-			-webkit-transform: scaleY(0);
-			        transform: scaleY(0);
+			-webkit-transform: scaleX(0);
+			        transform: scaleX(0);
 			opacity: 0;
 			-webkit-transition: 0.1s;
 							transition: 0.1s;
@@ -334,7 +342,7 @@
 			margin-bottom: 0.5rem;
 			div {
 				display: inline-block;
-				height: 15px;
+				height: 20px;
 				margin-right: -4px;
 				text-align: center;
 				span {
@@ -342,9 +350,6 @@
 									transition: 0.1s; 
 					-webkit-transition-delay: 0.1s; 
 					        transition-delay: 0.1s;
-					font-size: 0.75rem;
-					position: relative;
-					bottom: 4px;
 				}
 			}
 		}

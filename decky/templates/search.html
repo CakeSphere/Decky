@@ -3,56 +3,56 @@
 	<div class="container">
 		<aside>
 			<h3>Color</h3>
-			<a href="#" class="btn b">
-				<span class="mana small sb shadow"></span>
+			<button class="btn b">
+				<span class="mana small sb shadow">&nbsp;</span>
 				Black
-			</a>
-			<a href="#" class="btn u">
-				<span class="mana small su shadow"></span>
+			</button>
+			<button class="btn u">
+				<span class="mana small su shadow">&nbsp;</span>
 				Blue
-			</a>
-			<a href="#" class="btn w">
-				<span class="mana small sw shadow"></span>
+			</button>
+			<button class="btn w">
+				<span class="mana small sw shadow">&nbsp;</span>
 				White
-			</a>
-			<a href="#" class="btn r">
-				<span class="mana small sr shadow"></span>
+			</button>
+			<button class="btn r">
+				<span class="mana small sr shadow">&nbsp;</span>
 				Red
-			</a>
-			<a href="#" class="btn g">
-				<span class="mana small sg shadow"></span>
+			</button>
+			<button class="btn g">
+				<span class="mana small sg shadow">&nbsp;</span>
 				Green
-			</a>
-			<a href="#" class="btn">
-				<span class="mana small sc"></span>
+			</button>
+			<button class="btn">
+				<span class="mana small sc">&nbsp;</span>
 				Colorless
-			</a>
+			</button>
 			<h3>Legal Format</h3>
-			<a href="#" class="btn">Standard</a>
-			<a href="#" class="btn">Modern</a>
-			<a href="#" class="btn">Legacy</a>
-			<a href="#" class="btn">Vintage</a>
-			<a href="#" class="btn">Commander</a>
-			<a href="#" class="btn">Casual</a>
-			<a href="#" class="btn">Other&hellip;</a>
+			<button class="btn">Standard</button>
+			<button class="btn">Modern</button>
+			<button class="btn">Legacy</button>
+			<button class="btn">Vintage</button>
+			<button class="btn">Commander</button>
+			<button class="btn">Casual</button>
+			<button class="btn">Other&hellip;</button>
 			<h3>Set</h3>
 			{% for set in sets %}
-				<a href="#" class="btn">
-					<i class="ss ss-{{ set.code }} ss-common"></i>
+				<button class="btn">
+					<i class="ss ss-{{ set.code }} ss-common">&nbsp;</i>
 					{{ set.name }}
-				</a>
+				</button>
 			{% endfor %}
-			<a href="#" class="btn">
+			<button class="btn">
 				Other&hellip;
-			</a>
+			</button>
 			<h3>Deck Type</h3>
-			<a href="#" class="btn">Control</a>
-			<a href="#" class="btn">Spirits</a>
-			<a href="#" class="btn">Competitive</a>
-			<a href="#" class="btn">Aggro</a>
-			<a href="#" class="btn">Dredge</a>
-			<a href="#" class="btn">Rakdos</a>
-			<a href="#" class="btn">Other&hellip;</a>
+			<button class="btn">Control</button>
+			<button class="btn">Spirits</button>
+			<button class="btn">Competitive</button>
+			<button class="btn">Aggro</button>
+			<button class="btn">Dredge</button>
+			<button class="btn">Rakdos</button>
+			<button class="btn">Other&hellip;</button>
 			<h3>Price</h3>
 			<div class="input-group">
 				<span class="input-group-addon">$</span>
@@ -63,14 +63,14 @@
 				<input type="text" placeholder="To">
 			</div>
 			<h3>Sort By</h3>
-			<a href="#" class="btn">
+			<button class="btn">
 				Most Liked <span class="caret">▼</span>
-			</a>
+			</button>
 		</aside>
 		<section>
 			<div class="search">
 				<input type="text">
-				<a href="#" class="btn primary">Search</a>
+				<a href="search" class="btn primary">Search</a>
 			</div>
 			<div class="row">
 				{% for deck in cards %}
@@ -80,8 +80,8 @@
 						<div class="g" style="height: 30%"><span>30%</span></div>
 						<div class="b" style="height: 40%"><span>40%</span></div>
 					</div>
-					<div class="img">
-						<img alt="{{deck.name}}" src="{{ url_for('static', filename='images/spell_queller.png') }}">
+					<div class="deck-img">
+						<img alt="{{deck.name}}" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{deck.multiverseid}}&type=card">
 					</div>
 					<div class="deck-info">
 						<div class="title">{{deck.name}}</div>
@@ -106,8 +106,8 @@
 				{% endfor %}
 			</div>
 			<div class="pagination text-center">
-				<a href="#" class="prev btn primary pull-left">Previous</a>
-				<a href="#" class="next btn primary pull-right">Next</a>
+				<a href="prev" class="prev btn primary pull-left">Previous</a>
+				<a href="next" class="next btn primary pull-right">Next</a>
 				<div class="current-page">88</div>
 			</div>
 		</section>
