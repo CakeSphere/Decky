@@ -10,15 +10,15 @@ input[type='text'], input[type="email"], input[type="search"], textarea {
 
 	background: none;
 	border: 1px solid $color-border;
-	border-radius: 2px;
+	border-radius: $border-radius;
 	color: $color-text-weak;
 	font-family: $font-family-text;
 	font-size: 1rem;
 	text-decoration: none;
 	vertical-align: middle;
 	white-space: nowrap;
-	-webkit-transition: 0.2s;
-					transition: 0.2s;
+	-webkit-transition: $transition;
+					transition: $transition;
 	-webkit-user-select: none;
 		 -moz-user-select: none;
 			-ms-user-select: none;
@@ -45,7 +45,7 @@ input[type='text'], input[type="email"], input[type="search"], textarea {
 	display: inline-block;
 	margin-right: -4px;
 	padding-right: 0;
-	border-radius: 2px;
+	border-radius: $border-radius;
 	border: 1px solid $color-border;
 	padding: 0.5rem 0.7rem;
 	cursor: default;
@@ -72,7 +72,7 @@ input[type='text'], input[type="email"], input[type="search"], textarea {
 		width: calc(100% - 1.5rem - 100px);
 		background: tint($color-background, 3%);
 		border-color: rgba($color-primary, 0.25);
-		border-radius: 2px 0 0 2px;
+		border-radius: $border-radius 0 0 $border-radius;
 		box-shadow: inset 0 0 6px shade($color-background, 2.5%);
 		color: $color-text;
 		font-size: 1.33rem;
@@ -88,7 +88,7 @@ input[type='text'], input[type="email"], input[type="search"], textarea {
 		margin-right: 0;
 		background: tint($color-background, 3%);
 		border-color: rgba($color-primary, 0.25);
-		border-radius: 0 2px 2px 0;
+		border-radius: 0 $border-radius $border-radius 0;
 		box-shadow: inset 0 0 6px shade($color-background, 2.5%);
 		font-size: 1.33rem;
 		text-align: center;
@@ -111,7 +111,7 @@ textarea {
 	width: calc(100% - 1.5rem);
 	resize: none;
 	color: $color-text;
-	border-radius: 2px 2px 0 0;
+	border-radius: $border-radius $border-radius 0 0;
 	white-space: normal;
 	font-size: 1.2rem;
 	&:focus {
@@ -124,13 +124,13 @@ textarea {
 
 .submit {
 	background: shade($color-border, 55%);
-	border-radius: 0 0 2px 2px;
+	border-radius: 0 0 $border-radius $border-radius;
 	margin-top: -1rem;
 	margin-bottom: 1rem;
 	padding: 0.5rem;
 	border: 1px solid $color-border;
 	border-top: none;
-	transition: 0.2s;
+	transition: $transition;
 	.btn {
 		margin-bottom: 0;
 	}

@@ -1,12 +1,12 @@
 
-// Styles that apply globally or to chrome/nav
+/* Styles that apply globally or to chrome/nav*/
 
 ::-moz-selection { background: $color-primary; }
 ::selection { background: $color-primary; }
 
 html {
-	// Setting a base font-size. All other font-sizes should be in rems 
-	// (multiples of this font-size)
+	/* Setting a base font-size. All other font-sizes should be in rems */
+	/* (multiples of this font-size)*/
 	font-size: 18px;
 }
 
@@ -16,11 +16,13 @@ body {
 
 	font-family: $font-family-text;
 	font-size: 1rem;
-	// Opentype options
+	/* Opentype options*/
 	font-variant-numeric: lining-nums;
 	-webkit-font-feature-settings: 'lnum', 'dlig';
 					font-feature-settings: 'lnum', 'dlig';
 	-webkit-font-smoothing: antialiased;
+					font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-variant-ligatures: discretionary-ligatures;
 					font-variant-ligatures: discretionary-ligatures;
 }
@@ -36,56 +38,56 @@ nav {
 		}
 	}
 	.nav-search svg {
-		// Icon btn link sizes and positioning.
+		/* Icon btn link sizes and positioning.*/
 		position: relative;
 		top: 0.25rem;
 		width: 20px;
 		height: 20px;
 	}
 	.logo {
-		// Main Decky logo
+		/* Main Decky logo*/
 		svg {
 			width: 168px;
 			fill: $color-text;
 			shape-rendering: "optimizeQuality" 
 		}
 		&:hover {
-			// Remove default underline from main logo
+			/* Remove default underline from main logo*/
 			background: none;
 		}
 	}
 }
 
 aside {
-	// Sidebars for search filters or card/deck info
+	/* Sidebars for search filters or card/deck info*/
 	display: inline-block;
 	width: 280px;
 	margin-right: 44px;
 	&:last-child {
-		// Spacing for right sidebars
+		/* Spacing for right sidebars*/
 		margin-left: 44px;
 		margin-right: 0;
 	}
 	> h3:first-child {
-		// Making sure things like up with the main content
+		/* Making sure things like up with the main content*/
 		margin-top: 0.6rem;
 	}
 	h3 {
-		// Headings in sidebars use text font instead of display font
+		/* Headings in sidebars use text font instead of display font*/
 		font-family: $font-family-text;
 		font-weight: normal;
 	}
 }
 
 section {
-	// Main content section
+	/* Main content section*/
 	display: inline-block;
 	width: 952px;
 	vertical-align: top;
 }
 
 footer {
-	// Footer with some legal info
+	/* Footer with some legal info*/
 	padding: 3rem 0;
 	margin-top: 3rem;
 	background: tint($color-background, 2.5%);
@@ -111,7 +113,7 @@ h5 {
 }
 
 h3 {
-	// These may need to be customized for all other headers
+	/* These may need to be customized for all other headers*/
 	font-size: 1.33rem;
 }
 
@@ -125,6 +127,9 @@ a {
 		@include underline(shade($color-primary, 5%), $color-background)
 		color: shade($color-primary, 5%);
 	}
+	&:hover::-moz-selection {
+		text-shadow: none;
+	}
 	&:hover::selection {
 		text-shadow: none;
 	}
@@ -137,14 +142,14 @@ hr {
 
 
 p {
-	// Currently only used on card.html; May need to be more specific
+	/* Currently only used on card.html; May need to be more specific*/
 	font-family: $font-family-display;
 	font-weight: 300;
 }
 
-// Magic colors
-// These classes are used to easily color text referring to the five Magic 
-// colors
+/* Magic colors*/
+/* These classes are used to easily color text referring to the five Magic */
+/* colors*/
 
 .u { color: $color-mtg-u }
 .w { color: $color-mtg-w }
@@ -152,25 +157,25 @@ p {
 .g { color: $color-mtg-g }
 .b { color: $color-mtg-b }
 
-// Utility classes
+/* Utility classes*/
 
-// Easily float elements or clear those floats with these classes
+/* Easily float elements or clear those floats with these classes*/
 .pull-left   { float: left; }
 .pull-right  { float: right; }
 .clearfix    { @include clearfix; }
 
-// Text alignment classes; justify is not used
+/* Text alignment classes; justify is not used*/
 .text-left   { text-align: left; }
 .text-center { text-align: center; }
 .text-right  { text-align: right; }
 
-// Remove all styling (bullets or numbers) from a ul or ol element
+/* Remove all styling (bullets or numbers) from a ul or ol element*/
 .list-unstyled {
 	list-style: none; 
 	padding-left: 0;
 }
 
-// Adjustments to the sizes of mana symbols; see _mana.scss
+/* Adjustments to the sizes of mana symbols; see _mana.scss*/
 .mana.small {
 	width: 0.888rem;
 	height: 0.888rem;
@@ -181,12 +186,12 @@ p {
 	height: 1.4rem;
 }
 
-// Pagination
+/* Pagination*/
 
 .pagination {
 	margin-top: 3rem;
 	.next {
-		// Remove margin-right from next button
+		/* Remove margin-right from next button*/
 		margin-right: 0;
 	}
 	.current-page {
@@ -202,7 +207,7 @@ p {
 				-ms-user-select: none;
 						user-select: none;
 		&:before {
-			// Diamond decoration
+			/* Diamond decoration*/
 			content: '';
 			position: absolute;
 			top: -2px;
@@ -214,9 +219,9 @@ p {
 							transform: rotate(45deg);
 		}
 		&:after {
-			// Pagination expanation text
-			// Content tag should usually not be used for actual page content 
-			// because it cannot be localized easily
+			/* Pagination expanation text*/
+			/* Content tag should usually not be used for actual page content */
+			/* because it cannot be localized easily*/
 			content: 'Page';
 			position: absolute;
 			top: 45px;
@@ -228,7 +233,7 @@ p {
 	}
 }
 
-// These styles are only used on show_entries.html; will be deprecated
+/* These styles are only used on show_entries.html; will be deprecated*/
 
 label {
 	display: inline-block;

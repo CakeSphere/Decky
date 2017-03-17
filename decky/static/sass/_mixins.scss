@@ -5,16 +5,17 @@
 
 @mixin btn($color) {
 	$color-tint: tint($color, 15%);
-	$color-shade: shade($color, 15%);
+	$color-shade: shade($color, 75%);
 	color: $color;
 	border-color: $color;
 	&:hover {
 		color: $color-tint;
 		border-color: $color-tint;
+		background: $color-shade;
 	}
 	&:active {
-		color: $color-shade;
-		border-color: $color-shade;
+		color: $color-tint;
+		border-color: $color-tint;
 	}
 }
 

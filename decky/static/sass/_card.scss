@@ -1,4 +1,6 @@
 .card-img {
+	// Border-radius is hardcoded based on the border-radius of Magic card
+	// images
 	border-radius: 7px;
 }
 
@@ -55,6 +57,9 @@
 		position: relative;
 		bottom: 3px;
 		color: $color-text-weak;
+		&:hover {
+			@include underline($color-text-weak, $color-background)
+		}
 	}
 	.most-liked h2 {
 		margin-top: 3rem;
