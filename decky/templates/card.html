@@ -9,19 +9,19 @@
 		<p class="flavor">
 			{{card.flavor}}
 		</p>
-		<div class="clearfix"></div>
+		<div class="clearfix">&nbsp;</div>
 		<div class="most-liked">
 			<h2>Most Liked Decks Including <em>{{card.name}}</em></h2>
 				<div class="row">
 					{% for deck in card.types %}
 						<a href="deck" class="deck" title="{{deck.name}}">
 							<div class="color-bar">
-								<div class="u" style="height: 30%"><span>30%</span></div>
-								<div class="g" style="height: 30%"><span>30%</span></div>
-								<div class="b" style="height: 40%"><span>40%</span></div>
+								<div class="u" style="height: 30%"><span><span class="mana small su shadow">&nbsp;</span> 30%</span></div>
+								<div class="g" style="height: 30%"><span><span class="mana small sg shadow">&nbsp;</span> 30%</span></div>
+								<div class="b" style="height: 40%"><span><span class="mana small sb shadow">&nbsp;</span> 40%</span></div>
 							</div>
-							<div class="img">
-								<img src="{{ url_for('static', filename='images/spell_queller.png') }}" alt="Spell Queller">
+							<div class="deck-img">
+								<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=414494&type=card" alt="Spell Queller">
 							</div>
 							<div class="deck-info">
 								<div class="title">Deck Name</div>
@@ -50,38 +50,38 @@
 	<aside>
 		<h3>Color Identity</h3>
 		{% for color in card.colorIdentity.split(',') %}
-			<a class="btn color-identity {{color.lower()}}"></a>
+			<button class="btn color-identity {{color.lower()}}">&nbsp;</button>
 		{% endfor %}
 		<h3>Legal Formats</h3>
-		<a href="#" class="btn">Standard</a>
-		<a href="#" class="btn">Modern</a>
-		<a href="#" class="btn">Legacy</a>
-		<a href="#" class="btn">Vintage</a>
-		<a href="#" class="btn">Commander</a>
-		<a href="#" class="btn">Casual</a>
+		<button class="btn">Standard</button>
+		<button class="btn">Modern</button>
+		<button class="btn">Legacy</button>
+		<button class="btn">Vintage</button>
+		<button class="btn">Commander</button>
+		<button class="btn">Casual</button>
 		<h3>Sets</h3>
-		<a href="#" class="btn">
-			<i class="ss ss-emn ss-rare ss-grad"></i>
+		<button class="btn">
+			<i class="ss ss-emn ss-rare ss-grad">&nbsp;</i>
 			Eldritch Moon <span class="rarity">&mdash; {{card.rarity}}</span>
-		</a>
+		</button>
 		<h3>Price</h3>
-		<a href="#" class="btn">
+		<button class="btn">
 			$ <span class="price">6.00</span>
-		</a>
-		<a href="#" class="btn">
+		</button>
+		<button class="btn">
 			$ <span class="price">8.00</span> Foil
-		</a> 
+		</button> 
 		<span class="price-source">TCGPlayer</span>
-		<a href="#" class="btn">
+		<button class="btn">
 			$ <span class="price">6.00</span>
-		</a>
-		<a href="#" class="btn">
+		</button>
+		<button class="btn">
 			$ <span class="price">8.00</span> Foil
-		</a> 
+		</button> 
 		<span class="price-source">Isle of Cards</span>
 		<h3>Mana Cost</h3>
 		{% for mana in card.manaCost.split() %}
-			<span class="mana medium shadow s{{ mana }}"></span>
+			<span class="mana medium shadow s{{ mana }}">&nbsp;</span>
 		{% endfor %}
 	</aside>
 </div>

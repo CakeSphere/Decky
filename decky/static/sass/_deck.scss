@@ -45,12 +45,12 @@
 	left: 0;
 	bottom: 0;
 	z-index: 3;
-	width: 50px;
+	width: 66px;
 	height: 120px;
 	overflow: hidden;
 	background: none;
-	-webkit-transform: translate3d(0, 0, 0) translateX(-47px);
-					transform: translate3d(0, 0, 0) translateX(-47px);
+	-webkit-transform: translate3d(0, 0, 0) translateX(-63px);
+					transform: translate3d(0, 0, 0) translateX(-63px);
 	-webkit-transition: 0.1s transform;
 					transition: 0.1s transform;
 	-webkit-transition-timing-function: ease-in-out;
@@ -76,6 +76,10 @@
 		span {
 			opacity: 0.8;
 		}
+	}
+	.mana {
+		position: relative;
+		top: 2px;
 	}
 	div {
 		/* Centering text inside the color-bar segments*/
