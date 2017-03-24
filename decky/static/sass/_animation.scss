@@ -15,13 +15,6 @@
 	to   { opacity: 0; }
 }
 
-@-webkit-keyframes demo-fade-w {
-	from { color: rgba($color-text, 0); }
-	20%  { color: rgba($color-text, 0); }
-	80%  { color: shade($color-mtg-w, 35%); }
-	to   { color: rgba($color-text, 0); }
-}
-
 @-webkit-keyframes demo-slide {
 	from { -webkit-transform: translateX(0); transform: translateX(0); }
 	80%  { -webkit-transform: translateX(66px); transform: translateX(66px); }
@@ -41,13 +34,6 @@
 	20%  { opacity: 0; }
 	80%  { opacity: 0.8; }
 	to   { opacity: 0; }
-}
-
-@keyframes demo-fade-w {
-	from { color: rgba($color-text, 0); }
-	20%  { color: rgba($color-text, 0); }
-	80%  { color: shade($color-mtg-w, 35%); }
-	to   { color: rgba($color-text, 0); }
 }
 
 @keyframes demo-slide {
