@@ -99,12 +99,11 @@
 				-ms-user-select: none;
 						user-select: none;
 	}
-	/* These might need to be pulled into a mixin*/
-	.u { background: $color-mtg-u; color: $color-mtg-u; box-shadow: inset 0 0 5px darken($color-mtg-u, 5%); }
-	.w { background: $color-mtg-w; color: $color-mtg-w; box-shadow: inset 0 0 5px darken($color-mtg-w, 5%); }
-	.r { background: $color-mtg-r; color: $color-mtg-r; box-shadow: inset 0 0 5px darken($color-mtg-r, 5%); }
-	.g { background: $color-mtg-g; color: $color-mtg-g; box-shadow: inset 0 0 5px darken($color-mtg-g, 5%); }
-	.b { background: $color-mtg-b; color: $color-mtg-b; box-shadow: inset 0 0 5px darken($color-mtg-b, 5%); }
+	.u { @include color-bar($color-mtg-u) }
+	.w { @include color-bar($color-mtg-w) }
+	.r { @include color-bar($color-mtg-r) }
+	.g { @include color-bar($color-mtg-g) }
+	.b { @include color-bar($color-mtg-b) }
 }
 
 /* Deck tiles*/
@@ -128,9 +127,9 @@
 		-webkit-transition: $transition;
 						transition: $transition;
 		&:first-child .color-bar {
-			@include demo-mixin(demo);
+			@include demo(demo);
 			span {
-				@include demo-mixin(demo-fade);
+				@include demo(demo-fade);
 			}
 		}
 		&:after {
@@ -188,7 +187,7 @@
 			height: 120px;
 			overflow: hidden;
 			margin-left: 2px;
-			background: shade($color-background, 10%);
+			background: transparentize($color-background, 0.5);
 			&:before {
 				display: block;
 				content: '';
@@ -231,41 +230,47 @@
 	box-shadow: 0 0 50px shade($color-background, 15%);
 	border-radius: $border-radius;
 	.color-bar {
-		@include demo-mixin(demo);
+		@include demo(demo);
 		height: 162px;
 		span {
-			@include demo-mixin(demo-fade);
+			@include demo(demo-fade);
 		}
 		&:hover {
-			+ hgroup {
-				left: calc(50px + 1rem);
-			}
-			~ .deck-img {
-				left: 50px;
+			+ hgroup, ~ .deck-img {
+				-webkit-transform: translateX(66px); 
+								transform: translateX(66px);
 			}
 		}
 	}
 	.deck-img {
-		@include demo-mixin(demo-slide);
+		@include demo(demo-slide);
 		position: relative;
 		z-index: 0;
-		left: 0;
-		height: 162px;
-		-webkit-mask-image: -webkit-linear-gradient(left, black 80%, transparent);
-						mask-image: linear-gradient(to right, black 80%, transparent);
-		-webkit-transition: left $transition/2;
-						transition: left $transition/2;
+		left: -19px;
+		top:-43px;
+		height: 370px;
+		-webkit-mask-image: -webkit-linear-gradient(left, #000000 0%,transparent 94%,transparent 100%);
+						mask-image: linear-gradient(to right, #000000 0%,transparent 94%,transparent 100%);
+		-webkit-transition: transform $transition/2;
+		-webkit-transition: -webkit-transform $transition/2;
+						transition: -webkit-transform $transition/2;
+						transition: transform $transition/2;
+						transition: transform $transition/2, -webkit-transform $transition/2;
 		-webkit-transition-timing-function: ease-in-out;
 						transition-timing-function: ease-in-out;
 	}
 	hgroup {
-		@include demo-mixin(demo-slide);
+		@include demo(demo-slide);
 		position: absolute;
 		bottom: 1rem;
 		left: 1rem;
 		z-index: 1;
-		-webkit-transition: left $transition/2;
-						transition: left $transition/2;
+		text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+		-webkit-transition: transform $transition/2;
+		-webkit-transition: -webkit-transform $transition/2;
+						transition: -webkit-transform $transition/2;
+						transition: transform $transition/2;
+						transition: transform $transition/2, -webkit-transform $transition/2;
 		-webkit-transition-timing-function: ease-in-out;
 						transition-timing-function: ease-in-out;
 		h1, 
@@ -337,11 +342,11 @@
 			width: 100%;
 			height: 20px;
 			border-radius: $border-radius;
+			opacity: 0;
 			-webkit-transform: scaleX(0);
 							transform: scaleX(0);
-			opacity: 0;
-			-webkit-transition: $transition/2;
-							transition: $transition/2;
+			-webkit-transition: $transition;
+							transition: $transition;
 			margin-top: 0.5rem;
 			margin-bottom: 0.5rem;
 			div {
@@ -350,10 +355,10 @@
 				margin-right: -4px;
 				text-align: center;
 				span {
-					-webkit-transition: $transition/2;
-									transition: $transition/2; 
-					-webkit-transition-delay: $transition/2; 
-									transition-delay: $transition/2;
+					-webkit-transition: $transition;
+									transition: $transition; 
+					-webkit-transition-delay: $transition; 
+									transition-delay: $transition;
 				}
 			}
 		}
@@ -384,10 +389,10 @@
 /* On deck.html (users can only comment on decks)*/
 
 .comment {
-	border: 1px solid $color-border;
-	border-radius: $border-radius;
 	padding: 1rem;
-	margin-bottom: 1rem;
+	&:nth-child(even) {
+		background: shade($color-border, 60%);
+	}
 	&:last-child {
 		margin-bottom: 0;
 	}

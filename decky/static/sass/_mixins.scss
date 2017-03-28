@@ -19,6 +19,15 @@
 	}
 }
 
+// Color-bar Mixin
+// Styles for the segments of color-bars
+
+@mixin color-bar($color) {
+		background: $color; 
+		color: $color; 
+		box-shadow: inset 0 0 5px darken($color, 5%);
+}
+
 // Underline mixin, borrowed from Medium
 
 @mixin underline($color-text, $color-background) {
@@ -53,7 +62,7 @@
 
 // Demo animation mixin for color-bar
 
-@mixin demo-mixin($animation-name) {
+@mixin demo($animation-name) {
 	-webkit-animation-name: $animation-name;
 					animation-name: $animation-name;
 	-webkit-animation-duration: 1s;
