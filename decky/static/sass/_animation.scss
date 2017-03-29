@@ -1,11 +1,43 @@
 /* CSS Animations*/
 
-// Fallbacks for color-bar demo in webkit
+/* Fallbacks for color-bar demo in webkit*/
 
 @-webkit-keyframes demo {
-	from { -webkit-transform: translateX(-63px); transform: translateX(-63px); }
-	80%  { -webkit-transform: translateX(0); transform: translateX(0); }
-	to   { -webkit-transform: translateX(-63px); transform: translateX(-63px); }
+	from { -webkit-transform: translateX(-63px) translate3d(0, 0, 0); 
+								 transform: translateX(-63px) translate3d(0, 0, 0); }
+	80%  { -webkit-transform: translateX(0) translate3d(0, 0, 0); 
+								 transform: translateX(0); }
+	to   { -webkit-transform: translateX(-63px) translate3d(0, 0, 0); 
+								 transform: translateX(-63px) translate3d(0, 0, 0); }
+}
+
+@-webkit-keyframes demo-slide {
+	from { -webkit-transform: translateX(0) translate3d(0, 0, 0); 
+								 transform: translateX(0) translate3d(0, 0, 0); }
+	80%  { -webkit-transform: translateX(66px) translate3d(0, 0, 0); 
+								 transform: translateX(66px) translate3d(0, 0, 0); }
+	to   { -webkit-transform: translateX(0) translate3d(0, 0, 0); 
+								 transform: translateX(0) translate3d(0, 0, 0); }
+}
+
+/* Color-bar demo animations*/
+
+@keyframes demo {
+	from { -webkit-transform: translateX(-63px) translate3d(0, 0, 0); 
+								 transform: translateX(-63px) translate3d(0, 0, 0); }
+	80%  { -webkit-transform: translateX(0) translate3d(0, 0, 0); 
+								 transform: translateX(0) translate3d(0, 0, 0); }
+	to   { -webkit-transform: translateX(-63px) translate3d(0, 0, 0); 
+								 transform: translateX(-63px) translate3d(0, 0, 0); }
+}
+
+@keyframes demo-slide {
+	from { -webkit-transform: translateX(0) translate3d(0, 0, 0); 
+								 transform: translateX(0) translate3d(0, 0, 0); }
+	80%  { -webkit-transform: translateX(66px) translate3d(0, 0, 0); 
+								 transform: translateX(66px) translate3d(0, 0, 0); }
+	to   { -webkit-transform: translateX(0) translate3d(0, 0, 0); 
+								 transform: translateX(0) translate3d(0, 0, 0); }
 }
 
 @-webkit-keyframes demo-fade {
@@ -15,29 +47,9 @@
 	to   { opacity: 0; }
 }
 
-@-webkit-keyframes demo-slide {
-	from { -webkit-transform: translateX(0); transform: translateX(0); }
-	80%  { -webkit-transform: translateX(66px); transform: translateX(66px); }
-	to   { -webkit-transform: translateX(0); transform: translateX(0); }
-}
-
-// Color-bar demo animations
-
-@keyframes demo {
-	from { -webkit-transform: translateX(-63px); transform: translateX(-63px); }
-	80%  { -webkit-transform: translateX(0); transform: translateX(0); }
-	to   { -webkit-transform: translateX(-63px); transform: translateX(-63px); }
-}
-
 @keyframes demo-fade {
 	from { opacity: 0; }
 	20%  { opacity: 0; }
 	80%  { opacity: 0.8; }
 	to   { opacity: 0; }
-}
-
-@keyframes demo-slide {
-	from { -webkit-transform: translateX(0); transform: translateX(0); }
-	80%  { -webkit-transform: translateX(66px); transform: translateX(66px); }
-	to   { -webkit-transform: translateX(0); transform: translateX(0); }
 }

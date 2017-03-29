@@ -256,7 +256,7 @@ def show_entries():
 @app.route('/search')
 def search():
 		db = get_db()
-		cur = db.execute('select * from cards order by name asc limit 25')
+		cur = db.execute('select * from cards order by name asc limit 20')
 		cur_sets = db.execute(
 				'select * from sets order by releaseDate desc limit 5')
 		cards = cur.fetchall()

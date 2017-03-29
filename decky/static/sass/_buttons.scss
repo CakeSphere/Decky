@@ -49,21 +49,25 @@ button {
 		}
 		&:hover {
 			background: none;
-			// Hacky span that we add to make underlines on text buttons work.
+			color: shade($color-primary, 15%);
+			/* Hacky span that we add to make underlines on text buttons work.*/
 			span {
-				@include underline($color-primary, $color-background);
+				@include underline(shade($color-primary, 15%), $color-background);
 			}
 			svg {
 				fill: shade($color-primary, 15%);
 			}
 		}
-		&:active span {
-			// Hacky span that we add to make underlines on text buttons work.
-			@include underline(shade($color-primary, 5%), $color-background);
-			color: shade($color-primary, 5%);
+		&:active {
+			color: shade($color-primary, 25%);
+			span {
+				/* Hacky span that we add to make underlines on text buttons work.*/
+				@include underline(shade($color-primary, 25%), $color-background);
+				color: shade($color-primary, 25%);
+			}
 		}
 	}
-	// All of our button styles, using the btn mixin (_mixins.scss)
+	/* All of our button styles, using the btn mixin (_mixins.scss)*/
 	&.primary { @include btn($color-primary); }
 	&.u       { @include btn($color-mtg-u); }
 	&.w       { @include btn($color-mtg-w); }
@@ -71,30 +75,30 @@ button {
 	&.g       { @include btn($color-mtg-g); }
 	&.b       { @include btn($color-mtg-b); }
 	&.b       { 
-							// Black is a special case here because Black text is hard to read on a 
-							// black background.
+							/* Black is a special case here because Black text is hard to read on a */
+							/* black background.*/
 							color: lighten($color-mtg-b, 25%); 
 							&:hover { color: lighten($color-mtg-b, 35%); }
 						}
 	i { 
-		// Set Icons
+		/* Set Icons*/
 		position: relative;
 		bottom: 3px;
-		margin-right: 0.25rem;
 		-webkit-text-stroke: 0.03em $color-text-weak;
+		-webkit-transition: $transition;
 		transition: $transition;
 		&.ss-rare, &.ss-uncommon, &.ss-mythic {
 			-webkit-text-stroke: 0.01em $color-border-strong;
 		}
 	}
 	.mana.small { 
-		// Mana Icons
+		/* Mana Icons*/
 		position: relative;
 		top: 3px;
 		margin-right: 0.25rem;
 	}
 	.caret {
-		// Caret to indicate dropdowns
+		/* Caret to indicate dropdowns*/
 		position: relative;
 		bottom: 1px;
 		margin-left: 0.25rem;
@@ -105,14 +109,14 @@ button {
 }
 
 .btn-group {
-	// Used to indicate the amount of each Color in a deck currently
+	/* Used to indicate the amount of each Color in a deck currently*/
 	display: inline-block;
 	.btn, 
 	a.btn, 
 	button {
 		position: relative;
 		z-index: 1;
-		margin-right: -4px; // Removes the space next to an inline-block element
+		margin-right: -4px; /* Removes the space next to an inline-block element*/
 		border-radius: 0;
 		&.primary {
 			z-index: 3;

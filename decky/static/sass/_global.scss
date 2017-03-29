@@ -1,6 +1,7 @@
 
 /* Styles that apply globally or to chrome/nav*/
 
+/* Style elements when selected by user */
 ::-moz-selection { background: $color-primary; }
 ::selection { background: $color-primary; }
 

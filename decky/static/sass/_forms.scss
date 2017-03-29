@@ -7,7 +7,6 @@ input[type='text'], input[type="email"], input[type="search"], textarea {
 	margin-right: 6px;
 	margin-bottom: 10px;
 	width: 77px;
-
 	background: none;
 	border: 1px solid $color-border;
 	border-radius: $border-radius;
@@ -69,6 +68,7 @@ input[type='text'], input[type="email"], input[type="search"], textarea {
 .search {
 	input {
 		margin-right: -4px;
+		// This width is kind of a mess
 		width: calc(100% - 1.5rem - 100px);
 		background: tint($color-background, 3%);
 		border-color: rgba($color-primary, 0.25);
