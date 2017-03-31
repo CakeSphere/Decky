@@ -54,6 +54,7 @@ nav {
 			background-size: 20px 20px;
 			line-height: 1.25;
 			border-color: transparent;
+			-webkit-transition: $transition;
 			transition: $transition;
 			width: 45px;
 			cursor: pointer;
@@ -146,6 +147,7 @@ h3 {
 a {
 	color: $color-primary;
 	text-decoration: none;
+	-webkit-transition: color $transition;
 	transition: color $transition;
 	&:hover {
 		color: shade($color-primary, 15%);
@@ -213,35 +215,77 @@ p {
 /* Pagination*/
 
 .pagination {
+	position: relative;
+	width: 100px;
+	margin: auto;
 	margin-top: 3rem;
-	.next {
-		/* Remove margin-right from next button*/
-		margin-right: 0;
-	}
-	.current-page {
+	.text {
+		z-index: 3;
 		position: relative;
-		font-family: $font-family-display;
-		font-size: 1.5rem;
-		line-height: 1.25;
-		width: 100px;
-		margin: auto;
-		pointer-events: none;
-		-webkit-user-select: none;
-			 -moz-user-select: none;
-				-ms-user-select: none;
-						user-select: none;
+	}
+	.prev,
+	.next,
+	.first,
+	.last,
+	.current-page {
 		&:before {
 			/* Diamond decoration*/
 			content: '';
 			position: absolute;
 			top: -2px;
-			right: 31px;
+			right: 30px;
 			width: 37px;
 			height: 37px;
 			border: 1px solid $color-primary;
+			background: $color-background;
+			-webkit-transition: background $transition;
+			transition: background $transition;
 			-webkit-transform: rotate(45deg);
 							transform: rotate(45deg);
 		}
+	}
+	.prev,
+	.next,
+	.first,
+	.last {
+		display: block;
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		width: 100px;
+		margin: auto;
+		font-family: $font-family-display;
+		font-size: 1.5rem;
+		line-height: 1.25;
+		color: $color-text;
+		-webkit-transition: -webkit-transform $transition ease-out;
+		transition: -webkit-transform $transition ease-out;
+		transition: transform $transition ease-out;
+		transition: transform $transition ease-out, -webkit-transform $transition ease-out;
+		&:hover {
+			background: none;
+			span { text-shadow: none; }
+			&:before { background: shade($color-primary, 50%); }
+		}
+	}
+	.first,
+	.last {
+		transition-delay: $transition;
+	}
+	.current-page {
+		position: relative;
+		z-index: 2;
+		width: 100px;
+		margin: auto;
+		font-family: $font-family-display;
+		font-size: 1.5rem;
+		line-height: 1.25;
+		pointer-events: none;
+		-webkit-user-select: none;
+			 -moz-user-select: none;
+				-ms-user-select: none;
+						user-select: none;
 		&:after {
 			/* Pagination expanation text*/
 			/* Content tag should usually not be used for actual page content */
@@ -254,6 +298,12 @@ p {
 			font-size: 1rem;
 			font-family: $font-family-text;
 		}
+	}
+	&:hover {
+		.prev { -webkit-transform: translateX(-54px); transform: translateX(-54px); }
+		.next { -webkit-transform: translateX(54px); transform: translateX(54px); }
+		.first { -webkit-transform: translateX(-108px); transform: translateX(-108px); }
+		.last { -webkit-transform: translateX(108px); transform: translateX(108px); }
 	}
 }
 
