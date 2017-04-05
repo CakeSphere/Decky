@@ -2,8 +2,15 @@
 /* Styles that apply globally or to chrome/nav*/
 
 /* Style elements when selected by user */
-::-moz-selection { background: $color-primary; }
-::selection { background: $color-primary; }
+::-moz-selection { 
+	background: tint($color-background, 38%); 
+	color: transparentize($color-text, 0.3); 
+}
+
+::selection { 
+	background: tint($color-background, 38%); 
+	color: transparentize($color-text, 0.3); 
+}
 
 html {
 	/* Setting a base font-size. All other font-sizes should be in rems */
@@ -73,7 +80,8 @@ nav {
 	}
 	.logo {
 		/* Main Decky logo*/
-		transition: none; // Remove standard link color transition
+		-webkit-transition: none;
+		transition: none; /* Remove standard link color transition*/
 		svg {
 			width: 168px;
 			fill: $color-text;
@@ -149,7 +157,7 @@ a {
 	color: $color-primary;
 	text-decoration: none;
 	-webkit-transition: color $transition;
-	transition: color $transition;
+					transition: color $transition;
 	&:hover {
 		color: shade($color-primary, 15%);
 		@include underline(shade($color-primary, 15%), $color-background);
@@ -158,6 +166,8 @@ a {
 		color: shade($color-primary, 25%);
 		@include underline(shade($color-primary, 25%), $color-background);
 	}
+	&::-moz-selection { color: transparentize($color-primary, 0.3); }
+	&::selection { color: transparentize($color-primary, 0.3); }
 	&:hover::-moz-selection { text-shadow: none; }
 	&:hover::selection { text-shadow: none; }
 }
@@ -271,9 +281,9 @@ p {
 		line-height: 1.25;
 		color: $color-text;
 		-webkit-transition: -webkit-transform $transition ease-out;
-		transition: -webkit-transform $transition ease-out;
-		transition: transform $transition ease-out;
-		transition: transform $transition ease-out, -webkit-transform $transition ease-out;
+						transition: -webkit-transform $transition ease-out;
+						transition: transform $transition ease-out;
+						transition: transform $transition ease-out, -webkit-transform $transition ease-out;
 		&:hover {
 			background: none;
 			span { text-shadow: none; }

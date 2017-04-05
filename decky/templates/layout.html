@@ -1,11 +1,15 @@
 <!doctype html>
 <html lang="en">
 	<head>
+		<!-- This stylesheet has to be first because of a Chrome bug -->
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.scss.css') }}">
 		<title>Decky</title>
+		<!-- Required meta tag specifies character set -->
 		<meta charset="utf-8">
+		<!-- Typekit Script -->
 		<script src="https://use.typekit.net/snr0hgu.js"></script>
 		<script>try{Typekit.load({ async: true });}catch(e){}</script>
+		<!-- Favicons -->
 		<link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/apple-touch-icon.png') }}?v=9BaWAXKO6p">
 		<link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon-32x32.png') }}?v=9BaWAXKO6p" sizes="32x32">
 		<link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon-16x16.png') }}?v=9BaWAXKO6p" sizes="16x16">
