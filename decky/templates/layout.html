@@ -6,7 +6,13 @@
 		<meta charset="utf-8">
 		<script src="https://use.typekit.net/snr0hgu.js"></script>
 		<script>try{Typekit.load({ async: true });}catch(e){}</script>
-		<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}?v=6" type="image/png"/>
+		<link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/apple-touch-icon.png') }}?v=9BaWAXKO6p">
+		<link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon-32x32.png') }}?v=9BaWAXKO6p" sizes="32x32">
+		<link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon-16x16.png') }}?v=9BaWAXKO6p" sizes="16x16">
+		<link rel="manifest" href="{{ url_for('static', filename='images/manifest.json') }}?v=9BaWAXKO6p">
+		<link rel="mask-icon" href="{{ url_for('static', filename='images/safari-pinned-tab.svg') }}?v=9BaWAXKO6p" color="#dd5ef8">
+		<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}?v=9BaWAXKO6p">
+		<meta name="theme-color" content="#272727">
 	</head>
 	<body>
 		{% for message in get_flashed_messages() %}
