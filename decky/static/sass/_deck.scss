@@ -124,8 +124,7 @@
 		overflow: hidden;
 		box-shadow: 0 3px 3px shade($color-background, 15%);
 		cursor: pointer;
-		-webkit-transition: $transition;
-						transition: $transition;
+		transition: none;
 		&:first-child {
 			.deck-img, .deck-info {
 				@include demo(demo-slide);

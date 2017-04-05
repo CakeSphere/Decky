@@ -73,6 +73,7 @@ nav {
 	}
 	.logo {
 		/* Main Decky logo*/
+		transition: none; // Remove standard link color transition
 		svg {
 			width: 168px;
 			fill: $color-text;
@@ -228,21 +229,30 @@ p {
 	.first,
 	.last,
 	.current-page {
+		.text {
+			right: 0;
+			width : 100%;
+			display: block;
+			text-align: center;
+		}
 		&:before {
 			/* Diamond decoration*/
 			content: '';
 			position: absolute;
 			top: -2px;
-			right: 30px;
+			right: 8px;
 			width: 37px;
 			height: 37px;
 			border: 1px solid $color-primary;
 			background: $color-background;
 			-webkit-transition: background $transition;
-			transition: background $transition;
+							transition: background $transition;
 			-webkit-transform: rotate(45deg);
 							transform: rotate(45deg);
 		}
+	}
+	.current-page .text {
+		right: 0;
 	}
 	.prev,
 	.next,
@@ -252,9 +262,10 @@ p {
 		position: absolute;
 		z-index: 1;
 		top: 0;
-		left: 0;
-		width: 100px;
+		left: 22px;
+		width: 55.15px;
 		margin: auto;
+		text-align: center;
 		font-family: $font-family-display;
 		font-size: 1.5rem;
 		line-height: 1.25;
@@ -271,12 +282,14 @@ p {
 	}
 	.first,
 	.last {
-		transition-delay: $transition;
+		-webkit-transition-delay: $transition/2;
+		        transition-delay: $transition/2;
 	}
 	.current-page {
 		position: relative;
 		z-index: 2;
-		width: 100px;
+		width: 55.15px;
+		text-align: center;
 		margin: auto;
 		font-family: $font-family-display;
 		font-size: 1.5rem;
@@ -293,7 +306,7 @@ p {
 			content: 'Page';
 			position: absolute;
 			top: 45px;
-			right: 35px;
+			right: 12px;
 			color: $color-text-weak;
 			font-size: 1rem;
 			font-family: $font-family-text;
