@@ -1,6 +1,6 @@
-// Common form elements
+/* Common form elements*/
 
-// For the most part inputs and textareas should be styled similarly
+/* For the most part inputs and textareas should be styled similarly*/
 input[type='text'], input[type="email"], input[type="search"], textarea {
 	display: inline-block;
 	padding: 0.5rem 0.7rem;
@@ -27,8 +27,20 @@ input[type='text'], input[type="email"], input[type="search"], textarea {
 	}
 }
 
-// Input groups
-// These are currently only used to indicate currency when searching
+select, select.btn {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23ababab' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center;
+	background-size: 8px 10px;
+	padding-right: calc(10px + 1.4rem);
+	&:hover {
+		background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23f7f7f7' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center;
+		background-size: 8px 10px;
+	}
+}
+
+/* Input groups*/
+/* These are currently only used to indicate currency when searching*/
 .input-group {
 	display: inline-block;
 	margin-right: 6px;
@@ -62,13 +74,13 @@ input[type='text'], input[type="email"], input[type="search"], textarea {
 	border-top-right-radius: 0;
 }
 
-// Search bar styles
-// For the large search bar at the top of the Search page
+/* Search bar styles*/
+/* For the large search bar at the top of the Search page*/
 
 .search {
 	input {
 		margin-right: -4px;
-		// This width is kind of a mess
+		/* This width is kind of a mess*/
 		width: calc(100% - 1.5rem - 100px);
 		background: tint($color-background, 3%);
 		border-color: rgba($color-primary, 0.25);
@@ -103,8 +115,8 @@ input[type='text'], input[type="email"], input[type="search"], textarea {
 	}
 }
 
-// Textareas are currently only used for comments; changes will have to be
-// made for other uses
+/* Textareas are currently only used for comments; changes will have to be*/
+/* made for other uses*/
 
 textarea {
 	display: block;
@@ -130,6 +142,7 @@ textarea {
 	padding: 0.5rem;
 	border: 1px solid $color-border;
 	border-top: none;
+	-webkit-transition: $transition;
 	transition: $transition;
 	.btn {
 		margin-bottom: 0;

@@ -97,15 +97,6 @@ button {
 		top: 3px;
 		margin-right: 0.25rem;
 	}
-	.caret {
-		/* Caret to indicate dropdowns*/
-		position: relative;
-		bottom: 1px;
-		margin-left: 0.25rem;
-		color: $color-background;
-		font-size: 10px;
-		-webkit-text-stroke: 1px $color-text-weak;
-	}
 }
 
 .btn-group {
