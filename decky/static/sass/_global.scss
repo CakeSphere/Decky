@@ -291,11 +291,6 @@ p {
 			&:before { background: shade($color-primary, 50%); }
 		}
 	}
-	.first,
-	.last {
-		-webkit-transition-delay: $transition/2;
-		        transition-delay: $transition/2;
-	}
 	.current-page {
 		position: relative;
 		z-index: 2;
@@ -324,10 +319,24 @@ p {
 		}
 	}
 	&:hover {
-		.prev { -webkit-transform: translateX(-54px); transform: translateX(-54px); }
-		.next { -webkit-transform: translateX(54px); transform: translateX(54px); }
-		.first { -webkit-transform: translateX(-108px); transform: translateX(-108px); }
-		.last { -webkit-transform: translateX(108px); transform: translateX(108px); }
+		.prev { 
+			-webkit-transform: translateX(-54px); 
+							transform: translateX(-54px); 
+		}
+		.next { 
+			-webkit-transform: translateX(54px); 
+							transform: translateX(54px); 
+		}
+		.first { 
+			-webkit-transform: translateX(-108px); 
+							transform: translateX(-108px); 
+							transition-delay: $transition/2;
+		}
+		.last { 
+			-webkit-transform: translateX(108px); 
+							transform: translateX(108px); 
+							transition-delay: $transition/2;
+		}
 	}
 }
 

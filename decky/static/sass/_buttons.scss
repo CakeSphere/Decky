@@ -22,7 +22,7 @@ button {
 		 -moz-user-select: none;
 			-ms-user-select: none;
 					user-select: none;
-	&:hover {
+	&:hover, &:focus {
 		background: tint($color-background, 5%);
 		border-color: tint($color-border, 10%);
 		color: $color-text;
@@ -47,7 +47,7 @@ button {
 			-webkit-transition: fill $transition;
 							transition: fill $transition;
 		}
-		&:hover {
+		&:hover, &:focus {
 			background: none;
 			color: shade($color-primary, 15%);
 			/* Hacky span that we add to make underlines on text buttons work.*/
