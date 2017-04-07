@@ -12,10 +12,28 @@
 		color: $color-tint;
 		border-color: $color-tint;
 		background: $color-shade;
+		.cancel {
+			fill: $color-tint;
+		}
 	}
 	&:active {
 		color: $color-tint;
 		border-color: $color-tint;
+	}
+	&.active {
+		background: $color;
+		color: $color-background;
+		border-color: $color-tint;
+		.cancel {
+			fill: $color-background;
+		}
+		&:hover {
+			color: $color-background;
+			background: tint($color, 10%);
+		}
+	}
+	.cancel {
+		fill: $color;
 	}
 }
 

@@ -39,6 +39,17 @@ button {
 	&:focus {
 		outline: none;
 	}
+	&.active {
+		background: $color-text-weak;
+		color: $color-background;
+		border-color: tint($color-text-weak, 15%);
+		.cancel {
+			fill: $color-background;
+		}
+		&:hover {
+			background: tint($color-text-weak, 25%);
+		}
+	}
 	&.link {
 		border-color: transparent;
 		color: $color-primary;
@@ -67,6 +78,14 @@ button {
 			}
 		}
 	}
+	.cancel {
+		fill: $color-text-weak;
+		width: 10px;
+		height: 10px;
+		margin-left: 0.25rem;
+		position: relative;
+		top: 2px;
+	}
 	/* All of our button styles, using the btn mixin (_mixins.scss)*/
 	&.primary { @include btn($color-primary); }
 	&.u       { @include btn($color-mtg-u); }
@@ -78,7 +97,15 @@ button {
 							/* Black is a special case here because Black text is hard to read on a */
 							/* black background.*/
 							color: lighten($color-mtg-b, 25%); 
-							&:hover { color: lighten($color-mtg-b, 35%); }
+							.cancel {
+								fill: lighten($color-mtg-b, 25%);
+							}
+							&:hover { 
+								color: lighten($color-mtg-b, 35%); 
+								.cancel {
+									color: lighten($color-mtg-b, 35%); 
+								}
+							}
 						}
 	i { 
 		/* Set Icons*/
