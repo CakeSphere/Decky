@@ -49,7 +49,7 @@
 	</section>
 	<aside>
 		<h3>Color Identity</h3>
-		{% for color in card.colorIdentity.split(',') %}
+		{% for color in card.colorIdentity.split(', ') %}
 			<button class="btn color-identity {{color.lower()}}">
 				<span class="mana small s{{color.lower()}} shadow">&nbsp;</span>
 				&nbsp;
