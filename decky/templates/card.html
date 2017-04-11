@@ -50,7 +50,10 @@
 	<aside>
 		<h3>Color Identity</h3>
 		{% for color in card.colorIdentity.split(',') %}
-			<button class="btn color-identity {{color.lower()}}">&nbsp;</button>
+			<button class="btn color-identity {{color.lower()}}">
+				<span class="mana small s{{color.lower()}} shadow">&nbsp;</span>
+				&nbsp;
+			</button>
 		{% endfor %}
 		<h3>Legal Formats</h3>
 		<button class="btn">Standard</button>
@@ -80,8 +83,8 @@
 		</button> 
 		<a href="http://isleofcards.com" class="price-source">Isle of Cards</a>
 		<h3>Mana Cost</h3>
-		{% for mana in card.manaCost.split() %}
-			<span class="mana medium shadow s{{ mana }}">&nbsp;</span>
+		{% for mana in card.manaCost.split(" ") %}
+			{{mana}}
 		{% endfor %}
 	</aside>
 </div>

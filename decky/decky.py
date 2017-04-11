@@ -117,8 +117,8 @@ def format_card(raw_card):
 								]))
 				else:
 						out_card[field] = ""
-		out_card['manaCost'] = " ".join(e for e in out_card['manaCost']
-																		if e.isalnum()).lower()
+		# out_card['manaCost'] = " ".join(e for e in out_card['manaCost']
+		# 																if e.isalnum()).lower()
 		out_card['text'] = HTMLParser().unescape(
 				smartypants.smartypants(out_card['text']))
 		out_card['flavor'] = HTMLParser().unescape(
