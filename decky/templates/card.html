@@ -2,10 +2,10 @@
 {% block body %}
 <div class="container card">
 	<section>
-		<img class="card-img" src="http://magiccards.info/scans/en/emn/{{card.number}}.jpg" alt="{{card.name}}">
+		<img class="card-img" src="http://magiccards.info/scans/en/{{card.setCode.lower()}}/{{card.number}}.jpg" alt="{{card.name}}">
 		<h1>{{card.name}}</h1>
 		<h2>{{card.type}}</h2>
-		<p class="text">{{card.text}}</p>
+		<p class="text">{{card.text|safe}}</p>
 		<p class="flavor">
 			{{card.flavor}}
 		</p>
@@ -21,7 +21,7 @@
 								<div class="b" style="height: 40%"><span><span class="mana small sb shadow">&nbsp;</span> 40%</span></div>
 							</div>
 							<div class="deck-img">
-								<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=414494&type=card" alt="Spell Queller">
+								<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="Spell Queller">
 							</div>
 							<div class="deck-info">
 								<div class="title">Deck Name</div>
@@ -61,8 +61,8 @@
 		<button class="btn">Casual</button>
 		<h3>Sets</h3>
 		<button class="btn">
-			<i class="ss ss-emn ss-rare ss-grad">&nbsp;</i>
-			Eldritch Moon <span class="rarity">&mdash; {{card.rarity}}</span>
+			<i class="ss ss-emn ss-{{card.rarity.lower()}} ss-grad">&nbsp;</i>
+			{{card.setId}} <span class="rarity">&mdash; {{card.rarity}}</span>
 		</button>
 		<h3>Price</h3>
 		<button class="btn">

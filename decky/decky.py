@@ -106,7 +106,7 @@ def format_card(raw_card):
 		 "releaseDate", \
 		 "starter", \
 		 "mciNumber", \
-		 "imageName"}
+		 "imageName" }
 		for field in fields:
 				if field in raw_card:
 						out_card[field] = raw_card[field]
@@ -119,6 +119,7 @@ def format_card(raw_card):
 						out_card[field] = ""
 		out_card['manaCost'] = " ".join(e for e in out_card['manaCost']
 																		if e.isalnum()).lower()
+		out_card['text'] = "<br>".join(out_card['text'].split("\n"))
 		out_card['text'] = HTMLParser().unescape(
 				smartypants.smartypants(out_card['text']))
 		out_card['flavor'] = HTMLParser().unescape(
@@ -205,7 +206,7 @@ def import_cards():
 								card_data = format_card(card_data)
 								print "\033[94m"
 								pprint(card_data)
-								import_cards_query = 'INSERT INTO `cards` (layout, name, names, manaCost, cmc, colors, colorIdentity, type, supertypes, types, subtypes, rarity, text, flavor, artist, number, power, toughness, loyalty, multiverseid, variations, watermark, border, timeshifted, hand, life, reserved, releaseDate, starter, mciNumber, imageName) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);'
+								import_cards_query = 'INSERT INTO `cards` (layout, name, names, manaCost, cmc, colors, colorIdentity, type, supertypes, types, subtypes, rarity, text, flavor, artist, number, power, toughness, loyalty, multiverseid, variations, watermark, border, timeshifted, hand, life, reserved, releaseDate, starter, mciNumber, imageName, setId, setCode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);'
 								db.execute(import_cards_query, \
 								 (card_data["layout"], \
 									card_data["name"], \
@@ -237,7 +238,9 @@ def import_cards():
 									card_data["releaseDate"], \
 									card_data["starter"], \
 									card_data["mciNumber"], \
-									card_data["imageName"]))
+									card_data["imageName"], \
+									set_data["name"], \
+									set_data["code"]))
 						db.commit()
 						print "\033[92m\033[1mCards imported.\033[0m"
 
@@ -245,9 +248,9 @@ def import_cards():
 @app.route('/')
 def show_entries():
 		db = get_db()
-		cur = db.execute('select * from cards order by name asc limit 50')
+		cur = db.execute('select * from cards order by multiverseid asc')
 		cur_sets = db.execute(
-				'select *, block from sets order by releaseDate desc limit 10')
+				'select *, block from sets order by releaseDate desc')
 		cards = cur.fetchall()
 		sets = cur_sets.fetchall()
 		return render_template('show_entries.html', cards=cards, sets=sets)
@@ -256,7 +259,7 @@ def show_entries():
 @app.route('/search')
 def search():
 		db = get_db()
-		cur = db.execute('select * from cards order by name asc limit 20')
+		cur = db.execute('select * from cards where colorIdentity="U" or colorIdentity="B" or colorIdentity="G" order by multiverseid asc limit 20')
 		cur_sets = db.execute(
 				'select * from sets order by releaseDate desc limit 5')
 		cards = cur.fetchall()
