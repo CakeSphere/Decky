@@ -4,7 +4,7 @@ sys.setdefaultencoding('utf-8')
 
 from pprint import pprint
 from HTMLParser import HTMLParser
-from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
+from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash, Markup
 from sassutils.wsgi import SassMiddleware
 
 app = Flask(__name__)
@@ -265,15 +265,14 @@ def search():
 		sets = cur_sets.fetchall()
 		return render_template('search.html', cards=cards, sets=sets)
 
-
-@app.route('/card')
-def card():
+@app.route('/card/<card>')
+def card(card):
 		db = get_db()
-		cur = db.execute('select * from cards where name="Spell Queller"')
+		cur = db.execute('select * from cards where multiverseId="' + card + '"')
 		card = cur.fetchall()
 		card = card[0]
 		cardText = card["text"]
-		cardText = cardText = "<br>".join(cardText.split("\n"))
+		cardText = Markup("<br>".join(cardText.split("\n")))
 		print cardText
 		return render_template('card.html', card=card, cardText=cardText)
 
