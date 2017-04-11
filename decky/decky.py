@@ -269,12 +269,17 @@ def card(card):
 		cur = db.execute('select * from cards where multiverseId="' + card + '"')
 		card = cur.fetchall()
 		card = card[0]
-		cardMana = card["manaCost"]
+		cardMana = card['manaCost']
 		cardMana = cardMana.replace('}{', ' ')
 		cardMana = cardMana.replace('{', '')
 		cardMana = cardMana.replace('}', '')
-		cardText = card["text"]
-		cardText = Markup("<br>".join(cardText.split("\n")))
+		cardText = card['text']
+		regex = re.compile(".*?\((.*?)\)")
+		manaText = re.findall(regex, cardText)
+		print manaText
+		cardText = cardText.replace('{', '<span class="mana medium shadow s')
+		cardText = cardText.replace('}', '">&nbsp;</span>')
+		cardText = Markup('<br>'.join(cardText.split('\n')))
 		return render_template('card.html', card=card, cardText=cardText, cardMana=cardMana)
 
 
