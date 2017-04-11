@@ -62,9 +62,9 @@
 		<button class="btn">Vintage</button>
 		<button class="btn">Commander</button>
 		<button class="btn">Casual</button>
-		<h3>Sets</h3>
+		<h3>Set</h3>
 		<button class="btn">
-			<i class="ss ss-emn ss-{{card.rarity.lower()}} ss-grad">&nbsp;</i>
+			<i class="ss ss-emn ss-{{card.rarity.lower()}} {% if card.rarity != 'Common' %}ss-grad{% endif %}">&nbsp;</i>
 			{{card.setId}} <span class="rarity">&mdash; {{card.rarity}}</span>
 		</button>
 		<h3>Price</h3>
@@ -83,8 +83,8 @@
 		</button> 
 		<a href="http://isleofcards.com" class="price-source">Isle of Cards</a>
 		<h3>Mana Cost</h3>
-		{% for mana in card.manaCost.split(" ") %}
-			{{mana}}
+		{% for mana in cardMana.split(" ") %}
+			<span class="mana small s{{mana.lower()}} shadow">&nbsp;</span>
 		{% endfor %}
 	</aside>
 </div>

@@ -117,8 +117,6 @@ def format_card(raw_card):
 								]))
 				else:
 						out_card[field] = ""
-		# out_card['manaCost'] = " ".join(e for e in out_card['manaCost']
-		# 																if e.isalnum()).lower()
 		out_card['text'] = HTMLParser().unescape(
 				smartypants.smartypants(out_card['text']))
 		out_card['flavor'] = HTMLParser().unescape(
@@ -271,10 +269,13 @@ def card(card):
 		cur = db.execute('select * from cards where multiverseId="' + card + '"')
 		card = cur.fetchall()
 		card = card[0]
+		cardMana = card["manaCost"]
+		cardMana = cardMana.replace('}{', ' ')
+		cardMana = cardMana.replace('{', '')
+		cardMana = cardMana.replace('}', '')
 		cardText = card["text"]
 		cardText = Markup("<br>".join(cardText.split("\n")))
-		print cardText
-		return render_template('card.html', card=card, cardText=cardText)
+		return render_template('card.html', card=card, cardText=cardText, cardMana=cardMana)
 
 
 @app.route('/deck')
