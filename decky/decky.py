@@ -119,7 +119,6 @@ def format_card(raw_card):
 						out_card[field] = ""
 		out_card['manaCost'] = " ".join(e for e in out_card['manaCost']
 																		if e.isalnum()).lower()
-		out_card['text'] = "<br>".join(out_card['text'].split("\n"))
 		out_card['text'] = HTMLParser().unescape(
 				smartypants.smartypants(out_card['text']))
 		out_card['flavor'] = HTMLParser().unescape(
@@ -273,7 +272,10 @@ def card():
 		cur = db.execute('select * from cards where name="Spell Queller"')
 		card = cur.fetchall()
 		card = card[0]
-		return render_template('card.html', card=card)
+		cardText = card["text"]
+		cardText = cardText = "<br>".join(cardText.split("\n"))
+		print cardText
+		return render_template('card.html', card=card, cardText=cardText)
 
 
 @app.route('/deck')
