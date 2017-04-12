@@ -31,6 +31,10 @@
 			br {
 				line-height: 2.5rem;
 			}
+			.mana.medium {
+				position: relative;
+				top: 5px;
+			}
 		}
 		&.flavor {
 			color: shade($color-text, 20%);

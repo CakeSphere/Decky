@@ -7,7 +7,7 @@
 		<h2>{{card.type}}</h2>
 		<p class="text">{{cardText}}</p>
 		<p class="flavor">
-			{{card.flavor}}
+			{{cardFlavor}}
 		</p>
 		<div class="clearfix">&nbsp;</div>
 		<div class="most-liked">
@@ -84,7 +84,7 @@
 		<a href="http://isleofcards.com" class="price-source">Isle of Cards</a>
 		<h3>Mana Cost</h3>
 		{% for mana in cardMana.split(" ") %}
-			<span class="mana small s{{mana.lower()}} shadow">&nbsp;</span>
+			<span class="mana medium s{{mana.lower()}} shadow">&nbsp;</span>
 		{% endfor %}
 	</aside>
 </div>

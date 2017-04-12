@@ -219,9 +219,12 @@ p {
 }
 
 .mana.medium {
-	width: 1.4rem;
-	height: 1.4rem;
+	width: 0.888em;
+	height: 0.888em;
 }
+
+.mana::-moz-selection { background: initial; }
+.mana::selection { background: initial; }
 
 /* Pagination*/
 
@@ -330,12 +333,14 @@ p {
 		.first { 
 			-webkit-transform: translateX(-108px); 
 							transform: translateX(-108px); 
-							transition-delay: $transition/2;
+							-webkit-transition-delay: $transition/2; 
+							        transition-delay: $transition/2;
 		}
 		.last { 
 			-webkit-transform: translateX(108px); 
 							transform: translateX(108px); 
-							transition-delay: $transition/2;
+							-webkit-transition-delay: $transition/2; 
+							        transition-delay: $transition/2;
 		}
 	}
 }
