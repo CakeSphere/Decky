@@ -49,12 +49,19 @@
 	</section>
 	<aside>
 		<h3>Color Identity</h3>
-		{% for color in card.colorIdentity.split(', ') %}
-			<button class="btn color-identity {{color.lower()}}">
-				<span class="mana small s{{color.lower()}} shadow">&nbsp;</span>
-				&nbsp;
+		{% if card.colorIdentity|length > 0 %}
+			{% for color in card.colorIdentity.split(', ') %}
+				<button class="btn color-identity {{color.lower()}}">
+					<span class="mana small s{{color.lower()}} shadow">&nbsp;</span>
+					&nbsp;
+				</button>
+			{% endfor %}
+			{% else %}
+			<button class="btn color-identity">
+				<span class="mana small sc shadow">&nbsp;</span>
+				Colorless
 			</button>
-		{% endfor %}
+		{% endif %}
 		<h3>Legal Formats</h3>
 		<button class="btn">Standard</button>
 		<button class="btn">Modern</button>
