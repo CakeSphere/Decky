@@ -280,6 +280,8 @@ def card(card):
 	  print manaText
 	cardText = cardText.replace('{', '<span class="mana medium shadow s')
 	cardText = cardText.replace('}', '">&nbsp;</span>')
+	cardText = cardText.replace('(', '<em>(')
+	cardText = cardText.replace(')', ')</em>')
 	cardText = Markup('<br>'.join(cardText.split('\n')))
 	cardFlavor = card['flavor']
 	cardFlavor = Markup('<br>'.join(cardFlavor.split('\n')))
