@@ -263,10 +263,10 @@ def search():
 	sets = cur_sets.fetchall()
 	return render_template('search.html', cards=cards, sets=sets)
 
-@app.route('/card/<card>')
-def card(card):
+@app.route('/card/<multiverseId>')
+def card(multiverseId):
 	db = get_db()
-	cur = db.execute('select * from cards where multiverseId="' + card + '"')
+	cur = db.execute('select * from cards where multiverseId="' + multiverseId + '"')
 	card = cur.fetchall()
 	card = card[0]
 	cardMana = card['manaCost']
