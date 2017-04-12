@@ -274,11 +274,11 @@ def card(card):
 		cardMana = cardMana.replace('{', '')
 		cardMana = cardMana.replace('}', '')
 		cardText = card['text']
-		regex = re.compile(".*?\((.*?)\)")
-		manaText = re.findall(regex, cardText)
+		manaText = re.search(r'{(.*)}', cardText)
+		manaText = manaText.group(0).lower()
+		manaText = manaText.replace('{', '<span class="mana medium shadow s')
+		manaText = manaText.replace('}', '">&nbsp;</span>')
 		print manaText
-		cardText = cardText.replace('{', '<span class="mana medium shadow s')
-		cardText = cardText.replace('}', '">&nbsp;</span>')
 		cardText = Markup('<br>'.join(cardText.split('\n')))
 		return render_template('card.html', card=card, cardText=cardText, cardMana=cardMana)
 
