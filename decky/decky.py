@@ -269,6 +269,13 @@ def card(multiverseId):
 	cur = db.execute('select * from cards where multiverseId="' + multiverseId + '"')
 	card = cur.fetchall()
 	card = card[0]
+	cardNumber = card['number']
+	flipCardA = False
+	flipCardB = False
+	if re.search('[a]', str(cardNumber)):
+		flipCardA = True
+	if re.search('[b]', str(cardNumber)):
+		flipCardB = True
 	cardMana = card['manaCost']
 	cardMana = cardMana.replace('}{', ' ')
 	cardMana = cardMana.replace('{', '')
@@ -293,7 +300,7 @@ def card(multiverseId):
 	cardText = Markup('<br>'.join(cardText.split('\n')))
 	cardFlavor = card['flavor']
 	cardFlavor = Markup('<br>'.join(cardFlavor.split('\n')))
-	return render_template('card.html', card=card, cardText=cardText, cardMana=cardMana, cardFlavor=cardFlavor)
+	return render_template('card.html', card=card, cardText=cardText, cardMana=cardMana, cardFlavor=cardFlavor, flipCardA=flipCardA, flipCardB=flipCardB)
 
 
 @app.route('/deck')

@@ -1,15 +1,52 @@
 .card-img {
-	// Border-radius is hardcoded based on the border-radius of Magic card
-	// images
+	/* Border-radius is hardcoded based on the border-radius of Magic card*/
+	/* images*/
 	border-radius: 7px;
 }
 
-// Styles specific to card.html
+/* Styles specific to card.html*/
 .card {
-	.card-img	{
+	.card-container {
 		@extend .pull-left;
 		margin-right: 1rem;
+		margin-bottom: 1rem;
+		-webkit-perspective: 1000;
+		-o-perspective: 1000;
+		perspective: 1000;
+		&:hover .flipper {
+			-webkit-transform: rotateY(180deg);
+							transform: rotateY(180deg);
+		}
+	}
+	.card-container, .card-img {
+		width: 312px;
+		height: 445px;
+	}
+	.flipper {
+		position: relative;
+		-webkit-transition: 0.6s;
+		-moz-transition: 0.6s;
+		-o-transition: 0.6s;
+		transition: 0.6s;
+		-webkit-transform-style: preserve-3d;
+		-moz-transform-style: preserve-3d;
+		-o-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+	}
+	.card-img {
+		position: absolute;
+		top: 0;
+		left: 0;
 		box-shadow: 0 2px 4px shade($color-background, 15%);
+		-webkit-backface-visibility: hidden;
+						backface-visibility: hidden;
+		&:first-child {
+			z-index:  2;
+		}
+		&:nth-child(2) {
+			-webkit-transform: rotateY(180deg);
+							transform: rotateY(180deg);
+		}
 	}
 	h1 {
 		margin: 0;
@@ -48,7 +85,7 @@
 		}
 	}
 	.color-identity {
-		// These should be moved into HTML; content should not be set in css
+		/* These should be moved into HTML; content should not be set in css*/
 		&.u:after { content: 'Blue'; }
 		&.g:after { content: 'Green'; }
 		&.w:after { content: 'White'; }

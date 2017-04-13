@@ -2,7 +2,25 @@
 {% block body %}
 <div class="container card">
 	<section>
-		<img class="card-img" src="http://magiccards.info/scans/en/{{card.setCode.lower()}}/{{card.number}}.jpg" alt="{{card.name}}">
+		<div class="card-container">
+			{% if not flipCardA and not flipCardB %}
+			<img class="card-img" src="http://magiccards.info/scans/en/{{card.setCode.lower()}}/{{card.number}}.jpg" alt="{{card.name}}">
+			{% endif %}
+			{% if flipCardA %}
+			<div class="flipper">
+				<img class="card-img" src="http://magiccards.info/scans/en/{{card.setCode.lower()}}/{{card.number}}.jpg" alt="{{card.name}}">
+				<img class="card-img" src="http://magiccards.info/scans/en/{{card.setCode.lower()}}/{{card.number[:-1]}}b.jpg" alt="{{card.name}}">
+			</div>
+			{% elif flipCardB %}
+			<div class="flipper">
+				<img class="card-img" src="http://magiccards.info/scans/en/{{card.setCode.lower()}}/{{card.number}}.jpg" alt="{{card.name}}">
+				<img class="card-img" src="http://magiccards.info/scans/en/{{card.setCode.lower()}}/{{card.number[:-1]}}a.jpg" alt="{{card.name}}">
+			</div>
+			{% endif %}
+		</div>
+		<!-- {% if flipCardB %}
+		<a href="/card/{{card.multiverseid-1}}"><img class="card-img" src="http://magiccards.info/scans/en/{{card.setCode.lower()}}/{{card.number[:-1]}}a.jpg" alt="{{card.name}}"></a>
+		{% endif %} -->
 		<h1>{{card.name}}</h1>
 		<h2>{{card.type}}</h2>
 		<p class="text">{{cardText}}</p>
