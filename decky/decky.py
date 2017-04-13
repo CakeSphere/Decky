@@ -1,6 +1,4 @@
-import os, sqlite3, sass, json, sys, click, datetime, smartypants, re
-reload(sys)
-sys.setdefaultencoding('utf-8')
+import os, sqlite3, sass, json, datetime, smartypants, re
 
 from pprint import pprint
 from HTMLParser import HTMLParser
@@ -117,6 +115,8 @@ def format_card(raw_card):
 				]))
 		else:
 			out_card[field] = ""
+	out_card['name'] = HTMLParser().unescape(
+		smartypants.smartypants(out_card['name']))
 	out_card['text'] = HTMLParser().unescape(
 		smartypants.smartypants(out_card['text']))
 	out_card['flavor'] = HTMLParser().unescape(
@@ -273,15 +273,23 @@ def card(multiverseId):
 	cardMana = cardMana.replace('}{', ' ')
 	cardMana = cardMana.replace('{', '')
 	cardMana = cardMana.replace('}', '')
-	cardText = card['text']
-	if re.search(r'{(.*)}', cardText):
-	  manaText = re.search(r'{(.*)}', cardText)
-	  manaText = manaText.group(0).lower()
-	  print manaText
+	cardText = card["text"]
+	# Italicize Ability Words
+	cardText = re.compile(r'(((battalion|bloodrush|channel|chroma|cohort|constellation|converge|council\'s dilemma|delirium|domain|fateful hour|ferocious|formidable|grandeur|hellbent|heroic|imprint|inspired|join forces|kinship|landfall|lieutenant|metalcraft|morbid|parley|radiance|raid|rally|spell mastery|strive|sweep|tempting offer|threshold|will of the council)\s*?)+)', re.I).sub(r'<em>\1</em>', cardText)
+	
+	# Code that doesn't work for making mana symbols lowercase
+	# if re.search(r'{(.*)}', cardText):
+	#   manaText = re.search(r'{(.*)}', cardText)
+	#   manaText = manaText.group(0).lower()
+	#   print manaText
+
+	# Convert mana symbols to the styled span tags
 	cardText = cardText.replace('{', '<span class="mana medium shadow s')
 	cardText = cardText.replace('}', '">&nbsp;</span>')
+	# Text on cards in parentheses is always italicized
 	cardText = cardText.replace('(', '<em>(')
 	cardText = cardText.replace(')', ')</em>')
+	# Convert new lines to html line breaks
 	cardText = Markup('<br>'.join(cardText.split('\n')))
 	cardFlavor = card['flavor']
 	cardFlavor = Markup('<br>'.join(cardFlavor.split('\n')))

@@ -1,14 +1,14 @@
 
 /* Styles that apply globally or to chrome/nav*/
 
-/* Style elements when selected by user */
+/* Style elements (usually text) when selected by user */
 ::-moz-selection { 
-	background: tint($color-background, 38%); 
+	background: tint($color-background, 35%); 
 	color: transparentize($color-text, 0.3); 
 }
 
 ::selection { 
-	background: tint($color-background, 38%); 
+	background: tint($color-background, 35%); 
 	color: transparentize($color-text, 0.3); 
 }
 

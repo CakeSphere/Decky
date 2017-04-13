@@ -20,7 +20,7 @@
 	}
 	h2 {
 		margin-top: 0;
-		color: rgba($color-text, 0.8);
+		color: shade($color-text-weak, 15%);
 		font-family: $font-family-display;
 		font-weight: normal;
 	}
