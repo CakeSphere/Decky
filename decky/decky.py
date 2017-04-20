@@ -256,17 +256,21 @@ def show_entries():
 @app.route('/search')
 def search():
 	db = get_db()
-	cur = db.execute('select * from cards where colorIdentity="U" or colorIdentity="B" or colorIdentity="G" order by multiverseid asc limit 20')
+	cur = db.execute(
+		'select * from cards where colorIdentity="U" or colorIdentity="B" or colorIdentity="G" order by multiverseId asc limit 20'
+	)
 	cur_sets = db.execute(
 		'select * from sets order by releaseDate desc limit 5')
 	cards = cur.fetchall()
 	sets = cur_sets.fetchall()
 	return render_template('search.html', cards=cards, sets=sets)
 
+
 @app.route('/card/<multiverseId>')
 def card(multiverseId):
 	db = get_db()
-	cur = db.execute('select * from cards where multiverseId="' + multiverseId + '"')
+	cur = db.execute('select * from cards where multiverseId="' + multiverseId
+					 + '"')
 	card = cur.fetchall()
 	card = card[0]
 	cardNumber = card['number']
@@ -282,8 +286,10 @@ def card(multiverseId):
 	cardMana = cardMana.replace('}', '')
 	cardText = card["text"]
 	# Italicize Ability Words
-	cardText = re.compile(r'(((battalion|bloodrush|channel|chroma|cohort|constellation|converge|council\'s dilemma|delirium|domain|fateful hour|ferocious|formidable|grandeur|hellbent|heroic|imprint|inspired|join forces|kinship|landfall|lieutenant|metalcraft|morbid|parley|radiance|raid|rally|spell mastery|strive|sweep|tempting offer|threshold|will of the council)\s*?)+)', re.I).sub(r'<em>\1</em>', cardText)
-	
+	cardText = re.compile(
+		r'(((battalion|bloodrush|channel|chroma|cohort|constellation|converge|council\'s dilemma|delirium|domain|fateful hour|ferocious|formidable|grandeur|hellbent|heroic|imprint|inspired|join forces|kinship|landfall|lieutenant|metalcraft|morbid|parley|radiance|raid|rally|spell mastery|strive|sweep|tempting offer|threshold|will of the council)\s*?)+)',
+		re.I).sub(r'<em>\1</em>', cardText)
+
 	# Code that doesn't work for making mana symbols lowercase
 	# if re.search(r'{(.*)}', cardText):
 	#   manaText = re.search(r'{(.*)}', cardText)
@@ -300,7 +306,14 @@ def card(multiverseId):
 	cardText = Markup('<br>'.join(cardText.split('\n')))
 	cardFlavor = card['flavor']
 	cardFlavor = Markup('<br>'.join(cardFlavor.split('\n')))
-	return render_template('card.html', card=card, cardText=cardText, cardMana=cardMana, cardFlavor=cardFlavor, flipCardA=flipCardA, flipCardB=flipCardB)
+	return render_template(
+		'card.html',
+		card=card,
+		cardText=cardText,
+		cardMana=cardMana,
+		cardFlavor=cardFlavor,
+		flipCardA=flipCardA,
+		flipCardB=flipCardB)
 
 
 @app.route('/deck')

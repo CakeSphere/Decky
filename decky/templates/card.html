@@ -18,21 +18,22 @@
 			</div>
 			{% endif %}
 		</div>
-		<!-- {% if flipCardB %}
-		<a href="/card/{{card.multiverseid-1}}"><img class="card-img" src="http://magiccards.info/scans/en/{{card.setCode.lower()}}/{{card.number[:-1]}}a.jpg" alt="{{card.name}}"></a>
-		{% endif %} -->
 		<h1>{{card.name}}</h1>
 		<h2>{{card.type}}</h2>
 		<p class="text">{{cardText}}</p>
 		<p class="flavor">
 			{{cardFlavor}}
 		</p>
+		<p><em>Dev &mdash; 
+		<a href="/card/{{card.multiverseId-1}}" class="btn">Previous Card</a>
+		<a href="/card/{{card.multiverseId+1}}" class="btn">Next Card</a></em>
+		</p>
 		<div class="clearfix">&nbsp;</div>
 		<div class="most-liked">
 			<h2>Most Liked Decks Including <em>{{card.name}}</em></h2>
 				<div class="row">
 					{% for deck in card.types %}
-						<a href="deck" class="deck" title="{{deck.name}}">
+						<a href="/deck" class="deck" title="{{deck.name}}">
 							<div class="color-bar">
 								<div class="u" style="height: 30%"><span><span class="mana small su shadow">&nbsp;</span> 30%</span></div>
 								<div class="g" style="height: 30%"><span><span class="mana small sg shadow">&nbsp;</span> 30%</span></div>

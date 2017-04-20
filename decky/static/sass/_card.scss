@@ -8,6 +8,7 @@
 .card {
 	.card-container {
 		@extend .pull-left;
+		position: relative;
 		margin-right: 1rem;
 		margin-bottom: 1rem;
 		-webkit-perspective: 1000;
@@ -71,6 +72,9 @@
 			.mana.medium {
 				position: relative;
 				top: 5px;
+				+ .mana.medium {
+					margin-left: 3px;
+				}
 			}
 		}
 		&.flavor {

@@ -339,8 +339,8 @@ p {
 		.last { 
 			-webkit-transform: translateX(108px); 
 							transform: translateX(108px); 
-							-webkit-transition-delay: $transition/2; 
-							        transition-delay: $transition/2;
+			-webkit-transition-delay: $transition/2; 
+			        transition-delay: $transition/2;
 		}
 	}
 }
