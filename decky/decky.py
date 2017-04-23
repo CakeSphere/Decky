@@ -257,7 +257,7 @@ def show_entries():
 def search():
 	db = get_db()
 	cur = db.execute(
-		'select * from cards where colorIdentity="U" or colorIdentity="B" or colorIdentity="G" order by multiverseId asc limit 20'
+		'select * from cards where colorIdentity="U" or colorIdentity="B" or colorIdentity="G" order by multiverseId asc limit 66'
 	)
 	cur_sets = db.execute(
 		'select * from sets order by releaseDate desc limit 5')

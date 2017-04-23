@@ -41,11 +41,6 @@ aside {
 	display: inline-block;
 	width: 280px;
 	margin-right: 44px;
-	&:last-child {
-		/* Spacing for right sidebars*/
-		margin-left: 44px;
-		margin-right: 0;
-	}
 	> h3:first-child {
 		/* Making sure things like up with the main content*/
 		margin-top: 0.6rem;

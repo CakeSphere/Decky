@@ -116,7 +116,7 @@
 	}
 }
 
-.search-filters {
+aside {
 	position: absolute;
 	z-index: 998;
 	top: 61px;
@@ -125,11 +125,11 @@
 	left: 100px;
 	width: 300px;
 	padding: 1.5rem 1rem;
-	animation-name: search-filters;
+	animation-name: aside-slide;
 	animation-duration: 0.2s;
 }
 
-@keyframes search-filters {
+@keyframes aside-slide {
 	from { transform: translateX(-300px) }
 	to   { transform: translateX(0)}
 }
