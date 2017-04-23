@@ -203,10 +203,10 @@
 							transition: transform $transition, -webkit-transform $transition;
 			z-index: 2;
 			display: inline-block;
-			width: 166px;
+			width: 165px;
 			height: 120px;
 			overflow: hidden;
-			margin-left: 2px;
+			margin-left: 1px;
 			background: transparentize($color-background, 0.5);
 			&:before {
 				display: block;
