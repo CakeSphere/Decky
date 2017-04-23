@@ -5,8 +5,8 @@
 
 
 .container {
-	width: 1280px;
-	margin: auto;
+	width:  calc(100% - 400px - 2rem);
+	margin-left: calc(400px + 2rem);
 }
 
 .column {

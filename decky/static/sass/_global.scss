@@ -60,8 +60,9 @@ aside {
 section {
 	/* Main content section*/
 	display: inline-block;
-	width: 952px;
+	width: calc(100% - 2rem);
 	vertical-align: top;
+
 }
 
 h1,

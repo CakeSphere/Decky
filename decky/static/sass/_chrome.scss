@@ -86,6 +86,7 @@
 	bottom: 0;
 	left: 0;
 	width: 100px;
+	background: $color-background;
 	border-right: 1px solid tint($color-background, 5%);
 	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
 	a.btn {
@@ -99,11 +100,11 @@
 		line-height: 100px;
 		border-bottom: 1px solid tint($color-background, 5%);
 		border-top: 1px solid shade($color-background, 5%);
-		&:hover {
+		&:hover, &:active, &:focus {
 			background: tint($color-background, 5%);
-			color: $color-text;
 			span {
 				@include underline($color-text, tint($color-background, 5%));
+				color: $color-text;
 			}
 		}
 	}
@@ -113,6 +114,24 @@
 	li:first-child a {
 		border-top: none;
 	}
+}
+
+.search-filters {
+	position: absolute;
+	z-index: 998;
+	top: 61px;
+	bottom: 0;
+	height: 100%;
+	left: 100px;
+	width: 300px;
+	padding: 1.5rem 1rem;
+	animation-name: search-filters;
+	animation-duration: 0.2s;
+}
+
+@keyframes search-filters {
+	from { transform: translateX(-300px) }
+	to   { transform: translateX(0)}
 }
 
 footer {
