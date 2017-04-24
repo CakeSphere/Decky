@@ -26,6 +26,7 @@ button {
 		background: tint($color-background, 5%);
 		border-color: tint($color-border, 10%);
 		color: $color-text;
+		text-shadow: none;
 		i { 
 			text-shadow: none; 
 			-webkit-text-stroke: 0.03em $color-text; 
