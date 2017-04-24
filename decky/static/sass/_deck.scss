@@ -358,6 +358,7 @@
 .deck-description {
 	margin-bottom: 4rem; 
 	p {
+		max-width: 900px;
 		font-family: $font-family-text;
 		font-size: 1.5rem;
 	}
@@ -384,4 +385,8 @@
 		font-family: $font-family-text;
 		font-size: 1.2rem;
 	}
+}
+
+.discussion {
+	max-width: 900px;
 }
