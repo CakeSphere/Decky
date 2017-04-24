@@ -115,6 +115,7 @@
 		span {
 			-webkit-transition: color 0.2s;
 							transition: color 0.2s;
+			color: transparentize($color-text-weak, 0.5);
 		}
 		svg {
 			display: block;
