@@ -186,9 +186,7 @@ p {
 							transform: rotate(45deg);
 		}
 	}
-	.current-page .text {
-		right: 0;
-	}
+	.current-page .text { right: 0; }
 	.prev,
 	.next,
 	.first,
@@ -254,14 +252,14 @@ p {
 		.first { 
 			-webkit-transform: translateX(-108px); 
 							transform: translateX(-108px); 
-							-webkit-transition-delay: $transition/2; 
-							        transition-delay: $transition/2;
+			-webkit-transition-delay: $transition/2; 
+							transition-delay: $transition/2;
 		}
 		.last { 
 			-webkit-transform: translateX(108px); 
 							transform: translateX(108px); 
 			-webkit-transition-delay: $transition/2; 
-			        transition-delay: $transition/2;
+							transition-delay: $transition/2;
 		}
 	}
 }

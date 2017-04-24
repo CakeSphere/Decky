@@ -27,9 +27,7 @@
 		}
 		&:hover {
 			background: none;
-			svg {
-				fill: $color-text;
-			}
+			svg { fill: $color-text; }
 		}
 		&:focus svg, &:active svg {
 			fill: $color-primary;
@@ -73,9 +71,7 @@
 	&:hover {
 		-webkit-transform: translateX(0) translate3d(0, 0, 0);
 						transform: translateX(0) translate3d(0, 0, 0);
-		span {
-			opacity: 0.8;
-		}
+		span { opacity: 0.8; }
 	}
 	.mana {
 		position: relative;
@@ -151,9 +147,7 @@
 			-webkit-transition: opacity $transition/2;
 							transition: opacity $transition/2;
 		}
-		&:hover:after {
-			opacity: 0.25;
-		}
+		&:hover:after { opacity: 0.25; }
 		.color-bar {
 			/* Fixes text in a link element having a black shadow*/
 			text-shadow: none;
@@ -186,12 +180,8 @@
 			.tags {
 				margin-top: 0.5rem;
 				.author,
-				.tag {
-					margin-right: 0.2rem;
-				}
-				.tag {
-					opacity: 0.5;
-				}
+				.tag { margin-right: 0.2rem; }
+				.tag { opacity: 0.5; }
 			}
 		}
 		.deck-img {
@@ -253,9 +243,7 @@
 	.color-bar {
 		@include demo(demo);
 		height: 162px;
-		span {
-			@include demo(demo-fade);
-		}
+		span { @include demo(demo-fade); }
 		&:hover {
 			+ hgroup, ~ .deck-img {
 				-webkit-transform: translateX(66px) translate3d(0, 0, 0); 
@@ -297,9 +285,7 @@
 		-webkit-transition-timing-function: ease-in-out;
 						transition-timing-function: ease-in-out;
 		h1, 
-		h2 {
-			margin: 0;
-		}
+		h2 { margin: 0; }
 		h1 {
 			font-size: 2.66rem;
 			font-style: italic;
@@ -318,9 +304,7 @@
 		.date-updated { opacity: 0.8; }
 		.stats {
 			margin-bottom: 1rem;
-			:last-child {
-				margin-right: 0;
-			}
+			:last-child { margin-right: 0; }
 		}
 	}
 }
@@ -330,12 +314,8 @@
 	/* (e.g. Commander/EDH)*/
 	margin: 0 -0.5rem;
 	padding-top: 2rem;
-	li {
-		font-size: 1.333rem;
-	}
-	h2 {
-		font-family: $font-family-display;
-	}
+	li { font-size: 1.333rem; }
+	h2 { font-family: $font-family-display; }
 	.column {
 		display: inline-block;
 		width: calc(33.3% - 1rem - 14px);
@@ -347,18 +327,14 @@
 		background: shade($color-background, 10%);
 		border-radius: ($border-radius * 2.5);
 		box-shadow: inset 1px 0 3px shade($color-background, 25%);
-		h2 {
-			margin-top: 0;
-		}
+		h2 { margin-top: 0; }
 	}
 	.card-type, .sideboard {
 		&:hover .color-bar {
 			-webkit-transform: scaleX(1) translate3d(0, 0, 0);
 							transform: scaleX(1) translate3d(0, 0, 0);
 			opacity: 1;
-			div span {
-				opacity: 1;
-			}
+			div span { opacity: 1; }
 		}
 		.color-bar {
 			position: relative;
@@ -388,16 +364,12 @@
 	}
 }
 
-.count {
-	color: $color-text-weak;
-}
+.count { color: $color-text-weak; }
 
 .card-costs, 
 .mana-avilable {
 	width: 100%;
-	a {
-		text-align: center;
-	}
+	a { text-align: center; }
 }
 
 /* Comments*/
@@ -405,18 +377,10 @@
 
 .comment {
 	padding: 1rem;
-	&:nth-child(even) {
-		background: shade($color-border, 60%);
-	}
-	&:last-child {
-		margin-bottom: 0;
-	}
-	em {
-		color: $color-text-weak;
-	}
-	.username {
-		color: $color-text;
-	}
+	&:nth-child(even) { background: shade($color-border, 60%); }
+	&:last-child { margin-bottom: 0; }
+	em { color: $color-text-weak; }
+	.username { color: $color-text; }
 	p {
 		font-family: $font-family-text;
 		font-size: 1.2rem;

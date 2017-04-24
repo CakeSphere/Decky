@@ -1,5 +1,5 @@
 .card-img {
-	/* Border-radius is hardcoded based on the border-radius of Magic card*/
+	/* Border-radius is hardcoded based on the border-radius of a Magic card */
 	/* images*/
 	border-radius: 7px;
 }
@@ -39,9 +39,7 @@
 		box-shadow: 0 2px 4px shade($color-background, 15%);
 		-webkit-backface-visibility: hidden;
 						backface-visibility: hidden;
-		&:first-child {
-			z-index:  2;
-		}
+		&:first-child { z-index:  2; }
 		&:nth-child(2) {
 			-webkit-transform: rotateY(180deg);
 							transform: rotateY(180deg);
@@ -65,15 +63,11 @@
 			font-size: 1.5rem;
 			line-height: 1.3;
 			max-width: 1080px;
-			br {
-				line-height: 2.5rem;
-			}
+			br { line-height: 2.5rem; }
 			.mana.medium {
 				position: relative;
 				top: 5px;
-				+ .mana.medium {
-					margin-left: 3px;
-				}
+				+ .mana.medium { margin-left: 3px; }
 			}
 		}
 		&.flavor {
@@ -98,15 +92,11 @@
 	}
 	.price,
 	.rarity,
-	h2 em {
-		color: $color-text;
-	}
+	h2 em { color: $color-text; }
 	.price-source {
 		position: relative;
 		bottom: 3px;
 		color: $color-text-weak;
 	}
-	.most-liked h2 {
-		margin-top: 3rem;
-	}
+	.most-liked h2 { margin-top: 3rem; }
 }
