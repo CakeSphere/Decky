@@ -53,3 +53,15 @@
 	80%  { opacity: 0.8; }
 	to   { opacity: 0; }
 }
+
+/* Animation for sidebars sliding in*/
+
+@-webkit-keyframes aside-slide {
+	from { -webkit-transform: translateX(-300px); transform: translateX(-300px) }
+	to   { -webkit-transform: translateX(0); transform: translateX(0)}
+}
+
+@keyframes aside-slide {
+	from { -webkit-transform: translateX(-300px); transform: translateX(-300px) }
+	to   { -webkit-transform: translateX(0); transform: translateX(0)}
+}

@@ -52,8 +52,8 @@
 	box-shadow: 0 0 5px shade($color-background, 10%);
 	-webkit-transform: translateX(-63px) translate3d(0, 0, 0);
 					transform: translateX(-63px) translate3d(0, 0, 0);
-	-webkit-transition: $transition/2 transform;
-					transition: $transition/2 transform;
+	-webkit-transition: transform $transition/2;
+					transition: transform $transition/2;
 	-webkit-transition-timing-function: ease-in-out;
 					transition-timing-function: ease-in-out;
 	span {
@@ -61,8 +61,8 @@
 		/* anything but opacity and transform*/
 		opacity: 0;
 		color: $color-text;
-		-webkit-transition: $transition;
-						transition: $transition;
+		-webkit-transition: opacity $transition;
+						transition: opacity $transition;
 		-webkit-transition-delay: $transition/2;
 						transition-delay: $transition/2;
 	}
@@ -113,17 +113,17 @@
 .row {
 	margin: 0 -0.5rem;
 	.deck {
-		position: relative;
 		z-index: 1;
+		position: relative;
 		display: inline-block;
 		height: 120px;
 		width: calc(33.33333% - 0.5rem - 12px);
 		margin: 0.5rem;
 		background: tint($color-background, 3%);
 		border-radius: $border-radius;
-		overflow: hidden;
 		box-shadow: 0 3px 3px shade($color-background, 15%);
 		cursor: pointer;
+		overflow: hidden;
 		transition: none;
 		&:first-child {
 			.deck-img, .deck-info {
@@ -370,19 +370,11 @@
 			margin-bottom: 0.5rem;
 			-webkit-transform: scaleX(0) translate3d(0, 0, 0);
 							transform: scaleX(0) translate3d(0, 0, 0);
-			-webkit-transition: $transition;
-							transition: $transition;
 			div {
 				display: inline-block;
 				height: 20px;
 				margin-right: -4px;
 				text-align: center;
-				span {
-					-webkit-transition: $transition;
-									transition: $transition; 
-					-webkit-transition-delay: $transition; 
-									transition-delay: $transition;
-				}
 			}
 		}
 	}

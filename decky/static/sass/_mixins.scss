@@ -83,6 +83,8 @@
 @mixin demo($animation-name) {
 	-webkit-animation-name: $animation-name;
 					animation-name: $animation-name;
+	-webkit-animation-delay: 0.5s;
+					animation-delay: 0.5s;
 	-webkit-animation-duration: 1s;
 					animation-duration: 1s;
 	-webkit-animation-iteration-count: 1;

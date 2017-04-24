@@ -16,8 +16,8 @@ button {
 	cursor: pointer;
 	vertical-align: middle;
 	white-space: nowrap;
-	-webkit-transition: $transition;
-					transition: $transition;
+	-webkit-transition: color $transition, border-color $transition, background $transition;
+					transition: color $transition, border-color $transition, background $transition;
 	-webkit-user-select: none;
 		 -moz-user-select: none;
 			-ms-user-select: none;
@@ -112,8 +112,8 @@ button {
 		position: relative;
 		bottom: 3px;
 		-webkit-text-stroke: 0.03em $color-text-weak;
-		-webkit-transition: $transition;
-		transition: $transition;
+		-webkit-transition: color $transition;
+		transition: -webkit-text-stroke $transition;
 		&.ss-rare, &.ss-uncommon, &.ss-mythic {
 			-webkit-text-stroke: 0.01em $color-border-strong;
 		}

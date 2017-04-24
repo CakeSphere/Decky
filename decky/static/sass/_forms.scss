@@ -16,8 +16,8 @@ input[type='text'], input[type="email"], input[type="search"], textarea {
 	text-decoration: none;
 	vertical-align: middle;
 	white-space: nowrap;
-	-webkit-transition: $transition;
-					transition: $transition;
+	-webkit-transition: border-color $transition;
+					transition: border-color $transition;
 	-webkit-user-select: none;
 		 -moz-user-select: none;
 			-ms-user-select: none;
@@ -142,8 +142,8 @@ textarea {
 	padding: 0.5rem;
 	border: 1px solid $color-border;
 	border-top: none;
-	-webkit-transition: $transition;
-	transition: $transition;
+	-webkit-transition: border-color $transition;
+					transition: border-color $transition;
 	.btn {
 		margin-bottom: 0;
 	}
