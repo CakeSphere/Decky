@@ -37,7 +37,7 @@
 /* Styles for the segments of color-bars*/
 
 @mixin color-bar($color) {
-		background: $color; 
+		background: shade($color, 20%); 
 		box-shadow: inset 0 0 5px darken($color, 5%);
 		color: $color; 
 }

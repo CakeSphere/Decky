@@ -99,5 +99,8 @@
 		bottom: 3px;
 		color: $color-text-weak;
 	}
-	.most-liked h2 { margin-top: 3rem; }
+	.most-liked h2 { 
+		margin-top: 3rem; 
+		font-family: $font-family-text;
+	}
 }

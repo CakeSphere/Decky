@@ -14,8 +14,8 @@
 @-webkit-keyframes demo-slide {
 	from { -webkit-transform: translateX(0) translate3d(0, 0, 0); 
 								 transform: translateX(0) translate3d(0, 0, 0); }
-	80%  { -webkit-transform: translateX(66px) translate3d(0, 0, 0); 
-								 transform: translateX(66px) translate3d(0, 0, 0); }
+	80%  { -webkit-transform: translateX(65px) translate3d(0, 0, 0); 
+								 transform: translateX(65px) translate3d(0, 0, 0); }
 	to   { -webkit-transform: translateX(0) translate3d(0, 0, 0); 
 								 transform: translateX(0) translate3d(0, 0, 0); }
 }
@@ -34,8 +34,8 @@
 @keyframes demo-slide {
 	from { -webkit-transform: translateX(0) translate3d(0, 0, 0); 
 								 transform: translateX(0) translate3d(0, 0, 0); }
-	80%  { -webkit-transform: translateX(66px) translate3d(0, 0, 0); 
-								 transform: translateX(66px) translate3d(0, 0, 0); }
+	80%  { -webkit-transform: translateX(65px) translate3d(0, 0, 0); 
+								 transform: translateX(65px) translate3d(0, 0, 0); }
 	to   { -webkit-transform: translateX(0) translate3d(0, 0, 0); 
 								 transform: translateX(0) translate3d(0, 0, 0); }
 }
