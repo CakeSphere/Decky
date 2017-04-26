@@ -129,6 +129,7 @@
 		cursor: pointer;
 		overflow: hidden;
 		transition: none;
+		white-space: nowrap;
 		&:after {
 			position: absolute;
 			z-index: 1;
@@ -160,12 +161,13 @@
 			padding: 0.5rem;
 			vertical-align: top;
 			transform: translate3d(0, 0, 0);
+			text-overflow: ellipsis;
+			width: calc(100% - 195px);
 			-webkit-transition: -webkit-transform $transition;
 							transition: -webkit-transform $transition;
 							transition: transform $transition;
 							transition: transform $transition, -webkit-transform $transition;
 			.title {
-				width: 275px;
 				overflow: hidden;
 				font-family: $font-family-display;
 				font-size: 1.33rem;
@@ -173,7 +175,12 @@
 				white-space: nowrap;
 			}
 			.tags {
+				width: 100%;
+				max-width: 100%;
+				overflow: hidden;
 				margin-top: 0.5rem;
+				-webkit-mask-image: -webkit-linear-gradient(left, #000000 0%,#000000 90%,transparent 100%);
+				mask-image: linear-gradient(to right, #000000 0%,#000000 90%,transparent 100%);
 				.author,
 				.tag { margin-right: 0.2rem; }
 				.tag { opacity: 0.5; }
