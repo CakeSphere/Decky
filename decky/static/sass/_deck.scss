@@ -105,6 +105,18 @@
 /* These styles are specific to the deck tiles that show up in searches or on*/
 /* card pages*/
 
+.demo .deck:first-child {
+	.deck-img, .deck-info {
+		@include demo(demo-slide);
+	}
+	.color-bar {
+		@include demo(demo);
+		span {
+			@include demo(demo-fade);
+		}
+	}
+}
+
 .row {
 	margin: 0 -0.5rem;
 	.deck {
@@ -120,17 +132,6 @@
 		cursor: pointer;
 		overflow: hidden;
 		transition: none;
-		&:first-child {
-			.deck-img, .deck-info {
-				@include demo(demo-slide);
-			}
-			.color-bar {
-				@include demo(demo);
-				span {
-					@include demo(demo-fade);
-				}
-			}
-		}
 		&:after {
 			position: absolute;
 			z-index: 1;

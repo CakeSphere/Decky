@@ -54,6 +54,18 @@
 	to   { opacity: 0; }
 }
 
+/* Flipcard demo animation */
+
+@-webkit-keyframes demo-flipper {
+	from { -webkit-transform: rotateY(0deg); transform: rotateY(0deg) }
+	to { -webkit-transform: rotateY(360deg); transform: rotateY(360deg) }
+}
+
+@keyframes demo-flipper {
+	from { -webkit-transform: rotateY(0deg); transform: rotateY(0deg) }
+	to { -webkit-transform: rotateY(360deg); transform: rotateY(360deg) }
+}
+
 /* Animation for sidebars sliding in*/
 
 @-webkit-keyframes aside-slide {

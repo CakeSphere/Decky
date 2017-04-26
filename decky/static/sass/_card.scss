@@ -26,6 +26,7 @@
 	/* Flipper enables 3-D flipping on hover for cards with content on the 
 		 backside */
 	.flipper {
+		@include demo(demo-flipper);
 		position: relative;
 		-webkit-transition: 0.6s;
 						transition: 0.6s;

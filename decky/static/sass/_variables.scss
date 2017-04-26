@@ -6,7 +6,8 @@
 // Gathering Colors.
 
 $color-background:       hsl(0, 0%, 15%);
-$color-background-tint:  tint($color-background, 10%);
+$color-background-shade: hsl(0, 0%, 0%);
+$color-background-tint:  hsl(0, 0%, 20%);
 $color-primary:          hsl(289, 92%, 67%);
 $color-text-weak:        hsl(0, 0%, 67%);
 $color-text:             hsl(0, 0%, 97%);

@@ -38,7 +38,11 @@
 	{% endfor %}
 	{% for card in cards %}
 	<div class="container">
-		<h2>{{ card.name }}</h2>
+		<h2>
+			<a href="/card/{{ card.multiverseId }}" target="_blank">
+				{{ card.name }}
+			</a>
+		</h2>
 		<img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseid}}&type=card" alt="{{ card.name }}">
 		<p class="text">{{ card.text }}</p>
 		<p class="flavor">{{ card.flavor }}</p>

@@ -89,16 +89,15 @@
 		line-height: 58px;
 		text-align: center;
 		padding-top: 0.5rem;
-		-webkit-transition: none;
-						transition: none; /* Remove standard link color transition*/
+		-webkit-transition: background $transition;
+						transition: background $transition;
 		svg {
 			width: 64px;
 			margin-top: 0.6rem;
 			fill: $color-text;
 		}
 		&:hover {
-			/* Remove default underline from main logo*/
-			background: none;
+			background: tint($color-background, 5%);
 		}
 	}
 	a.btn {
@@ -112,10 +111,11 @@
 		border-bottom: 1px solid tint($color-background, 5%);
 		border-top: 1px solid shade($color-background, 5%);
 		text-align: center;
+		text-shadow: 0 2px 4px transparentize($color-background-shade, 0.5);
 		span {
+			color: transparentize($color-text-weak, 0.5);
 			-webkit-transition: color 0.2s;
 							transition: color 0.2s;
-			color: transparentize($color-text-weak, 0.5);
 		}
 		svg {
 			display: block;
@@ -123,6 +123,8 @@
 			margin: auto;
 			margin-top: 1rem;
 			fill: transparentize($color-text-weak, 0.5);
+			-webkit-filter: drop-shadow(0 2px 4px transparentize($color-background-shade, 0.5));
+							filter: drop-shadow(0 2px 4px transparentize($color-background-shade, 0.5));
 			-webkit-transition: fill 0.2s;
 							transition: fill 0.2s;
 		}
@@ -132,13 +134,12 @@
 			span {
 				background: none;
 				color: $color-text;
-				text-shadow: none;
 			}
 		}
 	}
 	.active a {
 		border-left: 2px solid transparentize($color-primary, 0.25);
-		width: 98px; // Default width minus the border-right width
+		width: 98px; /* Default width minus the border-right width*/
 		background: tint($color-background, 2.5%);
 		&:after {
 			content: '';
@@ -174,7 +175,7 @@ aside {
 }
 
 footer {
-	/* Footer with some legal info*/
+	/* Footer with some legal info and credits*/
 	z-index: 1000;
 	position: relative;
 	margin-top: 3rem;
@@ -184,6 +185,10 @@ footer {
 	box-shadow: 0 -2px 4px shade($color-background, 5%);
 	color: rgba($color-text, 0.75);
 	text-align: center;
+	.container {
+		width: 100%;
+		margin: 0;
+	}
 	a {
 		color: $color-text;
 		&:hover {
