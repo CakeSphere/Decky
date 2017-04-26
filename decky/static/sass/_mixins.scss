@@ -6,34 +6,33 @@
 @mixin btn($color) {
 	$color-tint: tint($color, 15%);
 	$color-shade: shade($color, 75%);
-	color: $color;
-	border-color: $color;
+	color: $color-text;
+	background: shade($color, 20%);
+	border-color: $color-shade;
 	&:hover {
-		color: $color-tint;
-		border-color: $color-tint;
-		background: $color-shade;
+		background: shade($color, 10%);
+		border-color: $color-shade;
 		.cancel {
 			fill: $color-tint;
 		}
 	}
 	&:active {
+		border-color: $color-shade;
 		color: $color-tint;
-		border-color: $color-tint;
 	}
 	&.active {
-		background: $color;
-		color: $color-background;
-		border-color: $color-tint;
+		background: shade($color, 33%);
+		border-color: $color-shade;
+		box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.15),
+								inset 0 0 4px rgba(255, 255, 255, 0.05),
+								0 2px 3px rgba(0, 0, 0, 0.15);
+		color: $color-text;
 		.cancel {
-			fill: $color-background;
-		}
-		&:hover {
-			color: $color-background;
-			background: tint($color, 10%);
+			fill: tint($color, 15%);
 		}
 	}
 	.cancel {
-		fill: $color;
+		fill: $color-text;
 	}
 }
 
@@ -42,8 +41,8 @@
 
 @mixin color-bar($color) {
 		background: $color; 
-		color: $color; 
 		box-shadow: inset 0 0 5px darken($color, 5%);
+		color: $color; 
 }
 
 /* Underline mixin, borrowed from Medium*/
