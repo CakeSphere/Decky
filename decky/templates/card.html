@@ -1,6 +1,56 @@
 {% extends "layout.html" %}
 {% block body %}
+<div class="card-bg">
+	<img src="http://magiccards.info/scans/en/{{card.setCode.lower()}}/{{card.number}}.jpg" alt="">
+</div>
 <div class="container card">
+	<aside>
+		<h3>Color Identity</h3>
+		{% if card.colorIdentity|length > 0 %}
+			{% for color in card.colorIdentity.split(', ') %}
+				<button class="btn color-identity {{color.lower()}}">
+					<span class="mana small s{{color.lower()}} shadow">&nbsp;</span>
+					&nbsp;
+				</button>
+			{% endfor %}
+			{% else %}
+			<button class="btn color-identity">
+				<span class="mana small sc shadow">&nbsp;</span>
+				Colorless
+			</button>
+		{% endif %}
+		<h3>Legal Formats</h3>
+		<button class="btn">Standard</button>
+		<button class="btn">Modern</button>
+		<button class="btn">Legacy</button>
+		<button class="btn">Vintage</button>
+		<button class="btn">Commander</button>
+		<button class="btn">Casual</button>
+		<h3>Set</h3>
+		<button class="btn">
+			<i class="ss ss-emn ss-{{card.rarity.lower()}} {% if card.rarity != 'Common' %}ss-grad{% endif %}">&nbsp;</i>
+			{{card.setId}} <span class="rarity">&mdash; {{card.rarity}}</span>
+		</button>
+		<h3>Price</h3>
+		<button class="btn">
+			$ <span class="price">6.00</span>
+		</button>
+		<button class="btn">
+			$ <span class="price">8.00</span> Foil
+		</button> 
+		<span class="price-source">TCGPlayer</span>
+		<button class="btn">
+			$ <span class="price">6.00</span>
+		</button>
+		<button class="btn">
+			$ <span class="price">8.00</span> Foil
+		</button> 
+		<span class="price-source">Isle of Cards</span>
+		<h3>Mana Cost</h3>
+		{% for mana in cardMana.split(" ") %}
+			<span class="mana medium s{{mana.lower()}} shadow">&nbsp;</span>
+		{% endfor %}
+	</aside>
 	<section>
 		<div class="card-container">
 			{% if not flipCardA and not flipCardB %}
@@ -66,52 +116,5 @@
 				</div>
 		</div>
 	</section>
-	<aside>
-		<h3>Color Identity</h3>
-		{% if card.colorIdentity|length > 0 %}
-			{% for color in card.colorIdentity.split(', ') %}
-				<button class="btn color-identity {{color.lower()}}">
-					<span class="mana small s{{color.lower()}} shadow">&nbsp;</span>
-					&nbsp;
-				</button>
-			{% endfor %}
-			{% else %}
-			<button class="btn color-identity">
-				<span class="mana small sc shadow">&nbsp;</span>
-				Colorless
-			</button>
-		{% endif %}
-		<h3>Legal Formats</h3>
-		<button class="btn">Standard</button>
-		<button class="btn">Modern</button>
-		<button class="btn">Legacy</button>
-		<button class="btn">Vintage</button>
-		<button class="btn">Commander</button>
-		<button class="btn">Casual</button>
-		<h3>Set</h3>
-		<button class="btn">
-			<i class="ss ss-emn ss-{{card.rarity.lower()}} {% if card.rarity != 'Common' %}ss-grad{% endif %}">&nbsp;</i>
-			{{card.setId}} <span class="rarity">&mdash; {{card.rarity}}</span>
-		</button>
-		<h3>Price</h3>
-		<button class="btn">
-			$ <span class="price">6.00</span>
-		</button>
-		<button class="btn">
-			$ <span class="price">8.00</span> Foil
-		</button> 
-		<span class="price-source">TCGPlayer</span>
-		<button class="btn">
-			$ <span class="price">6.00</span>
-		</button>
-		<button class="btn">
-			$ <span class="price">8.00</span> Foil
-		</button> 
-		<span class="price-source">Isle of Cards</span>
-		<h3>Mana Cost</h3>
-		{% for mana in cardMana.split(" ") %}
-			<span class="mana medium s{{mana.lower()}} shadow">&nbsp;</span>
-		{% endfor %}
-	</aside>
 </div>
 {% endblock %}

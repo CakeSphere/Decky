@@ -55,7 +55,7 @@
 	}
 	h2 {
 		margin-top: 0;
-		color: shade($color-text-weak, 15%);
+		color: $color-text-weak;
 		font-family: $font-family-display;
 		font-weight: normal;
 	}
@@ -102,5 +102,28 @@
 	.most-liked h2 { 
 		margin-top: 3rem; 
 		font-family: $font-family-text;
+	}
+}
+
+.card-bg {
+	img {
+		position: fixed;
+		top: -25%;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 110%;
+		filter: blur(15px) grayscale(100%);
+		z-index: -1;
+	}
+	&:after {
+		content: '';
+		position: fixed;
+		z-index: -1;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: transparentize($color-background, 0.1);
 	}
 }

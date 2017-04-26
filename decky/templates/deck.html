@@ -1,6 +1,47 @@
 {% extends "layout.html" %}
 {% block body %}
 <div class="container deck">
+	<aside>
+		<h3>Card Costs</h3>
+		<div class="btn-group card-costs">
+			<button class="btn u" style="width: 28%">
+				<span class="mana small su shadow">&nbsp;</span>28%
+			</button>
+			<button class="btn w" style="width: 35%">
+				<span class="mana small sw shadow">&nbsp;</span>35%
+			</button>
+			<button class="btn r" style="width: 35%">
+				<span class="mana small sr shadow">&nbsp;</span>35%
+			</button>
+		</div>
+		<h3>Mana Available</h3>
+		<div class="btn-group mana-avilable">
+			<button class="btn u" style="width: 34%">
+				<span class="mana small su shadow">&nbsp;</span>35%
+			</button>
+			<button class="btn w" style="width: 32%">
+				<span class="mana small sw shadow">&nbsp;</span>32%
+			</button>
+			<button class="btn r" style="width: 32%">
+				<span class="mana small sr shadow">&nbsp;</span>32%
+			</button>
+		</div>
+		<h3>Legal Formats</h3>
+		<button class="btn">Standard</button>
+		<h3>Deck Type</h3>
+		<button class="btn">Control</button>
+		<button class="btn">Discard</button>
+		<button class="btn">Izzet</button>
+		<h3>Price</h3>
+		<a href="http://www.tcgplayer.com" class="btn">
+			$ <span class="price">286.27</span>
+		</a>
+		<span class="price-source">TCGPlayer</span> <br>
+		<a href="http://www.isleofcards.com" class="btn">
+			$ <span class="price">283.98</span>
+		</a>
+		<span class="price-source">Isle of Cards</span>
+	</aside>
 	<section>
 		<div class="deck-header">
 			<div class="deck-info">
@@ -176,46 +217,5 @@
 			</div>
 		</div>
 	</section>
-	<aside>
-		<h3>Card Costs</h3>
-		<div class="btn-group card-costs">
-			<button class="btn u" style="width: 28%">
-				<span class="mana small su shadow">&nbsp;</span>28%
-			</button>
-			<button class="btn w" style="width: 35%">
-				<span class="mana small sw shadow">&nbsp;</span>35%
-			</button>
-			<button class="btn r" style="width: 35%">
-				<span class="mana small sr shadow">&nbsp;</span>35%
-			</button>
-		</div>
-		<h3>Mana Available</h3>
-		<div class="btn-group mana-avilable">
-			<button class="btn u" style="width: 34%">
-				<span class="mana small su shadow">&nbsp;</span>35%
-			</button>
-			<button class="btn w" style="width: 32%">
-				<span class="mana small sw shadow">&nbsp;</span>32%
-			</button>
-			<button class="btn r" style="width: 32%">
-				<span class="mana small sr shadow">&nbsp;</span>32%
-			</button>
-		</div>
-		<h3>Legal Formats</h3>
-		<button class="btn">Standard</button>
-		<h3>Deck Type</h3>
-		<button class="btn">Control</button>
-		<button class="btn">Discard</button>
-		<button class="btn">Izzet</button>
-		<h3>Price</h3>
-		<a href="http://www.tcgplayer.com" class="btn">
-			$ <span class="price">286.27</span>
-		</a>
-		<span class="price-source">TCGPlayer</span> <br>
-		<a href="http://www.isleofcards.com" class="btn">
-			$ <span class="price">283.98</span>
-		</a>
-		<span class="price-source">Isle of Cards</span>
-	</aside>
 </div>
 {% endblock %}
