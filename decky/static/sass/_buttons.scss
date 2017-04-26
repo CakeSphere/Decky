@@ -45,17 +45,12 @@ button {
 		outline: none;
 	}
 	&.active {
-		background: shade($color-text-weak, 15%);
-		border-color: shade($color-text-weak, 25%);
-		box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.1),
-								inset 0 0 4px rgba(255, 255, 255, 0.05),
-								0 2px 3px rgba(0, 0, 0, 0.15);
-		color: $color-background;
+		background: tint($color-background, 2%);
+		border-color: rgba(0, 0, 0, 0.25);
+		box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.25);
+		color: shade($color-text-weak, 25%);
 		.cancel {
-			fill: $color-background;
-		}
-		&:hover {
-			background: tint($color-text-weak, 25%);
+			fill: shade($color-text-weak, 25%);
 		}
 	}
 	&.link {

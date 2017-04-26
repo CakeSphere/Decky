@@ -77,16 +77,8 @@
 /* Demo animation mixin for color-bar*/
 
 @mixin demo($animation-name) {
-	-webkit-animation-name: $animation-name;
-					animation-name: $animation-name;
-	-webkit-animation-delay: 0.5s;
-					animation-delay: 0.5s;
-	-webkit-animation-duration: 1s;
-					animation-duration: 1s;
-	-webkit-animation-iteration-count: 1;
-					animation-iteration-count: 1;
-	-webkit-animation-timing-function: cubic-bezier(0.17,0.67,0.83,0.67);
-					animation-timing-function: cubic-bezier(0.17,0.67,0.83,0.67);
+	-webkit-animation: 1s cubic-bezier(0.17,0.67,0.83,0.67) 0.5s 1 $animation-name;
+					animation: 1s cubic-bezier(0.17,0.67,0.83,0.67) 0.5s 1 $animation-name;
 }
 
 /*/ Helper to clear inner floats*/
