@@ -24,11 +24,11 @@
 		color: $color-tint;
 	}
 	&.active {
-		background: shade($color, 33%);
+		background: shade($color, 50%);
 		border-color: $color-shade;
-		color: $color-text;
+		color: shade($color-text-weak, 25%);
 		.cancel {
-			fill: tint($color, 15%);
+			fill: shade($color, 5%);
 		}
 	}
 	.cancel {
