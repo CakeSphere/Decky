@@ -29,7 +29,10 @@
 		@include demo(demo-flipper);
 		position: relative;
 		-webkit-transition: transform 0.2s cubic-bezier(0.17,0.67,0.83,0.67);
+						-webkit-transition: -webkit-transform 0.2s cubic-bezier(0.17,0.67,0.83,0.67);
+						transition: -webkit-transform 0.2s cubic-bezier(0.17,0.67,0.83,0.67);
 						transition: transform 0.2s cubic-bezier(0.17,0.67,0.83,0.67);
+						transition: transform 0.2s cubic-bezier(0.17,0.67,0.83,0.67), -webkit-transform 0.2s cubic-bezier(0.17,0.67,0.83,0.67);
 		-webkit-transform-style: preserve-3d;
 						transform-style: preserve-3d;
 	}
@@ -107,23 +110,24 @@
 
 .card-bg {
 	img {
+		z-index: -1;
 		position: fixed;
 		top: -25%;
 		left: 0;
 		right: 0;
 		bottom: 0;
 		width: 110%;
-		filter: blur(15px) grayscale(100%);
-		z-index: -1;
+		-webkit-filter: blur(15px) grayscale(100%);
+						filter: blur(15px) grayscale(100%);
 	}
 	&:after {
-		content: '';
-		position: fixed;
 		z-index: -1;
+		position: fixed;
 		top: 0;
 		left: 0;
 		right: 0;
 		bottom: 0;
+		content: '';
 		background: transparentize($color-background, 0.1);
 	}
 }
