@@ -9,7 +9,7 @@
 	color: $color-text;
 	background: shade($color, 20%);
 	border-color: $color-shade;
-	.mana.small:before {
+	.mana.small:after {
 		background-color: transparentize(shade($color, 50%), 0.8);
 	} 
 	&:hover {
