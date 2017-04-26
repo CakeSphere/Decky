@@ -1,0 +1,13 @@
+appdirs==1.4.0
+click==6.7
+-e git+https://github.com/CakeSphere/Decky.git@379563b8355572990952f7cfc242f10f5e30cc0b#egg=decky
+Flask==0.12
+itsdangerous==0.24
+Jinja2==2.9.5
+libsass==0.12.3
+MarkupSafe==0.23
+packaging==16.8
+pyparsing==2.1.10
+six==1.10.0
+smartypants==2.0.0
+Werkzeug==0.11.15

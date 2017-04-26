@@ -29,6 +29,7 @@ Decky is built with Flask.  Check out the [Flask Documentation](http://flask.poc
 
 How to run Decky assuming all dependencies are installed:
 
-1. `. venv/bin/activate`
-2. `export FLASK_APP=decky`
-3. `flask run`
+* `. venv/bin/activate`
+* `pip install -r requirements.txt`
+* `export FLASK_APP=decky`
+* `flask run`
