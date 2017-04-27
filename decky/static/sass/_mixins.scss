@@ -26,9 +26,9 @@
 	&.active {
 		background: shade($color, 50%);
 		border-color: $color-shade;
-		color: shade($color-text-weak, 25%);
+		color: shade($color-text-weak, 15%);
 		.cancel {
-			fill: shade($color, 5%);
+			fill: transparentize($color-text-weak, 0.5);
 		}
 	}
 	.cancel {
