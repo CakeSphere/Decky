@@ -6,22 +6,23 @@
 @mixin btn($color) {
 	$color-tint: tint($color, 15%);
 	$color-shade: shade($color, 75%);
+	position: relative;
 	color: $color-text;
 	background: shade($color, 20%);
 	border-color: $color-shade;
 	.mana.small:after {
 		background-color: transparentize(shade($color, 50%), 0.8);
 	} 
+	&:active {
+		border-color: $color-shade;
+		color: $color-tint;
+	}
 	&:hover {
-		background: shade($color, 10%);
+		background: tint($color, 5%);
 		border-color: $color-shade;
 		.cancel {
 			fill: $color-tint;
 		}
-	}
-	&:active {
-		border-color: $color-shade;
-		color: $color-tint;
 	}
 	&.active {
 		background: shade($color, 50%);
