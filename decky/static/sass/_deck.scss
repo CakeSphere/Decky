@@ -51,19 +51,15 @@
 	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
 	-webkit-transform: translateX(-63px) translate3d(0, 0, 0);
 					transform: translateX(-63px) translate3d(0, 0, 0);
-	-webkit-transition: transform $transition/2;
-					transition: transform $transition/2;
-	-webkit-transition-timing-function: ease-in-out;
-					transition-timing-function: ease-in-out;
+	-webkit-transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
+					transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
 	span {
 		/* Hacky span for the text in the color-bar so that we don't animate*/
 		/* anything but opacity and transform*/
 		opacity: 0;
 		color: $color-text;
-		-webkit-transition: opacity $transition;
-						transition: opacity $transition;
-		-webkit-transition-delay: $transition/2;
-						transition-delay: $transition/2;
+		-webkit-transition: opacity $transition $transition/2;
+						transition: opacity $transition $transition/2;
 	}
 	&:hover {
 		-webkit-transform: translateX(0) translate3d(0, 0, 0);

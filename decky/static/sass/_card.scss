@@ -26,7 +26,6 @@
 	/* Flipper enables 3-D flipping on hover for cards with content on the 
 		 backside */
 	.flipper {
-		@include demo(demo-flipper);
 		position: relative;
 		-webkit-transition: transform 0.2s cubic-bezier(0.17,0.67,0.83,0.67);
 						-webkit-transition: -webkit-transform 0.2s cubic-bezier(0.17,0.67,0.83,0.67);
@@ -48,6 +47,9 @@
 			-webkit-transform: rotateY(180deg);
 							transform: rotateY(180deg);
 		}
+	}
+	&.demo .flipper {
+		@include demo(demo-flipper);
 	}
 	h1 {
 		margin: 0;
