@@ -196,6 +196,7 @@
 		padding: 1rem;
 		text-align: center;
 		text-shadow: 0 2px 4px transparentize($color-background-shade, 0.5);
+		transition: $transition;
 		.account-icon {
 			width: 32px;
 			height: 32px;
@@ -213,6 +214,14 @@
 			text-overflow: ellipsis;
 			overflow: hidden;
 			white-space: nowrap;
+		}
+		&:hover {
+			height: calc(147px - 2rem);
+			.account-name {
+				white-space: initial;
+				overflow-wrap: normal;
+				overflow-wrap: break-word;
+			}
 		}
 	}
 }
