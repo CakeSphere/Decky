@@ -5,7 +5,7 @@ button {
 	margin-bottom: 10px;
 	padding: 0.5rem 0.7rem;
 
-	background: tint($color-background, 6%);
+	background-color: tint($color-background, 6%);
 	border: 1px solid tint($color-border-strong, 15%);
 	border-radius: $border-radius;
 	box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15),
@@ -21,8 +21,12 @@ button {
 	overflow: hidden;
 	vertical-align: middle;
 	white-space: nowrap;
-	-webkit-transition: color $transition, border-color $transition, background $transition;
-					transition: color $transition, border-color $transition, background $transition;
+	-webkit-transition: color $transition, 
+											border-color $transition, 
+											background $transition;
+					transition: color $transition, 
+											border-color $transition, 
+											background $transition;
 	-webkit-user-select: none;
 		 -moz-user-select: none;
 			-ms-user-select: none;
@@ -31,12 +35,16 @@ button {
 		background: tint($color-background, 10%);
 		color: $color-text;
 		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
+		/* Set symbols' strokes adjust as text color does*/
 		i { 
 			text-shadow: none; 
 			-webkit-text-stroke: 0.03em $color-text; 
 							text-stroke: 0.03em $color-text; 
 			&:after {
-				transform: translateX(3px) rotate(45deg);
+				-webkit-transform: translateX(3px) 
+													 rotate(45deg);
+								transform: translateX(3px) 
+													 rotate(45deg);
 			}
 		}
 	}
@@ -45,9 +53,7 @@ button {
 		outline: none;
 		i { text-shadow: none; }
 	}
-	&:focus {
-		outline: none;
-	}
+	&:focus { outline: none; } /* Removing default webkit outline*/
 	&.active {
 		background: tint($color-background, 2%);
 		border-color: rgba(0, 0, 0, 0.25);
@@ -71,12 +77,8 @@ button {
 			background: none;
 			color: shade($color-primary, 15%);
 			/* Hacky span that we add to make underlines on text buttons work.*/
-			span {
-				@include underline(shade($color-primary, 15%), $color-background);
-			}
-			svg {
-				fill: shade($color-primary, 15%);
-			}
+			span { @include underline(shade($color-primary, 15%), $color-background); }
+			svg { fill: shade($color-primary, 15%); }
 		}
 		&:active {
 			color: shade($color-primary, 25%);
@@ -87,6 +89,7 @@ button {
 			}
 		}
 	}
+	/* Little x to remove filters */
 	.cancel {
 		fill: $color-text-weak;
 		width: 10px;
@@ -110,9 +113,7 @@ button {
 		-webkit-text-stroke: 0.03em $color-text-weak;
 		-webkit-transition: color $transition;
 						transition: -webkit-text-stroke $transition;
-		&.ss-rare, &.ss-uncommon, &.ss-mythic {
-			-webkit-text-stroke: 0.03em $color-border-strong;
-		}
+		&.ss-rare, &.ss-uncommon, &.ss-mythic { -webkit-text-stroke: 0.03em $color-border-strong; }
 		&:after {
 			content: '';
 			position: absolute;
@@ -125,7 +126,11 @@ button {
 			height: 50px;
 			background-color: transparentize($color-text-weak, 0.9);
 			box-shadow: 2px -2px 2px rgba(0,0,0,0.05);
+			-webkit-transition: -webkit-transform $transition;
+			transition: -webkit-transform $transition;
 			transition: transform $transition;
+			transition: transform $transition, 
+									-webkit-transform $transition;
 			-webkit-transform: rotate(45deg);
 							transform: rotate(45deg);
 		}
@@ -147,18 +152,25 @@ button {
 			content: '';
 			background-color: transparentize($color-text-weak, 0.9);
 			box-shadow: 2px -2px 2px rgba(0,0,0,0.05);
-			transition: transform $transition;
+			-webkit-transition: -webkit-transform $transition;
+							transition: -webkit-transform $transition;
+							transition: transform $transition;
+							transition: transform $transition, 
+													-webkit-transform $transition;
 			-webkit-transform: rotate(45deg);
 							transform: rotate(45deg);
 		}
 	}
-	&:hover .mana.small:after {
-		transform: translateX(3px) rotate(45deg);
+	&:hover .mana.small:after { 
+		-webkit-transform: translateX(3px) 
+											 rotate(45deg); 
+						transform: translateX(3px) 
+											 rotate(45deg); 
 	}
 }
 
 .btn-group {
-	/* Used to indicate the amount of each Color in a deck currently*/
+	/* Currently used to indicate the amount of each Color in a deck */
 	display: inline-block;
 	.btn, 
 	a.btn, 
@@ -167,19 +179,13 @@ button {
 		z-index: 1;
 		margin-right: -4px; /* Removes the space next to an inline-block element*/
 		border-radius: 0;
-		&.primary {
-			z-index: 3;
-		}
+		&.primary { z-index: 3; }
 		&.u, 
 		&.w, 
 		&.r, 
 		&.g, 
-		&.b {
-			z-index: 2;
-		}
-		&:first-child {
-			border-radius: $border-radius 0 0 $border-radius;
-		}
+		&.b { z-index: 2; }
+		&:first-child { border-radius: $border-radius 0 0 $border-radius; }
 		&:last-child {
 			margin-right: 6px;
 			border-radius: 0 $border-radius $border-radius 0;
