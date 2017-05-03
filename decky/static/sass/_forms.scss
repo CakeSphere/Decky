@@ -53,17 +53,6 @@ select, select.btn {
 .input-group {
 	display: inline-block;
 	margin-right: 6px;
-	// Hiding labels in input-groups completely as we use placeholder text
-	label {
-		border: 0;
-		clip: rect(0 0 0 0);
-		height: 1px;
-		margin: -1px;
-		overflow: hidden;
-		padding: 0;
-		position: absolute;
-		width: 1px;
-	}
 	input {
 		margin-right: 0;
 		&:last-child {
