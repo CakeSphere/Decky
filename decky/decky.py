@@ -253,8 +253,8 @@ def show_entries():
 		return render_template('show_entries.html', cards=cards, sets=sets)
 
 
-@app.route('/search')
-def search():
+@app.route('/decks')
+def decks():
 		db = get_db()
 		cur = db.execute(
 				'select * from cards where colorIdentity="U" or colorIdentity="B" or colorIdentity="G" order by multiverseId asc limit 33'
@@ -263,7 +263,19 @@ def search():
 				'select * from sets order by releaseDate desc limit 5')
 		cards = cur.fetchall()
 		sets = cur_sets.fetchall()
-		return render_template('search.html', cards=cards, sets=sets)
+		return render_template('decks.html', cards=cards, sets=sets)
+
+@app.route('/cards')
+def cards():
+		db = get_db()
+		cur = db.execute(
+				'select * from cards where colorIdentity="U" or colorIdentity="B" or colorIdentity="G" order by multiverseId asc limit 33'
+		)
+		cur_sets = db.execute(
+				'select * from sets order by releaseDate desc limit 5')
+		cards = cur.fetchall()
+		sets = cur_sets.fetchall()
+		return render_template('cards.html', cards=cards, sets=sets)
 
 
 @app.route('/card/<multiverseId>')
