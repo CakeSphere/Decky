@@ -269,7 +269,7 @@ def decks():
 def cards():
 		db = get_db()
 		cur = db.execute(
-				'select * from cards where colorIdentity="U" or colorIdentity="B" or colorIdentity="G" order by multiverseId asc limit 33'
+				'select * from cards where type like "%Spirit" and type like "%Creature%" order by multiverseId asc limit 33'
 		)
 		cur_sets = db.execute(
 				'select * from sets order by releaseDate desc limit 5')

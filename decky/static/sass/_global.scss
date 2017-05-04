@@ -148,6 +148,11 @@ p {
 .mana::-moz-selection { background: initial; }
 .mana::selection { background: initial; }
 
+/* Set symbols */
+i.ss-common { -webkit-text-stroke: 0.03em $color-text; }
+i.ss-rare.ss-grad, i.ss-uncommon.ss-grad, i.ss-mythic.ss-grad { -webkit-text-stroke: 0.03em $color-border-strong; }
+
+
 /* These styles are only used on show_entries.html; will be deprecated*/
 
 label {

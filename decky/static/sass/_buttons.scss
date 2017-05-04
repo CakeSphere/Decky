@@ -112,9 +112,7 @@ button {
 		margin-right: 0.5rem;
 		-webkit-text-stroke: 0.03em $color-text-weak;
 		-webkit-transition: color $transition;
-						transition: -webkit-text-stroke $transition;
-		&.ss-rare, &.ss-uncommon, &.ss-mythic { -webkit-text-stroke: 0.03em $color-border-strong; }
-		&:after {
+						transition: -webkit-text-stroke $transition;		&:after {
 			content: '';
 			position: absolute;
 			left: -31px;
