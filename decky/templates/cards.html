@@ -119,10 +119,12 @@
 						<img alt="{{card.name}}" src="http://magiccards.info/scans/en/{{card.setCode.lower()}}/{{card.number}}.jpg">
 					</div>
 					<div class="card-info">
-						<div class="card-rarity pull-right">
-							<i class="ss ss-emn ss-{{card.rarity.lower()}} {% if card.rarity != 'Common' %}ss-grad{% endif %}">&nbsp;</i>
+						<div class="card-type">
+							<div class="card-rarity">
+								<i class="ss ss-emn ss-{{card.rarity.lower()}} {% if card.rarity != 'Common' %}ss-grad{% endif %}">&nbsp;</i>
+							</div>
+							{{card.type}}
 						</div>
-						<p class="card-type">{{card.type}}</p>
 						<p class="description">{{card.text}}</p>
 						<p class="flavor">{{card.flavor}}</p>
 						<p class="power-toughness">
