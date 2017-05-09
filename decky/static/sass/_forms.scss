@@ -150,7 +150,7 @@ textarea {
 	width: calc(100% - 1.5rem);
 	resize: none;
 	color: $color-text;
-	border-radius: $border-radius $border-radius 0 0;
+	border-radius: $border-radius;
 	white-space: normal;
 	font-size: 1.2rem;
 	&:focus {
@@ -167,11 +167,10 @@ textarea {
 	margin-top: -1rem;
 	margin-bottom: 1rem;
 	padding: 1rem 0 0.5rem 0;
-	border: 1px solid shade($color-border, 65%);
-	border-top: none;
 	-webkit-transition: border-color $transition;
 					transition: border-color $transition;
 	.btn {
 		margin-bottom: 0;
+		margin-right: 0;
 	}
 }
