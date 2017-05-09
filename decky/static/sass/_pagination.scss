@@ -34,7 +34,10 @@
 			background: tint($color-background, 6%);
 			border: 1px solid tint($color-border-strong, 15%);
 			border-radius: $border-radius;
-			box-shadow: inset -2px -2px 0 rgba(0, 0, 0, 0.25),
+			-webkit-box-shadow: inset -2px -2px 0 rgba(0, 0, 0, 0.25),
+									inset 0 0 4px rgba(255, 255, 255, 0.05),
+									0 0px 3px rgba(0, 0, 0, 0.15);
+			        box-shadow: inset -2px -2px 0 rgba(0, 0, 0, 0.25),
 									inset 0 0 4px rgba(255, 255, 255, 0.05),
 									0 0px 3px rgba(0, 0, 0, 0.15);
 			-webkit-transition: background $transition;
@@ -66,17 +69,23 @@
 						transition: transform $transition ease-out, -webkit-transform $transition ease-out;
 		&:hover {
 			background: none;
-			span { text-shadow: none; }
+			span { 
+				text-shadow: none; 
+				-webkit-user-select: none; 
+					 -moz-user-select: none; 
+						-ms-user-select: none; 
+								user-select: none; 
+			}
 			&::before { background: tint($color-background, 10%); }
 		}
 		&.disabled {
-			span { color: transparentize($color-text, 0.5); }
+			span { color: shade($color-text, 50%); }
 			&::before { 
 				opacity: 0.5; 
 			}
 			&:hover {
 				cursor: default;
-				span { color: transparentize($color-text, 0.5); }
+				span { color: shade($color-text, 50%); }
 				&::before { 
 					opacity: 0.5; 
 					background: tint($color-background, 6%);
@@ -98,7 +107,7 @@
 			 -moz-user-select: none;
 				-ms-user-select: none;
 						user-select: none;
-		&:after {
+		&::after {
 			/* Pagination expanation text*/
 			/* Content tag should usually not be used for actual page content */
 			/* because it cannot be localized easily*/
