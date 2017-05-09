@@ -76,6 +76,9 @@
 						-ms-user-select: none; 
 								user-select: none; 
 			}
+			&::before {
+				background: tint($color-background, 10%);
+			}
 		}
 		&.disabled {
 			span { color: shade($color-text, 50%); }

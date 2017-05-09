@@ -2,6 +2,8 @@
 {% block body %}
 	<div class="container">
 		<aside class="search-filters">
+			<h3>Card Name</h3>
+			<input class="block" type="text" placeholder="Search by card name&hellip;">
 			<h3>Color</h3>
 			<div class="active">
 				<button class="btn b active">
@@ -106,11 +108,7 @@
 			</select>
 		</aside>
 		<section>
-			<div class="search">
-				<input type="text" placeholder="Search for cards&hellip;">
-				<a href="search" class="btn primary">Search</a>
-			</div>
-			<div class="row demo">
+			<div class="row">
 				{% for card in cards %}
 				<a class="card" href="/card/{{card.multiverseId}}" title="{{card.name}}">
 					<div class="card-mana pull-right">{{card.manaCost}}</div>

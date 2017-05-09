@@ -28,17 +28,20 @@ textarea {
 		 -moz-user-select: none;
 			-ms-user-select: none;
 					user-select: none;
+	&.block {
+		width: calc(100% - 1.4rem);
+	}
 	&:focus {
 		outline: none;
 		background: tint($color-background, 4%);
 	}
 	&::-webkit-input-placeholder {
-		color: $color-text-weak;
+		color: shade($color-text-weak, 20%);
 		-webkit-transition: color $transition;
 		transition: color $transition;
 	}
 	&:focus::-webkit-input-placeholder {
-		color: $color-text;
+		color: shade($color-text, 20%);
 	}
 }
 

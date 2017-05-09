@@ -2,6 +2,8 @@
 {% block body %}
 	<div class="container">
 		<aside class="search-filters">
+			<h3>Deck Name</h3>
+			<input class="block" type="text" placeholder="Search by deck name&hellip;">
 			<h3>Color</h3>
 			<div class="active">
 				<button class="btn b active">
@@ -88,10 +90,6 @@
 			</select>
 		</aside>
 		<section>
-			<div class="search">
-				<input type="text" placeholder="Search for decks&hellip;">
-				<a href="search" class="btn primary">Search</a>
-			</div>
 			<div class="row demo">
 				{% for deck in cards %}
 				<a class="deck" href="/deck" title="{{deck.name}}">
