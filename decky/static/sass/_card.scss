@@ -44,7 +44,7 @@
 		-webkit-backface-visibility: hidden;
 						backface-visibility: hidden;
 		// Pseudo-element hack to handle cases when card images are broken
-		&:before {  
+		&::before {  
 			content: " ";
 			display: block;
 			position: absolute;
@@ -59,7 +59,7 @@
 									inset 0 0 4px rgba(255, 255, 255, 0.05),
 									0 2px 3px rgba(0, 0, 0, 0.15);
 		}
-		&:after {  
+		&::after {  
 			content: attr(alt);
 			display: block;
 			position: absolute;
@@ -121,11 +121,11 @@
 	}
 	.color-identity {
 		/* These should be moved into HTML; content should not be set in css*/
-		&.u:after { content: 'Blue'; }
-		&.g:after { content: 'Green'; }
-		&.w:after { content: 'White'; }
-		&.r:after { content: 'Red'; }
-		&.b:after { content: 'Black'; }
+		&.u::after { content: 'Blue'; }
+		&.g::after { content: 'Green'; }
+		&.w::after { content: 'White'; }
+		&.r::after { content: 'Red'; }
+		&.b::after { content: 'Black'; }
 	}
 	.price,
 	.rarity,
@@ -153,7 +153,7 @@
 		-webkit-filter: blur(15px) grayscale(100%);
 						filter: blur(15px) grayscale(100%);
 	}
-	&:after {
+	&::after {
 		z-index: -1;
 		position: fixed;
 		top: 0;
@@ -186,7 +186,7 @@
 	box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15),
 							inset 0 0 4px rgba(255, 255, 255, 0.05),
 							0 2px 3px rgba(0, 0, 0, 0.15);
-	&:after {
+	&::after {
 		position: absolute;
 		z-index: 1;
 		top: 0;
@@ -203,7 +203,7 @@
 						transition: opacity $transition/2;
 	}
 	&:hover { text-shadow: none; }
-	&:hover:after { opacity: 0.25; }
+	&:hover::after { opacity: 0.25; }
 	.card-mana {
 		font-size: 1.33rem;
 		color: $color-text-weak;
@@ -241,7 +241,7 @@
 		background: transparentize($color-background, 0.5);
 		border-radius: $border-radius 0 0 $border-radius;
 		box-shadow: none;
-		&:before {
+		&::before {
 			display: block;
 			content: '';
 			position: absolute;
@@ -258,7 +258,7 @@
 			left: -28px;
 			z-index: 1;
 			width: 395px;
-			&:before {  
+			&::before {  
 				content: " ";
 				display: block;
 				position: absolute;
@@ -273,7 +273,7 @@
 										inset 0 0 4px rgba(255, 255, 255, 0.05),
 										0 2px 3px rgba(0, 0, 0, 0.15);
 			}
-			&:after {  
+			&::after {  
 				content: attr(alt);
 				display: block;
 				position: absolute;

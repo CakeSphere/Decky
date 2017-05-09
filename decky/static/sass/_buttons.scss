@@ -31,7 +31,8 @@ button {
 		 -moz-user-select: none;
 			-ms-user-select: none;
 					user-select: none;
-	&:hover, &:focus {
+	&:hover, 
+	&:focus {
 		background: tint($color-background, 10%);
 		color: $color-text;
 		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
@@ -40,7 +41,7 @@ button {
 			text-shadow: none; 
 			-webkit-text-stroke: 0.03em $color-text; 
 							text-stroke: 0.03em $color-text; 
-			&:after {
+			&::after {
 				-webkit-transform: translateX(3px) 
 													 rotate(45deg);
 								transform: translateX(3px) 
@@ -112,7 +113,8 @@ button {
 		margin-right: 0.5rem;
 		-webkit-text-stroke: 0.03em $color-text-weak;
 		-webkit-transition: color $transition;
-						transition: -webkit-text-stroke $transition;		&:after {
+						transition: -webkit-text-stroke $transition;		
+		&::after {
 			content: '';
 			position: absolute;
 			left: -31px;
@@ -125,10 +127,10 @@ button {
 			background-color: transparentize($color-text-weak, 0.9);
 			box-shadow: 2px -2px 2px rgba(0,0,0,0.05);
 			-webkit-transition: -webkit-transform $transition;
-			transition: -webkit-transform $transition;
-			transition: transform $transition;
-			transition: transform $transition, 
-									-webkit-transform $transition;
+							transition: -webkit-transform $transition;
+							transition: transform $transition;
+							transition: transform $transition, 
+													-webkit-transform $transition;
 			-webkit-transform: rotate(45deg);
 							transform: rotate(45deg);
 		}
@@ -138,7 +140,7 @@ button {
 		position: relative;
 		top: 2px;
 		margin-right: 1rem;
-		&:after {
+		&::after {
 			z-index: 1;
 			position: absolute;
 			left: -31px;
@@ -159,7 +161,7 @@ button {
 							transform: rotate(45deg);
 		}
 	}
-	&:hover .mana.small:after { 
+	&:hover .mana.small::after { 
 		-webkit-transform: translateX(3px) 
 											 rotate(45deg); 
 						transform: translateX(3px) 

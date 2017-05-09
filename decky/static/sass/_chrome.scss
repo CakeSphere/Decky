@@ -6,8 +6,9 @@
 	right: 0;
 	padding: 0.5rem;
 	border-bottom: 1px solid tint($color-background, 5%);
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-	&:after {
+	-webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+					box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+	&::after {
 		z-index: -1;
 		position: absolute;
 		top: 0;
@@ -69,8 +70,9 @@
 	left: 0;
 	width: 100px;
 	border-right: 1px solid tint($color-background, 5%);
-	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
-	&:after {
+	-webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+					box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+	&::after {
 		z-index: -1;
 		position: absolute;
 		top: 0;
@@ -113,10 +115,11 @@
 		border-radius: 0;
 		border-bottom: 1px solid tint($color-background, 5%);
 		border-top: 1px solid shade($color-background, 5%);
-		box-shadow: none;
+		-webkit-box-shadow: none;
+						box-shadow: none;
 		text-align: center;
 		text-shadow: 0 2px 4px transparentize($color-background-shade, 0.5);
-		&:before {
+		&::before {
 			/* Diamond decoration*/
 			content: '';
 			position: absolute;
@@ -124,7 +127,6 @@
 			right: 29px;
 			width: 40px;
 			height: 40px;
-			// border: 1px solid transparentize($color-text-weak, 0.5);
 			background: transparentize($color-text-weak, 0.95);
 			-webkit-transition: background $transition;
 							transition: background $transition;
@@ -148,9 +150,11 @@
 			-webkit-transition: fill $transition;
 							transition: fill $transition;
 		}
-		&:hover, &:active, &:focus {
+		&:hover, 
+		&:active, 
+		&:focus {
 		background: transparentize($color-text-weak, 0.95);
-			&:before {
+			&::before {
 				background: transparentize($color-text-weak, 0.9);
 			}
 			svg { 
@@ -166,10 +170,10 @@
 		border-left: 2px solid transparentize($color-primary, 0.25);
 		width: 98px; /* Default width minus the border-right width*/
 		background: tint($color-background, 2.5%);
-		&:before {
+		&::before {
 			background: transparentize($color-text-weak, 0.9);
 		}
-		&:after {
+		&::after {
 			content: '';
 			display: block;
 			position: absolute;
@@ -192,21 +196,29 @@
 		height: calc(100px - 2rem);
 		background: transparentize($color-text-weak, 0.98);
 		border-top: 1px solid shade($color-background, 5%);
-		box-shadow: 0 -1px 0 tint($color-background, 5%);
+		-webkit-box-shadow: 0 -1px 0 tint($color-background, 5%);
+						box-shadow: 0 -1px 0 tint($color-background, 5%);
 		padding: 1rem;
 		text-align: center;
 		text-shadow: 0 2px 4px transparentize($color-background-shade, 0.5);
+		-webkit-transition: $transition;
 		transition: $transition;
 		.account-icon {
 			width: 32px;
 			height: 32px;
 			margin: auto;
 			margin-bottom: 1rem;
+			background: -webkit-gradient(linear, left top, right bottom, from($color-primary), to(adjust-hue($color-primary, -20%)) );
 			background: linear-gradient(to bottom right, $color-primary, adjust-hue($color-primary, -20%) );
 			border-radius: 50%;
-			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5),
-									inset 0 0 8px rgba(255, 255, 255, 0.25);
-			user-select: none;
+			-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5),
+													inset 0 0 8px rgba(255, 255, 255, 0.25);
+							box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5),
+													inset 0 0 8px rgba(255, 255, 255, 0.25);
+			-webkit-user-select: none;
+				 -moz-user-select: none;
+					-ms-user-select: none;
+							user-select: none;
 		}
 		.account-name {
 			width: calc(100px - 2rem);
@@ -249,7 +261,8 @@ footer {
 	padding: 3rem 0;
 	background: tint($color-background, 2.5%);
 	border-top: 1px solid tint($color-background, 5%);
-	box-shadow: 0 -2px 4px shade($color-background, 5%);
+	-webkit-box-shadow: 0 -2px 4px shade($color-background, 5%);
+					box-shadow: 0 -2px 4px shade($color-background, 5%);
 	color: rgba($color-text, 0.75);
 	text-align: center;
 	a {

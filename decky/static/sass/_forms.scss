@@ -154,20 +154,20 @@ textarea {
 	white-space: normal;
 	font-size: 1.2rem;
 	&:focus {
-		border-color: tint($color-border, 50%);
-	}
-	&:focus + .submit {
-		border-color: tint($color-border, 50%);
+		border-color: shade($color-border, 60%);
+		+ .submit {
+			border-color: shade($color-border, 60%);
+		}
 	}
 }
 
 .submit {
-	background: shade($color-border, 60%);
 	border-radius: 0 0 $border-radius $border-radius;
+	background: none;
 	margin-top: -1rem;
 	margin-bottom: 1rem;
-	padding: 0.5rem;
-	border: 1px solid $color-border;
+	padding: 1rem 0 0.5rem 0;
+	border: 1px solid shade($color-border, 65%);
 	border-top: none;
 	-webkit-transition: border-color $transition;
 					transition: border-color $transition;
