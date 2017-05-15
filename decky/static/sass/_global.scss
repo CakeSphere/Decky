@@ -51,6 +51,9 @@ aside {
 		font-weight: normal;
 		color: $color-text-weak;
 	}
+	label {
+		display: block;
+	}
 }
 
 section {
@@ -154,14 +157,6 @@ i.ss-rare.ss-grad, i.ss-uncommon.ss-grad, i.ss-mythic.ss-grad { -webkit-text-str
 
 
 /* These styles are only used on show_entries.html; will be deprecated*/
-
-label {
-	display: inline-block;
-	width: calc(50% - 2rem);
-	margin-right: 2rem;
-	opacity: 0.7;
-	vertical-align: top;
-}
 
 ul.cards-info {
 	margin-bottom: 3rem;

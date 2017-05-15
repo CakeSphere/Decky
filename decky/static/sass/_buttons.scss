@@ -47,6 +47,10 @@ button {
 								transform: translateX(3px) 
 													 rotate(45deg);
 			}
+			&.ss-grad {
+				-webkit-text-stroke: 0.03em $color-border-strong; 
+								text-stroke: 0.03em $color-border-strong; 
+			}
 		}
 	}
 	&:active {
