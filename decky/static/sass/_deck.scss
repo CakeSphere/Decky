@@ -49,8 +49,9 @@
 	background: none;
 	box-shadow: 0 0 5px shade($color-background, 10%);
 	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
-	-webkit-transform: translateX(-63px) translate3d(0, 0, 0);
-					transform: translateX(-63px) translate3d(0, 0, 0);
+	will-change: transform;
+	-webkit-transform: translateX(-63px);
+					transform: translateX(-63px);
 	-webkit-transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
 					transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
 	span {
@@ -62,8 +63,8 @@
 						transition: opacity $transition $transition/2;
 	}
 	&:hover {
-		-webkit-transform: translateX(0) translate3d(0, 0, 0);
-						transform: translateX(0) translate3d(0, 0, 0);
+		-webkit-transform: translateX(0);
+						transform: translateX(0);
 		span { opacity: 0.8; }
 	}
 	.mana {
@@ -142,18 +143,19 @@
 			content: '';
 			display: block;
 			opacity: 0.1;
+			will-change: opacity;
 			background: -webkit-linear-gradient(top, transparent, $color-primary);
 			background: linear-gradient(to bottom, transparent, $color-primary);
 			border-radius: $border-radius;
-			-webkit-transition: opacity $transition/2;
-							transition: opacity $transition/2;
+			-webkit-transition: opacity $transition;
+							transition: opacity $transition;
 		}
 		&:hover::after { opacity: 0.25; }
 		.color-bar {
 			&:hover {
 				~ .deck-info, ~ .deck-img {
-					-webkit-transform: translateX(63px) translate3d(0, 0, 0);
-									transform: translateX(63px) translate3d(0, 0, 0);
+					-webkit-transform: translateX(63px);
+									transform: translateX(63px);
 				}
 			}
 		}
@@ -163,7 +165,7 @@
 			text-shadow: none;
 			padding: 0.5rem;
 			vertical-align: top;
-			transform: translate3d(0, 0, 0);
+			will-change: transform;
 			text-overflow: ellipsis;
 			width: calc(100% - 195px);
 			-webkit-transition: -webkit-transform $transition;
@@ -191,7 +193,7 @@
 		}
 		.deck-img {
 			position: relative;
-			transform: translate3d(0, 0, 0);
+			will-change: transform;
 			-webkit-transition: -webkit-transform $transition;
 							transition: -webkit-transform $transition;
 							transition: transform $transition;
@@ -251,8 +253,8 @@
 		span { @include demo(demo-fade); }
 		&:hover {
 			+ hgroup, ~ .deck-img {
-				-webkit-transform: translateX(65px) translate3d(0, 0, 0); 
-								transform: translateX(65px) translate3d(0, 0, 0);
+				-webkit-transform: translateX(65px); 
+								transform: translateX(65px);
 			}
 		}
 	}
@@ -263,7 +265,7 @@
 		left: -19px;
 		top:-43px;
 		height: 370px;
-		transform: translate3d(0, 0, 0);
+		will-change: transform;
 		-webkit-mask-image: -webkit-linear-gradient(left, #000000 0%,transparent 94%,transparent 100%);
 						mask-image: linear-gradient(to right, #000000 0%,transparent 94%,transparent 100%);
 		-webkit-transition: transform $transition/2;
@@ -281,7 +283,7 @@
 		left: 1rem;
 		z-index: 1;
 		text-shadow: 0 2px 4px rgba(0,0,0,0.15);
-		transform: translate3d(0, 0, 0);
+		will-change: transform;
 		-webkit-transition: transform $transition/2;
 		-webkit-transition: -webkit-transform $transition/2;
 						transition: -webkit-transform $transition/2;
@@ -336,8 +338,8 @@
 	}
 	.card-type, .sideboard {
 		&:hover .color-bar {
-			-webkit-transform: scaleX(1) translate3d(0, 0, 0);
-							transform: scaleX(1) translate3d(0, 0, 0);
+			-webkit-transform: scaleX(1);
+							transform: scaleX(1);
 			opacity: 1;
 			div span { opacity: 1; }
 		}
@@ -349,8 +351,9 @@
 			border-radius: $border-radius;
 			margin-top: 0.5rem;
 			margin-bottom: 0.5rem;
-			-webkit-transform: scaleX(0) translate3d(0, 0, 0);
-							transform: scaleX(0) translate3d(0, 0, 0);
+			will-change: transform;
+			-webkit-transform: scaleX(0);
+							transform: scaleX(0);
 			div {
 				display: inline-block;
 				height: 20px;

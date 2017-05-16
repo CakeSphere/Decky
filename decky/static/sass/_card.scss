@@ -196,11 +196,12 @@
 		content: '';
 		display: block;
 		opacity: 0.1;
+		will-change: opacity;
 		background: -webkit-linear-gradient(top, transparent, $color-primary);
 		background: linear-gradient(to bottom, transparent, $color-primary);
 		border-radius: $border-radius;
-		-webkit-transition: opacity $transition/2;
-						transition: opacity $transition/2;
+		-webkit-transition: opacity $transition;
+						transition: opacity $transition;
 	}
 	&:hover { text-shadow: none; }
 	&:hover::after { opacity: 0.25; }
@@ -227,7 +228,7 @@
 	}
 	.card-img {
 		position: relative;
-		transform: translate3d(0, 0, 0);
+		will-change: transform;
 		-webkit-transition: -webkit-transform $transition;
 						transition: -webkit-transform $transition;
 						transition: transform $transition;
