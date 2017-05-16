@@ -13,7 +13,8 @@ textarea {
 	width: 115px;
 	background: tint($color-background, 2%);
 	border: 1px solid  rgba(0, 0, 0, 0.25);
-	box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.25);
+	-webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.25);
+					box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.25);
 	color: shade($color-text-weak, 15%);
 	border-radius: $border-radius;
 	font-family: $font-family-text;
@@ -89,7 +90,8 @@ select, select.btn {
 	vertical-align: top;
 	border: 1px solid shade($color-border, 75%);
 	background: tint($color-background, 4%);
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.25);
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.25);
+					box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.25);
 	-webkit-user-select: none;
 		 -moz-user-select: none;
 			-ms-user-select: none;
@@ -115,13 +117,15 @@ select, select.btn {
 		background: tint($color-background, 3%);
 		border-color: rgba($color-primary, 0.25);
 		border-radius: $border-radius 0 0 $border-radius;
-		box-shadow: inset 0 0 6px shade($color-background, 2.5%);
+		-webkit-box-shadow: inset 0 0 6px shade($color-background, 2.5%);
+						box-shadow: inset 0 0 6px shade($color-background, 2.5%);
 		color: $color-text;
 		font-size: 1.33rem;
 		&:focus {
 			background: $color-background;
 			border-color: rgba($color-primary, 0.5);
-			box-shadow: inset 0 4px 8px shade($color-background, 7.5%);
+			-webkit-box-shadow: inset 0 4px 8px shade($color-background, 7.5%);
+							box-shadow: inset 0 4px 8px shade($color-background, 7.5%);
 		}
 	}
 	a.btn {
@@ -131,7 +135,8 @@ select, select.btn {
 		background: tint($color-background, 3%);
 		border-color: rgba($color-primary, 0.25);
 		border-radius: 0 $border-radius $border-radius 0;
-		box-shadow: inset 0 0 6px shade($color-background, 2.5%);
+		-webkit-box-shadow: inset 0 0 6px shade($color-background, 2.5%);
+						box-shadow: inset 0 0 6px shade($color-background, 2.5%);
 		font-size: 1.33rem;
 		text-align: center;
 		&:hover {
@@ -140,21 +145,25 @@ select, select.btn {
 		&:active {
 			background: $color-background;
 			border-color: rgba($color-primary, 0.5);
-			box-shadow: inset 0 4px 8px shade($color-background, 7.5%);
+			-webkit-box-shadow: inset 0 4px 8px shade($color-background, 7.5%);
+							box-shadow: inset 0 4px 8px shade($color-background, 7.5%);
 		}
 	}
 }
 
 /* Checkboxes */
 
-input[type="checkbox"] {
+input[type="checkbox"], input[type="radio"] {
 	position: absolute;
 	left: -9999px;
 	+ label {
 		position: relative;
 		padding-left: 1.75rem;
 		cursor: pointer;
-		user-select: none;
+		-webkit-user-select: none;
+			 -moz-user-select: none;
+				-ms-user-select: none;
+						user-select: none;
 		line-height: 24px;
 		&::before {
 			content: '';
@@ -166,7 +175,8 @@ input[type="checkbox"] {
 			border-radius: $border-radius;
 			background: tint($color-background, 2%);
 			border: 1px solid rgba(0, 0, 0, 0.25);
-			box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.25);
+			-webkit-box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.25);
+							box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.25);
 		}
 		&::after {
 			content: '✕';
@@ -175,15 +185,27 @@ input[type="checkbox"] {
 			left: 0.25rem;
 			font-size: 1rem;
 			color: $color-text-weak;
+			-webkit-transition: opacity $transition, -webkit-transform $transition;
+			transition: opacity $transition, -webkit-transform $transition;
 			transition: transform $transition, opacity $transition;
+			transition: transform $transition, opacity $transition, -webkit-transform $transition;
 			opacity: 0;
-			transform: scale(0);
+			-webkit-transform: scale(0);
+							transform: scale(0);
 		}
 	}
 	&:checked + label::after {
 		opacity: 1;
-		transform: scale(1);
+		-webkit-transform: scale(1);
+						transform: scale(1);
 	}
+}
+
+input[type="radio"] + label::after {
+	content: '•';
+	top: -0.1rem;
+	left: 0.125rem;
+	font-size: 4rem;
 }
 
 /* Textareas are currently only used for comments; changes will have to be*/
