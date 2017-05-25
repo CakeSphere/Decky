@@ -33,3 +33,9 @@ How to run Decky assuming all dependencies are installed:
 * `pip install -r requirements.txt`
 * `export FLASK_APP=decky`
 * `flask run`
+
+---
+
+Decky issues are tracked on [Trello](https://trello.com/b/eI9QlmUi/decky).
+
+--- 
