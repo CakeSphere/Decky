@@ -110,7 +110,7 @@ def format_card(raw_card):
 						out_card[field] = raw_card[field]
 						if isinstance(out_card[field], list):
 								out_card[field] = unicode(", ".join([
-										str(out_card[field][x]) for x in range(
+										unicode(out_card[field][x]) for x in range(
 												len(out_card[field]))
 								]))
 				else:
@@ -288,9 +288,9 @@ def card(multiverseId):
 		cardNumber = card['number']
 		flipCardA = False
 		flipCardB = False
-		if re.search('[a]', str(cardNumber)):
+		if re.search('[a]', unicode(cardNumber)):
 				flipCardA = True
-		if re.search('[b]', str(cardNumber)):
+		if re.search('[b]', unicode(cardNumber)):
 				flipCardB = True
 		cardMana = card['manaCost']
 		cardMana = cardMana.replace('}{', ' ')

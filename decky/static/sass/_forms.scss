@@ -160,6 +160,7 @@ input[type="checkbox"], input[type="radio"] {
 		position: relative;
 		padding-left: 1.75rem;
 		line-height: 24px;
+		-webkit-transition: color $transition;
 		transition: color $transition;
 		color: $color-text-weak;
 		cursor: pointer;
@@ -168,6 +169,7 @@ input[type="checkbox"], input[type="radio"] {
 				-ms-user-select: none;
 						user-select: none;
 		&:hover { color: $color-text; }
+		/* Checkbox background*/
 		&::before {
 			content: '';
 			position: absolute;
@@ -181,6 +183,7 @@ input[type="checkbox"], input[type="radio"] {
 			-webkit-box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.25);
 							box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.25);
 		}
+		/* Checkbox check*/
 		&::after {
 			content: '✕';
 			position: absolute;
@@ -197,6 +200,7 @@ input[type="checkbox"], input[type="radio"] {
 							transform: scale(0);
 		}
 	}
+	/* When the checkbox is checked, show the check*/
 	&:checked + label {
 		color: $color-text;
 		&::after {
@@ -207,6 +211,8 @@ input[type="checkbox"], input[type="radio"] {
 	}
 }
 
+/* Radio buttons work the same as checkboxes, but using a bullet instead of*/
+/* a multiplication symbol*/
 input[type="radio"] + label::after {
 	content: '•';
 	top: -0.1rem;
