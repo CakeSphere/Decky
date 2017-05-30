@@ -28,7 +28,7 @@
 		<button class="btn">Casual</button>
 		<h3>Set</h3>
 		<button class="btn">
-			<i class="ss ss-emn ss-{{card.rarity.lower()}} {% if card.rarity != 'Common' %}ss-grad{% endif %}">&nbsp;</i>
+			<i class="ss ss-{{card.setCode.lower()}} ss-{{card.rarity.lower()}} {% if card.rarity != 'Common' %}ss-grad{% endif %}">&nbsp;</i>
 			{{card.setId}} <span class="rarity">&mdash; {{card.rarity}}</span>
 		</button>
 		<h3>Price</h3>
