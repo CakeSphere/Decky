@@ -3,6 +3,7 @@ button {
 	display: inline-block;
 	margin-right: 6px;
 	margin-bottom: 10px;
+	max-width: 100%;
 	padding: 0.5rem 0.7rem;
 
 	background-color: tint($color-background, 6%);
@@ -19,6 +20,7 @@ button {
 
 	cursor: pointer;
 	overflow: hidden;
+	text-overflow: ellipsis;
 	vertical-align: middle;
 	white-space: nowrap;
 	-webkit-transition: color $transition, 

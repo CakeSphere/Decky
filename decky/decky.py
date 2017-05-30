@@ -240,8 +240,7 @@ def import_cards():
 									set_data["code"]))
 						db.commit()
 						print "\033[92m\033[1mCards imported.\033[0m"
-
-
+						
 @app.route('/')
 def show_entries():
 		db = get_db()
