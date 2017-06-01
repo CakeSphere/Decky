@@ -107,11 +107,11 @@ button {
 	}
 	/* All of our button styles, using the btn mixin (_mixins.scss)*/
 	&.primary { @include btn($color-primary); }
-	&.u       { @include btn($color-mtg-u); }
 	&.w       { @include btn($color-mtg-w); }
+	&.u       { @include btn($color-mtg-u); }
 	&.r       { @include btn($color-mtg-r); }
-	&.g       { @include btn($color-mtg-g); }
 	&.b       { @include btn($color-mtg-b); }
+	&.g       { @include btn($color-mtg-g); }
 	i { 
 		/* Set Icons*/
 		position: relative;
@@ -186,11 +186,11 @@ button {
 		margin-right: -4px; /* Removes the space next to an inline-block element*/
 		border-radius: 0;
 		&.primary { z-index: 3; }
-		&.u, 
 		&.w, 
-		&.r, 
-		&.g, 
-		&.b { z-index: 2; }
+		&.u, 
+		&.r,
+		&.b, 
+		&.g { z-index: 2; }
 		&:first-child { border-radius: $border-radius 0 0 $border-radius; }
 		&:last-child {
 			margin-right: 6px;
