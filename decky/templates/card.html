@@ -11,6 +11,11 @@
 				<button class="btn color-identity {{color.lower()}}">
 					<span class="mana small s{{color.lower()}} shadow">&nbsp;</span>
 					&nbsp;
+					{% if card.colorIdentity == 'W' %}White{% endif %}
+					{% if card.colorIdentity == 'U' %}Blue{% endif %}
+					{% if card.colorIdentity == 'R' %}Red{% endif %}
+					{% if card.colorIdentity == 'B' %}Black{% endif %}
+					{% if card.colorIdentity == 'G' %}Green{% endif %}
 				</button>
 			{% endfor %}
 			{% else %}

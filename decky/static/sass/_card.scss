@@ -119,14 +119,6 @@
 			}
 		}
 	}
-	.color-identity {
-		/* These should be moved into HTML; content should not be set in css*/
-		&.u::after { content: 'Blue'; }
-		&.g::after { content: 'Green'; }
-		&.w::after { content: 'White'; }
-		&.r::after { content: 'Red'; }
-		&.b::after { content: 'Black'; }
-	}
 	.price,
 	.rarity,
 	h2 em { color: $color-text; }
