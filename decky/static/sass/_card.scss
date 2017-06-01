@@ -1,7 +1,7 @@
 .card-img {
 	/* Border-radius is hardcoded based on the border-radius of a Magic card */
 	/* images*/
-	border-radius: 7px;
+	border-radius: 11px;
 }
 
 /* Styles specific to card.html*/
@@ -145,11 +145,11 @@
 	img {
 		z-index: -1;
 		position: fixed;
-		top: -25%;
-		left: 0;
+		top: -35%;
+		left: -4%;
 		right: 0;
 		bottom: 0;
-		width: 110%;
+		width: 115%;
 		-webkit-filter: blur(15px) grayscale(100%);
 						filter: blur(15px) grayscale(100%);
 	}
@@ -255,10 +255,10 @@
 		}
 		img {
 			position: relative;
-			bottom: 59px;
-			left: -28px;
+			bottom: 65px;
+			left: -33px;
 			z-index: 1;
-			width: 395px;
+			width: 413px;
 			&::before {  
 				content: " ";
 				display: block;

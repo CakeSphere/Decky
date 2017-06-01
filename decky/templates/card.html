@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block body %}
 <div class="card-bg">
-	<img src="http://magiccards.info/scans/en/{{card.setCode.lower()}}/{{card.number}}.jpg" alt="">
+	<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="">
 </div>
 <div class="container card demo">
 	<aside>
@@ -54,17 +54,17 @@
 	<section>
 		<div class="card-container">
 			{% if not flipCardA and not flipCardB %}
-			<img class="card-img" src="http://magiccards.info/scans/en/{{card.setCode.lower()}}/{{card.number}}.jpg" alt="{{card.name}}">
+			<img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
 			{% endif %}
 			{% if flipCardA %}
 			<div class="flipper">
-				<img class="card-img" src="http://magiccards.info/scans/en/{{card.setCode.lower()}}/{{card.number}}.jpg" alt="{{card.name}}">
-				<img class="card-img" src="http://magiccards.info/scans/en/{{card.setCode.lower()}}/{{card.number[:-1]}}b.jpg" alt="{{card.name}}">
+				<img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
+				<img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId+1}}&type=card" alt="{{card.name}}">
 			</div>
 			{% elif flipCardB %}
 			<div class="flipper">
-				<img class="card-img" src="http://magiccards.info/scans/en/{{card.setCode.lower()}}/{{card.number}}.jpg" alt="{{card.name}}">
-				<img class="card-img" src="http://magiccards.info/scans/en/{{card.setCode.lower()}}/{{card.number[:-1]}}a.jpg" alt="{{card.name}}">
+				<img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
+				<img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId-1}}&type=card" alt="{{card.name}}">
 			</div>
 			{% endif %}
 		</div>
@@ -90,7 +90,7 @@
 								<div class="b" style="height: 40%"><span><span class="mana small sb shadow">&nbsp;</span> 40%</span></div>
 							</div>
 							<div class="deck-img">
-								<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="Spell Queller">
+								<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
 							</div>
 							<div class="deck-info">
 								<div class="title">Deck Name</div>
