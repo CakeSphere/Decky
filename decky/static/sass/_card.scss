@@ -19,10 +19,6 @@
 							transform: rotateY(180deg);
 		}
 	}
-	.card-container, .card-img {
-		width: 312px;
-		height: 445px;
-	}
 	/* Flipper enables 3-D flipping on hover for cards with content on the 
 		 backside */
 	.flipper {
@@ -36,9 +32,6 @@
 						transform-style: preserve-3d;
 	}
 	.card-img {
-		position: absolute;
-		top: 0;
-		left: 0;
 		box-shadow: 0 2px 4px shade($color-background, 15%);
 		background: tint($color-background, 6%);
 		-webkit-backface-visibility: hidden;
