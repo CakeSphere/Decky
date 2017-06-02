@@ -57,7 +57,7 @@
 	-webkit-transform: translateX(-63px);
 					transform: translateX(-63px);
 	-webkit-transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
-					-webkit-transition: -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
+	-webkit-transition: -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
 					transition: -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
 					transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
 					transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67), -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
@@ -178,12 +178,10 @@
 			will-change: transform;
 			text-overflow: ellipsis;
 			width: calc(100% - 195px);
-			-webkit-transition-timing-function: cubic-bezier(0.17,0.67,0.83,0.67);
-			        transition-timing-function: cubic-bezier(0.17,0.67,0.83,0.67);
-			-webkit-transition: -webkit-transform $transition/2;
-							transition: -webkit-transform $transition/2;
-							transition: transform $transition/2;
-							transition: transform $transition/2, -webkit-transform $transition/2;
+			-webkit-transition: -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
+							transition: -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
+							transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
+							transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67), -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
 			.title {
 				overflow: hidden;
 				font-family: $font-family-display;
@@ -208,12 +206,10 @@
 		.deck-img {
 			position: relative;
 			will-change: transform;
-			-webkit-transition-timing-function: cubic-bezier(0.17,0.67,0.83,0.67);
-			        transition-timing-function: cubic-bezier(0.17,0.67,0.83,0.67);
-			-webkit-transition: -webkit-transform $transition/4;
-							transition: -webkit-transform $transition/4;
-							transition: transform $transition/4;
-							transition: transform $transition/4, -webkit-transform $transition/4;
+			-webkit-transition: -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
+							transition: -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
+							transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
+							transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67), -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
 			display: inline-block;
 			width: 165px;
 			height: 120px;
