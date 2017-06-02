@@ -1,5 +1,5 @@
 .top-nav {
-	z-index: 9998;
+	z-index: 500;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -9,7 +9,7 @@
 	-webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 					box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 	&::after {
-		z-index: -1;
+		z-index: -1; /* Pushing blurry background to the "back" */
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -36,10 +36,8 @@
 			top: 0;
 			opacity: 0;
 			pointer-events: none;
-			z-index: 3;
 		}
 		input {
-			z-index: 1;
 			width: 45px;
 			height: calc(38px - 1rem);
 			margin-bottom: 0;
@@ -63,7 +61,7 @@
 }
 
 .left-nav {
-	z-index: 9999;
+	z-index: 500;
 	position: fixed;
 	top: 0;
 	bottom: 0;
@@ -73,7 +71,7 @@
 	-webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
 					box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
 	&::after {
-		z-index: -1;
+		z-index: -1; /* Pushing blurry background to the "back" */
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -239,7 +237,7 @@
 }
 
 aside {
-	z-index: 998;
+	z-index: 400;
 	position: absolute;
 	top: 61px;
 	bottom: 0;
@@ -255,7 +253,7 @@ aside {
 
 footer {
 	/* Footer with some legal info and credits*/
-	z-index: 1000;
+	z-index: 400;
 	position: relative;
 	margin-top: 4rem;
 	padding: 3rem 0;

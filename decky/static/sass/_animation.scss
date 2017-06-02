@@ -14,8 +14,8 @@
 @-webkit-keyframes demo-slide {
 	from { -webkit-transform: translateX(0); 
 								 transform: translateX(0); }
-	80%  { -webkit-transform: translateX(65px); 
-								 transform: translateX(65px); }
+	80%  { -webkit-transform: translateX(63px); 
+								 transform: translateX(63px); }
 	to   { -webkit-transform: translateX(0); 
 								 transform: translateX(0); }
 }
@@ -34,8 +34,8 @@
 @keyframes demo-slide {
 	from { -webkit-transform: translateX(0); 
 								 transform: translateX(0); }
-	80%  { -webkit-transform: translateX(65px); 
-								 transform: translateX(65px); }
+	80%  { -webkit-transform: translateX(63px); 
+								 transform: translateX(63px); }
 	to   { -webkit-transform: translateX(0); 
 								 transform: translateX(0); }
 }
