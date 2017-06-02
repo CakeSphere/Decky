@@ -9,7 +9,7 @@
 	-webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 					box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 	&::after {
-		z-index: -1; /* Pushing blurry background to the "back" */
+		z-index: -100; /* Pushing blurry background to the "back" */
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -71,7 +71,7 @@
 	-webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
 					box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
 	&::after {
-		z-index: -1; /* Pushing blurry background to the "back" */
+		z-index: -100; /* Pushing blurry background to the "back" */
 		position: absolute;
 		top: 0;
 		left: 0;
