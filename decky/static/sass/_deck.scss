@@ -4,7 +4,8 @@
 .stats {
 	/* The display for comments and likes*/
 	.likes,
-	.comments {
+	.comments,
+	.export {
 		position: relative;
 		z-index: 3;
 		display: inline-block;
@@ -33,6 +34,9 @@
 			fill: $color-primary;
 			stroke: $color-primary;
 		}
+	}
+	.export svg {
+		fill: $color-text;
 	}
 }
 
@@ -226,7 +230,8 @@
 		}
 		.stats {
 			.likes,
-			.comments {
+			.comments,
+			.export {
 				&:hover svg, &:active svg {
 					fill: transparent;
 					stroke: $color-text;
