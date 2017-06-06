@@ -69,7 +69,7 @@
 			text-align: center;
 			color: shade($color-text, 15%);
 			font-family: $font-family-text;
-			font-size: 1rem;
+			font-size: $font-size-default;
 			text-decoration: none;
 			text-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
 		}
@@ -84,7 +84,7 @@
 	h1 {
 		margin: 0;
 		font-family: $font-family-display;
-		font-size: 2.66rem;
+		font-size: $font-size-h1;
 		font-style: italic;
 		font-weight: 800;
 	}
@@ -97,7 +97,7 @@
 	p {
 		&.text {
 			max-width: 1080px;
-			font-size: 1.5rem;
+			font-size: $font-size-lead;
 			line-height: 1.3;
 			br { line-height: 2.5rem; }
 			.mana.medium {
@@ -109,7 +109,7 @@
 		&.flavor {
 			max-width: 1080px;
 			color: shade($color-text, 20%);
-			font-size: 1.3rem;
+			font-size: $font-size-sub;
 			font-style: italic;
 			line-height: 1.1;
 			cite {
@@ -195,13 +195,13 @@
 	&:hover { text-shadow: none; }
 	&:hover::after { opacity: 0.25; }
 	.card-mana {
-		font-size: 1.33rem;
+		font-size: $font-size-sub;
 		color: $color-text-weak;
 	}
 	.title {
 		overflow: hidden;
 		font-family: $font-family-display;
-		font-size: 1.33rem;
+		font-size: $font-size-sub;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		color: $color-text;
@@ -271,7 +271,7 @@
 				text-align: center;
 				color: shade($color-text, 15%);
 				font-family: $font-family-text;
-				font-size: 1rem;
+				font-size: $font-size-default;
 				text-decoration: none;
 				text-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
 			}
@@ -294,7 +294,7 @@
 	}
 	.description, 
 	.flavor { font-family: $font-family-text; }
-	.flavor { font-size: 1rem; }
+	.flavor { font-size: $font-size-default; }
 	.power-toughness {
 		position: absolute;
 		bottom: 0;

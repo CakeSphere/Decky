@@ -60,7 +60,7 @@
 		margin: auto;
 		text-align: center;
 		font-family: $font-family-display;
-		font-size: 1.5rem;
+		font-size: $font-size-lead;
 		line-height: 1.25;
 		color: $color-text;
 		-webkit-transition: -webkit-transform $transition ease-out;
@@ -102,7 +102,7 @@
 		text-align: center;
 		margin: auto;
 		font-family: $font-family-display;
-		font-size: 1.5rem;
+		font-size: $font-size-lead;
 		line-height: 1.25;
 		pointer-events: none;
 		-webkit-user-select: none;
@@ -118,7 +118,7 @@
 			top: 45px;
 			right: 12px;
 			color: $color-text-weak;
-			font-size: 1rem;
+			font-size: $font-size-default;
 			font-family: $font-family-text;
 		}
 	}

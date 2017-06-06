@@ -185,7 +185,7 @@
 			.title {
 				overflow: hidden;
 				font-family: $font-family-display;
-				font-size: 1.33rem;
+				font-size: $font-size-sub;
 				text-overflow: ellipsis;
 				white-space: nowrap;
 			}
@@ -307,7 +307,7 @@
 		h1, 
 		h2 { margin: 0; }
 		h1 {
-			font-size: 2.66rem;
+			font-size: $font-size-h1;
 			font-style: italic;
 		}
 		h2 {
@@ -334,7 +334,7 @@
 	/* (e.g. Commander/EDH)*/
 	margin: 0 -0.5rem;
 	padding-top: 2rem;
-	li { font-size: 1.333rem; }
+	li { font-size: $font-size-sub; }
 	h2 { font-family: $font-family-display; }
 	.column {
 		display: inline-block;
@@ -383,7 +383,7 @@
 	p {
 		max-width: 900px;
 		font-family: $font-family-text;
-		font-size: 1.5rem;
+		font-size: $font-size-lead;
 	}
 }
 
@@ -406,7 +406,7 @@
 	.username { color: $color-text; }
 	p {
 		font-family: $font-family-text;
-		font-size: 1.2rem;
+		font-size: $font-size-sub;
 	}
 }
 

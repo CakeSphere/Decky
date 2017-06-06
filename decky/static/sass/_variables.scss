@@ -37,10 +37,13 @@ $font-family-text:       ('mr-eaves-sans',
 													helvetica, 
 													arial, 
 													sans-serif);
+
 $font-size:               18px;
 $font-size-default:       1rem;
-$font-size-h3:            $font-size-default * 1.33;
-
+$font-size-lead:          1.44rem;
+$font-size-sub:           1.2rem;
+$font-size-h1:            2.986rem;
+$font-size-h3:            1.44rem;
 
 $transition:              0.2s;
 $border-radius:           3px;
@@ -51,3 +54,31 @@ $z-index-paging:          200;
 $z-index-paging-text:     300;
 $z-index-nav:             400;
 $z-index-fixed:           500;
+
+// Font-size scale
+//
+// 18.488rem
+// 15.407rem
+// 12.839rem
+// 10.699rem
+//  8.916rem
+//  7.430rem
+//  6.192rem
+//  5.160rem
+//  4.300rem
+//  3.583rem
+//  2.986rem
+//  2.488rem
+//  2.074rem
+//  1.728rem
+//  1.440rem
+//  1.200rem
+//  1.000rem
+//  0.833rem
+//  0.694rem
+//  0.579rem
+//  0.482rem
+//  0.402rem
+//  0.335rem
+//
+// http://www.modularscale.com/?1&em&1.2
