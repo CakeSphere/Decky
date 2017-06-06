@@ -45,7 +45,7 @@
 	top: 0;
 	left: 0;
 	bottom: 0;
-	z-index: 100; /* Make sure the color bar appears above the card image */
+	z-index: $z-index-baseline; /* Make sure the color bar appears above the card image */
 	width: 66px;
 	height: 120px;
 	overflow: hidden;
@@ -253,7 +253,7 @@
 .deck-header {
 	position: relative;
 	overflow: hidden;
-	z-index: 100; /* Ensure that color-bar gets border-radius of deck-header */
+	z-index: $z-index-baseline; /* Ensure that color-bar gets border-radius of deck-header */
 	height: 162px;
 	background: tint($color-background, 3%);
 	-webkit-box-shadow: 0 0 50px shade($color-background, 15%);
@@ -294,7 +294,7 @@
 		position: absolute;
 		bottom: 1rem;
 		left: 1rem;
-		z-index: 100; /* Make sure deck info shows up above card image */
+		z-index: $z-index-baseline; /* Make sure deck info shows up above card image */
 		text-shadow: 0 2px 4px rgba(0,0,0,0.15);
 		will-change: transform;
 		-webkit-transition: transform $transition/2;

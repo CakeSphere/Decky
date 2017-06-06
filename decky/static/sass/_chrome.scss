@@ -9,7 +9,7 @@
 	-webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 					box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 	&::after {
-		z-index: -100; /* Pushing blurry background to the "back" */
+		z-index: $z-index-background; /* Pushing blurry background to the "back" */
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -61,7 +61,7 @@
 }
 
 .left-nav {
-	z-index: 500;
+	z-index: $z-index-fixed;
 	position: fixed;
 	top: 0;
 	bottom: 0;
@@ -71,7 +71,7 @@
 	-webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
 					box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
 	&::after {
-		z-index: -100; /* Pushing blurry background to the "back" */
+		z-index: $z-index-background; /* Pushing blurry background to the "back" */
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -237,7 +237,7 @@
 }
 
 aside {
-	z-index: 400;
+	z-index: $z-index-nav;
 	position: absolute;
 	top: 61px;
 	bottom: 0;
@@ -253,7 +253,7 @@ aside {
 
 footer {
 	/* Footer with some legal info and credits*/
-	z-index: 400;
+	z-index: $z-index-nav;
 	position: relative;
 	margin-top: 4rem;
 	padding: 3rem 0;

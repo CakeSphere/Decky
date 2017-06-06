@@ -180,15 +180,15 @@ button {
 	a.btn, 
 	button {
 		position: relative;
-		z-index: 100;
+		z-index: $z-index-baseline;
 		margin-right: -4px; /* Removes the space next to an inline-block element*/
 		border-radius: 0;
 		&.w, 
 		&.u, 
 		&.r,
 		&.b, 
-		&.g { z-index: 200; } /* Color buttons have higher priority */
-		&.primary { z-index: 300; } /* Primary buttons are highest priority */
+		&.g { z-index: $z-index-paging; } /* Color buttons have higher priority */
+		&.primary { z-index: $z-index-paging-text; } /* Primary buttons are highest priority */
 		&:first-child { border-radius: $border-radius 0 0 $border-radius; }
 		&:last-child {
 			margin-right: 6px;

@@ -40,3 +40,10 @@ $font-family-text:       ('mr-eaves-sans',
 
 $transition:              0.2s;
 $border-radius:           3px;
+
+$z-index-background:      -100;
+$z-index-baseline:        100;
+$z-index-paging:          200;
+$z-index-paging-text:     300;
+$z-index-nav:             400;
+$z-index-fixed:           500;

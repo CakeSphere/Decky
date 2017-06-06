@@ -721,7 +721,7 @@
 	top: .0em;
 	color: #fff;
 	font-size: 1.15em;
-	z-index: -1;
+	z-index: $z-index-background;
 	background: #fff;
 	-webkit-text-stroke: 0.05em #fff;
 	-webkit-background-clip: text;

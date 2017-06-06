@@ -134,7 +134,7 @@
 
 .card-bg {
 	img {
-		z-index: -100; // Hacky z-index to push it to the background. 
+		z-index: $z-index-background; // Hacky z-index to push it to the background. 
 		position: fixed;
 		top: -35%;
 		left: -4%;
@@ -145,7 +145,7 @@
 						filter: blur(15px) grayscale(100%);
 	}
 	&::after {
-		z-index: -100; // Hacky z-index to push it to the background. 
+		z-index: $z-index-background; // Hacky z-index to push it to the background. 
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -234,7 +234,7 @@
 			display: block;
 			content: '';
 			position: absolute;
-			z-index: -100; /* Hack to push the background behind the image */
+			z-index: $z-index-background; /* Hack to push the background behind the image */
 			top: 0;
 			left: 0;
 			right: 0;
