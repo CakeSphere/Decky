@@ -304,7 +304,7 @@ def card(multiverseId):
 		cardText = cardText.replace('{', '<span class="mana medium shadow s')
 		cardText = cardText.replace('}', '">&nbsp;</span>')
 		# Text on cards in parentheses is always italicized
-		cardText = cardText.replace('(', '<em>(')
+		cardText = cardText.replace('(', '<em class="card-explanation">(')
 		cardText = cardText.replace(')', ')</em>')
 		# Convert new lines to html line breaks
 		cardText = Markup('<br>'.join(cardText.split('\n')))
