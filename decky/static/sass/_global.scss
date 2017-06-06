@@ -15,14 +15,14 @@
 html {
 	/* Setting a base font-size. All other font-sizes should be in rems */
 	/* (multiples of this font-size)*/
-	font-size: 18px;
+	font-size: $font-size;
 }
 
 body {
 	background: $color-background;
 	color: $color-text;
 	font-family: $font-family-text;
-	font-size: 1rem;
+	font-size: $font-size-default;
 	padding-top: 5rem;
 	/* Opentype options*/
 	font-variant-numeric: lining-nums;
@@ -75,7 +75,7 @@ h5 {
 
 h3 {
 	/* These may need to be customized for all other headers*/
-	font-size: 1.33rem;
+	font-size: $font-size-h3;
 }
 
 a {

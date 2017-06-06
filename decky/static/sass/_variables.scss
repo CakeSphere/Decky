@@ -37,6 +37,10 @@ $font-family-text:       ('mr-eaves-sans',
 													helvetica, 
 													arial, 
 													sans-serif);
+$font-size:               18px;
+$font-size-default:       1rem;
+$font-size-h3:            $font-size-default * 1.33;
+
 
 $transition:              0.2s;
 $border-radius:           3px;
