@@ -130,10 +130,8 @@
 		margin-top: 3rem; 
 		font-family: $font-family-text;
 	}
-	section::after {
-		content: "";
-		display: table;
-		clear: both;
+	section {
+		@include clearfix;
 	}
 }
 
