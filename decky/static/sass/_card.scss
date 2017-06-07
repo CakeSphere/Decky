@@ -88,7 +88,7 @@
 		font-weight: 800;
 	}
 	h2 {
-		margin-top: 0;
+		margin-top: -0.25rem;
 		color: $color-text-weak;
 		font-family: $font-family-display;
 		font-weight: normal;
@@ -107,7 +107,7 @@
 			}
 		}
 		&.flavor {
-			max-width: 1080px;
+			max-width: 900px;
 			color: shade($color-text, 20%);
 			font-size: $font-size-sub;
 			font-style: italic;
