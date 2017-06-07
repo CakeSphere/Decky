@@ -84,7 +84,6 @@
 	h1 {
 		margin: 0;
 		font-family: $font-family-display;
-		font-size: $font-size-h1;
 		font-style: italic;
 		font-weight: 800;
 	}
@@ -130,6 +129,11 @@
 	.most-liked h2 { 
 		margin-top: 3rem; 
 		font-family: $font-family-text;
+	}
+	section::after {
+		content: "";
+		display: table;
+		clear: both;
 	}
 }
 

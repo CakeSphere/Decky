@@ -306,10 +306,7 @@
 						transition-timing-function: ease-in-out;
 		h1, 
 		h2 { margin: 0; }
-		h1 {
-			font-size: $font-size-h1;
-			font-style: italic;
-		}
+		h1 { font-style: italic; }
 		h2 {
 			font-weight: normal;
 			opacity: 0.8;
