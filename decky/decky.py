@@ -295,6 +295,7 @@ def card(multiverseId):
 		cardMana = cardMana.replace('}{', ' ')
 		cardMana = cardMana.replace('{', '')
 		cardMana = cardMana.replace('}', '')
+		cardMana = cardMana.replace('/', '')
 		cardText = card["text"]
 		# Italicize ability words
 		cardText = re.compile(
