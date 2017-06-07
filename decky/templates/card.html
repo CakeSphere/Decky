@@ -56,7 +56,7 @@
 			<span class="mana medium s{{mana.lower()}} shadow">&nbsp;</span>
 		{% endfor %}
 	</aside>
-	<section>
+	<section class="card-details">
 		<div class="card-container">
 			{% if not flipCardA and not flipCardB %}
 			<img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
@@ -73,19 +73,21 @@
 			</div>
 			{% endif %}
 		</div>
-		<h1>{{card.name}}</h1>
-		<h2>{{card.type}}</h2>
-		<p class="text">{{cardText}}</p>
-		{% if card.Flavor|length > 0 %}
-		<p class="flavor">
-			{{cardFlavor}}
-		</p>
-		{% endif %}
-		<p>
-			<em>Dev &mdash; 
-			<a href="/card/{{card.multiverseId-1}}" class="btn">Previous Card</a>
-			<a href="/card/{{card.multiverseId+1}}" class="btn">Next Card</a></em>
-		</p>
+		<div class="card-info">
+			<h1>{{card.name}}</h1>
+			<h2>{{card.type}}</h2>
+			<p class="text">{{cardText}}</p>
+			{% if card.Flavor|length > 0 %}
+			<p class="flavor">
+				{{cardFlavor}}
+			</p>
+			{% endif %}
+			<p>
+				<em>Dev &mdash; 
+				<a href="/card/{{card.multiverseId-1}}" class="btn">Previous Card</a>
+				<a href="/card/{{card.multiverseId+1}}" class="btn">Next Card</a></em>
+			</p>
+		</div>
 	</section>
 	<section> 
 		<div class="most-liked">
