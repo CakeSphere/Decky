@@ -45,12 +45,6 @@ aside {
 		/* Making sure things like up with the main content*/
 		margin-top: 0.6rem;
 	}
-	h3 {
-		/* Headings in sidebars use text font instead of display font*/
-		font-family: $font-family-text;
-		font-weight: normal;
-		color: $color-text-weak;
-	}
 	label {
 		display: block;
 	}
@@ -75,6 +69,16 @@ h5 {
 h1 { font-size: $font-size-h1; }
 h2 { font-size: $font-size-h2; }
 h3 { font-size: $font-size-h3; }
+
+
+h3 {
+	font-family: $font-family-text;
+	font-weight: normal;
+	color: $color-text-weak;
+	em {
+		color: $color-text;
+	}
+}
 
 a {
 	color: $color-primary;
