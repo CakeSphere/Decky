@@ -236,6 +236,15 @@
 	}
 }
 
+.main-container {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+	.main-content {
+		flex: 1;
+	}
+}
+
 aside {
 	z-index: $z-index-nav;
 	position: absolute;

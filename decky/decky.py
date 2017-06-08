@@ -241,7 +241,7 @@ def import_cards():
 						db.commit()
 						print "\033[92m\033[1mCards imported.\033[0m"
 						
-@app.route('/')
+@app.route('/show_entries')
 def show_entries():
 		db = get_db()
 		cur = db.execute('select * from cards order by multiverseid asc')
@@ -268,7 +268,7 @@ def decks():
 def cards():
 		db = get_db()
 		cur = db.execute(
-				'select * from cards where type like "%Spirit" and type like "%Creature%" order by multiverseId asc limit 33'
+				'select * from cards where type like "%Spirit%" and type like "%Creature%" order by multiverseId asc limit 44'
 		)
 		cur_sets = db.execute(
 				'select * from sets order by releaseDate desc limit 5')
@@ -324,3 +324,8 @@ def card(multiverseId):
 @app.route('/deck')
 def deck():
 		return render_template('deck.html')
+
+
+@app.route('/login')
+def index():
+		return render_template('login.html')
