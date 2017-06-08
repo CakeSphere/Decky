@@ -23,7 +23,7 @@
 		<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}?v=9BaWAXKO6p">
 		<meta name="theme-color" content="#272727">
 	</head>
-	<body>
+	<body {% if active_page == "login" %}class="login"{% endif %}>
 		{% for message in get_flashed_messages() %}
 			{{ message }}
 		{% endfor %}
