@@ -54,7 +54,10 @@ section {
 	/* Main content section*/
 	width: calc(100% - 2rem);
 	vertical-align: top;
+}
 
+aside + section {
+	margin-top: 100px;
 }
 
 h1,
