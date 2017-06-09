@@ -1,4 +1,3 @@
-
 /* Styles that are used throughout the application */
 
 /* Style elements (usually text) when selected by user */
@@ -23,7 +22,7 @@ body {
 	color: $color-text;
 	font-family: $font-family-text;
 	font-size: $font-size-default;
-	// padding-top: 5rem;
+	/* padding-top: 5rem;*/
 	/* Opentype options*/
 	font-variant-numeric: lining-nums;
 	-webkit-font-feature-settings: 'lnum', 'dlig';
@@ -168,17 +167,32 @@ ul.cards-info {
 	margin-bottom: 3rem;
 	margin-top: 3rem;
 	-webkit-column-count: 3;
-		 -moz-column-count: 3;
 					column-count: 3;
 	-webkit-column-gap: 1rem;
-		 -moz-column-gap: 1rem;
 					column-gap: 1rem;
 	-webkit-column-rule: solid $color-background-tint 1px;
-		 -moz-column-rule: solid $color-background-tint 1px;
 					column-rule: solid $color-background-tint 1px;
 }
 
 .value {
 	display: inline-block;
 	width: calc(50% - 1rem);
+}
+
+.low-graphics {
+	*, *::before, *::after {
+		text-shadow: none !important;
+		-webkit-transition: none !important;
+						transition: none !important;
+		-webkit-animation: none !important;
+						animation: none !important;
+		-webkit-box-shadow: none !important;
+						box-shadow: none !important;
+		-webkit-mask-image: none !important;
+						mask-image: none !important;
+	}
+
+	.deck::after, .card::after, .card-bg {
+		display: none !important;
+	}
 }

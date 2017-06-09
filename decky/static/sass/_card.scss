@@ -142,13 +142,15 @@
 	section {
 		@include clearfix;
 	}
-	.power-toughness {
-		color: $color-text-weak;
-		font-family: $font-family-display;
-		font-size: $font-size-lead;
-		strong {
-			color: $color-text;
-			font-weight: normal;
+	aside {
+		.power-toughness {
+			color: $color-text-weak;
+			font-family: $font-family-display;
+			font-size: $font-size-lead;
+			strong {
+				color: $color-text;
+				font-weight: normal;
+			}
 		}
 	}
 }
