@@ -56,6 +56,12 @@
 		{% for mana in cardMana.split(" ") %}
 			<span class="mana medium s{{mana.lower()}} shadow">&nbsp;</span>
 		{% endfor %}
+		{% if card.power or card.toughness %}
+			<h3>Power &amp; Toughness</h3>
+			<span class="power-toughness">
+				<strong>{{card.power}}</strong>/<strong>{{card.toughness}}</strong>
+			</span>
+		{% endif %}
 	</aside>
 	<section class="card-details">
 		<div class="card-container">
