@@ -54,7 +54,7 @@
 		<span class="price-source">Isle of Cards</span>
 		<h3>Mana Cost</h3>
 		{% for mana in cardMana.split(" ") %}
-			<span class="mana medium s{{mana.lower()}} shadow">&nbsp;</span>
+			<span class="mana medium s{{mana.lower()}} shadow">{{mana}}</span>
 		{% endfor %}
 		{% if card.power or card.toughness %}
 			<h3>Power &amp; Toughness</h3>

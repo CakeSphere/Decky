@@ -143,18 +143,19 @@ p {
 }
 
 /* Adjustments to the sizes of mana symbols; see _mana.scss*/
-.mana.small {
-	width: 0.888rem;
-	height: 0.888rem;
+.mana {
+	color: transparent;
+	&.small {
+		width: 0.888rem;
+		height: 0.888rem;
+	}
+	&.medium {
+		width: 0.888em;
+		height: 0.888em;
+	}
+	&::-moz-selection { background: initial; color: transparent; }
+	&::selection { background: initial; color: transparent; }
 }
-
-.mana.medium {
-	width: 0.888em;
-	height: 0.888em;
-}
-
-.mana::-moz-selection { background: initial; }
-.mana::selection { background: initial; }
 
 /* Set symbols */
 i.ss-common { -webkit-text-stroke: 0.03em $color-text; }
