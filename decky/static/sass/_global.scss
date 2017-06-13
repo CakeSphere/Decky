@@ -155,9 +155,9 @@ p {
 	&.medium.sE {
 		width: 1rem;
 		height: 1rem;
-		background-color: rgb(190, 184, 178);
-		background-position-y: 81.75%;
-		border: 2px solid rgb(190, 184, 178);
+		background-color: $color-mtg-c;
+		background-position: 88.75% 81.75%;
+		border: 2.25px solid $color-mtg-c;
 		border-radius: 100%;
 		line-height: 1.1;
 	}
