@@ -299,7 +299,7 @@ def card(multiverseId):
 		cardText = card["text"]
 		# Italicize ability words
 		cardText = re.compile(
-				r'(((battalion|bloodrush|channel|chroma|cohort|constellation|converge|council\'s dilemma|delirium|domain|fateful hour|ferocious|formidable|grandeur|hellbent|heroic|imprint|inspired|join forces|kinship|landfall|lieutenant|metalcraft|morbid|parley|radiance|raid|rally|spell mastery|strive|sweep|tempting offer|threshold|will of the council)\s*?)+)',
+				r'(((battalion|bloodrush|channel|chroma|cohort|constellation|converge|council\'s dilemma|delirium|domain|fateful hour|ferocious|formidable|grandeur|hellbent|heroic|imprint|inspired|join forces|kinship|landfall|lieutenant|metalcraft|morbid|parley|radiance|raid|rally|revolt|spell mastery|strive|sweep|tempting offer|threshold|will of the council)\s*?)+)',
 				re.I).sub(r'<em>\1</em>', cardText)
 		# Convert mana symbols to styled span elements
 		cardText = cardText.replace('{', '<span class="mana medium shadow s')
