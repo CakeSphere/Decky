@@ -64,6 +64,12 @@
 				<strong>{{card.power}}</strong>/<strong>{{card.toughness}}</strong>
 			</span>
 		{% endif %}
+		{% if card.loyalty %}
+			<h3>Starting Loyalty</h3>
+			<span class="power-toughness">
+				<strong>{{card.loyalty}}</strong>
+			</span>
+		{% endif %}
 	</aside>
 	<section class="card-details">
 		<div class="card-container">
