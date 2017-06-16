@@ -297,7 +297,6 @@ def card(multiverseId):
 		cardMana = cardMana.replace('}', '')
 		cardMana = cardMana.replace('/', '')
 		cardText = card["text"]
-		cardText = cardText.replace('/', '')
 		# Italicize ability words
 		cardText = re.compile(
 				r'(((battalion|bloodrush|channel|chroma|cohort|constellation|converge|council\'s dilemma|delirium|domain|fateful hour|ferocious|formidable|grandeur|hellbent|heroic|imprint|inspired|join forces|kinship|landfall|lieutenant|metalcraft|morbid|parley|radiance|raid|rally|revolt|spell mastery|strive|sweep|tempting offer|threshold|will of the council)\s*?)+)',
