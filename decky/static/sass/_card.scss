@@ -207,7 +207,7 @@
 		bottom: 0;
 		content: '';
 		display: block;
-		opacity: 0.1;
+		opacity: 0.05;
 		will-change: opacity;
 		background: -webkit-linear-gradient(top, transparent, $color-primary);
 		background: linear-gradient(to bottom, transparent, $color-primary);
@@ -216,7 +216,7 @@
 						transition: opacity $transition;
 	}
 	&:hover { text-shadow: none; }
-	&:hover::after { opacity: 0.25; }
+	&:hover::after { opacity: 0.1; }
 	.card-mana {
 		font-size: $font-size-sub;
 		color: $color-text-weak;

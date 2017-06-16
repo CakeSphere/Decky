@@ -152,7 +152,7 @@
 			bottom: 0;
 			content: '';
 			display: block;
-			opacity: 0.1;
+			opacity: 0.05;
 			will-change: opacity;
 			background: -webkit-gradient(linear, left top, left bottom, from(transparent), to($color-primary));
 			background: linear-gradient(to bottom, transparent, $color-primary);
@@ -160,7 +160,7 @@
 			-webkit-transition: opacity $transition;
 							transition: opacity $transition;
 		}
-		&:hover::after { opacity: 0.25; }
+		&:hover::after { opacity: 0.1; }
 		.color-bar {
 			&:hover {
 				~ .deck-info, ~ .deck-img {
