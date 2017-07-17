@@ -129,17 +129,6 @@ def initdb_command():
 		init_db()
 		print('\033[92m\033[1mInitialized the database.\033[0m')
 
-
-@app.cli.command('import_colors')
-def import_colors():
-		init_db()
-		colors_query = "INSERT INTO 'colors' (name) VALUES ('White'), ('Black'), ('Blue'), ('Red'), ('Green');"
-		db = get_db()
-		db.execute(colors_query)
-		db.commit()
-		print "\033[92m\033[1mColors imported.\033[0m"
-
-
 @app.cli.command('import_sets')
 def import_sets():
 		init_db()
@@ -175,8 +164,6 @@ def import_cards():
 		init_db()
 		print('\033[92m\033[1mInitialized the database.\033[0m')
 		db = get_db()
-		colors_query = "INSERT INTO 'colors' (name) VALUES ('White'), ('Black'), ('Blue'), ('Red'), ('Green');"
-		db.execute(colors_query)
 		print "\033[92m\033[1mColors imported.\033[0m"
 		json_files = [
 				pos_json for pos_json in os.listdir(path_to_json)
