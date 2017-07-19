@@ -1,8 +1,6 @@
 drop table if exists sets;
 drop table if exists cards;
-drop table if exists cardstosets;
-drop table if exists colors;
-drop table if exists cardstocolors;
+drop table if exists decks;
 
 create table sets (
 	id INTEGER primary key autoincrement,
@@ -68,5 +66,6 @@ create table decks (
 	sideboard VARCHAR(50),
 	maybeboard VARCHAR(50),
 	colors VARCHAR(50),
+	likes INTEGER,
 	description VARCHAR(500)
 );
