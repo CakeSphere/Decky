@@ -288,6 +288,11 @@ def card(multiverseId):
 		cardText = re.compile(
 				r'(((battalion|bloodrush|channel|chroma|cohort|constellation|converge|council\'s dilemma|delirium|domain|fateful hour|ferocious|formidable|grandeur|hellbent|heroic|imprint|inspired|join forces|kinship|landfall|lieutenant|metalcraft|morbid|parley|radiance|raid|rally|revolt|spell mastery|strive|sweep|tempting offer|threshold|will of the council)\s*?)+)',
 				re.I).sub(r'<em>\1</em>', cardText)
+		# Making keyword abilities links so they can be used for tooltips and to
+		# link to the glossary eventually
+		cardText = re.compile(
+				r'(((deathtouch|defender|double strike|enchant|equip|first strike|flash|flying|haste|hexproof|indestructible|intimidate|landwalk|lifelink|protection|reach|shroud|trample|vigilance|banding|rampage|cumulative upkeep|flanking|phasing|buyback|shadow|cycling|echo|horsemanship|fading|kicker|flashback|madness|fear|morph|amplify|provoke|storm|affinity|entwine|modular|sunburst|bushido|soulshift|splice|offering|ninjutsu|epic|convoke|dredge|transmute|bloodthirst|haunt|replicate|forecast|graft|recover|ripple|split second|suspend|vanishing|absorb|aura swap|delve|fortify|frenzy|gravestorm|poisonous|transfigure|champion|changeling|evoke|hideaway|prowl|reinforce|conspire|persist|wither|retrace|devour|exalted|unearth|cascade|annihilator|level up|rebound|totem armor|infect|battle cry|living weapon|undying|miracle|soulbond|overload|scavenge|unleash|cipher|evolve|extort|fuse|bestow|tribute|dethrone|hidden agenda|outlast|prowess|dash|exploit|menace|renown|awaken|devoid|ingest|myriad|surge|skulk|emerge|escalate|melee|crew|fabricate|partner|undaunted|improvise|aftermath|embalm|eternalize|afflict)\s*?)+)',
+				re.I).sub(r'<a href="tooltip" title="Keyword Ability">\1</a>', cardText)
 		# Convert mana symbols to styled span elements
 		cardText = cardText.replace('{', '<span class="mana medium shadow s')
 		cardText = cardText.replace('}', '">&nbsp;</span>')
