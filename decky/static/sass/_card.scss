@@ -106,7 +106,18 @@
       font-size: $font-size-lead;
       line-height: 1.3;
       margin-top: 0;
-      .card-explanation { color: shade($color-text, 20%); }
+      a {
+        color: $color-text;
+        cursor: help;
+        @include underline($color-text, $color-background);
+      }
+      .card-explanation { 
+        color: shade($color-text, 20%); 
+        a {
+          color: shade($color-text, 20%);
+          @include underline(shade($color-text, 20%), $color-background);
+        }
+      }
       br { line-height: 2.5rem; }
       .mana.medium {
         position: relative;
