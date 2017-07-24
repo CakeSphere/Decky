@@ -2,145 +2,145 @@
 {% set active_page = "cards" %}
 {% block body %}
 <div class="card-bg">
-	<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="">
+  <img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="">
 </div>
 <div class="container card demo">
-	<aside>
-		<h3>Color Identity</h3>
-		{% if card.colorIdentity|length > 0 %}
-			{% for color in card.colorIdentity.split(', ') %}
-				<button class="btn color-identity {{color.lower()}}">
-					<span class="mana small s{{color.lower()}} shadow">&nbsp;</span>
-					&nbsp;
-					{% if color == 'W' %}White{% endif %}
-					{% if color == 'U' %}Blue{% endif %}
-					{% if color == 'R' %}Red{% endif %}
-					{% if color == 'B' %}Black{% endif %}
-					{% if color == 'G' %}Green{% endif %}
-				</button>
-			{% endfor %}
-			{% else %}
-			<button class="btn color-identity">
-				<span class="mana small sc shadow">&nbsp;</span>
-				Colorless
-			</button>
-		{% endif %}
-		<h3>Legal Formats</h3>
-		<button class="btn">Standard</button>
-		<button class="btn">Modern</button>
-		<button class="btn">Legacy</button>
-		<button class="btn">Vintage</button>
-		<button class="btn">Commander</button>
-		<button class="btn">Casual</button>
-		<h3>Set</h3>
-		<button class="btn">
-			<i class="ss ss-{{card.setCode.lower()}} ss-{{card.rarity.lower()}} {% if card.rarity != 'Common' %}ss-grad{% endif %}">&nbsp;</i>
-			{{card.setId}} <span class="rarity">&mdash; {{card.rarity}}</span>
-		</button>
-		<h3>Price</h3>
-		<button class="btn">
-			$ <span class="price">6.00</span>
-		</button>
-		<button class="btn">
-			$ <span class="price">8.00</span> Foil
-		</button> 
-		<span class="price-source">TCGPlayer</span>
-		<button class="btn">
-			$ <span class="price">6.00</span>
-		</button>
-		<button class="btn">
-			$ <span class="price">8.00</span> Foil
-		</button> 
-		<span class="price-source">Isle of Cards</span>
-		{% if cardMana|length > 0 %}
-			<h3>Mana Cost</h3>
-			{% for mana in cardMana.split(" ") %}
-				<span class="mana medium s{{mana.lower()}} shadow">{{mana}}</span>
-			{% endfor %}
-		{% endif %}
-		{% if card.power or card.toughness %}
-			<h3>Power &amp; Toughness</h3>
-			<span class="power-toughness">
-				<strong>{{card.power}}</strong>/<strong>{{card.toughness}}</strong>
-			</span>
-		{% endif %}
-		{% if card.loyalty %}
-			<h3>Starting Loyalty</h3>
-			<span class="power-toughness">
-				<strong>{{card.loyalty}}</strong>
-			</span>
-		{% endif %}
-	</aside>
-	<section class="card-details">
-		<div class="card-container">
-			{% if not flipCardA and not flipCardB %}
-			<img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
-			{% endif %}
-			{% if flipCardA %}
-			<div class="flipper">
-				<img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
-				<img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId+1}}&type=card" alt="{{card.name}}">
-			</div>
-			{% elif flipCardB %}
-			<div class="flipper">
-				<img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
-				<img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId-1}}&type=card" alt="{{card.name}}">
-			</div>
-			{% endif %}
-		</div>
-		<div class="card-info">
-			<h1>{{card.name}}</h1>
-			<h2>{{card.type}}</h2>
-			<p class="text">{{cardText}}</p>
-			{% if card.Flavor|length > 0 %}
-			<p class="flavor">
-				{{cardFlavor}}
-			</p>
-			{% endif %}
-			<p>
-				<em>Dev &mdash; 
-				<a href="/card/{{card.multiverseId-1}}" class="btn">Previous Card</a>
-				<a href="/card/{{card.multiverseId+1}}" class="btn">Next Card</a></em>
-			</p>
-		</div>
-	</section>
-	<section> 
-		<div class="most-liked">
-			<h3>Most Liked Decks Including <em>{{card.name}}</em></h3>
-			<div class="row">
-				{% for deck in card.types %}
-					<a href="/deck" class="deck" title="{{deck.name}}">
-						<div class="color-bar">
-							<div class="u" style="height: 30%"><span><span class="mana small su shadow">&nbsp;</span> 30%</span></div>
-							<div class="g" style="height: 30%"><span><span class="mana small sg shadow">&nbsp;</span> 30%</span></div>
-							<div class="b" style="height: 40%"><span><span class="mana small sb shadow">&nbsp;</span> 40%</span></div>
-						</div>
-						<div class="deck-img">
-							<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
-						</div>
-						<div class="deck-info">
-							<div class="title">Deck Name</div>
-							<div class="tags">
-								<span class="author">senordiablo</span>
-								<span class="tag">modern</span>
-								<span class="tag">competitive</span>
-								<span class="tag">spirits</span>
-							</div>
-							<div class="stats">
-								<div class="likes">
-									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 640"><title>Likes</title><path d="M450.3 428c-3.7 2.2-6.4 4-4.4 9.3 14.2 39.3-18.6 69-47.8 73.4a92.3 92.3 0 0 1-14 1c-77.2.2-154.4.6-231.6 0-48.3-.3-83.6-22.7-105-66.2-7.2-14.6-10.2-30.3-10.2-46.6V282a111.8 111.8 0 0 1 22-67.2L196 27.2C201 21 206 14.6 212 9.6c17.7-14.8 43.3-12 59 5.6 16.8 18.7 21 40.4 11.8 63.4-13.8 34.2-28.8 68-43.2 102l-2.8 6.6h8.4l143.2 1c15.6 0 30.3 3 43 13 12.2 9.6 18.6 22.2 18 38 0 6.8-1.6 13.6-2 20.5-.2 1.7.8 4.6 2.2 5.2 29 14.3 33 56.4 10.6 79.5a6.4 6.4 0 0 0-1.2 1.6c5 9.2 11 17 13.6 25.7 6.7 22-2.5 44-22 56.3z"/></svg>
-									11
-								</div>
-								<div class="comments">
-									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 640"><title>Comments</title><path d="M361.6 42c-2 0-4.2-.3-6.4-.4H165.4c-12.5.6-21.6 1.3-24.8 2-92 16-154 106.4-138 198.5C17.3 328.7 87 387.8 174.7 388.3c23.7 0 47.4-.3 71 .3a27.8 27.8 0 0 1 15.5 5.3c24.4 19 48.2 39 72.6 58 8.3 6.4 17.6 12.3 27.3 16 18 7 33.5-.8 39.8-19.4a81.2 81.2 0 0 0 4.2-21.2c.7-13.7.8-27.5.3-41.3-.3-7.5 2-11.5 8.8-15 67.5-34.4 103-98 97-173.6-6-79.8-70.3-148-149.7-155.3z"/></svg>
-									5
-								</div>
-							</div>
-						</div>
-					</a>
-				{% endfor %}
-			</div>
-		</div>
-	</section>
+  <aside>
+    <h3>Color Identity</h3>
+    {% if card.colorIdentity|length > 0 %}
+      {% for color in card.colorIdentity.split(', ') %}
+        <button class="btn color-identity {{color.lower()}}">
+          <span class="mana small s{{color.lower()}} shadow">&nbsp;</span>
+          &nbsp;
+          {% if color == 'W' %}White{% endif %}
+          {% if color == 'U' %}Blue{% endif %}
+          {% if color == 'R' %}Red{% endif %}
+          {% if color == 'B' %}Black{% endif %}
+          {% if color == 'G' %}Green{% endif %}
+        </button>
+      {% endfor %}
+      {% else %}
+      <button class="btn color-identity">
+        <span class="mana small sc shadow">&nbsp;</span>
+        Colorless
+      </button>
+    {% endif %}
+    <h3>Legal Formats</h3>
+    <button class="btn">Standard</button>
+    <button class="btn">Modern</button>
+    <button class="btn">Legacy</button>
+    <button class="btn">Vintage</button>
+    <button class="btn">Commander</button>
+    <button class="btn">Casual</button>
+    <h3>Set</h3>
+    <button class="btn">
+      <i class="ss ss-{{card.setCode.lower()}} ss-{{card.rarity.lower()}} {% if card.rarity != 'Common' %}ss-grad{% endif %}">&nbsp;</i>
+      {{card.setId}} <span class="rarity">&mdash; {{card.rarity}}</span>
+    </button>
+    <h3>Price</h3>
+    <button class="btn">
+      $ <span class="price">6.00</span>
+    </button>
+    <button class="btn">
+      $ <span class="price">8.00</span> Foil
+    </button> 
+    <span class="price-source">TCGPlayer</span>
+    <button class="btn">
+      $ <span class="price">6.00</span>
+    </button>
+    <button class="btn">
+      $ <span class="price">8.00</span> Foil
+    </button> 
+    <span class="price-source">Isle of Cards</span>
+    {% if cardMana|length > 0 %}
+      <h3>Mana Cost</h3>
+      {% for mana in cardMana.split(" ") %}
+        <span class="mana medium s{{mana.lower()}} shadow">{{mana}}</span>
+      {% endfor %}
+    {% endif %}
+    {% if card.power or card.toughness %}
+      <h3>Power &amp; Toughness</h3>
+      <span class="power-toughness">
+        <strong>{{card.power}}</strong>/<strong>{{card.toughness}}</strong>
+      </span>
+    {% endif %}
+    {% if card.loyalty %}
+      <h3>Starting Loyalty</h3>
+      <span class="power-toughness">
+        <strong>{{card.loyalty}}</strong>
+      </span>
+    {% endif %}
+  </aside>
+  <section class="card-details">
+    <div class="card-container">
+      {% if not flipCardA and not flipCardB %}
+      <img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
+      {% endif %}
+      {% if flipCardA %}
+      <div class="flipper">
+        <img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
+        <img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId+1}}&type=card" alt="{{card.name}}">
+      </div>
+      {% elif flipCardB %}
+      <div class="flipper">
+        <img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
+        <img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId-1}}&type=card" alt="{{card.name}}">
+      </div>
+      {% endif %}
+    </div>
+    <div class="card-info">
+      <h1>{{card.name}}</h1>
+      <h2>{{card.type}}</h2>
+      <p class="text">{{cardText}}</p>
+      {% if card.Flavor|length > 0 %}
+      <p class="flavor">
+        {{cardFlavor}}
+      </p>
+      {% endif %}
+      <p>
+        <em>Dev &mdash; 
+        <a href="/card/{{card.multiverseId-1}}" class="btn">Previous Card</a>
+        <a href="/card/{{card.multiverseId+1}}" class="btn">Next Card</a></em>
+      </p>
+    </div>
+  </section>
+  <section> 
+    <div class="most-liked">
+      <h3>Most Liked Decks Including <em>{{card.name}}</em></h3>
+      <div class="row">
+        {% for deck in card.types %}
+          <a href="/deck" class="deck" title="{{deck.name}}">
+            <div class="color-bar">
+              <div class="u" style="height: 30%"><span><span class="mana small su shadow">&nbsp;</span> 30%</span></div>
+              <div class="g" style="height: 30%"><span><span class="mana small sg shadow">&nbsp;</span> 30%</span></div>
+              <div class="b" style="height: 40%"><span><span class="mana small sb shadow">&nbsp;</span> 40%</span></div>
+            </div>
+            <div class="deck-img">
+              <img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
+            </div>
+            <div class="deck-info">
+              <div class="title">Deck Name</div>
+              <div class="tags">
+                <span class="author">senordiablo</span>
+                <span class="tag">modern</span>
+                <span class="tag">competitive</span>
+                <span class="tag">spirits</span>
+              </div>
+              <div class="stats">
+                <div class="likes">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 640"><title>Likes</title><path d="M450.3 428c-3.7 2.2-6.4 4-4.4 9.3 14.2 39.3-18.6 69-47.8 73.4a92.3 92.3 0 0 1-14 1c-77.2.2-154.4.6-231.6 0-48.3-.3-83.6-22.7-105-66.2-7.2-14.6-10.2-30.3-10.2-46.6V282a111.8 111.8 0 0 1 22-67.2L196 27.2C201 21 206 14.6 212 9.6c17.7-14.8 43.3-12 59 5.6 16.8 18.7 21 40.4 11.8 63.4-13.8 34.2-28.8 68-43.2 102l-2.8 6.6h8.4l143.2 1c15.6 0 30.3 3 43 13 12.2 9.6 18.6 22.2 18 38 0 6.8-1.6 13.6-2 20.5-.2 1.7.8 4.6 2.2 5.2 29 14.3 33 56.4 10.6 79.5a6.4 6.4 0 0 0-1.2 1.6c5 9.2 11 17 13.6 25.7 6.7 22-2.5 44-22 56.3z"/></svg>
+                  11
+                </div>
+                <div class="comments">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 640"><title>Comments</title><path d="M361.6 42c-2 0-4.2-.3-6.4-.4H165.4c-12.5.6-21.6 1.3-24.8 2-92 16-154 106.4-138 198.5C17.3 328.7 87 387.8 174.7 388.3c23.7 0 47.4-.3 71 .3a27.8 27.8 0 0 1 15.5 5.3c24.4 19 48.2 39 72.6 58 8.3 6.4 17.6 12.3 27.3 16 18 7 33.5-.8 39.8-19.4a81.2 81.2 0 0 0 4.2-21.2c.7-13.7.8-27.5.3-41.3-.3-7.5 2-11.5 8.8-15 67.5-34.4 103-98 97-173.6-6-79.8-70.3-148-149.7-155.3z"/></svg>
+                  5
+                </div>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
 </div>
 {% endblock %}

@@ -1,282 +1,282 @@
 .top-nav {
-	z-index: 500;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	padding: 0.5rem;
-	border-bottom: 1px solid tint($color-background, 5%);
-	-webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-					box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-	&::after {
-		z-index: $z-index-background; /* Pushing blurry background to the "back" */
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		content: '';
-		background: transparentize(tint($color-background, 0.25), 0.2);
-		-webkit-backdrop-filter: blur(5px);
-						backdrop-filter: blur(5px);
-	}
-	.btn, 
-	a.btn, 
-	button {
-		margin-bottom: 0;
-		&:last-child { margin-right: 0; }
-	}
-	.nav-search {
-		display: inline-block;
-		position: relative;
-		a {
-			text-indent: -999999px;
-			position: absolute;
-			right: 0.65rem;
-			top: 0;
-			opacity: 0;
-			pointer-events: none;
-		}
-		input {
-			width: 45px;
-			height: calc(38px - 1rem);
-			margin-bottom: 0;
-			cursor: pointer;
-			background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 125'%3E%3Cpath fill='%23dc5df8' d='M90 84L70.4 64.2C81 50.8 79.7 31 67.6 19 61 12.2 52.4 8.7 43.2 8.7s-18 3.6-24.4 10c-6.5 6.5-10 15.2-10 24.4s3.6 18 10 24.4c6.5 6.4 15.2 10 24.4 10 7.6 0 15-2.5 21.2-7.2L84 90c.7.8 1.8 1.3 3 1.3s2-.5 3-1.3c1.7-1.8 1.7-4.4 0-6zM68.8 43c0 7-2.7 13.5-7.5 18.3C56.5 66.3 50 69 43 69c-6.8 0-13.3-2.8-18-7.7C15 51.3 15 35 25 25c4.8-5 11.2-7.7 18-7.7 7 0 13.4 2.7 18.3 7.6 4.8 4.7 7.5 11.2 7.5 18z'/%3E%3C/svg%3E") no-repeat right 0.5rem top 0.6rem;
-			background-size: 20px 20px;
-			border-color: transparent;
-			line-height: 1.25;
-			color: transparent;
-			-webkit-transition: border-color $transition, width $transition;
-							transition: border-color $transition, width $transition;
-			&:focus {
-				width: 150px;
-				cursor: text;
-				border-color: $color-primary;
-				color: $color-text;
-				+ a { pointer-events: auto; }
-			}
-		}
-	}
+  z-index: 500;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem;
+  border-bottom: 1px solid tint($color-background, 5%);
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  &::after {
+    z-index: $z-index-background; /* Pushing blurry background to the "back" */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    background: transparentize(tint($color-background, 0.25), 0.2);
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+  }
+  .btn, 
+  a.btn, 
+  button {
+    margin-bottom: 0;
+    &:last-child { margin-right: 0; }
+  }
+  .nav-search {
+    display: inline-block;
+    position: relative;
+    a {
+      text-indent: -999999px;
+      position: absolute;
+      right: 0.65rem;
+      top: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+    input {
+      width: 45px;
+      height: calc(38px - 1rem);
+      margin-bottom: 0;
+      cursor: pointer;
+      background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 125'%3E%3Cpath fill='%23dc5df8' d='M90 84L70.4 64.2C81 50.8 79.7 31 67.6 19 61 12.2 52.4 8.7 43.2 8.7s-18 3.6-24.4 10c-6.5 6.5-10 15.2-10 24.4s3.6 18 10 24.4c6.5 6.4 15.2 10 24.4 10 7.6 0 15-2.5 21.2-7.2L84 90c.7.8 1.8 1.3 3 1.3s2-.5 3-1.3c1.7-1.8 1.7-4.4 0-6zM68.8 43c0 7-2.7 13.5-7.5 18.3C56.5 66.3 50 69 43 69c-6.8 0-13.3-2.8-18-7.7C15 51.3 15 35 25 25c4.8-5 11.2-7.7 18-7.7 7 0 13.4 2.7 18.3 7.6 4.8 4.7 7.5 11.2 7.5 18z'/%3E%3C/svg%3E") no-repeat right 0.5rem top 0.6rem;
+      background-size: 20px 20px;
+      border-color: transparent;
+      line-height: 1.25;
+      color: transparent;
+      -webkit-transition: border-color $transition, width $transition;
+              transition: border-color $transition, width $transition;
+      &:focus {
+        width: 150px;
+        cursor: text;
+        border-color: $color-primary;
+        color: $color-text;
+        + a { pointer-events: auto; }
+      }
+    }
+  }
 }
 
 .left-nav {
-	z-index: $z-index-fixed;
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	width: 100px;
-	border-right: 1px solid tint($color-background, 5%);
-	-webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
-					box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
-	&::after {
-		z-index: $z-index-background; /* Pushing blurry background to the "back" */
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		content: '';
-		background: transparentize(tint($color-background, 0.25), 0.2);
-		-webkit-backdrop-filter: blur(5px);
-						backdrop-filter: blur(5px);
-	}
-	.logo {
-		/* Main Decky logo*/
-		display: block;
-		height: calc(58px - 0.5rem);
-		line-height: 58px;
-		text-align: center;
-		padding-top: 0.5rem;
-		-webkit-transition: background $transition;
-						transition: background $transition;
-		svg {
-			width: 64px;
-			margin-top: 0.6rem;
-			fill: $color-text;
-		}
-		&:hover {
-			background: tint($color-background, 5%);
-		}
-	}
-	ul { margin-top: 0; }
-	a.btn {
-		position: relative;
-		display: block;
-		height: 100px;
-		width: 100px;
-		margin-bottom: 0;
-		padding: 0;
-		background: transparentize($color-text-weak, 0.98);
-		border: none;
-		border-radius: 0;
-		border-bottom: 1px solid tint($color-background, 5%);
-		border-top: 1px solid shade($color-background, 5%);
-		-webkit-box-shadow: none;
-						box-shadow: none;
-		text-align: center;
-		text-shadow: 0 2px 4px transparentize($color-background-shade, 0.5);
-		&::before {
-			/* Diamond decoration*/
-			content: '';
-			position: absolute;
-			top: 21px;
-			right: 29px;
-			width: 40px;
-			height: 40px;
-			background: transparentize($color-text-weak, 0.95);
-			-webkit-transition: background $transition;
-							transition: background $transition;
-			-webkit-transform: rotate(45deg);
-							transform: rotate(45deg);
-		}
-		span {
-			color: transparentize($color-text-weak, 0.5);
-			line-height: 42px;
-			-webkit-transition: color $transition;
-							transition: color $transition;
-		}
-		svg {
-			display: block;
-			width: 28px;
-			margin: auto;
-			margin-top: 1.5rem;
-			fill: transparentize($color-text-weak, 0.5);
-			-webkit-filter: drop-shadow(0 2px 4px transparentize($color-background-shade, 0.5));
-							filter: drop-shadow(0 2px 4px transparentize($color-background-shade, 0.5));
-			-webkit-transition: fill $transition;
-							transition: fill $transition;
-		}
-		&:hover, 
-		&:active, 
-		&:focus {
-		background: transparentize($color-text-weak, 0.95);
-			&::before {
-				background: transparentize($color-text-weak, 0.9);
-			}
-			svg { 
-				fill: $color-text; 
-			}
-			span {
-				background: none;
-				color: $color-text;
-			}
-		}
-	}
-	.active a {
-		border-left: 2px solid transparentize($color-primary, 0.25);
-		width: 98px; /* Default width minus the border-right width*/
-		background: tint($color-background, 2.5%);
-		&::before {
-			background: transparentize($color-text-weak, 0.9);
-		}
-		&::after {
-			content: '';
-			display: block;
-			position: absolute;
-			top: calc(50% - 5px);
-			left: 0;
-			width: 0; 
-			height: 0; 
-			border-top: 5px solid transparent;
-			border-bottom: 5px solid transparent; 
-			border-left:5px solid transparentize($color-primary, 0.25);
-		}
-		svg { fill: $color-text; }
-		span { color: $color-text; }
-	}
-	.account-info {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: calc(100px - 2rem);
-		height: calc(100px - 2rem);
-		background: transparentize($color-text-weak, 0.98);
-		border-top: 1px solid shade($color-background, 5%);
-		-webkit-box-shadow: 0 -1px 0 tint($color-background, 5%);
-						box-shadow: 0 -1px 0 tint($color-background, 5%);
-		padding: 1rem;
-		text-align: center;
-		text-shadow: 0 2px 4px transparentize($color-background-shade, 0.5);
-		-webkit-transition: $transition;
-		transition: $transition;
-		.account-icon {
-			width: 32px;
-			height: 32px;
-			margin: auto;
-			margin-bottom: 1rem;
-			background: -webkit-gradient(linear, left top, right bottom, from($color-primary), to(adjust-hue($color-primary, -20%)) );
-			background: linear-gradient(to bottom right, $color-primary, adjust-hue($color-primary, -20%) );
-			border-radius: 50%;
-			-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5),
-													inset 0 0 8px rgba(255, 255, 255, 0.25);
-							box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5),
-													inset 0 0 8px rgba(255, 255, 255, 0.25);
-			-webkit-user-select: none;
-				 -moz-user-select: none;
-					-ms-user-select: none;
-							user-select: none;
-		}
-		.account-name {
-			width: calc(100px - 2rem);
-			color: $color-text-weak;
-			text-overflow: ellipsis;
-			overflow: hidden;
-			white-space: nowrap;
-		}
-		&:hover {
-			height: calc(147px - 2rem);
-			.account-name {
-				white-space: initial;
-				overflow-wrap: normal;
-				overflow-wrap: break-word;
-			}
-		}
-	}
+  z-index: $z-index-fixed;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  border-right: 1px solid tint($color-background, 5%);
+  -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+  &::after {
+    z-index: $z-index-background; /* Pushing blurry background to the "back" */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    background: transparentize(tint($color-background, 0.25), 0.2);
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+  }
+  .logo {
+    /* Main Decky logo*/
+    display: block;
+    height: calc(58px - 0.5rem);
+    line-height: 58px;
+    text-align: center;
+    padding-top: 0.5rem;
+    -webkit-transition: background $transition;
+            transition: background $transition;
+    svg {
+      width: 64px;
+      margin-top: 0.6rem;
+      fill: $color-text;
+    }
+    &:hover {
+      background: tint($color-background, 5%);
+    }
+  }
+  ul { margin-top: 0; }
+  a.btn {
+    position: relative;
+    display: block;
+    height: 100px;
+    width: 100px;
+    margin-bottom: 0;
+    padding: 0;
+    background: transparentize($color-text-weak, 0.98);
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid tint($color-background, 5%);
+    border-top: 1px solid shade($color-background, 5%);
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    text-align: center;
+    text-shadow: 0 2px 4px transparentize($color-background-shade, 0.5);
+    &::before {
+      /* Diamond decoration*/
+      content: '';
+      position: absolute;
+      top: 21px;
+      right: 29px;
+      width: 40px;
+      height: 40px;
+      background: transparentize($color-text-weak, 0.95);
+      -webkit-transition: background $transition;
+              transition: background $transition;
+      -webkit-transform: rotate(45deg);
+              transform: rotate(45deg);
+    }
+    span {
+      color: transparentize($color-text-weak, 0.5);
+      line-height: 42px;
+      -webkit-transition: color $transition;
+              transition: color $transition;
+    }
+    svg {
+      display: block;
+      width: 28px;
+      margin: auto;
+      margin-top: 1.5rem;
+      fill: transparentize($color-text-weak, 0.5);
+      -webkit-filter: drop-shadow(0 2px 4px transparentize($color-background-shade, 0.5));
+              filter: drop-shadow(0 2px 4px transparentize($color-background-shade, 0.5));
+      -webkit-transition: fill $transition;
+              transition: fill $transition;
+    }
+    &:hover, 
+    &:active, 
+    &:focus {
+    background: transparentize($color-text-weak, 0.95);
+      &::before {
+        background: transparentize($color-text-weak, 0.9);
+      }
+      svg { 
+        fill: $color-text; 
+      }
+      span {
+        background: none;
+        color: $color-text;
+      }
+    }
+  }
+  .active a {
+    border-left: 2px solid transparentize($color-primary, 0.25);
+    width: 98px; /* Default width minus the border-right width*/
+    background: tint($color-background, 2.5%);
+    &::before {
+      background: transparentize($color-text-weak, 0.9);
+    }
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: calc(50% - 5px);
+      left: 0;
+      width: 0; 
+      height: 0; 
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent; 
+      border-left:5px solid transparentize($color-primary, 0.25);
+    }
+    svg { fill: $color-text; }
+    span { color: $color-text; }
+  }
+  .account-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: calc(100px - 2rem);
+    height: calc(100px - 2rem);
+    background: transparentize($color-text-weak, 0.98);
+    border-top: 1px solid shade($color-background, 5%);
+    -webkit-box-shadow: 0 -1px 0 tint($color-background, 5%);
+            box-shadow: 0 -1px 0 tint($color-background, 5%);
+    padding: 1rem;
+    text-align: center;
+    text-shadow: 0 2px 4px transparentize($color-background-shade, 0.5);
+    -webkit-transition: $transition;
+    transition: $transition;
+    .account-icon {
+      width: 32px;
+      height: 32px;
+      margin: auto;
+      margin-bottom: 1rem;
+      background: -webkit-gradient(linear, left top, right bottom, from($color-primary), to(adjust-hue($color-primary, -20%)) );
+      background: linear-gradient(to bottom right, $color-primary, adjust-hue($color-primary, -20%) );
+      border-radius: 50%;
+      -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5),
+                          inset 0 0 8px rgba(255, 255, 255, 0.25);
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5),
+                          inset 0 0 8px rgba(255, 255, 255, 0.25);
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+    }
+    .account-name {
+      width: calc(100px - 2rem);
+      color: $color-text-weak;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    &:hover {
+      height: calc(147px - 2rem);
+      .account-name {
+        white-space: initial;
+        overflow-wrap: normal;
+        overflow-wrap: break-word;
+      }
+    }
+  }
 }
 
 .main-container {
-	display: flex;
-	min-height: 100vh;
-	flex-direction: column;
-	.main-content {
-		flex: 1;
-	}
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  .main-content {
+    flex: 1;
+  }
 }
 
 aside {
-	z-index: $z-index-nav;
-	position: absolute;
-	top: 61px;
-	bottom: 0;
-	left: 100px;
-	height: 100%;
-	width: 300px;
-	padding: 1.5rem 1rem;
-	-webkit-animation-name: aside-slide;
-					animation-name: aside-slide;
-	-webkit-animation-duration: 0.3s;
-					animation-duration: 0.3s;
+  z-index: $z-index-nav;
+  position: absolute;
+  top: 61px;
+  bottom: 0;
+  left: 100px;
+  height: 100%;
+  width: 300px;
+  padding: 1.5rem 1rem;
+  -webkit-animation-name: aside-slide;
+          animation-name: aside-slide;
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
 }
 
 footer {
-	/* Footer with some legal info and credits*/
-	z-index: $z-index-nav;
-	position: relative;
-	margin-top: 5.5rem;
-	padding: 3rem 0;
-	background: tint($color-background, 2.5%);
-	border-top: 1px solid tint($color-background, 5%);
-	-webkit-box-shadow: 0 -2px 4px shade($color-background, 5%);
-					box-shadow: 0 -2px 4px shade($color-background, 5%);
-	color: rgba($color-text, 0.75);
-	text-align: center;
-	a {
-		color: $color-text;
-		&:hover {
-			color: shade($color-text, 15%);
-			@include underline(shade($color-text, 15%), $color-background);
-		}
-	}
+  /* Footer with some legal info and credits*/
+  z-index: $z-index-nav;
+  position: relative;
+  margin-top: 5.5rem;
+  padding: 3rem 0;
+  background: tint($color-background, 2.5%);
+  border-top: 1px solid tint($color-background, 5%);
+  -webkit-box-shadow: 0 -2px 4px shade($color-background, 5%);
+          box-shadow: 0 -2px 4px shade($color-background, 5%);
+  color: rgba($color-text, 0.75);
+  text-align: center;
+  a {
+    color: $color-text;
+    &:hover {
+      color: shade($color-text, 15%);
+      @include underline(shade($color-text, 15%), $color-background);
+    }
+  }
 }

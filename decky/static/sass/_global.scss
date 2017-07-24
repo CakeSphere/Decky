@@ -2,61 +2,61 @@
 
 /* Style elements (usually text) when selected by user */
 ::-moz-selection { 
-	background: tint($color-background, 35%); 
-	color: transparentize($color-text, 0.3); 
+  background: tint($color-background, 35%); 
+  color: transparentize($color-text, 0.3); 
 }
 
 ::selection { 
-	background: tint($color-background, 35%); 
-	color: transparentize($color-text, 0.3); 
+  background: tint($color-background, 35%); 
+  color: transparentize($color-text, 0.3); 
 }
 
 html {
-	/* Setting a base font-size. All other font-sizes should be in rems */
-	/* (multiples of this font-size)*/
-	font-size: $font-size;
+  /* Setting a base font-size. All other font-sizes should be in rems */
+  /* (multiples of this font-size)*/
+  font-size: $font-size;
 }
 
 body {
-	background: $color-background;
-	color: $color-text;
-	font-family: $font-family-text;
-	font-size: $font-size-default;
-	/* padding-top: 5rem;*/
-	/* Opentype options*/
-	font-variant-numeric: lining-nums;
-	-webkit-font-feature-settings: 'lnum', 'dlig';
-					font-feature-settings: 'lnum', 'dlig';
-	-webkit-font-smoothing: antialiased;
-					font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-variant-ligatures: discretionary-ligatures;
-					font-variant-ligatures: discretionary-ligatures;
+  background: $color-background;
+  color: $color-text;
+  font-family: $font-family-text;
+  font-size: $font-size-default;
+  /* padding-top: 5rem;*/
+  /* Opentype options*/
+  font-variant-numeric: lining-nums;
+  -webkit-font-feature-settings: 'lnum', 'dlig';
+          font-feature-settings: 'lnum', 'dlig';
+  -webkit-font-smoothing: antialiased;
+          font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+          font-variant-ligatures: discretionary-ligatures;
 }
 
 
 aside {
-	/* Sidebars for search filters or card/deck info*/
-	display: inline-block;
-	width: 280px;
-	margin-right: 44px;
-	> h3:first-child {
-		/* Making sure things like up with the main content*/
-		margin-top: 0.6rem;
-	}
-	label {
-		display: block;
-	}
+  /* Sidebars for search filters or card/deck info*/
+  display: inline-block;
+  width: 280px;
+  margin-right: 44px;
+  > h3:first-child {
+    /* Making sure things like up with the main content*/
+    margin-top: 0.6rem;
+  }
+  label {
+    display: block;
+  }
 }
 
 section {
-	/* Main content section*/
-	width: calc(100% - 2rem);
-	vertical-align: top;
+  /* Main content section*/
+  width: calc(100% - 2rem);
+  vertical-align: top;
 }
 
 aside + section {
-	margin-top: 100px;
+  margin-top: 100px;
 }
 
 h1,
@@ -64,8 +64,8 @@ h2,
 h3,
 h4,
 h5 {
-	font-family: $font-family-display;
-	font-weight: bold;
+  font-family: $font-family-display;
+  font-weight: bold;
 }
 
 h1 { font-size: $font-size-h1; }
@@ -74,43 +74,43 @@ h3 { font-size: $font-size-h3; }
 
 
 h3 {
-	font-family: $font-family-text;
-	font-weight: normal;
-	color: $color-text-weak;
-	em {
-		color: $color-text;
-	}
+  font-family: $font-family-text;
+  font-weight: normal;
+  color: $color-text-weak;
+  em {
+    color: $color-text;
+  }
 }
 
 a {
-	color: $color-primary;
-	text-decoration: none;
-	-webkit-transition: color $transition;
-					transition: color $transition;
-	&:hover {
-		color: shade($color-primary, 15%);
-		@include underline(shade($color-primary, 15%), $color-background);
-	}
-	&:active {
-		color: shade($color-primary, 25%);
-		@include underline(shade($color-primary, 25%), $color-background);
-	}
-	&::-moz-selection { color: transparentize($color-primary, 0.3); }
-	&::selection { color: transparentize($color-primary, 0.3); }
-	&:hover::-moz-selection { text-shadow: none; }
-	&:hover::selection { text-shadow: none; }
+  color: $color-primary;
+  text-decoration: none;
+  -webkit-transition: color $transition;
+          transition: color $transition;
+  &:hover {
+    color: shade($color-primary, 15%);
+    @include underline(shade($color-primary, 15%), $color-background);
+  }
+  &:active {
+    color: shade($color-primary, 25%);
+    @include underline(shade($color-primary, 25%), $color-background);
+  }
+  &::-moz-selection { color: transparentize($color-primary, 0.3); }
+  &::selection { color: transparentize($color-primary, 0.3); }
+  &:hover::-moz-selection { text-shadow: none; }
+  &:hover::selection { text-shadow: none; }
 }
 
 hr {
-	border-top: 1px solid $color-background-tint;
-	border-bottom: 0;
+  border-top: 1px solid $color-background-tint;
+  border-bottom: 0;
 }
 
 
 p {
-	/* Currently only used on card.html; May need to be more specific*/
-	font-family: $font-family-display;
-	font-weight: 300;
+  /* Currently only used on card.html; May need to be more specific*/
+  font-family: $font-family-display;
+  font-weight: 300;
 }
 
 /* Magic colors*/
@@ -137,32 +137,32 @@ p {
 
 /* Remove all styling (bullets or numbers) from a ul or ol element*/
 .list-unstyled {
-	list-style: none; 
-	padding-left: 0;
+  list-style: none; 
+  padding-left: 0;
 }
 
 /* Adjustments to the sizes of mana symbols; see _mana.scss*/
 .mana {
-	color: transparent;
-	&.small {
-		width: 0.888rem;
-		height: 0.888rem;
-	}
-	&.medium {
-		width: 1.333rem;
-		height: 1.333rem;
-	}
-	&.medium.sE {
-		width: 1rem;
-		height: 1rem;
-		background-color: $color-mtg-c;
-		background-position: 88.75% 81.75%;
-		border: 2.25px solid $color-mtg-c;
-		border-radius: 100%;
-		line-height: 1.1;
-	}
-	&::-moz-selection { background: initial; color: transparent; }
-	&::selection { background: initial; color: transparent; }
+  color: transparent;
+  &.small {
+    width: 0.888rem;
+    height: 0.888rem;
+  }
+  &.medium {
+    width: 1.333rem;
+    height: 1.333rem;
+  }
+  &.medium.sE {
+    width: 1rem;
+    height: 1rem;
+    background-color: $color-mtg-c;
+    background-position: 88.75% 81.75%;
+    border: 2.25px solid $color-mtg-c;
+    border-radius: 100%;
+    line-height: 1.1;
+  }
+  &::-moz-selection { background: initial; color: transparent; }
+  &::selection { background: initial; color: transparent; }
 }
 
 /* Set symbols */
@@ -173,35 +173,35 @@ i.ss-rare.ss-grad, i.ss-uncommon.ss-grad, i.ss-mythic.ss-grad { -webkit-text-str
 /* These styles are only used on show_entries.html; will be deprecated*/
 
 ul.cards-info {
-	margin-bottom: 3rem;
-	margin-top: 3rem;
-	-webkit-column-count: 3;
-					column-count: 3;
-	-webkit-column-gap: 1rem;
-					column-gap: 1rem;
-	-webkit-column-rule: solid $color-background-tint 1px;
-					column-rule: solid $color-background-tint 1px;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+  -webkit-column-count: 3;
+          column-count: 3;
+  -webkit-column-gap: 1rem;
+          column-gap: 1rem;
+  -webkit-column-rule: solid $color-background-tint 1px;
+          column-rule: solid $color-background-tint 1px;
 }
 
 .value {
-	display: inline-block;
-	width: calc(50% - 1rem);
+  display: inline-block;
+  width: calc(50% - 1rem);
 }
 
 .low-graphics {
-	*, *::before, *::after {
-		text-shadow: none !important;
-		-webkit-transition: none !important;
-						transition: none !important;
-		-webkit-animation: none !important;
-						animation: none !important;
-		-webkit-box-shadow: none !important;
-						box-shadow: none !important;
-		-webkit-mask-image: none !important;
-						mask-image: none !important;
-	}
+  *, *::before, *::after {
+    text-shadow: none !important;
+    -webkit-transition: none !important;
+            transition: none !important;
+    -webkit-animation: none !important;
+            animation: none !important;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+    -webkit-mask-image: none !important;
+            mask-image: none !important;
+  }
 
-	.deck::after, .card::after, .card-bg {
-		display: none !important;
-	}
+  .deck::after, .card::after, .card-bg {
+    display: none !important;
+  }
 }

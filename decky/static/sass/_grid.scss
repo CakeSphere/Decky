@@ -5,15 +5,15 @@
 
 
 .container {
-	width:  calc(100% - 400px - 2rem);
-	margin-left: calc(400px + 2rem);
+  width:  calc(100% - 400px - 2rem);
+  margin-left: calc(400px + 2rem);
 }
 
 .column {
-	width: calc(50% - 2rem);
-	display: inline-block;
-	vertical-align: top;
-	&:first-child {
-		margin-right: 2rem;
-	}
+  width: calc(50% - 2rem);
+  display: inline-block;
+  vertical-align: top;
+  &:first-child {
+    margin-right: 2rem;
+  }
 }

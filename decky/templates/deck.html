@@ -2,224 +2,224 @@
 {% set active_page = "decks" %}
 {% block body %}
 <div class="container deck">
-	<aside>
-		<h3>Card Costs</h3>
-		<div class="btn-group card-costs">
-			<button class="btn w" style="width: 35%">
-				<span class="mana small sw shadow">&nbsp;</span>35%
-			</button>
-			<button class="btn u" style="width: 28%">
-				<span class="mana small su shadow">&nbsp;</span>28%
-			</button>
-			<button class="btn r" style="width: 35%">
-				<span class="mana small sr shadow">&nbsp;</span>35%
-			</button>
-		</div>
-		<h3>Mana Available</h3>
-		<div class="btn-group mana-avilable">
-			<button class="btn w" style="width: 32%">
-				<span class="mana small sw shadow">&nbsp;</span>32%
-			</button>
-			<button class="btn u" style="width: 34%">
-				<span class="mana small su shadow">&nbsp;</span>35%
-			</button>
-			<button class="btn r" style="width: 32%">
-				<span class="mana small sr shadow">&nbsp;</span>32%
-			</button>
-		</div>
-		<h3>Legal Formats</h3>
-		<button class="btn">Standard</button>
-		<h3>Deck Type</h3>
-		<button class="btn">Control</button>
-		<button class="btn">Discard</button>
-		<button class="btn">Izzet</button>
-		<h3>Price</h3>
-		<a href="http://www.tcgplayer.com" class="btn">
-			$ <span class="price">286.27</span>
-		</a>
-		<span class="price-source">TCGPlayer</span> <br>
-		<a href="http://www.isleofcards.com" class="btn">
-			$ <span class="price">283.98</span>
-		</a>
-		<span class="price-source">Isle of Cards</span>
-	</aside>
-	<section>
-		<div class="deck-header">
-			<div class="deck-info">
-				<!-- Deck Controls: Likes, Comments, Export -->
-				<div class="stats">
-					<div class="likes">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 640"><title>Likes</title><path d="M450.3 428c-3.7 2.2-6.4 4-4.4 9.3 14.2 39.3-18.6 69-47.8 73.4a92.3 92.3 0 0 1-14 1c-77.2.2-154.4.6-231.6 0-48.3-.3-83.6-22.7-105-66.2-7.2-14.6-10.2-30.3-10.2-46.6V282a111.8 111.8 0 0 1 22-67.2L196 27.2C201 21 206 14.6 212 9.6c17.7-14.8 43.3-12 59 5.6 16.8 18.7 21 40.4 11.8 63.4-13.8 34.2-28.8 68-43.2 102l-2.8 6.6h8.4l143.2 1c15.6 0 30.3 3 43 13 12.2 9.6 18.6 22.2 18 38 0 6.8-1.6 13.6-2 20.5-.2 1.7.8 4.6 2.2 5.2 29 14.3 33 56.4 10.6 79.5a6.4 6.4 0 0 0-1.2 1.6c5 9.2 11 17 13.6 25.7 6.7 22-2.5 44-22 56.3z"/></svg>
-						11
-					</div>
-					<a href="#discussion" class="comments">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 640"><title>Comments</title><path d="M361.6 42c-2 0-4.2-.3-6.4-.4H165.4c-12.5.6-21.6 1.3-24.8 2-92 16-154 106.4-138 198.5C17.3 328.7 87 387.8 174.7 388.3c23.7 0 47.4-.3 71 .3a27.8 27.8 0 0 1 15.5 5.3c24.4 19 48.2 39 72.6 58 8.3 6.4 17.6 12.3 27.3 16 18 7 33.5-.8 39.8-19.4a81.2 81.2 0 0 0 4.2-21.2c.7-13.7.8-27.5.3-41.3-.3-7.5 2-11.5 8.8-15 67.5-34.4 103-98 97-173.6-6-79.8-70.3-148-149.7-155.3z"/></svg>
-						5
-					</a>
-					<a href="#discussion" class="export">
-						<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100 125"><g transform="translate(0,-952.36218)"><path d="m 15.066641,998.6747 -9.998815,44 c -0.414033,1.7597 1.12965,3.6977 2.937152,3.6875 l 83.990047,0 c 1.8075,0.01 3.35118,-1.9278 2.93715,-3.6875 l -9.99882,-44 c -0.30835,-1.30952 -1.59199,-2.32016 -2.93715,-2.3125 l -13.99834,0 c -1.58475,-0.0224 -3.04237,1.4149 -3.04237,3 0,1.5851 1.45762,3.0224 3.04237,3 l 11.59238,0 8.62398,38 -76.428445,0 8.623977,-38 11.592376,0 c 1.58475,0.022 3.042365,-1.4149 3.042365,-3 0,-1.5851 -1.457615,-3.02241 -3.042365,-3 l -13.998341,0 c -1.411317,0.0136 -2.657413,1.10905 -2.937151,2.3125 z" style="text-indent:0;text-transform:none;direction:ltr;block-progression:tb;baseline-shift:baseline;color:#000000;enable-background:accumulate;" fill-opacity="1" stroke="none" marker="none" visibility="visible" display="inline" overflow="visible"/><path d="m 49.994755,958.36217 c -0.715,0.028 -1.5414,0.3223 -2.0626,0.8125 l -17.0008,16 c -0.9743,1.0842 -1.3765,3.1632 -0.25,4.375 1.1095,1.1936 3.2613,1.1581 4.3752,-0.031 l 11.9381,-11.25 0,63.09353 c 0,1.6568 1.3432,3 3.0001,3 1.6569,0 3.0001,-1.3432 3.0001,-3 l 0,-63.09353 11.9381,11.25 c 1.0255,1.0237 3.253,1.2129 4.3752,0.031 1.1221,-1.1816 0.7636,-3.3353 -0.2501,-4.375 l -17.0007,-16 c -0.5818,-0.5475 -1.2644,-0.8143 -2.0626,-0.8125 z" style="text-indent:0;text-transform:none;direction:ltr;block-progression:tb;baseline-shift:baseline;color:#000000;enable-background:accumulate;" fill-opacity="1" stroke="none" marker="none" visibility="visible" display="inline" overflow="visible"/></g></svg>
-					</a>
-				</div>
-				<div class="date-created">Created on January 5, 2017</div>
-				<div class="date-updated">Last updated yesterday</div>
-			</div>
-			<div class="color-bar">
-				<div class="u" style="height: 34.78%"><span><span class="mana small su shadow">&nbsp;</span> 35%</span></div>
-				<div class="r" style="height: 32.61%"><span><span class="mana small sr shadow">&nbsp;</span> 33%</span></div>
-				<div class="w" style="height: 32.61%"><span><span class="mana small sw shadow">&nbsp;</span> 33%</span></div>
-			</div>
-			<hgroup>
-				<h1>Jeskai Fog</h1>
-				<h2>Blotterhead</h2>
-			</hgroup>
-			<img class="deck-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=414494&type=card" alt="Spell Queller">
-		</div>
-		<div class="deck-contents">
-			<div class="column">
-				<div class="card-type">
-					<h2>Lands <span class="count">&mdash; 24</span></h2>
-					<ul class="list-unstyled">
-						<li>4 <a href="/card/414494">Aether Hub</a></li>
-						<li>4 <a href="/card/414494">Inspiring Vantage</a></li>
-						<li>2 <a href="/card/414494">Island</a></li>
-						<li>4 <a href="/card/414494">Plains</a></li>
-						<li>3 <a href="/card/414494">Port Town</a></li>
-						<li>4 <a href="/card/414494">Spirebluff Canal</a></li>
-						<li>3 <a href="/card/414494">Wandering Fumarole</a></li>
-					</ul>
-					<div class="color-bar">
-						<div class="u" style="width: 35%"><span>35%</span></div>
-						<div class="w" style="width: 33%"><span>33%</span></div>
-						<div class="r" style="width: 33%"><span>33%</span></div>
-					</div>
-				</div>
-				<div class="card-type">
-					<h2>Planeswalkers <span class="count">&mdash; 4</span></h2>
-					<ul class="list-unstyled">
-						<li>2 <a href="/card/414494">Chandra, Torch of Defiance</a></li>
-						<li>2 <a href="/card/414494">Gideon, Ally of Zendikar</a></li>
-					</ul>
-					<div class="color-bar">
-						<div class="r" style="width: 50%"><span>50%</span></div>
-						<div class="w" style="width: 50%"><span>50%</span></div>
-					</div>
-				</div>
-				<div class="card-type">
-					<h2>Creatures <span class="count">&mdash; 12</span></h2>
-					<ul class="list-unstyled">
-						<li>4 <a href="/card/414494">Reflector Mage</a></li>
-						<li>4 <a href="/card/414494">Selfless Spirit</a></li>
-						<li>4 <a href="/card/414494">Spell Queller</a></li>
-					</ul>
-					<div class="color-bar">
-						<div class="w" style="width: 80%"><span>80%</span></div>
-						<div class="u" style="width: 20%"><span>20%</span></div>
-					</div>
-				</div>
-			</div>
-			<div class="column">
-				<div class="card-type">
-					<h2>Sorceries <span class="count">&mdash; 4</span></h2>
-					<ul class="list-unstyled">
-						<li>4 <a href="/card/414494">Incendiary Flow</a></li>
-					</ul>
-					<div class="color-bar">
-						<div class="r" style="width: 100%"><span>100%</span></div>
-					</div>
-				</div>
-				<div class="card-type">
-					<h2>Instants <span class="count">&mdash; 8</span></h2>
-					<ul class="list-unstyled">
-						<li>4 <a href="/card/414494">Galvanic Bombardment</a></li>
-						<li>4 <a href="/card/414494">Immolating Glare</a></li>
-					</ul>
-					<div class="color-bar">
-						<div class="r" style="width: 50%"><span>50%</span></div>
-						<div class="w" style="width: 50%"><span>50%</span></div>
-					</div>
-				</div>
-				<div class="card-type">
-					<h2>Enchantments <span class="count">&mdash; 8</span></h2>
-					<ul class="list-unstyled">
-						<li>8 <a href="/card/414494">Fevered Visions</a></li>
-					</ul>
-					<div class="color-bar">
-						<div class="r" style="width: 50%"><span>50%</span></div>
-						<div class="u" style="width: 50%"><span>50%</span></div>
-					</div>
-				</div>
-			</div>
-			<div class="column sideboard">
-				<h2>Sideboard <span class="count">&mdash; 15</span></h2>
-				<ul class="list-unstyled">
-					<li>4 <a href="/card/414494">Ceremonious Rejection</a></li>
-					<li>3 <a href="/card/414494">Disperse</a></li>
-					<li>2 <a href="/card/414494">Fumigate</a></li>
-					<li>2 <a href="/card/414494">Nahiri’s Wrath</a></li>
-					<li>2 <a href="/card/414494">Negate</a></li>
-					<li>2 <a href="/card/414494">Unsubstantiate</a></li>
-				</ul>
-				<div class="color-bar">
-					<div class="u" style="width: 80%"><span>80%</span></div>
-					<div class="r" style="width: 11%"><span>10%</span></div>
-					<div class="w" style="width: 11%"><span>10%</span></div>
-				</div>
-			</div>
-		</div>
-		<div class="deck-description">
-			<p>
-				Great card advantage with a lot of control. Chuck out what you don’t need and get to what you do need quickly. Don’t be afraid to counter things early, you want to lock down the board.
-			</p>
-			<p>
-				If you’re successful in locking down the board, <a href="/card/414494">Fevered Visions </a>will pretty much win it for you. Kill creatures with <a href="/card/414494">Lightning Axe</a> and <a href="/card/414494">Fiery Temper</a>. (9 out of the 10 most played creatures in Standard right now have a toughness of under 3, and that doesn’t even include <a href="/card/414494">Smuggler’s Copter</a> and <a href="/card/414494">Fleetwheel Cruiser</a>. See MTGGoldfish.)
-			</p>
-			<p>
-				Swing with <a href="/card/414494">Wandering Fumarole</a>, refuel your hand with <a href="/card/414494">Bedlam Reveler</a> or toss it with <a href="/card/414494">Nahiri’s Wrath</a> for some major damage against both creatures and planeswalkers. <a href="/card/414494">Collective Defiance</a> will also do the trick.
-			</p>
-			<p>
-				DO NOT FORGET: You can change <a href="/card/414494">Wandering Fumarole</a>'s zero ability at any time. If you attack as a 4/1, and your opponent throws down a <a href="/card/414494">Galvanic Bombardment</a> on the stack for three damage, you just switch it back to a 1/4.
-			</p>
-			<p>
-				<a href="/card/414494">Chandra, Torch of Defiance</a> is best used with its ramp ability, and is practically a two drop on turn four. Drop a <a href="/card/414494">Chandra, Torch of Defiance</a> AND a <a href="/card/414494">Fevered Visions</a> on turn five. You'll hit your land drops with the card advantage from <a href="/card/414494">Cathartic Reunion</a> and the Visions.
-			</p>
-			<p>
-				Here's the fun part: drop <a href="/card/414494">Combustible Gearhulk</a>. You're either going to gain massive card advantage or do massive damage. If you can keep it alive (not too hard) until the next turn, drop <a href="/card/414494">Saheeli's Artistry</a> to make TWO copies of <a href="/card/414494">Combustible Gearhulk</a>.
-			</p>
-			<p>
-				Remember to choose BOTH ;-) Aren't enter the battlefield effects just the best? Since your opponent will probably choose draw, you'll have exactly what you need in-hand to finish them off.
-			</p>
-			<p>
-				And that's how you win.
-			</p>
-		</div>
-		<div class="discussion">
-			<em class="pull-right">3 comments</em>
-			<h3 id="discussion">Discussion</h3>
-			<form action="imaform">
-				<textarea rows="5" placeholder="Leave a comment&hellip;"></textarea>
-				<div class="submit text-right">
-					<button type="submit" class="btn">Post your comment</button>
-				</div>
-			</form>
-			<div class="comment">
-				<em><span class="username">Blotterhead</span> says&hellip;</em>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, inventore, alias. Dolorum ex consectetur, distinctio nam magnam. Rerum ipsum nemo dignissimos quod doloremque quo, ab, assumenda, obcaecati minima et corporis.
-				</p>
-			</div>
-			<div class="comment">
-				<em><span class="username">Blotterhead</span> says&hellip;</em>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, inventore, alias. Dolorum ex consectetur, distinctio nam magnam. Rerum ipsum nemo dignissimos quod doloremque quo, ab, assumenda, obcaecati minima et corporis.
-				</p>
-			</div>
-			<div class="comment">
-				<em><span class="username">Blotterhead</span> says&hellip;</em>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, inventore, alias. Dolorum ex consectetur, distinctio nam magnam. Rerum ipsum nemo dignissimos quod doloremque quo, ab, assumenda, obcaecati minima et corporis.
-				</p>
-			</div>
-		</div>
-	</section>
+  <aside>
+    <h3>Card Costs</h3>
+    <div class="btn-group card-costs">
+      <button class="btn w" style="width: 35%">
+        <span class="mana small sw shadow">&nbsp;</span>35%
+      </button>
+      <button class="btn u" style="width: 28%">
+        <span class="mana small su shadow">&nbsp;</span>28%
+      </button>
+      <button class="btn r" style="width: 35%">
+        <span class="mana small sr shadow">&nbsp;</span>35%
+      </button>
+    </div>
+    <h3>Mana Available</h3>
+    <div class="btn-group mana-avilable">
+      <button class="btn w" style="width: 32%">
+        <span class="mana small sw shadow">&nbsp;</span>32%
+      </button>
+      <button class="btn u" style="width: 34%">
+        <span class="mana small su shadow">&nbsp;</span>35%
+      </button>
+      <button class="btn r" style="width: 32%">
+        <span class="mana small sr shadow">&nbsp;</span>32%
+      </button>
+    </div>
+    <h3>Legal Formats</h3>
+    <button class="btn">Standard</button>
+    <h3>Deck Type</h3>
+    <button class="btn">Control</button>
+    <button class="btn">Discard</button>
+    <button class="btn">Izzet</button>
+    <h3>Price</h3>
+    <a href="http://www.tcgplayer.com" class="btn">
+      $ <span class="price">286.27</span>
+    </a>
+    <span class="price-source">TCGPlayer</span> <br>
+    <a href="http://www.isleofcards.com" class="btn">
+      $ <span class="price">283.98</span>
+    </a>
+    <span class="price-source">Isle of Cards</span>
+  </aside>
+  <section>
+    <div class="deck-header">
+      <div class="deck-info">
+        <!-- Deck Controls: Likes, Comments, Export -->
+        <div class="stats">
+          <div class="likes">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 640"><title>Likes</title><path d="M450.3 428c-3.7 2.2-6.4 4-4.4 9.3 14.2 39.3-18.6 69-47.8 73.4a92.3 92.3 0 0 1-14 1c-77.2.2-154.4.6-231.6 0-48.3-.3-83.6-22.7-105-66.2-7.2-14.6-10.2-30.3-10.2-46.6V282a111.8 111.8 0 0 1 22-67.2L196 27.2C201 21 206 14.6 212 9.6c17.7-14.8 43.3-12 59 5.6 16.8 18.7 21 40.4 11.8 63.4-13.8 34.2-28.8 68-43.2 102l-2.8 6.6h8.4l143.2 1c15.6 0 30.3 3 43 13 12.2 9.6 18.6 22.2 18 38 0 6.8-1.6 13.6-2 20.5-.2 1.7.8 4.6 2.2 5.2 29 14.3 33 56.4 10.6 79.5a6.4 6.4 0 0 0-1.2 1.6c5 9.2 11 17 13.6 25.7 6.7 22-2.5 44-22 56.3z"/></svg>
+            11
+          </div>
+          <a href="#discussion" class="comments">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 640"><title>Comments</title><path d="M361.6 42c-2 0-4.2-.3-6.4-.4H165.4c-12.5.6-21.6 1.3-24.8 2-92 16-154 106.4-138 198.5C17.3 328.7 87 387.8 174.7 388.3c23.7 0 47.4-.3 71 .3a27.8 27.8 0 0 1 15.5 5.3c24.4 19 48.2 39 72.6 58 8.3 6.4 17.6 12.3 27.3 16 18 7 33.5-.8 39.8-19.4a81.2 81.2 0 0 0 4.2-21.2c.7-13.7.8-27.5.3-41.3-.3-7.5 2-11.5 8.8-15 67.5-34.4 103-98 97-173.6-6-79.8-70.3-148-149.7-155.3z"/></svg>
+            5
+          </a>
+          <a href="#discussion" class="export">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100 125"><g transform="translate(0,-952.36218)"><path d="m 15.066641,998.6747 -9.998815,44 c -0.414033,1.7597 1.12965,3.6977 2.937152,3.6875 l 83.990047,0 c 1.8075,0.01 3.35118,-1.9278 2.93715,-3.6875 l -9.99882,-44 c -0.30835,-1.30952 -1.59199,-2.32016 -2.93715,-2.3125 l -13.99834,0 c -1.58475,-0.0224 -3.04237,1.4149 -3.04237,3 0,1.5851 1.45762,3.0224 3.04237,3 l 11.59238,0 8.62398,38 -76.428445,0 8.623977,-38 11.592376,0 c 1.58475,0.022 3.042365,-1.4149 3.042365,-3 0,-1.5851 -1.457615,-3.02241 -3.042365,-3 l -13.998341,0 c -1.411317,0.0136 -2.657413,1.10905 -2.937151,2.3125 z" style="text-indent:0;text-transform:none;direction:ltr;block-progression:tb;baseline-shift:baseline;color:#000000;enable-background:accumulate;" fill-opacity="1" stroke="none" marker="none" visibility="visible" display="inline" overflow="visible"/><path d="m 49.994755,958.36217 c -0.715,0.028 -1.5414,0.3223 -2.0626,0.8125 l -17.0008,16 c -0.9743,1.0842 -1.3765,3.1632 -0.25,4.375 1.1095,1.1936 3.2613,1.1581 4.3752,-0.031 l 11.9381,-11.25 0,63.09353 c 0,1.6568 1.3432,3 3.0001,3 1.6569,0 3.0001,-1.3432 3.0001,-3 l 0,-63.09353 11.9381,11.25 c 1.0255,1.0237 3.253,1.2129 4.3752,0.031 1.1221,-1.1816 0.7636,-3.3353 -0.2501,-4.375 l -17.0007,-16 c -0.5818,-0.5475 -1.2644,-0.8143 -2.0626,-0.8125 z" style="text-indent:0;text-transform:none;direction:ltr;block-progression:tb;baseline-shift:baseline;color:#000000;enable-background:accumulate;" fill-opacity="1" stroke="none" marker="none" visibility="visible" display="inline" overflow="visible"/></g></svg>
+          </a>
+        </div>
+        <div class="date-created">Created on January 5, 2017</div>
+        <div class="date-updated">Last updated yesterday</div>
+      </div>
+      <div class="color-bar">
+        <div class="u" style="height: 34.78%"><span><span class="mana small su shadow">&nbsp;</span> 35%</span></div>
+        <div class="r" style="height: 32.61%"><span><span class="mana small sr shadow">&nbsp;</span> 33%</span></div>
+        <div class="w" style="height: 32.61%"><span><span class="mana small sw shadow">&nbsp;</span> 33%</span></div>
+      </div>
+      <hgroup>
+        <h1>Jeskai Fog</h1>
+        <h2>Blotterhead</h2>
+      </hgroup>
+      <img class="deck-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=414494&type=card" alt="Spell Queller">
+    </div>
+    <div class="deck-contents">
+      <div class="column">
+        <div class="card-type">
+          <h2>Lands <span class="count">&mdash; 24</span></h2>
+          <ul class="list-unstyled">
+            <li>4 <a href="/card/414494">Aether Hub</a></li>
+            <li>4 <a href="/card/414494">Inspiring Vantage</a></li>
+            <li>2 <a href="/card/414494">Island</a></li>
+            <li>4 <a href="/card/414494">Plains</a></li>
+            <li>3 <a href="/card/414494">Port Town</a></li>
+            <li>4 <a href="/card/414494">Spirebluff Canal</a></li>
+            <li>3 <a href="/card/414494">Wandering Fumarole</a></li>
+          </ul>
+          <div class="color-bar">
+            <div class="u" style="width: 35%"><span>35%</span></div>
+            <div class="w" style="width: 33%"><span>33%</span></div>
+            <div class="r" style="width: 33%"><span>33%</span></div>
+          </div>
+        </div>
+        <div class="card-type">
+          <h2>Planeswalkers <span class="count">&mdash; 4</span></h2>
+          <ul class="list-unstyled">
+            <li>2 <a href="/card/414494">Chandra, Torch of Defiance</a></li>
+            <li>2 <a href="/card/414494">Gideon, Ally of Zendikar</a></li>
+          </ul>
+          <div class="color-bar">
+            <div class="r" style="width: 50%"><span>50%</span></div>
+            <div class="w" style="width: 50%"><span>50%</span></div>
+          </div>
+        </div>
+        <div class="card-type">
+          <h2>Creatures <span class="count">&mdash; 12</span></h2>
+          <ul class="list-unstyled">
+            <li>4 <a href="/card/414494">Reflector Mage</a></li>
+            <li>4 <a href="/card/414494">Selfless Spirit</a></li>
+            <li>4 <a href="/card/414494">Spell Queller</a></li>
+          </ul>
+          <div class="color-bar">
+            <div class="w" style="width: 80%"><span>80%</span></div>
+            <div class="u" style="width: 20%"><span>20%</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card-type">
+          <h2>Sorceries <span class="count">&mdash; 4</span></h2>
+          <ul class="list-unstyled">
+            <li>4 <a href="/card/414494">Incendiary Flow</a></li>
+          </ul>
+          <div class="color-bar">
+            <div class="r" style="width: 100%"><span>100%</span></div>
+          </div>
+        </div>
+        <div class="card-type">
+          <h2>Instants <span class="count">&mdash; 8</span></h2>
+          <ul class="list-unstyled">
+            <li>4 <a href="/card/414494">Galvanic Bombardment</a></li>
+            <li>4 <a href="/card/414494">Immolating Glare</a></li>
+          </ul>
+          <div class="color-bar">
+            <div class="r" style="width: 50%"><span>50%</span></div>
+            <div class="w" style="width: 50%"><span>50%</span></div>
+          </div>
+        </div>
+        <div class="card-type">
+          <h2>Enchantments <span class="count">&mdash; 8</span></h2>
+          <ul class="list-unstyled">
+            <li>8 <a href="/card/414494">Fevered Visions</a></li>
+          </ul>
+          <div class="color-bar">
+            <div class="r" style="width: 50%"><span>50%</span></div>
+            <div class="u" style="width: 50%"><span>50%</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="column sideboard">
+        <h2>Sideboard <span class="count">&mdash; 15</span></h2>
+        <ul class="list-unstyled">
+          <li>4 <a href="/card/414494">Ceremonious Rejection</a></li>
+          <li>3 <a href="/card/414494">Disperse</a></li>
+          <li>2 <a href="/card/414494">Fumigate</a></li>
+          <li>2 <a href="/card/414494">Nahiri’s Wrath</a></li>
+          <li>2 <a href="/card/414494">Negate</a></li>
+          <li>2 <a href="/card/414494">Unsubstantiate</a></li>
+        </ul>
+        <div class="color-bar">
+          <div class="u" style="width: 80%"><span>80%</span></div>
+          <div class="r" style="width: 11%"><span>10%</span></div>
+          <div class="w" style="width: 11%"><span>10%</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="deck-description">
+      <p>
+        Great card advantage with a lot of control. Chuck out what you don’t need and get to what you do need quickly. Don’t be afraid to counter things early, you want to lock down the board.
+      </p>
+      <p>
+        If you’re successful in locking down the board, <a href="/card/414494">Fevered Visions </a>will pretty much win it for you. Kill creatures with <a href="/card/414494">Lightning Axe</a> and <a href="/card/414494">Fiery Temper</a>. (9 out of the 10 most played creatures in Standard right now have a toughness of under 3, and that doesn’t even include <a href="/card/414494">Smuggler’s Copter</a> and <a href="/card/414494">Fleetwheel Cruiser</a>. See MTGGoldfish.)
+      </p>
+      <p>
+        Swing with <a href="/card/414494">Wandering Fumarole</a>, refuel your hand with <a href="/card/414494">Bedlam Reveler</a> or toss it with <a href="/card/414494">Nahiri’s Wrath</a> for some major damage against both creatures and planeswalkers. <a href="/card/414494">Collective Defiance</a> will also do the trick.
+      </p>
+      <p>
+        DO NOT FORGET: You can change <a href="/card/414494">Wandering Fumarole</a>'s zero ability at any time. If you attack as a 4/1, and your opponent throws down a <a href="/card/414494">Galvanic Bombardment</a> on the stack for three damage, you just switch it back to a 1/4.
+      </p>
+      <p>
+        <a href="/card/414494">Chandra, Torch of Defiance</a> is best used with its ramp ability, and is practically a two drop on turn four. Drop a <a href="/card/414494">Chandra, Torch of Defiance</a> AND a <a href="/card/414494">Fevered Visions</a> on turn five. You'll hit your land drops with the card advantage from <a href="/card/414494">Cathartic Reunion</a> and the Visions.
+      </p>
+      <p>
+        Here's the fun part: drop <a href="/card/414494">Combustible Gearhulk</a>. You're either going to gain massive card advantage or do massive damage. If you can keep it alive (not too hard) until the next turn, drop <a href="/card/414494">Saheeli's Artistry</a> to make TWO copies of <a href="/card/414494">Combustible Gearhulk</a>.
+      </p>
+      <p>
+        Remember to choose BOTH ;-) Aren't enter the battlefield effects just the best? Since your opponent will probably choose draw, you'll have exactly what you need in-hand to finish them off.
+      </p>
+      <p>
+        And that's how you win.
+      </p>
+    </div>
+    <div class="discussion">
+      <em class="pull-right">3 comments</em>
+      <h3 id="discussion">Discussion</h3>
+      <form action="imaform">
+        <textarea rows="5" placeholder="Leave a comment&hellip;"></textarea>
+        <div class="submit text-right">
+          <button type="submit" class="btn">Post your comment</button>
+        </div>
+      </form>
+      <div class="comment">
+        <em><span class="username">Blotterhead</span> says&hellip;</em>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, inventore, alias. Dolorum ex consectetur, distinctio nam magnam. Rerum ipsum nemo dignissimos quod doloremque quo, ab, assumenda, obcaecati minima et corporis.
+        </p>
+      </div>
+      <div class="comment">
+        <em><span class="username">Blotterhead</span> says&hellip;</em>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, inventore, alias. Dolorum ex consectetur, distinctio nam magnam. Rerum ipsum nemo dignissimos quod doloremque quo, ab, assumenda, obcaecati minima et corporis.
+        </p>
+      </div>
+      <div class="comment">
+        <em><span class="username">Blotterhead</span> says&hellip;</em>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, inventore, alias. Dolorum ex consectetur, distinctio nam magnam. Rerum ipsum nemo dignissimos quod doloremque quo, ab, assumenda, obcaecati minima et corporis.
+        </p>
+      </div>
+    </div>
+  </section>
 </div>
 {% endblock %}

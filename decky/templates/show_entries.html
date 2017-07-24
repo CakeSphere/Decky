@@ -1,88 +1,88 @@
 {% extends "layout.html" %}
 {% block body %}
-	<div class="container">
-		<a href="#" class="btn">I’m a button.</a>
-		<a href="#" class="btn primary">I’m a primary button.</a>
-		<a href="#" class="btn u">I’m a blue button.</a>
-		<a href="#" class="btn w">I’m a white button.</a>
-		<a href="#" class="btn r">I’m a red button.</a>
-		<a href="#" class="btn g">I’m a green button.</a>
-		<a href="#" class="btn b">I’m a black button.</a>
-		<a href="#" class="btn link"><span>I’m a linky button.</span></a>
-		<div class="btn">I’m a button too.</div>
-		<button>I’m a &lt;button&gt;.</button>
-		<div class="btn-group">
-			<a href="#" class="btn primary">We’re in a button group.</a>
-			<a href="#" class="btn">We’re in a button group.</a>
-			<a href="#" class="btn u">We’re in a button group.</a>
-		</div>
-		<button>I’m a &lt;button&gt;.</button>
-		<br>
-		<a href="#">I’m a linky.</a>
-	</div>
-	<hr>
-	{% for set in sets %}
-	<div class="container">
-		<h2>{{ set.name }} <small>{{today}}</small></h2>
-		{{ set.code }} <br>
-		{{ set.gathererCode }} <br>
-		{{ set.oldCode }} <br>
-		{{ set.magicCardsInfoCode }} <br>
-		{{ set.releaseDate }} <br>
-		{{ set.border }} <br>
-		{{ set.type }} <br>
-		{{ set.block }} <br>
-		{{ set.booster }} <br>
-	</div>
-	<hr>
-	{% endfor %}
-	{% for card in cards %}
-	<div class="container">
-		<h2>
-			<a href="/card/{{ card.multiverseId }}" target="_blank">
-				{{ card.name }}
-			</a>
-		</h2>
-		<img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseid}}&type=card" alt="{{ card.name }}">
-		<p class="text">{{ card.text }}</p>
-		<p class="flavor">{{ card.flavor }}</p>
-		<ul class="cards-info list-unstyled">
-			<li><label>Names</label> <div class="value">{{ card.names }}</div></li>
-			<li><label>Layout</label> <div class="value">{{ card.layout }}</div></li>
-			<li><label>Mana Cost</label> 
-				<div class="value">
-					{% for mana in card.manaCost.split() %}
-						<span class="mana small shadow s{{ mana }}"></span>
-					{% endfor %}
-				</div>
-			</li>
-			<li><label>Converted Mana Cost</label> <div class="value">{{ card.cmc }}</div></li>
-			<li><label>Colors</label> <div class="value">{{ card.colors }}</div></li>
-			<li><label>Color Identity</label> <div class="value">{{ card.colorIdentity }}</div></li>
-			<li><label>Type</label> <div class="value">{{ card.type }}</div></li>
-			<li><label>Supertypes</label> <div class="value">{{ card.supertypes }}</div></li>
-			<li><label>Types</label> <div class="value">{{ card.types }}</div></li>
-			<li><label>Subtypes</label> <div class="value">{{ card.subtypes }}</div></li>
-			<li><label>Rarity</label> <div class="value">{{ card.rarity }}</div></li>
-			<li><label>Artist</label> <div class="value">{{ card.artist }}</div></li>
-			<li><label>Number</label> <div class="value">{{ card.number }}</div></li>
-			<li><label>Power</label> <div class="value">{{ card.power }}</div></li>
-			<li><label>Toughness</label> <div class="value">{{ card.toughness }}</div></li>
-			<li><label>Loyalty</label> <div class="value">{{ card.loyalty }}</div></li>
-			<li><label>Multiverse ID</label> <div class="value">{{ card.multiverseid }}</div></li>
-			<li><label>Variations</label> <div class="value">{{ card.variations }}</div></li>
-			<li><label>Image Name</label> <div class="value">{{ card.imageName }}</div></li>
-			<li><label>Watermark</label> <div class="value">{{ card.watermark }}</div></li>
-			<li><label>Border</label> <div class="value">{{ card.border }}</div></li>
-			<li><label>Timeshifted</label> <div class="value">{{ card.timeshifted }}</div></li>
-			<li><label>Hand</label> <div class="value">{{ card.hand }}</div></li>
-			<li><label>Life</label> <div class="value">{{ card.life }}</div></li>
-			<li><label>Reserved</label> <div class="value">{{ card.reserved }}</div></li>
-			<li><label>Release Date</label> <div class="value">{{ card.releaseDate }}</div></li>
-			<li><label>Starter</label> <div class="value">{{ card.starter }}</div></li>
-			<li><label>MagicCards.Info Number</label> <div class="value">{{ card.mciNumber }}</div></li>
-		</ul>
-	</div>
-	<hr>
-	{% endfor %}
+  <div class="container">
+    <a href="#" class="btn">I’m a button.</a>
+    <a href="#" class="btn primary">I’m a primary button.</a>
+    <a href="#" class="btn u">I’m a blue button.</a>
+    <a href="#" class="btn w">I’m a white button.</a>
+    <a href="#" class="btn r">I’m a red button.</a>
+    <a href="#" class="btn g">I’m a green button.</a>
+    <a href="#" class="btn b">I’m a black button.</a>
+    <a href="#" class="btn link"><span>I’m a linky button.</span></a>
+    <div class="btn">I’m a button too.</div>
+    <button>I’m a &lt;button&gt;.</button>
+    <div class="btn-group">
+      <a href="#" class="btn primary">We’re in a button group.</a>
+      <a href="#" class="btn">We’re in a button group.</a>
+      <a href="#" class="btn u">We’re in a button group.</a>
+    </div>
+    <button>I’m a &lt;button&gt;.</button>
+    <br>
+    <a href="#">I’m a linky.</a>
+  </div>
+  <hr>
+  {% for set in sets %}
+  <div class="container">
+    <h2>{{ set.name }} <small>{{today}}</small></h2>
+    {{ set.code }} <br>
+    {{ set.gathererCode }} <br>
+    {{ set.oldCode }} <br>
+    {{ set.magicCardsInfoCode }} <br>
+    {{ set.releaseDate }} <br>
+    {{ set.border }} <br>
+    {{ set.type }} <br>
+    {{ set.block }} <br>
+    {{ set.booster }} <br>
+  </div>
+  <hr>
+  {% endfor %}
+  {% for card in cards %}
+  <div class="container">
+    <h2>
+      <a href="/card/{{ card.multiverseId }}" target="_blank">
+        {{ card.name }}
+      </a>
+    </h2>
+    <img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseid}}&type=card" alt="{{ card.name }}">
+    <p class="text">{{ card.text }}</p>
+    <p class="flavor">{{ card.flavor }}</p>
+    <ul class="cards-info list-unstyled">
+      <li><label>Names</label> <div class="value">{{ card.names }}</div></li>
+      <li><label>Layout</label> <div class="value">{{ card.layout }}</div></li>
+      <li><label>Mana Cost</label> 
+        <div class="value">
+          {% for mana in card.manaCost.split() %}
+            <span class="mana small shadow s{{ mana }}"></span>
+          {% endfor %}
+        </div>
+      </li>
+      <li><label>Converted Mana Cost</label> <div class="value">{{ card.cmc }}</div></li>
+      <li><label>Colors</label> <div class="value">{{ card.colors }}</div></li>
+      <li><label>Color Identity</label> <div class="value">{{ card.colorIdentity }}</div></li>
+      <li><label>Type</label> <div class="value">{{ card.type }}</div></li>
+      <li><label>Supertypes</label> <div class="value">{{ card.supertypes }}</div></li>
+      <li><label>Types</label> <div class="value">{{ card.types }}</div></li>
+      <li><label>Subtypes</label> <div class="value">{{ card.subtypes }}</div></li>
+      <li><label>Rarity</label> <div class="value">{{ card.rarity }}</div></li>
+      <li><label>Artist</label> <div class="value">{{ card.artist }}</div></li>
+      <li><label>Number</label> <div class="value">{{ card.number }}</div></li>
+      <li><label>Power</label> <div class="value">{{ card.power }}</div></li>
+      <li><label>Toughness</label> <div class="value">{{ card.toughness }}</div></li>
+      <li><label>Loyalty</label> <div class="value">{{ card.loyalty }}</div></li>
+      <li><label>Multiverse ID</label> <div class="value">{{ card.multiverseid }}</div></li>
+      <li><label>Variations</label> <div class="value">{{ card.variations }}</div></li>
+      <li><label>Image Name</label> <div class="value">{{ card.imageName }}</div></li>
+      <li><label>Watermark</label> <div class="value">{{ card.watermark }}</div></li>
+      <li><label>Border</label> <div class="value">{{ card.border }}</div></li>
+      <li><label>Timeshifted</label> <div class="value">{{ card.timeshifted }}</div></li>
+      <li><label>Hand</label> <div class="value">{{ card.hand }}</div></li>
+      <li><label>Life</label> <div class="value">{{ card.life }}</div></li>
+      <li><label>Reserved</label> <div class="value">{{ card.reserved }}</div></li>
+      <li><label>Release Date</label> <div class="value">{{ card.releaseDate }}</div></li>
+      <li><label>Starter</label> <div class="value">{{ card.starter }}</div></li>
+      <li><label>MagicCards.Info Number</label> <div class="value">{{ card.mciNumber }}</div></li>
+    </ul>
+  </div>
+  <hr>
+  {% endfor %}
 {% endblock %}
