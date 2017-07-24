@@ -91,7 +91,9 @@
     <div class="card-info">
       <h1>{{card.name}}</h1>
       <h2>{{card.type}}</h2>
+      {% if card.Text|length > 0 %}
       <p class="text">{{cardText}}</p>
+      {% endif %}
       {% if card.Flavor|length > 0 %}
       <p class="flavor">
         {{cardFlavor}}
