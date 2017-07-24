@@ -37,15 +37,15 @@
       width: 92.5%;
       height: 95%;
       position: absolute;
-      opacity: 0.2;
+      opacity: 0.15;
       border-radius: 8px;
       left: 3.75%;
       top: 2.5%;
       background: linear-gradient(120deg, #ff0000, #e3ff00, #00ff37, #00dbff, #0005ff, #ff00df, #ff0000);
-      background-size: 300% 300%;
-      mix-blend-mode: difference;
-      -webkit-animation: foil 10s ease-in-out infinite;
-              animation: foil 10s ease-in-out infinite;
+      background-size: 200% 200%;
+      mix-blend-mode: hard-light;
+      -webkit-animation: foil 5s ease-in-out infinite;
+              animation: foil 5s ease-in-out infinite;
     }
   }
   .card-container, .card-img {
