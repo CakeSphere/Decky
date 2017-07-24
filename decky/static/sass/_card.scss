@@ -109,13 +109,21 @@
       a {
         color: $color-text;
         cursor: help;
-        @include underline($color-text, $color-background);
+        @include underline($color-text, tint($color-background, 5%));
+        &::selection {
+          color: $color-text-weak;
+          text-shadow: 0.03em 0 #222, -0.03em 0 #222, 0 0.03em #222, 0 -0.03em #222, 0.06em 0 #222, -0.06em 0 #222, 0.09em 0 #222, -0.09em 0 #222, 0.12em 0 #222, -0.12em 0 #222, 0.15em 0 #222, -0.15em 0 #222;
+        }
+        &:hover {
+          color: shade($color-text, 15%);
+          @include underline(shade($color-text, 15%), tint($color-background, 5%));
+        }
       }
       .card-explanation { 
         color: shade($color-text, 20%); 
         a {
           color: shade($color-text, 20%);
-          @include underline(shade($color-text, 20%), $color-background);
+          @include underline(shade($color-text, 20%), tint($color-background, 5%));
         }
       }
       br { line-height: 2.5rem; }
