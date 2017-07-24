@@ -72,7 +72,7 @@
     {% endif %}
   </aside>
   <section class="card-details">
-    <div class="card-container">
+    <div class="card-container foil">
       {% if not flipCardA and not flipCardB %}
       <img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
       {% endif %}
@@ -89,7 +89,7 @@
       {% endif %}
     </div>
     <div class="card-info">
-      <h1>{{card.name}}</h1>
+      <h1>{{card.name}} <small>Foil</small></h1>
       <h2>{{card.type}}</h2>
       {% if card.Text|length > 0 %}
       <p class="text">{{cardText}}</p>

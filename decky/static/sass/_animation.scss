@@ -57,23 +57,29 @@
 /* Flipcard demo animation */
 
 @-webkit-keyframes demo-flipper {
-  from { -webkit-transform: rotateY(0deg); transform: rotateY(0deg) }
-  to { -webkit-transform: rotateY(360deg); transform: rotateY(360deg) }
+  from { -webkit-transform: rotateY(0deg); transform: rotateY(0deg); }
+  to { -webkit-transform: rotateY(360deg); transform: rotateY(360deg); }
 }
 
 @keyframes demo-flipper {
-  from { -webkit-transform: rotateY(0deg); transform: rotateY(0deg) }
-  to { -webkit-transform: rotateY(360deg); transform: rotateY(360deg) }
+  from { -webkit-transform: rotateY(0deg); transform: rotateY(0deg); }
+  to { -webkit-transform: rotateY(360deg); transform: rotateY(360deg); }
 }
 
 /* Animation for sidebars sliding in*/
 
 @-webkit-keyframes aside-slide {
-  from { -webkit-transform: translateX(-300px); transform: translateX(-300px) }
-  to   { -webkit-transform: translateX(0); transform: translateX(0)}
+  from { -webkit-transform: translateX(-300px); transform: translateX(-300px); }
+  to   { -webkit-transform: translateX(0); transform: translateX(0); }
 }
 
 @keyframes aside-slide {
-  from { -webkit-transform: translateX(-300px); transform: translateX(-300px) }
-  to   { -webkit-transform: translateX(0); transform: translateX(0)}
+  from { -webkit-transform: translateX(-300px); transform: translateX(-300px); }
+  to   { -webkit-transform: translateX(0); transform: translateX(0); }
+}
+
+@keyframes foil {
+  0%   { background-position: 20% 0%; }
+  50%  { background-position: 80% 100%;}
+  100% { background-position: 20% 0%; }
 }
