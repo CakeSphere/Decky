@@ -42,7 +42,7 @@
       left: 3.75%;
       top: 2.5%;
       background: linear-gradient(120deg, #ff0000, #e3ff00, #00ff37, #00dbff, #0005ff, #ff00df, #ff0000);
-      background-size: 200% 200%;
+      background-size: 150% 150%;
       mix-blend-mode: hard-light;
       -webkit-animation: foil 5s ease-in-out infinite;
               animation: foil 5s ease-in-out infinite;
@@ -119,9 +119,6 @@
     font-family: $font-family-display;
     font-style: italic;
     font-weight: 800;
-    small {
-      color: $color-text-weak;
-    }
   }
   h2 {
     margin-top: -0.25rem;
