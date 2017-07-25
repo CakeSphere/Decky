@@ -86,11 +86,11 @@
       background: tint($color-background, 6%);
       border: 1px solid tint($color-border-strong, 15%);
       -webkit-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15),
-                  inset 0 0 4px rgba(255, 255, 255, 0.05),
-                  0 2px 3px rgba(0, 0, 0, 0.15);
+                          inset 0 0 4px rgba(255, 255, 255, 0.05),
+                          0 2px 3px rgba(0, 0, 0, 0.15);
               box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15),
-                  inset 0 0 4px rgba(255, 255, 255, 0.05),
-                  0 2px 3px rgba(0, 0, 0, 0.15);
+                          inset 0 0 4px rgba(255, 255, 255, 0.05),
+                          0 2px 3px rgba(0, 0, 0, 0.15);
     }
     &::after {  
       content: attr(alt);
@@ -233,8 +233,8 @@
   display: block;
   height: auto;
   padding: 1rem;
-  width: calc(25% - 2.47rem - 12px);
-  height: 600px;
+  width: calc(20% - 2.47rem - 12px);
+  height: 570px;
   float: left;
   margin: 0 0.5rem 1rem 0.5rem;
   background: tint($color-background, 3%);
@@ -290,7 +290,7 @@
     color: $color-text;
     text-shadow: none;
     position: relative;
-    height: 316px;
+    height: 315px;
   }
   .card-img {
     position: relative;
@@ -302,7 +302,7 @@
     display: inline-block;
     width: calc(100% + 2rem);
     margin-left: -1rem;
-    height: 255px;
+    height: 200px;
     overflow: hidden;
     background: transparentize($color-background, 0.5);
     border-radius: $border-radius 0 0 $border-radius;
@@ -322,9 +322,9 @@
     }
     img {
       position: relative;
-      bottom: 65px;
+      bottom: 53px;
       left: -33px;
-      width: 413px;
+      width: 328px;
       &::before {  
         content: " ";
         display: block;
@@ -380,7 +380,7 @@
   .flavor { font-size: $font-size-default; }
   .power-toughness {
     position: absolute;
-    bottom: 0;
+    bottom: -30px;
     right: 0;
     background: transparentize($color-background, 0.5);
     padding: 0.5rem 1rem;
