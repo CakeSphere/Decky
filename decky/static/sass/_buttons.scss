@@ -112,6 +112,7 @@ button {
   &.r       { @include btn($color-mtg-r); }
   &.b       { @include btn($color-mtg-b); }
   &.g       { @include btn($color-mtg-g); }
+  &.c       { @include btn($color-mtg-c); }
   i { 
     /* Set Icons*/
     position: relative;
@@ -183,16 +184,27 @@ button {
     z-index: $z-index-baseline;
     margin-right: -4px; /* Removes the space next to an inline-block element*/
     border-radius: 0;
+    padding: 0.5rem;
     &.w, 
     &.u, 
     &.r,
     &.b, 
-    &.g { z-index: $z-index-paging; } /* Color buttons have higher priority */
+    &.g,
+    &.c { z-index: $z-index-paging; } /* Color buttons have higher priority */
     &.primary { z-index: $z-index-paging-text; } /* Primary buttons are highest priority */
     &:first-child { border-radius: $border-radius 0 0 $border-radius; }
     &:last-child {
       margin-right: 6px;
       border-radius: 0 $border-radius $border-radius 0;
+    }
+  }
+  &.card-costs, &.mana-available {
+    .mana {
+      position: absolute;
+      left: calc(50% - 0.66665rem);
+      top: calc(50% - 0.66665rem);
+      opacity: 0.25;
+      z-index: -1;
     }
   }
 }

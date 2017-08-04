@@ -100,6 +100,7 @@
   .r { @include color-bar($color-mtg-r) }
   .b { @include color-bar($color-mtg-b) }
   .g { @include color-bar($color-mtg-g) }
+  .c { @include color-bar($color-mtg-c) }
 }
 
 /* Deck tiles*/
@@ -387,7 +388,7 @@
 .count { color: $color-text-weak; }
 
 .card-costs, 
-.mana-avilable {
+.mana-available {
   width: 100%;
   a { text-align: center; }
 }
