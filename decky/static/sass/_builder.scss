@@ -11,9 +11,9 @@
 }
 
 .builder-cards {
-  .tabs {
-    position: relative;
-    z-index: $z-index-baseline;
+  .btn {
+    margin-bottom: 0;
+    border-radius: $border-radius $border-radius 0 0;
   }
   table {
     position: relative;
