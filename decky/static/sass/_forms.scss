@@ -215,6 +215,9 @@ input[type="checkbox"], input[type="radio"] {
             transform: scale(1);
     }
   }
+  &:empty + label {
+    padding-left: 1.25rem;
+  }
 }
 
 /* Radio buttons work the same as checkboxes, but using a bullet instead of*/
