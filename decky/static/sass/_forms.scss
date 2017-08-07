@@ -52,6 +52,10 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
 select, select.btn {
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -205,6 +209,7 @@ input[type="checkbox"], input[type="radio"] {
       -webkit-transform: scale(0);
               transform: scale(0);
     }
+    &:empty { padding-left: 1.25rem; }
   }
   /* When the checkbox is checked, show the check*/
   &:checked + label {
@@ -214,9 +219,6 @@ input[type="checkbox"], input[type="radio"] {
     -webkit-transform: scale(1);
             transform: scale(1);
     }
-  }
-  &:empty + label {
-    padding-left: 1.25rem;
   }
 }
 
@@ -268,4 +270,8 @@ textarea {
     margin-bottom: 0;
     margin-right: 0;
   }
+}
+
+datalist option {
+  font-weight: normal;
 }

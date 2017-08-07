@@ -13,6 +13,7 @@
 .builder-cards {
   .btn {
     margin-bottom: 0;
+    margin-right: 0;
     border-radius: $border-radius $border-radius 0 0;
   }
   table {
@@ -22,6 +23,30 @@
       &:first-child {
         width: 30px;
       }
+    }
+  }
+}
+
+.add-card {
+  margin-top: 1rem;
+  input {
+    display: inline-block;
+    margin-right: -4px;
+    &[type="number"] {
+      width: 15px;
+      text-align: right;
+      border-radius: $border-radius 0 0 $border-radius;
+    }
+    &[type="text"] {
+      width: calc(100% - 261px);
+      border-radius: 0;
+    }
+  }
+  .btn {
+    margin-right: -4px;
+    border-radius: 0;
+    &:last-child {
+      border-radius: 0 $border-radius $border-radius 0;
     }
   }
 }
