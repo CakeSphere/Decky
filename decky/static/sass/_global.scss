@@ -205,3 +205,53 @@ ul.cards-info {
     display: none !important;
   }
 }
+
+table {
+  width: 100%;
+  background: $color-background-tint;
+  border-collapse: collapse;
+  border-radius: $border-radius;
+  a:hover {
+    @include underline(shade($color-primary, 15%), $color-background-tint);
+  }
+  thead {
+    background: tint($color-background-tint, 5%);
+  }
+  tbody tr {
+    &:first-child {
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+      td:first-child {
+        border-bottom-left-radius: $border-radius;
+      }
+    }
+    &:nth-child(even) {
+      background: tint($color-background-tint, 2.5%);
+      a:hover {
+        @include underline(shade($color-primary, 15%), tint($color-background-tint, 2.5%));
+      }
+    }
+    &:last-child {  
+      box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
+      td {
+        padding-bottom: calc(0.3rem + 2px);
+        &:last-child {
+          border-bottom-right-radius: $border-radius;
+        }
+      }
+    }
+  }
+  td, th {
+    border-bottom: 1px solid transparentize($color-border-strong, 0.95);
+    padding: 0.3rem;
+    color: $color-text-weak;
+  }
+  th {
+    text-align: left;
+    font-weight: normal;
+    color: shade($color-text-weak, 20%);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    &:last-child {
+      border-top-right-radius: $border-radius;
+    }
+  }
+}

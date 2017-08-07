@@ -224,10 +224,13 @@ input[type="radio"] + label {
     border-radius: 50%;
   }
   &::after {
-    content: '•';
-    top: -0.15rem;
-    left: 0.185rem;
-    font-size: 3.5rem; /* Hard-coded so that the bullet is the right size */
+    content: '';
+    border-radius: 50%;
+    width: 0.5rem;
+    height: 0.5rem;
+    top: 0.39rem;
+    left: 0.36rem;
+    background-color: $color-text-weak;
   }
 }
 

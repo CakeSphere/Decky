@@ -7,6 +7,10 @@
 .container {
   width:  calc(100% - 400px - 2rem);
   margin-left: calc(400px + 2rem);
+  .container {
+    width: 100%;
+    margin-left: 0;
+  }
 }
 
 .column {

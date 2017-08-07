@@ -316,6 +316,18 @@ def card(multiverseId):
 def deck():
     return render_template('deck.html')
 
+@app.route('/builder')
+def builder():
+    db = get_db()
+    cur = db.execute(
+        'select * from cards where type like "%Spirit%" and type like "%Creature%" order by multiverseId asc limit 15'
+    )
+    cur_sets = db.execute(
+        'select * from sets order by releaseDate desc limit 5')
+    cards = cur.fetchall()
+    sets = cur_sets.fetchall()
+    return render_template('builder.html', cards=cards, sets=sets)
+
 
 @app.route('/login')
 def index():

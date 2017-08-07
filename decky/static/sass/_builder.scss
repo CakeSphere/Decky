@@ -1,0 +1,27 @@
+
+/* Builder Elements */
+
+.builder {
+  aside {
+    max-height: 76vh;
+  }
+  input {
+    width: calc(100% - 1.4rem);
+  }
+}
+
+.builder-cards {
+  .tabs {
+    position: relative;
+    z-index: $z-index-baseline;
+  }
+  table {
+    position: relative;
+    z-index: $z-index-paging;
+    td, th {
+      &:first-child {
+        width: 30px;
+      }
+    }
+  }
+}
