@@ -7,6 +7,7 @@
 /* Styles specific to card.html*/
 .card {
   .card-details .card-container, .card-info {
+    min-height: 311px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
