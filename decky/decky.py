@@ -320,7 +320,7 @@ def deck():
 def builder():
     db = get_db()
     cur = db.execute(
-        'select * from cards where type like "%Spirit%" and type like "%Creature%" order by multiverseId asc limit 15'
+        'select * from cards where type like "%Spirit%" and type like "%Creature%" order by multiverseId asc limit 3'
     )
     cur_sets = db.execute(
         'select * from sets order by releaseDate desc limit 5')

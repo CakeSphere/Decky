@@ -5,11 +5,12 @@
 
 
 .container {
-  width:  calc(100% - 400px - 2rem);
-  margin-left: calc(400px + 2rem);
+  width:  calc(100% - 100px);
+  margin-left: 100px;
+  margin-top: 59px;
   .container {
     width: 100%;
-    margin-left: 0;
+    margin: 0;
   }
 }
 
@@ -20,4 +21,8 @@
   &:first-child {
     margin-right: 2rem;
   }
+}
+
+.row {
+  margin: 0 -0.5rem;
 }

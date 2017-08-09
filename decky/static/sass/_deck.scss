@@ -119,132 +119,136 @@
   }
 }
 
-.row {
-  margin: 0 -0.5rem;
-  .deck {
-    position: relative;
+.deck.gallery {
+  position: relative;
+  display: inline-block;
+  height: 120px;
+  width: calc(33.33333% - 0.5rem - 14px);
+  margin: 0 0.5rem 1rem 0.5rem;
+  background: tint($color-background, 3%);
+  border-radius: $border-radius;
+  -webkit-box-shadow: 0 4px 4px transparentize(shade($color-background, 15%), 0.5);
+          box-shadow: 0 4px 4px transparentize(shade($color-background, 15%), 0.5);
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: none;
+          transition: none;
+  white-space: nowrap;
+  background: tint($color-background, 6%);
+  border: 1px solid tint($color-border-strong, 15%);
+  border-radius: $border-radius;
+  -webkit-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15),
+              inset 0 0 4px rgba(255, 255, 255, 0.05),
+              0 2px 3px rgba(0, 0, 0, 0.15);
+          box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15),
+              inset 0 0 4px rgba(255, 255, 255, 0.05),
+              0 2px 3px rgba(0, 0, 0, 0.15);
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    display: block;
+    opacity: 0.05;
+    will-change: opacity;
+    background: -webkit-gradient(linear, left top, left bottom, from(transparent), to($color-primary));
+    background: linear-gradient(to bottom, transparent, $color-primary);
+    border-radius: $border-radius;
+    -webkit-transition: opacity $transition;
+            transition: opacity $transition;
+  }
+  &:hover::after { opacity: 0.1; }
+  .color-bar {
+    &:hover {
+      ~ .deck-info, ~ .deck-img {
+        -webkit-transform: translateX(63px);
+                transform: translateX(63px);
+      }
+    }
+  }
+  .deck-info {
     display: inline-block;
+    color: $color-text;
+    text-shadow: none;
+    padding: 0.5rem;
+    vertical-align: top;
+    will-change: transform;
+    text-overflow: ellipsis;
+    width: calc(100% - 195px);
+    -webkit-transition: -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
+            transition: -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
+            transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
+            transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67), -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
+    .title {
+      overflow: hidden;
+      font-family: $font-family-display;
+      font-size: $font-size-sub;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .tags {
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+      margin-top: 0.5rem;
+      -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(#000000),color-stop(90%, #000000),to(transparent));
+      -webkit-mask-image: linear-gradient(to right, #000000 0%,#000000 90%,transparent 100%);
+              mask-image: -webkit-gradient(linear, left top, right top, from(#000000),color-stop(90%, #000000),to(transparent));
+              mask-image: linear-gradient(to right, #000000 0%,#000000 90%,transparent 100%);
+      .author,
+      .tag { margin-right: 0.2rem; }
+      .tag { opacity: 0.5; }
+    }
+  }
+  .deck-img {
+    position: relative;
+    will-change: transform;
+    -webkit-transition: -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
+            transition: -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
+            transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
+            transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67), -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
+    display: inline-block;
+    width: 165px;
     height: 120px;
-    width: calc(33.33333% - 0.5rem - 14px);
-    margin: 0 0.5rem 1rem 0.5rem;
-    background: tint($color-background, 3%);
-    border-radius: $border-radius;
-    -webkit-box-shadow: 0 4px 4px transparentize(shade($color-background, 15%), 0.5);
-            box-shadow: 0 4px 4px transparentize(shade($color-background, 15%), 0.5);
-    cursor: pointer;
     overflow: hidden;
-    -webkit-transition: none;
-            transition: none;
-    white-space: nowrap;
-    background: tint($color-background, 6%);
-    border: 1px solid tint($color-border-strong, 15%);
-    border-radius: $border-radius;
-    -webkit-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15),
-                inset 0 0 4px rgba(255, 255, 255, 0.05),
-                0 2px 3px rgba(0, 0, 0, 0.15);
-            box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15),
-                inset 0 0 4px rgba(255, 255, 255, 0.05),
-                0 2px 3px rgba(0, 0, 0, 0.15);
-    &::after {
+    margin-left: 1px;
+    background: transparentize($color-background, 0.5);
+    &::before {
+      display: block;
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      content: '';
-      display: block;
-      opacity: 0.05;
-      will-change: opacity;
-      background: -webkit-gradient(linear, left top, left bottom, from(transparent), to($color-primary));
-      background: linear-gradient(to bottom, transparent, $color-primary);
-      border-radius: $border-radius;
-      -webkit-transition: opacity $transition;
-              transition: opacity $transition;
+      -webkit-box-shadow: inset 0 0 20px hsla(182, 58, 0, 0.15);
+              box-shadow: inset 0 0 20px hsla(182, 58, 0, 0.15);
     }
-    &:hover::after { opacity: 0.1; }
-    .color-bar {
-      &:hover {
-        ~ .deck-info, ~ .deck-img {
-          -webkit-transform: translateX(63px);
-                  transform: translateX(63px);
-        }
-      }
-    }
-    .deck-info {
-      display: inline-block;
-      color: $color-text;
-      text-shadow: none;
-      padding: 0.5rem;
-      vertical-align: top;
-      will-change: transform;
-      text-overflow: ellipsis;
-      width: calc(100% - 195px);
-      -webkit-transition: -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
-              transition: -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
-              transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
-              transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67), -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
-      .title {
-        overflow: hidden;
-        font-family: $font-family-display;
-        font-size: $font-size-sub;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-      .tags {
-        width: 100%;
-        max-width: 100%;
-        overflow: hidden;
-        margin-top: 0.5rem;
-        -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(#000000),color-stop(90%, #000000),to(transparent));
-        -webkit-mask-image: linear-gradient(to right, #000000 0%,#000000 90%,transparent 100%);
-                mask-image: -webkit-gradient(linear, left top, right top, from(#000000),color-stop(90%, #000000),to(transparent));
-                mask-image: linear-gradient(to right, #000000 0%,#000000 90%,transparent 100%);
-        .author,
-        .tag { margin-right: 0.2rem; }
-        .tag { opacity: 0.5; }
-      }
-    }
-    .deck-img {
+    img {
       position: relative;
-      will-change: transform;
-      -webkit-transition: -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
-              transition: -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
-              transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
-              transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67), -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
-      display: inline-block;
-      width: 165px;
-      height: 120px;
-      overflow: hidden;
-      margin-left: 1px;
-      background: transparentize($color-background, 0.5);
-      &::before {
-        display: block;
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        -webkit-box-shadow: inset 0 0 20px hsla(182, 58, 0, 0.15);
-                box-shadow: inset 0 0 20px hsla(182, 58, 0, 0.15);
-      }
-      img {
-        position: relative;
-        bottom: 32px;
-        left: -14px;
-        width: 195px;
+      bottom: 32px;
+      left: -14px;
+      width: 195px;
+    }
+  }
+  .stats {
+    .likes,
+    .comments,
+    .export {
+      &:hover svg, &:active svg {
+        fill: transparent;
+        stroke: $color-text;
       }
     }
-    .stats {
-      .likes,
-      .comments,
-      .export {
-        &:hover svg, &:active svg {
-          fill: transparent;
-          stroke: $color-text;
-        }
-      }
-    }
+  }
+}
+
+aside .deck.gallery { 
+  margin: 0;
+  .deck-info {
+    width: 100%;
   }
 }
 

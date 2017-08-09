@@ -247,10 +247,6 @@
 
 aside {
   z-index: $z-index-nav;
-  position: absolute;
-  top: 61px;
-  bottom: 0;
-  left: 100px;
   height: 100%;
   width: 300px;
   padding: 1.5rem 1rem;
@@ -272,6 +268,9 @@ footer {
           box-shadow: 0 -2px 4px shade($color-background, 5%);
   color: rgba($color-text, 0.75);
   text-align: center;
+  .container {
+    margin-top: 0;
+  }
   a {
     color: $color-text;
     &:hover {

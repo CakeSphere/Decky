@@ -2,11 +2,14 @@
 /* Builder Elements */
 
 .builder {
-  aside {
-    max-height: 76vh;
-  }
   input {
     width: calc(100% - 1.4rem);
+  }
+  h1 {
+    margin-top: 0;
+  }
+  .in-deck {
+    color: shade($color-text-weak, 20%);
   }
 }
 
