@@ -35,18 +35,33 @@
     {% endfor %}
     <h3>My Cards</h3>
     <input type="text" placeholder="Filter cards by name&hellip;">
-    <ul class="list-unstyled">
+    <ul class="list-unstyled my-cards">
       {% for card in cards %}
-        <li>{{card.name}}</li>
+        <li>
+          <div class="card-name">
+            <em>4</em> {{card. name}}
+          </div>
+          <a href="/builder" class="btn">Add</a>
+        </li>
       {% endfor %}
-      <li class="in-deck">Spell Queller</li>
+      <li class="in-deck">
+        <div class="card-name">
+          <em>0</em> Spell Queller
+        </div>
+        <a href="/builder" class="btn">Add</a>
+      </li>
       {% for card in cards %}
-        <li>{{card.name}}</li>
+        <li>
+          <div class="card-name">
+            <em>4</em> {{card. name}}
+          </div>
+          <a href="/builder" class="btn">Add</a>
+        </li>
       {% endfor %}
     </ul>
   </aside>
   <section>
-    <h1>Build a Deck</h1>
+    <h1><em>Build a Deck</em></h1>
     <h3>Name</h3>
     <input type="text">
     <div class="container">
