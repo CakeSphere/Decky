@@ -38,22 +38,31 @@
     <ul class="list-unstyled my-cards">
       {% for card in cards %}
         <li>
+          <div class="card-count">
+            4
+          </div>
           <div class="card-name">
-            <em>4</em> {{card. name}}
+            {{card. name}}
           </div>
           <a href="/builder" class="btn">Add</a>
         </li>
       {% endfor %}
       <li class="in-deck">
+        <div class="card-count">
+          0
+        </div>
         <div class="card-name">
-          <em>0</em> Spell Queller
+          Spell Queller
         </div>
         <a href="/builder" class="btn">Add</a>
       </li>
       {% for card in cards %}
         <li>
+          <div class="card-count">
+            4
+          </div>
           <div class="card-name">
-            <em>4</em> {{card. name}}
+            {{card. name}}
           </div>
           <a href="/builder" class="btn">Add</a>
         </li>
