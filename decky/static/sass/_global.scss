@@ -39,7 +39,6 @@ aside {
   /* Sidebars for search filters or card/deck info*/
   display: inline-block;
   width: 280px;
-  margin-right: 44px;
   > h3:first-child {
     /* Making sure things like up with the main content*/
     margin-top: 0.6rem;
@@ -51,7 +50,7 @@ aside {
 
 section {
   /* Main content section*/
-  width: calc(100% - 400px - 2rem);
+  width: calc(100% - 356px - 2rem);
   vertical-align: top;
   display: inline-block;
 }
