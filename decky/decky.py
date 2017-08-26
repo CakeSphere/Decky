@@ -129,6 +129,7 @@ def initdb_command():
     init_db()
     print('\033[92m\033[1mInitialized the database.\033[0m')
 
+
 @app.cli.command('import_sets')
 def import_sets():
     init_db()
@@ -314,7 +315,13 @@ def card(multiverseId):
 
 @app.route('/deck')
 def deck():
-    return render_template('deck.html')
+    db = get_db()
+    cur = db.execute('select * from decks where id="1"')
+    deck = cur.fetchone()
+    cur = db.execute('SELECT * FROM decksToCards INNER JOIN cards ON cardId=cards.id WHERE deckId=1')
+    cards = cur.fetchall()
+    print deck
+    return render_template('deck.html', deck=deck, cards=cards)
 
 @app.route('/builder')
 def builder():
