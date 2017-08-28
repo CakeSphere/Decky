@@ -60,6 +60,7 @@ create table decks (
   author VARCHAR(50) NOT NULL,
   colors VARCHAR(50),
   commander VARCHAR(50),
+  created VARCHAR(10),
   description VARCHAR(500),
   formats VARCHAR(50),
   image VARCHAR(500),
@@ -69,7 +70,8 @@ create table decks (
   maybeboard VARCHAR(50),
   name VARCHAR(50) NOT NULL,
   sideboard VARCHAR(50),
-  tags VARCHAR(500)
+  tags VARCHAR(500),
+  updated VARCHAR(10)
 );
 
 create table decksToCards (
@@ -80,8 +82,7 @@ create table decksToCards (
   FOREIGN KEY(cardId) REFERENCES cards(multiverseid)
 );
 
-insert into decks values(null, "Blotterhead", "{w}{u}{r}", null, "Description
-      ", "Standard", "414494", "Standard", 11, "main", "maybe", "Jeskai Fog", "side", "Control, Discard, Izzet");
+insert into decks values(null, "Blotterhead", "{w}{u}{r}", null, "2017-07-28", "Description", "Standard, Modern", "417822", "Standard, Modern", 11, "main", "maybe", "Jeskai Fog", "side", "Control, Discard, Izzet", "2017-8-28");
 
 insert into decksToCards values(null, 1, 417815);
 insert into decksToCards values(null, 1, 417819);

@@ -110,8 +110,8 @@ def format_card(raw_card):
             out_card[field] = raw_card[field]
             if isinstance(out_card[field], list):
                 out_card[field] = unicode(", ".join([
-                    unicode(out_card[field][x]) for x in range(
-                        len(out_card[field]))
+                    unicode(out_card[field][x])
+                    for x in range(len(out_card[field]))
                 ]))
         else:
             out_card[field] = ""
@@ -228,7 +228,8 @@ def import_cards():
                   set_data["code"]))
             db.commit()
             print "\033[92m\033[1mCards imported.\033[0m"
-            
+
+
 @app.route('/show_entries')
 def show_entries():
     db = get_db()
@@ -251,6 +252,7 @@ def decks():
     cards = cur.fetchall()
     sets = cur_sets.fetchall()
     return render_template('decks.html', cards=cards, sets=sets)
+
 
 @app.route('/cards')
 def cards():
@@ -291,7 +293,9 @@ def card(multiverseId):
     # Making keyword abilities links so they can be used for tooltips and to
     # link to the glossary eventually
     cardText = re.compile(
-        r'(((Deathtouch|Defender|Double Strike|Enchant|Equip|First Strike|Flash|Flying|Haste|Hexproof|Indestructible|Intimidate|Landwalk|Lifelink|Protection|Reach|Shroud|Trample|Vigilance|Banding|Rampage|Cumulative Upkeep|Flanking|Phasing|Buyback|Shadow|Cycling|Echo|Horsemanship|Fading|Kicker|Flashback|Madness|Fear|Morph|Amplify|Provoke|Storm|Affinity|Entwine|Modular|Sunburst|Bushido|Soulshift|Splice|Offering|Ninjutsu|Epic|Convoke|Dredge|Transmute|Bloodthirst|Haunt|Replicate|Forecast|Graft|Recover|Ripple|Split Second|Suspend|Vanishing|Absorb|Aura Swap|Delve|Fortify|Frenzy|Gravestorm|Poisonous|Transfigure|Champion|Changeling|Evoke|Hideaway|Prowl|Reinforce|Conspire|Persist|Wither|Retrace|Devour|Exalted|Unearth|Cascade|Annihilator|Level Up|Rebound|Totem Armor|Infect|Battle Cry|Living Weapon|Undying|Miracle|Soulbond|Overload|Scavenge|Unleash|Cipher|Evolve|Extort|Fuse|Bestow|Tribute|Dethrone|Hidden Agenda|Outlast|Prowess|Dash|Exploit|Menace|Renown|Awaken|Devoid|Ingest|Myriad|Surge|Skulk|Emerge|Escalate|Melee|Crew|Fabricate|Partner|Undaunted|Improvise|Aftermath|Embalm|Eternalize|Afflict)\s*?)+)', re.I).sub(r'<a href="tooltip" title="Keyword Ability: \1">\1</a>', cardText)
+        r'(((Deathtouch|Defender|Double Strike|Enchant|Equip|First Strike|Flash|Flying|Haste|Hexproof|Indestructible|Intimidate|Landwalk|Lifelink|Protection|Reach|Shroud|Trample|Vigilance|Banding|Rampage|Cumulative Upkeep|Flanking|Phasing|Buyback|Shadow|Cycling|Echo|Horsemanship|Fading|Kicker|Flashback|Madness|Fear|Morph|Amplify|Provoke|Storm|Affinity|Entwine|Modular|Sunburst|Bushido|Soulshift|Splice|Offering|Ninjutsu|Epic|Convoke|Dredge|Transmute|Bloodthirst|Haunt|Replicate|Forecast|Graft|Recover|Ripple|Split Second|Suspend|Vanishing|Absorb|Aura Swap|Delve|Fortify|Frenzy|Gravestorm|Poisonous|Transfigure|Champion|Changeling|Evoke|Hideaway|Prowl|Reinforce|Conspire|Persist|Wither|Retrace|Devour|Exalted|Unearth|Cascade|Annihilator|Level Up|Rebound|Totem Armor|Infect|Battle Cry|Living Weapon|Undying|Miracle|Soulbond|Overload|Scavenge|Unleash|Cipher|Evolve|Extort|Fuse|Bestow|Tribute|Dethrone|Hidden Agenda|Outlast|Prowess|Dash|Exploit|Menace|Renown|Awaken|Devoid|Ingest|Myriad|Surge|Skulk|Emerge|Escalate|Melee|Crew|Fabricate|Partner|Undaunted|Improvise|Aftermath|Embalm|Eternalize|Afflict)\s*?)+)',
+        re.I).sub(r'<a href="tooltip" title="Keyword Ability: \1">\1</a>',
+                  cardText)
     # Convert mana symbols to styled span elements
     cardText = cardText.replace('{', '<span class="mana medium shadow s')
     cardText = cardText.replace('}', '">&nbsp;</span>')
@@ -317,11 +321,28 @@ def deck():
     db = get_db()
     cur = db.execute('select * from decks where id="1"')
     deck = cur.fetchone()
-    cur = db.execute('SELECT name, type, multiverseid FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId=1')
+    cur = db.execute(
+        'SELECT name, type, multiverseid FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId=1'
+    )
     cards = cur.fetchall()
     deckTags = deck["tags"]
     deckTags = deckTags.split(', ')
-    return render_template('deck.html', deck=deck, cards=cards, deckTags=deckTags)
+    deckLegality = deck["legality"]
+    deckLegality = deckLegality.split(', ')
+    deckCreated = datetime.datetime.strptime(deck["created"], "%Y-%m-%d")
+    deckCreated = deckCreated.strftime("%B %d, %Y")
+    deckUpdated = datetime.datetime.strptime(deck["updated"], "%Y-%m-%d")
+    deckUpdated = deckUpdated.strftime("%B %d, %Y")
+    print deckCreated
+    return render_template(
+        'deck.html',
+        deck=deck,
+        cards=cards,
+        deckTags=deckTags,
+        deckLegality=deckLegality,
+        deckCreated=deckCreated,
+        deckUpdated=deckUpdated)
+
 
 @app.route('/builder')
 def builder():
