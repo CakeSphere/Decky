@@ -128,6 +128,12 @@
     <div class="deck-contents">
       <div class="column">
         <div class="card-type">
+          <h2>Test</h2>
+          <ul class="list-unstyled">
+            {% for card in cards %}
+              <li>4 <a href="/card/{{card.multiverseId}}">{{card.name}}</a></li>
+            {% endfor %}
+          </ul>
           <h2>Lands <span class="count">&mdash; 24</span></h2>
           <ul class="list-unstyled">
             <li>4 <a href="/card/414494">Aether Hub</a></li>

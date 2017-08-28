@@ -270,8 +270,7 @@ def card(multiverseId):
     db = get_db()
     cur = db.execute('select * from cards where multiverseId="' + multiverseId
                      + '"')
-    card = cur.fetchall()
-    card = card[0]
+    card = cur.fetchone()
     cardNumber = card['number']
     flipCardA = False
     flipCardB = False
@@ -318,11 +317,10 @@ def deck():
     db = get_db()
     cur = db.execute('select * from decks where id="1"')
     deck = cur.fetchone()
-    cur = db.execute('SELECT * FROM decksToCards INNER JOIN cards ON cardId=cards.id WHERE deckId=1')
+    cur = db.execute('SELECT name, type, multiverseid FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId=1')
     cards = cur.fetchall()
     deckTags = deck["tags"]
     deckTags = deckTags.split(', ')
-    print deckTags
     return render_template('deck.html', deck=deck, cards=cards, deckTags=deckTags)
 
 @app.route('/builder')

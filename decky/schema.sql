@@ -77,12 +77,28 @@ create table decksToCards (
   deckId INTEGER,
   cardId INTEGER,
   FOREIGN KEY(deckId) REFERENCES decks(id),
-  FOREIGN KEY(cardId) REFERENCES cards(id)
+  FOREIGN KEY(cardId) REFERENCES cards(multiverseid)
 );
 
 insert into decks values(null, "Blotterhead", "{w}{u}{r}", null, "Description
       ", "Standard", "414494", "Standard", 11, "main", "maybe", "Jeskai Fog", "side", "Control, Discard, Izzet");
-insert into decksToCards values(null, 1, 3357);
+
+insert into decksToCards values(null, 1, 417815);
+insert into decksToCards values(null, 1, 417819);
+insert into decksToCards values(null, 1, 417826);
+insert into decksToCards values(null, 1, 417823);
+insert into decksToCards values(null, 1, 410046);
+insert into decksToCards values(null, 1, 417822);
+insert into decksToCards values(null, 1, 407692);
+insert into decksToCards values(null, 1, 410009);
+insert into decksToCards values(null, 1, 407667);
+insert into decksToCards values(null, 1, 414332);
+insert into decksToCards values(null, 1, 414494);
+insert into decksToCards values(null, 1, 414427);
+insert into decksToCards values(null, 1, 407530);
+insert into decksToCards values(null, 1, 417683);
+insert into decksToCards values(null, 1, 401897);
+insert into decksToCards values(null, 1, 414432);
 
 
 -- SELECT * FROM decksToCards INNER JOIN cards ON cardId=cards.id WHERE deckId=1;
