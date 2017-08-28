@@ -320,8 +320,10 @@ def deck():
     deck = cur.fetchone()
     cur = db.execute('SELECT * FROM decksToCards INNER JOIN cards ON cardId=cards.id WHERE deckId=1')
     cards = cur.fetchall()
-    print deck
-    return render_template('deck.html', deck=deck, cards=cards)
+    deckTags = deck["tags"]
+    deckTags = deckTags.split(', ')
+    print deckTags
+    return render_template('deck.html', deck=deck, cards=cards, deckTags=deckTags)
 
 @app.route('/builder')
 def builder():

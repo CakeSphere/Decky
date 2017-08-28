@@ -48,9 +48,9 @@
     <h3>Legal Formats</h3>
     <button class="btn">{{deck.legality}}</button>
     <h3>Deck Type</h3>
-    <button class="btn">Control</button>
-    <button class="btn">Discard</button>
-    <button class="btn">Izzet</button>
+    {% for tag in deckTags %}
+      <button class="btn">{{tag}}</button>
+    {% endfor %}
     <h3>Price</h3>
     <a href="http://www.tcgplayer.com" class="btn">
       $ <span class="price">286.27</span>
