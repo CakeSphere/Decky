@@ -333,7 +333,13 @@ def deck():
     deckCreated = deckCreated.strftime("%B %d, %Y")
     deckUpdated = datetime.datetime.strptime(deck["updated"], "%Y-%m-%d")
     deckUpdated = deckUpdated.strftime("%B %d, %Y")
-    print deckCreated
+    if(deckUpdated == datetime.datetime.now().strftime("%B %d, %Y")):
+        deckUpdated = "today"
+    if(deckCreated == datetime.datetime.now().strftime("%B %d, %Y")):
+        deckCreated = "today"
+    print "Today: " + datetime.datetime.now().strftime("%B %d, %Y")
+    print "Deck Created: " + deckCreated
+    print "Deck Updated: " + deckUpdated
     return render_template(
         'deck.html',
         deck=deck,
