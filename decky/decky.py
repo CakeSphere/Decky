@@ -271,10 +271,13 @@ def cards():
         cardMana = cardMana.replace('}', '')
         cardMana = cardMana.replace('/', '')
         cardDict[card["id"]] = cardMana
-
-    print cardDict
     sets = cur_sets.fetchall()
-    return render_template('cards.html', cards=cards, sets=sets, cardMana=cardMana, cardDict=cardDict)
+    return render_template(
+        'cards.html',
+        cards=cards,
+        sets=sets,
+        cardMana=cardMana,
+        cardDict=cardDict)
 
 
 @app.route('/card/<multiverseId>')
