@@ -115,8 +115,8 @@
         {% for card in cards %}
         <a class="card" href="/card/{{card.multiverseId}}" title="{{card.name}}">
           <div class="card-mana pull-right">
-            {% if cardDict[card.id]|length > 0 %}
-              {% for mana in cardDict[card.id].split(" ") %}
+            {% if cardMana[card.id]|length > 0 %}
+              {% for mana in cardMana[card.id].split(" ") %}
                 <span class="mana small s{{mana.lower()}} shadow">{{mana}}</span>
               {% endfor %}
             {% endif %}
@@ -132,7 +132,7 @@
               </div>
               {{card.type}}
             </div>
-            <p class="description">{{card.text}}</p>
+            <p class="description">{{cardText[card.id]}}</p>
             <p class="flavor">{{card.flavor}}</p>
             <p class="power-toughness">
               {{card.power}} /

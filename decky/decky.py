@@ -263,21 +263,43 @@ def cards():
     cur_sets = db.execute(
         'select * from sets order by releaseDate desc limit 5')
     cards = cur.fetchall()
-    cardDict = {}
+    cardMana = {}
     for card in cards:
-        cardMana = card["manaCost"]
-        cardMana = cardMana.replace('}{', ' ')
-        cardMana = cardMana.replace('{', '')
-        cardMana = cardMana.replace('}', '')
-        cardMana = cardMana.replace('/', '')
-        cardDict[card["id"]] = cardMana
+        mana = card["manaCost"]
+        mana = mana.replace('}{', ' ')
+        mana = mana.replace('{', '')
+        mana = mana.replace('}', '')
+        mana = mana.replace('/', '')
+        cardMana[card["id"]] = mana
+    cardText = {}
+    for card in cards:
+        text = card["text"]
+        # Italicize ability words
+        text = re.compile(
+            r'(((battalion|bloodrush|channel|chroma|cohort|constellation|converge|council\'s dilemma|delirium|domain|fateful hour|ferocious|formidable|grandeur|hellbent|heroic|imprint|inspired|join forces|kinship|landfall|lieutenant|metalcraft|morbid|parley|radiance|raid|rally|revolt|spell mastery|strive|sweep|tempting offer|threshold|will of the council)\s*?)+)',
+            re.I).sub(r'<em>\1</em>', text)
+        # Making keyword abilities links so they can be used for tooltips and to
+        # link to the glossary eventually
+        text = re.compile(
+            r'(((Deathtouch|Defender|Double Strike|Enchant|Equip|First Strike|Flash|Flying|Haste|Hexproof|Indestructible|Intimidate|Landwalk|Lifelink|Protection|Reach|Shroud|Trample|Vigilance|Banding|Rampage|Cumulative Upkeep|Flanking|Phasing|Buyback|Shadow|Cycling|Echo|Horsemanship|Fading|Kicker|Flashback|Madness|Fear|Morph|Amplify|Provoke|Storm|Affinity|Entwine|Modular|Sunburst|Bushido|Soulshift|Splice|Offering|Ninjutsu|Epic|Convoke|Dredge|Transmute|Bloodthirst|Haunt|Replicate|Forecast|Graft|Recover|Ripple|Split Second|Suspend|Vanishing|Absorb|Aura Swap|Delve|Fortify|Frenzy|Gravestorm|Poisonous|Transfigure|Champion|Changeling|Evoke|Hideaway|Prowl|Reinforce|Conspire|Persist|Wither|Retrace|Devour|Exalted|Unearth|Cascade|Annihilator|Level Up|Rebound|Totem Armor|Infect|Battle Cry|Living Weapon|Undying|Miracle|Soulbond|Overload|Scavenge|Unleash|Cipher|Evolve|Extort|Fuse|Bestow|Tribute|Dethrone|Hidden Agenda|Outlast|Prowess|Dash|Exploit|Menace|Renown|Awaken|Devoid|Ingest|Myriad|Surge|Skulk|Emerge|Escalate|Melee|Crew|Fabricate|Partner|Undaunted|Improvise|Aftermath|Embalm|Eternalize|Afflict)\s*?)+)',
+            re.I).sub(r'<em href="tooltip" title="Keyword Ability: \1">\1</em>',
+                      text)
+        # Convert mana symbols to styled span elements
+        text = text.replace('{', '<span class="mana small shadow s')
+        text = text.replace('}', '">&nbsp;</span>')
+        # Text on cards in parentheses is always italicized
+        text = text.replace('(', '<em class="card-explanation">(')
+        text = text.replace(')', ')</em>')
+        # Convert new lines to html line breaks
+        text = Markup('<br>'.join(text.split('\n')))
+        cardText[card["id"]] = text
     sets = cur_sets.fetchall()
     return render_template(
         'cards.html',
         cards=cards,
         sets=sets,
         cardMana=cardMana,
-        cardDict=cardDict)
+        cardText=cardText)
 
 
 @app.route('/card/<multiverseId>')
