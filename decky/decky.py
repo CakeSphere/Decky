@@ -263,8 +263,16 @@ def cards():
     cur_sets = db.execute(
         'select * from sets order by releaseDate desc limit 5')
     cards = cur.fetchall()
+    for card in cards:
+        cardMana = card["manaCost"]
+        cardMana = cardMana.replace('}{', ' ')
+        cardMana = cardMana.replace('{', '')
+        cardMana = cardMana.replace('}', '')
+        cardMana = cardMana.replace('/', '')
+        print cardMana
+
     sets = cur_sets.fetchall()
-    return render_template('cards.html', cards=cards, sets=sets)
+    return render_template('cards.html', cards=cards, sets=sets, cardMana=cardMana)
 
 
 @app.route('/card/<multiverseId>')
