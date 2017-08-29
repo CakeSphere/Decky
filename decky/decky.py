@@ -333,10 +333,16 @@ def deck():
     deckCreated = deckCreated.strftime("%B %d, %Y")
     deckUpdated = datetime.datetime.strptime(deck["updated"], "%Y-%m-%d")
     deckUpdated = deckUpdated.strftime("%B %d, %Y")
-    if(deckUpdated == datetime.datetime.now().strftime("%B %d, %Y")):
-        deckUpdated = "today"
-    if(deckCreated == datetime.datetime.now().strftime("%B %d, %Y")):
-        deckCreated = "today"
+
+    def isToday(date):
+        if (date == datetime.datetime.now().strftime("%B %d, %Y")):
+            date = "today"
+            return date
+        else:
+            return date
+
+    deckUpdated = isToday(deckUpdated)
+    deckCreated = isToday(deckCreated)
     print "Today: " + datetime.datetime.now().strftime("%B %d, %Y")
     print "Deck Created: " + deckCreated
     print "Deck Updated: " + deckUpdated

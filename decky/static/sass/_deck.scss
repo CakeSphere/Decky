@@ -277,15 +277,16 @@ aside .deck.gallery {
   }
   .deck-img {
     @include demo(demo-slide);
+    pointer-events: none;
     position: relative;
     left: -19px;
     top:-43px;
     height: 370px;
     will-change: transform;
-            -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(#000000),color-stop(94%, transparent),to(transparent));
-            -webkit-mask-image: linear-gradient(to right, #000000 0%,transparent 94%,transparent 100%);
-                    mask-image: -webkit-gradient(linear, left top, right top, from(#000000),color-stop(94%, transparent),to(transparent));
-                    mask-image: linear-gradient(to right, #000000 0%,transparent 94%,transparent 100%);
+    -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(#000000),color-stop(94%, transparent),to(transparent));
+    -webkit-mask-image: linear-gradient(to right, #000000 0%,transparent 94%,transparent 100%);
+            mask-image: -webkit-gradient(linear, left top, right top, from(#000000),color-stop(94%, transparent),to(transparent));
+            mask-image: linear-gradient(to right, #000000 0%,transparent 94%,transparent 100%);
     -webkit-transition: transform $transition/2;
     -webkit-transition: -webkit-transform $transition/2;
             transition: -webkit-transform $transition/2;
