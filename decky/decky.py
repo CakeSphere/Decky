@@ -351,10 +351,10 @@ def card(multiverseId):
         flipCardB=flipCardB)
 
 
-@app.route('/deck')
-def deck():
+@app.route('/deck/<id>')
+def deck(id):
     db = get_db()
-    cur = db.execute('select * from decks where id="1"')
+    cur = db.execute('select * from decks where id="' + id + '"')
     deck = cur.fetchone()
     cur = db.execute(
         'SELECT name, type, multiverseid FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId=1'
