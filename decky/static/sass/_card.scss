@@ -230,7 +230,7 @@
   height: auto;
   padding: 1rem;
   width: calc(20% - 2.47rem - 12px);
-  height: 570px;
+  height: 600px;
   float: left;
   margin: 0 0.5rem 1rem 0.5rem;
   background: tint($color-background, 3%);
@@ -377,7 +377,7 @@
   .flavor { font-size: $font-size-default; }
   .power-toughness {
     position: absolute;
-    bottom: -30px;
+    bottom: -60px;
     right: 0;
     background: transparentize($color-background, 0.5);
     padding: 0.5rem 1rem;
