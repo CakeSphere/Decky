@@ -147,7 +147,7 @@
       }
       .card-explanation { 
         color: shade($color-text, 20%); 
-        a {
+        .tooltip, a {
           color: shade($color-text, 20%);
           @include underline(shade($color-text, 20%), tint($color-background, 5%));
         }
@@ -385,7 +385,21 @@
             box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
     border-radius: $border-radius;
   }
+  .tooltip {
+    @include underline($color-text, tint($color-background, 5%));
+  }
   .description br {
     line-height: 2rem;
+  }
+  .card-explanation .tooltip {
+    @include underline(shade($color-text, 20%), tint($color-background, 5%));
+  }
+}
+
+.card-explanation { 
+  color: shade($color-text, 20%); 
+  .tooltip, a {
+    color: shade($color-text, 20%);
+    @include underline(shade($color-text, 20%), tint($color-background, 5%));
   }
 }

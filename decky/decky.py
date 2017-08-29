@@ -282,7 +282,7 @@ def cards():
         # link to the glossary eventually
         text = re.compile(
             r'(((Deathtouch|Defender|Double Strike|Enchant|Equip|First Strike|Flash|Flying|Haste|Hexproof|Indestructible|Intimidate|Landwalk|Lifelink|Protection|Reach|Shroud|Trample|Vigilance|Banding|Rampage|Cumulative Upkeep|Flanking|Phasing|Buyback|Shadow|Cycling|Echo|Horsemanship|Fading|Kicker|Flashback|Madness|Fear|Morph|Amplify|Provoke|Storm|Affinity|Entwine|Modular|Sunburst|Bushido|Soulshift|Splice|Offering|Ninjutsu|Epic|Convoke|Dredge|Transmute|Bloodthirst|Haunt|Replicate|Forecast|Graft|Recover|Ripple|Split Second|Suspend|Vanishing|Absorb|Aura Swap|Delve|Fortify|Frenzy|Gravestorm|Poisonous|Transfigure|Champion|Changeling|Evoke|Hideaway|Prowl|Reinforce|Conspire|Persist|Wither|Retrace|Devour|Exalted|Unearth|Cascade|Annihilator|Level Up|Rebound|Totem Armor|Infect|Battle Cry|Living Weapon|Undying|Miracle|Soulbond|Overload|Scavenge|Unleash|Cipher|Evolve|Extort|Fuse|Bestow|Tribute|Dethrone|Hidden Agenda|Outlast|Prowess|Dash|Exploit|Menace|Renown|Awaken|Devoid|Ingest|Myriad|Surge|Skulk|Emerge|Escalate|Melee|Crew|Fabricate|Partner|Undaunted|Improvise|Aftermath|Embalm|Eternalize|Afflict)\s*?)+)',
-            re.I).sub(r'<em href="tooltip" title="Keyword Ability: \1">\1</em>',
+            re.I).sub(r'<span class="tooltip" href="tooltip" title="Keyword Ability: \1">\1</span>',
                       text)
         # Convert mana symbols to styled span elements
         text = text.replace('{', '<span class="mana small shadow s')
