@@ -26,7 +26,7 @@ Decks' contents are visible but in progress. Prices are unavailable and many con
 Cards are visible and formatted but it is not currently possible to search.
 
 :white_square_button: **Card Details**: 
-Cards contents are visible and properly formatted, but only cards from the past ten or so sets are available.
+Cards contents are visible and properly formatted, but only cards from the past ten or so sets are available. Prices are unavailable and many controls don't work.
 
 :white_square_button:  **Deck Builder**: 
 The deck builder exists but is not currently functional.
