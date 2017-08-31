@@ -58,10 +58,6 @@ Decky issues are tracked on [Trello](https://trello.com/b/eI9QlmUi/decky).
 
 --- 
 
-Decky is not in any way associated with 
-[Wizards of the Coast](http://wizards.com/). 
+###### Decky is not in any way associated with [Wizards of the Coast](http://wizards.com/). 
 
-Special thanks to 
-[MTGJSON](http://mtgjson.com/), 
-[Keyrune](https://andrewgioia.github.io/Keyrune/), and 
-[Mana-Cost](https://github.com/micku/mana-cost).
+###### Special thanks to [MTGJSON](http://mtgjson.com/), [Keyrune](https://andrewgioia.github.io/Keyrune/), and [Mana-Cost](https://github.com/micku/mana-cost).
