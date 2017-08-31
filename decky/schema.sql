@@ -82,7 +82,7 @@ create table decksToCards (
   FOREIGN KEY(cardId) REFERENCES cards(multiverseid)
 );
 
-insert into decks values(null, "Blotterhead", "{w}{u}{r}", null, "2017-07-28", "Description", "Standard, Modern", "417822", "Standard, Modern", 11, "main", "maybe", "Jeskai Fog", "side", "Control, Discard, Izzet", date('now'));
+insert into decks values(null, "Blotterhead", "{w}{u}{r}", null, "2017-07-28", "Description", "Standard", "417822", "Standard", 11, "main", "maybe", "Jeskai Fog", "side", "Control, Discard, Izzet", date('now'));
 
 insert into decksToCards values(null, 1, 417815);
 insert into decksToCards values(null, 1, 417819);
