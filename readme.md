@@ -65,5 +65,3 @@ Special thanks to
 [MTGJSON](http://mtgjson.com/), 
 [Keyrune](https://andrewgioia.github.io/Keyrune/), and 
 [Mana-Cost](https://github.com/micku/mana-cost).
-
----
