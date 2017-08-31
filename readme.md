@@ -10,7 +10,7 @@ ______          _
 ```
 
 ## Decky
-#### Decky lets users create, search, and view decks for Magic: The Gathering.
+### Decky lets users create, search, and view decks for Magic: The Gathering.
 
 Decky is an application that makes it easy to build decks for the Magic: The Gathering card game. Search through all of the thousands of cards in the game to find the one that's right for your deck, or look at decks other people around the world have created for inspiration.
 
