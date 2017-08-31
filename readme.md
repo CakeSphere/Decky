@@ -16,22 +16,22 @@ Decky is an application that makes it easy to build decks for the Magic: The Gat
 
 ##### Current functionality is extremely limited:
 
-* <span style="color:goldenrod">Deck Search</span>: 
+:white_square_button:  Deck Search: 
 Decks are visible and formatted but it is not currently possible to search.
 
-* <span style="color:goldenrod">Deck Details</span>: 
+:white_square_button:  Deck Details: 
 Decks' contents are visible but in progress. Prices are unavailable and many controls don't work.
 
-* <span style="color:goldenrod">Card Search</span>: 
+:white_square_button:  Card Search: 
 Cards are visible and formatted but it is not currently possible to search.
 
-* <span style="color:forestgreen">Card Details</span>: 
+:white_square_button: Card Details: 
 Cards contents are visible and properly formatted, but only cards from the past ten or so sets are available.
 
-* <span style="color:goldenrod">Deck Builder</span>: 
+:white_square_button:  Deck Builder: 
 The deck builder exists but is not currently functional.
 
-* <span style="color:darkred">Account registration and authorization</span>: 
+:white_medium_square:  Account registration and authorization: 
 Some work has gone into mocking up this process, but it is not currently functional.
 
 
