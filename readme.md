@@ -14,7 +14,7 @@ ______          _
 
 Decky is an application that makes it easy to build decks for the Magic: The Gathering card game. Search through all of the thousands of cards in the game to find the one that's right for your deck, or look at decks other people around the world have created for inspiration.
 
-*Current functionality is extremely limited:*
+##### Current functionality is extremely limited:
 
 * <span style="color:goldenrod">Deck Search</span>: 
 Decks are visible and formatted but it is not currently possible to search.
@@ -37,7 +37,7 @@ Some work has gone into mocking up this process, but it is not currently functio
 
 ---
 
-To run Decky:
+##### To run Decky:
 
 1. Ensure Flask is installed by following the instructions [here](http://flask.pocoo.org/docs/0.12/installation/).
 2. Run `. venv/bin/activate` to activate the virtual environment
