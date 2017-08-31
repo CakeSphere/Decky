@@ -1,13 +1,7 @@
-```
-______          _          
-|  _  \        | |         
-| | | |___  ___| | ___   _ 
-| | | / _ \/ __| |/ / | | |
-| |/ /  __/ (__|   <| |_| |
-|___/ \___|\___|_|\_\\__, |v0.0.01a
-                      __/ |
-                     |___/ 
-```
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/CakeSphere/Decky/master/decky/static/images/favicon-2.png">
+</p>
 
 # Decky
 ### Decky lets users create, search, and view decks for Magic: The Gathering.
@@ -61,3 +55,16 @@ Decky issues are tracked on [Trello](https://trello.com/b/eI9QlmUi/decky).
 ###### Decky is not in any way associated with [Wizards of the Coast](http://wizards.com/). 
 
 ###### Special thanks to [MTGJSON](http://mtgjson.com/), [Keyrune](https://andrewgioia.github.io/Keyrune/), and [Mana-Cost](https://github.com/micku/mana-cost).
+
+<!-- 
+```
+______          _          
+|  _  \        | |         
+| | | |___  ___| | ___   _ 
+| | | / _ \/ __| |/ / | | |
+| |/ /  __/ (__|   <| |_| |
+|___/ \___|\___|_|\_\\__, |v0.0.01a
+                      __/ |
+                     |___/ 
+```
+ -->
