@@ -31,7 +31,13 @@ Cards contents are visible and properly formatted, but only cards from the past 
 :white_square_button:  Deck Builder: 
 The deck builder exists but is not currently functional.
 
-:white_medium_square:  Account registration and authorization: 
+:white_medium_square:  Glossary:
+The glossary is in the conceptual stage.
+
+:white_medium_square:  Settings & User Profile:
+The settings menu is in the conceptual stage.
+
+:white_medium_square:  Account Registration & Authorization: 
 Some work has gone into mocking up this process, but it is not currently functional.
 
 
