@@ -21,7 +21,7 @@ app.config.update(
 
 print app.root_path
 
-path_to_json = 'static/json'
+path_to_json = app.root_path + '/static/json'
 
 app.config.from_envvar('DECKY_SETTINGS', silent=True)
 
@@ -116,12 +116,14 @@ def format_card(raw_card):
                 ]))
         else:
             out_card[field] = ""
-    out_card['name'] = HTMLParser().unescape(
-        smartypants.smartypants(out_card['name']))
-    out_card['text'] = HTMLParser().unescape(
-        smartypants.smartypants(out_card['text']))
-    out_card['flavor'] = HTMLParser().unescape(
-        smartypants.smartypants(out_card['flavor']))
+
+    def format_HTML(text):
+        text = HTMLParser().unescape(smartypants.smartypants(text))
+        return text
+
+    out_card['name'] = format_HTML(out_card['name'])
+    out_card['text'] = format_HTML(out_card['text'])
+    out_card['flavor'] = format_HTML(out_card['flavor'])
     return out_card
 
 
@@ -143,8 +145,7 @@ def import_sets():
         with open(os.path.join(path_to_json, js)) as json_file:
             set_data = json.load(json_file)
             set_data = format_set(set_data)
-            print "\033[95m"
-            pprint(set_data["name"])
+            print "\033[95m" + 'set_data["name"])'
             db = get_db()
             import_sets_query = "INSERT INTO 'sets' (name, code, gathererCode, oldCode, magicCardsInfoCode, releaseDate, border, type, block) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);"
             db.execute(import_sets_query, \
@@ -166,7 +167,6 @@ def import_cards():
     init_db()
     print('\033[92m\033[1mInitialized the database.\033[0m')
     db = get_db()
-    print "\033[92m\033[1mColors imported.\033[0m"
     json_files = [
         pos_json for pos_json in os.listdir(path_to_json)
         if pos_json.endswith('.json')
@@ -175,8 +175,7 @@ def import_cards():
         with open(os.path.join(path_to_json, js)) as json_file:
             set_data = json.load(json_file)
             set_data = format_set(set_data)
-            print "\033[95m"
-            pprint(set_data["name"])
+            print "\033[96m\033[1m" + set_data["name"] + "\n\033[0m\033[94m"
             import_sets_query = "INSERT INTO 'sets' (name, code, gathererCode, oldCode, magicCardsInfoCode, releaseDate, border, type, block) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);"
             db.execute(import_sets_query, \
              (set_data["name"],\
@@ -190,9 +189,8 @@ def import_cards():
              set_data["block"]))
             for card_data in set_data["cards"]:
                 card_data = format_card(card_data)
-                print "\033[94m"
-                pprint(card_data)
                 import_cards_query = 'INSERT INTO `cards` (layout, name, names, manaCost, cmc, colors, colorIdentity, type, supertypes, types, subtypes, rarity, text, flavor, artist, number, power, toughness, loyalty, multiverseid, variations, watermark, border, timeshifted, hand, life, reserved, releaseDate, starter, mciNumber, imageName, setId, setCode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);'
+                print card_data["name"]
                 db.execute(import_cards_query, \
                  (card_data["layout"], \
                   card_data["name"], \
@@ -228,7 +226,8 @@ def import_cards():
                   set_data["name"], \
                   set_data["code"]))
             db.commit()
-            print "\033[92m\033[1mCards imported.\033[0m"
+            print "\n\033[96m\033[1mSet imported.\033[0m \n"
+    print "\033[95m\033[1mAll cards imported.\033[0m"
 
 
 @app.route('/show_entries')
@@ -367,10 +366,6 @@ def deck(id):
     deckTags = deckTags.split(', ')
     deckLegality = deck["legality"]
     deckLegality = deckLegality.split(', ')
-    deckCreated = datetime.strptime(deck["created"], "%Y-%m-%d")
-    deckCreated = deckCreated.strftime("%B %d, %Y")
-    deckUpdated = datetime.strptime(deck["updated"], "%Y-%m-%d")
-    deckUpdated = deckUpdated.strftime("%B %d, %Y")
 
     def isToday(date):
         if (date == datetime.now().strftime("%B %d, %Y")):
@@ -379,11 +374,14 @@ def deck(id):
         else:
             return date
 
-    deckUpdated = isToday(deckUpdated)
-    deckCreated = isToday(deckCreated)
-    print "Today: " + datetime.now().strftime("%B %d, %Y")
-    print "Deck Created: " + deckCreated
-    print "Deck Updated: " + deckUpdated
+    def formatDate(date):
+        date = datetime.strptime(date, "%Y-%m-%d")
+        date = date.strftime("%B %d, %Y")
+        date = isToday(date)
+        return date
+
+    deckCreated = formatDate(deck["created"])
+    deckUpdated = formatDate(deck["updated"])
     return render_template(
         'deck.html',
         deck=deck,
