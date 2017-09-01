@@ -1,9 +1,10 @@
-import os, sqlite3, sass, json, datetime, smartypants, re
+import os, sqlite3, sass, json, smartypants, re
 
 from pprint import pprint
 from HTMLParser import HTMLParser
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash, Markup
 from sassutils.wsgi import SassMiddleware
+from datetime import datetime
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -366,13 +367,13 @@ def deck(id):
     deckTags = deckTags.split(', ')
     deckLegality = deck["legality"]
     deckLegality = deckLegality.split(', ')
-    deckCreated = datetime.datetime.strptime(deck["created"], "%Y-%m-%d")
+    deckCreated = datetime.strptime(deck["created"], "%Y-%m-%d")
     deckCreated = deckCreated.strftime("%B %d, %Y")
-    deckUpdated = datetime.datetime.strptime(deck["updated"], "%Y-%m-%d")
+    deckUpdated = datetime.strptime(deck["updated"], "%Y-%m-%d")
     deckUpdated = deckUpdated.strftime("%B %d, %Y")
 
     def isToday(date):
-        if (date == datetime.datetime.now().strftime("%B %d, %Y")):
+        if (date == datetime.now().strftime("%B %d, %Y")):
             date = "today"
             return date
         else:
@@ -380,7 +381,7 @@ def deck(id):
 
     deckUpdated = isToday(deckUpdated)
     deckCreated = isToday(deckCreated)
-    print "Today: " + datetime.datetime.now().strftime("%B %d, %Y")
+    print "Today: " + datetime.now().strftime("%B %d, %Y")
     print "Deck Created: " + deckCreated
     print "Deck Updated: " + deckUpdated
     return render_template(
