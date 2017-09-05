@@ -6,7 +6,7 @@
 # Decky
 ### Decky lets users create, search, and view decks for Magic: The Gathering.
 
-Decky is an application that makes it easy to build decks for the Magic: The Gathering card game. Search through all of the thousands of cards in the game to find the one that's right for your deck, or look at decks other people around the world have created for inspiration.
+Decky is an application that makes it easy to build decks for the Magic: The Gathering card game. Search through all of the thousands of cards in the game to find the one that’s right for your deck, or look at decks other people around the world have created for inspiration.
 
 ### Current functionality is extremely limited:
 
@@ -14,13 +14,13 @@ Decky is an application that makes it easy to build decks for the Magic: The Gat
 Decks are visible and formatted but it is not currently possible to search.
 
 :white_square_button:  **Deck Details**: 
-Decks' contents are visible but in progress. Prices are unavailable and many controls don't work.
+Decks’ contents are visible but in progress. Prices are unavailable and many controls don’t work.
 
 :white_square_button:  **Card Search**: 
 Cards are visible and formatted but it is not currently possible to search.
 
 :white_square_button: **Card Details**: 
-Cards contents are visible and properly formatted, but only cards from the past ten or so sets are available. Prices are unavailable and many controls don't work.
+Cards contents are visible and properly formatted, but only cards from the past ten or so sets are available. Prices are unavailable and many controls don’t work.
 
 :white_square_button:  **Deck Builder**: 
 The deck builder exists but is not currently functional.
