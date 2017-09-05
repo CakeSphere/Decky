@@ -49,9 +49,7 @@ Some work has gone into mocking up this process, but it is not currently functio
 
 ---
 
-Decky issues are tracked on [Trello](https://trello.com/b/eI9QlmUi/decky).
-
---- 
+###### Decky issues are tracked on [Trello](https://trello.com/b/eI9QlmUi/decky).
 
 ###### Decky is not in any way associated with [Wizards of the Coast](http://wizards.com/). 
 
