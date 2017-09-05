@@ -133,7 +133,7 @@
           <h2>Lands</h2>
           <ul class="list-unstyled">
             {% for card in cards %}
-              {% if card.type.startswith("Land") %}
+              {% if "Land" in card.type %}
                 <li>{{count[card.multiverseid]}} <a href="/card/{{card.multiverseId}}">{{card.name}}</a></li>
               {% endif %}
             {% endfor %}
@@ -148,7 +148,7 @@
           <h2>Planeswalkers</h2>
           <ul class="list-unstyled">
             {% for card in cards %}
-              {% if card.type.startswith("Planeswalker") %}
+              {% if "Planeswalker" in card.type %}
                 <li>{{count[card.multiverseid]}} <a href="/card/{{card.multiverseId}}">{{card.name}}</a></li>
               {% endif %}
             {% endfor %}
@@ -163,7 +163,7 @@
           <h2>Creatures</h2>
           <ul class="list-unstyled">
             {% for card in cards %}
-              {% if card.type.startswith("Creature") %}
+              {% if "Creature" in card.type %}
                 <li>{{count[card.multiverseid]}} <a href="/card/{{card.multiverseId}}">{{card.name}}</a></li>
               {% endif %}
             {% endfor %}
@@ -180,7 +180,7 @@
           <h2>Sorceries</h2>
           <ul class="list-unstyled">
             {% for card in cards %}
-              {% if card.type.startswith("Sorcery") %}
+              {% if "Sorcery" in card.type %}
                 <li>{{count[card.multiverseid]}} <a href="/card/{{card.multiverseId}}">{{card.name}}</a></li>
               {% endif %}
             {% endfor %}
@@ -195,7 +195,7 @@
           <h2>Instants</h2>
           <ul class="list-unstyled">
             {% for card in cards %}
-              {% if card.type.startswith("Instant") %}
+              {% if "Instant" in card.type %}
                 <li>{{count[card.multiverseid]}} <a href="/card/{{card.multiverseId}}">{{card.name}}</a></li>
               {% endif %}
             {% endfor %}
@@ -210,7 +210,7 @@
           <h2>Enchantments</h2>
           <ul class="list-unstyled">
             {% for card in cards %}
-              {% if card.type.startswith("Enchantment") %}
+              {% if "Enchantment" in card.type %}
                 <li>{{count[card.multiverseid]}} <a href="/card/{{card.multiverseId}}">{{card.name}}</a></li>
               {% endif %}
             {% endfor %}
