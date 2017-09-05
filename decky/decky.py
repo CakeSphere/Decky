@@ -356,16 +356,21 @@ def card(multiverseId):
 @app.route('/deck/<id>')
 def deck(id):
     db = get_db()
-    cur = db.execute('select * from decks where id="' + id + '"')
+    cur = db.execute('SELECT * FROM decks WHERE id="' + id + '"')
     deck = cur.fetchone()
     cur = db.execute(
-        'SELECT name, type, multiverseid FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId=1'
+        'SELECT name, count(name), type, multiverseid FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId=1 GROUP BY name'
     )
     cards = cur.fetchall()
+    count = {}
+    for card in cards:
+        card_count = card[1]
+        count[card["multiverseid"]] = card_count
     deckTags = deck["tags"]
     deckTags = deckTags.split(', ')
     deckLegality = deck["legality"]
     deckLegality = deckLegality.split(', ')
+
 
     def isToday(date):
         if (date == datetime.now().strftime("%B %d, %Y")):
@@ -389,7 +394,8 @@ def deck(id):
         deckTags=deckTags,
         deckLegality=deckLegality,
         deckCreated=deckCreated,
-        deckUpdated=deckUpdated)
+        deckUpdated=deckUpdated, 
+        count=count)
 
 
 @app.route('/builder')
