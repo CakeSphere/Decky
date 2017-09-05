@@ -130,10 +130,42 @@
     <div class="deck-contents">
       <div class="column">
         <div class="card-type">
-          <h2>Test</h2>
+          <h2>Lands</h2>
           <ul class="list-unstyled">
             {% for card in cards %}
-              <li>{{count[card.multiverseid]}} <a href="/card/{{card.multiverseId}}">{{card.name}}</a></li>
+              {% if card.type.startswith("Land") %}
+                <li>{{count[card.multiverseid]}} <a href="/card/{{card.multiverseId}}">{{card.name}}</a></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+          <div class="color-bar">
+            <div class="u" style="width: 35%"><span>35%</span></div>
+            <div class="w" style="width: 33%"><span>33%</span></div>
+            <div class="r" style="width: 33%"><span>33%</span></div>
+          </div>
+        </div>
+        <div class="card-type">
+          <h2>Planeswalkers</h2>
+          <ul class="list-unstyled">
+            {% for card in cards %}
+              {% if card.type.startswith("Planeswalker") %}
+                <li>{{count[card.multiverseid]}} <a href="/card/{{card.multiverseId}}">{{card.name}}</a></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+          <div class="color-bar">
+            <div class="u" style="width: 35%"><span>35%</span></div>
+            <div class="w" style="width: 33%"><span>33%</span></div>
+            <div class="r" style="width: 33%"><span>33%</span></div>
+          </div>
+        </div>
+        <div class="card-type">
+          <h2>Creatures</h2>
+          <ul class="list-unstyled">
+            {% for card in cards %}
+              {% if card.type.startswith("Creature") %}
+                <li>{{count[card.multiverseid]}} <a href="/card/{{card.multiverseId}}">{{card.name}}</a></li>
+              {% endif %}
             {% endfor %}
           </ul>
           <div class="color-bar">
@@ -144,7 +176,51 @@
         </div>
       </div>
       <div class="column">
-        
+        <div class="card-type">
+          <h2>Sorceries</h2>
+          <ul class="list-unstyled">
+            {% for card in cards %}
+              {% if card.type.startswith("Sorcery") %}
+                <li>{{count[card.multiverseid]}} <a href="/card/{{card.multiverseId}}">{{card.name}}</a></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+          <div class="color-bar">
+            <div class="u" style="width: 35%"><span>35%</span></div>
+            <div class="w" style="width: 33%"><span>33%</span></div>
+            <div class="r" style="width: 33%"><span>33%</span></div>
+          </div>
+        </div>
+        <div class="card-type">
+          <h2>Instants</h2>
+          <ul class="list-unstyled">
+            {% for card in cards %}
+              {% if card.type.startswith("Instant") %}
+                <li>{{count[card.multiverseid]}} <a href="/card/{{card.multiverseId}}">{{card.name}}</a></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+          <div class="color-bar">
+            <div class="u" style="width: 35%"><span>35%</span></div>
+            <div class="w" style="width: 33%"><span>33%</span></div>
+            <div class="r" style="width: 33%"><span>33%</span></div>
+          </div>
+        </div>
+        <div class="card-type">
+          <h2>Enchantments</h2>
+          <ul class="list-unstyled">
+            {% for card in cards %}
+              {% if card.type.startswith("Enchantment") %}
+                <li>{{count[card.multiverseid]}} <a href="/card/{{card.multiverseId}}">{{card.name}}</a></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+          <div class="color-bar">
+            <div class="u" style="width: 35%"><span>35%</span></div>
+            <div class="w" style="width: 33%"><span>33%</span></div>
+            <div class="r" style="width: 33%"><span>33%</span></div>
+          </div>
+        </div>
       </div>
       <div class="column sideboard">
         
