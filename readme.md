@@ -40,11 +40,12 @@ Some work has gone into mocking up this process, but it is not currently functio
 ### To run Decky:
 
 1. Ensure Flask is installed by following the instructions [here](http://flask.pocoo.org/docs/0.12/installation/).
-2. Run `. venv/bin/activate` to activate the virtual environment
-3. Run `pip install -r requirements.txt` to install the required
-4. Run `export FLASK_APP=decky` to set Decky as your Flask application
-5. *Optionally* run `export FLASK_DEBUG=true` to run the Flask debugger
-6. Run `flask run` to run the Decky app
+2. Run `. venv/bin/activate` to activate the virtual environment.
+3. Run `pip install -r requirements.txt` to install the required.
+4. Run `export FLASK_APP=decky` to set Decky as your Flask application.
+5. *Optionally* run `export FLASK_DEBUG=true` to run the Flask debugger.
+6. Run `flask run` to run the Decky app.
+7. Navigate to `localhost:5000/decks` in your browser.
 
 ---
 
