@@ -387,6 +387,9 @@ def deck(id):
 
     deckCreated = formatDate(deck["created"])
     deckUpdated = formatDate(deck["updated"])
+    deckDescription = deck["description"]
+    # Convert new lines to html line breaks
+    deckDescription = Markup('</p><p>'.join(deckDescription.split('\n')))
     return render_template(
         'deck.html',
         deck=deck,
@@ -395,7 +398,8 @@ def deck(id):
         deckLegality=deckLegality,
         deckCreated=deckCreated,
         deckUpdated=deckUpdated, 
-        count=count)
+        count=count,
+        deckDescription=deckDescription)
 
 
 @app.route('/builder')
