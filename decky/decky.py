@@ -247,14 +247,27 @@ def show_entries(setId):
 @app.route('/decks')
 def decks():
     db = get_db()
-    cur_cards = db.execute(
-        'select * from cards where multiverseid != "" order by multiverseid desc limit 33'
-    )
+    cur_decks = db.execute('select * from decks order by likes desc limit 33')
     cur_sets = db.execute(
         'select * from sets order by releaseDate desc limit 5')
-    cards = cur_cards.fetchall()
+    decks = cur_decks.fetchall()
     sets = cur_sets.fetchall()
-    return render_template('decks.html', cards=cards, sets=sets)
+    legality = {}
+    tags = {}
+    for deck in decks:
+        deck_tags = deck["tags"]
+        deck_tags = deck_tags.split(', ')
+        tags[deck["id"]] = deck_tags
+        deck_legality = deck["legality"]
+        deck_legality = deck_legality.split(', ')
+        legality[deck["id"]] = deck_legality
+
+    return render_template(
+        'decks.html',
+        decks=decks,
+        sets=sets,
+        tags=tags,
+        legality=legality)
 
 
 @app.route('/cards')
