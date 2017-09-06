@@ -114,7 +114,7 @@
       <div class="row">
         {% for card in cards %}
         <a class="card" href="/card/{{card.multiverseId}}" title="{{card.name}}">
-          <div class="card-mana pull-right">
+          <div class="card-mana">
             {% if cardMana[card.id]|length > 0 %}
               {% for mana in cardMana[card.id].split(" ") %}
                 <span class="mana small s{{mana.lower()}} shadow">{{mana}}</span>
