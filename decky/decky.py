@@ -141,11 +141,10 @@ def import_sets():
         pos_json for pos_json in os.listdir(path_to_json)
         if pos_json.endswith('.json')
     ]
-    for js in json_files:
-        with open(os.path.join(path_to_json, js)) as json_file:
+    for file in json_files:
+        with open(os.path.join(path_to_json, file)) as json_file:
             set_data = json.load(json_file)
             set_data = format_set(set_data)
-            print "\033[95m" + 'set_data["name"])'
             db = get_db()
             import_sets_query = "INSERT INTO 'sets' (name, code, gathererCode, oldCode, magicCardsInfoCode, releaseDate, border, type, block) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);"
             db.execute(import_sets_query, \
@@ -159,7 +158,8 @@ def import_sets():
              set_data["type"], \
              set_data["block"]))
             db.commit()
-    print "\033[92m\033[1mSets imported.\033[0m"
+            print "\033[95m" + set_data["name"]
+    print "\033[92m\033[1mAll sets imported.\033[0m"
 
 
 @app.cli.command('import_cards')
@@ -171,11 +171,12 @@ def import_cards():
         pos_json for pos_json in os.listdir(path_to_json)
         if pos_json.endswith('.json')
     ]
-    for js in json_files:
-        with open(os.path.join(path_to_json, js)) as json_file:
+    for file in json_files:
+        with open(os.path.join(path_to_json, file)) as json_file:
             set_data = json.load(json_file)
             set_data = format_set(set_data)
-            print "\033[96m\033[1m" + set_data["name"] + "\n\033[0m\033[94m"
+            print "\033[96m\033[1m" + set_data["code"] + " " + set_data[
+                "name"] + "\n\033[0m\033[94m"
             import_sets_query = "INSERT INTO 'sets' (name, code, gathererCode, oldCode, magicCardsInfoCode, releaseDate, border, type, block) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);"
             db.execute(import_sets_query, \
              (set_data["name"],\
@@ -190,7 +191,8 @@ def import_cards():
             for card_data in set_data["cards"]:
                 card_data = format_card(card_data)
                 import_cards_query = 'INSERT INTO `cards` (layout, name, names, manaCost, cmc, colors, colorIdentity, type, supertypes, types, subtypes, rarity, text, flavor, artist, number, power, toughness, loyalty, multiverseid, variations, watermark, border, timeshifted, hand, life, reserved, releaseDate, starter, mciNumber, imageName, setId, setCode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);'
-                print card_data["name"]
+                print str(card_data["multiverseid"]).zfill(
+                    6) + " " + card_data["name"]
                 db.execute(import_cards_query, \
                  (card_data["layout"], \
                   card_data["name"], \
@@ -230,13 +232,14 @@ def import_cards():
     print "\033[95m\033[1mAll cards imported.\033[0m"
 
 
-@app.route('/show_entries')
-def show_entries():
+@app.route('/show_entries/<setId>')
+def show_entries(setId):
     db = get_db()
-    cur = db.execute('select * from cards order by multiverseid asc')
-    cur_sets = db.execute(
-        'select *, block from sets order by releaseDate desc')
-    cards = cur.fetchall()
+    cur_cards = db.execute('select * from cards where setId like "%' + setId +
+                           '%" order by multiverseid asc')
+    cur_sets = db.execute('select *, block from sets where name like "%' +
+                          setId + '%" order by releaseDate desc')
+    cards = cur_cards.fetchall()
     sets = cur_sets.fetchall()
     return render_template('show_entries.html', cards=cards, sets=sets)
 
@@ -244,12 +247,12 @@ def show_entries():
 @app.route('/decks')
 def decks():
     db = get_db()
-    cur = db.execute(
-        'select * from cards where colorIdentity="U" or colorIdentity="B" or colorIdentity="G" order by multiverseId asc limit 33'
+    cur_cards = db.execute(
+        'select * from cards where multiverseid != "" order by multiverseid desc limit 33'
     )
     cur_sets = db.execute(
         'select * from sets order by releaseDate desc limit 5')
-    cards = cur.fetchall()
+    cards = cur_cards.fetchall()
     sets = cur_sets.fetchall()
     return render_template('decks.html', cards=cards, sets=sets)
 
@@ -257,21 +260,21 @@ def decks():
 @app.route('/cards')
 def cards():
     db = get_db()
-    cur = db.execute(
+    cur_cards = db.execute(
         'select * from cards where type like "%Vampire%" and type like "%Creature%" and multiverseid != "" order by multiverseid desc limit 45'
     )
     cur_sets = db.execute(
         'select * from sets order by releaseDate desc limit 5')
-    cards = cur.fetchall()
-    cardMana = {}
+    cards = cur_cards.fetchall()
+    card_mana = {}
     for card in cards:
         mana = card["manaCost"]
         mana = mana.replace('}{', ' ')
         mana = mana.replace('{', '')
         mana = mana.replace('}', '')
         mana = mana.replace('/', '')
-        cardMana[card["id"]] = mana
-    cardText = {}
+        card_mana[card["id"]] = mana
+    card_text = {}
     for card in cards:
         text = card["text"]
         # Italicize ability words
@@ -294,14 +297,14 @@ def cards():
         text = text.replace(')', ')</em>')
         # Convert new lines to html line breaks
         text = Markup('<br>'.join(text.split('\n')))
-        cardText[card["id"]] = text
+        card_text[card["id"]] = text
     sets = cur_sets.fetchall()
     return render_template(
         'cards.html',
         cards=cards,
         sets=sets,
-        cardMana=cardMana,
-        cardText=cardText)
+        card_mana=card_mana,
+        card_text=card_text)
 
 
 @app.route('/card/<multiverseId>')
@@ -310,47 +313,49 @@ def card(multiverseId):
     cur = db.execute('select * from cards where multiverseId="' + multiverseId
                      + '"')
     card = cur.fetchone()
-    cardNumber = card['number']
-    flipCardA = False
-    flipCardB = False
-    if re.search('[a]', unicode(cardNumber)):
-        flipCardA = True
-    if re.search('[b]', unicode(cardNumber)):
-        flipCardB = True
-    cardMana = card['manaCost']
-    cardMana = cardMana.replace('}{', ' ')
-    cardMana = cardMana.replace('{', '')
-    cardMana = cardMana.replace('}', '')
-    cardMana = cardMana.replace('/', '')
-    cardText = card["text"]
+    if not card:
+        abort(404)
+    card_number = card['number']
+    flip_card_a = False
+    flip_card_b = False
+    if re.search('[a]', unicode(card_number)):
+        flip_card_a = True
+    if re.search('[b]', unicode(card_number)):
+        flip_card_b = True
+    card_mana = card['manaCost']
+    card_mana = card_mana.replace('}{', ' ')
+    card_mana = card_mana.replace('{', '')
+    card_mana = card_mana.replace('}', '')
+    card_mana = card_mana.replace('/', '')
+    card_text = card["text"]
     # Italicize ability words
-    cardText = re.compile(
+    card_text = re.compile(
         r'(((battalion|bloodrush|channel|chroma|cohort|constellation|converge|council\'s dilemma|delirium|domain|fateful hour|ferocious|formidable|grandeur|hellbent|heroic|imprint|inspired|join forces|kinship|landfall|lieutenant|metalcraft|morbid|parley|radiance|raid|rally|revolt|spell mastery|strive|sweep|tempting offer|threshold|will of the council)\s*?)+)',
-        re.I).sub(r'<em>\1</em>', cardText)
+        re.I).sub(r'<em>\1</em>', card_text)
     # Making keyword abilities links so they can be used for tooltips and to
     # link to the glossary eventually
-    cardText = re.compile(
+    card_text = re.compile(
         r'(((Deathtouch|Defender|Double Strike|Enchant|Equip|First Strike|Flash|Flying|Haste|Hexproof|Indestructible|Intimidate|Landwalk|Lifelink|Protection|Reach|Shroud|Trample|Vigilance|Banding|Rampage|Cumulative Upkeep|Flanking|Phasing|Buyback|Shadow|Cycling|Echo|Horsemanship|Fading|Kicker|Flashback|Madness|Fear|Morph|Amplify|Provoke|Storm|Affinity|Entwine|Modular|Sunburst|Bushido|Soulshift|Splice|Offering|Ninjutsu|Epic|Convoke|Dredge|Transmute|Bloodthirst|Haunt|Replicate|Forecast|Graft|Recover|Ripple|Split Second|Suspend|Vanishing|Absorb|Aura Swap|Delve|Fortify|Frenzy|Gravestorm|Poisonous|Transfigure|Champion|Changeling|Evoke|Hideaway|Prowl|Reinforce|Conspire|Persist|Wither|Retrace|Devour|Exalted|Unearth|Cascade|Annihilator|Level Up|Rebound|Totem Armor|Infect|Battle Cry|Living Weapon|Undying|Miracle|Soulbond|Overload|Scavenge|Unleash|Cipher|Evolve|Extort|Fuse|Bestow|Tribute|Dethrone|Hidden Agenda|Outlast|Prowess|Dash|Exploit|Menace|Renown|Awaken|Devoid|Ingest|Myriad|Surge|Skulk|Emerge|Escalate|Melee|Crew|Fabricate|Partner|Undaunted|Improvise|Aftermath|Embalm|Eternalize|Afflict)\s*?)+)',
         re.I).sub(r'<a href="tooltip" title="Keyword Ability: \1">\1</a>',
-                  cardText)
+                  card_text)
     # Convert mana symbols to styled span elements
-    cardText = cardText.replace('{', '<span class="mana medium shadow s')
-    cardText = cardText.replace('}', '">&nbsp;</span>')
+    card_text = card_text.replace('{', '<span class="mana medium shadow s')
+    card_text = card_text.replace('}', '">&nbsp;</span>')
     # Text on cards in parentheses is always italicized
-    cardText = cardText.replace('(', '<em class="card-explanation">(')
-    cardText = cardText.replace(')', ')</em>')
+    card_text = card_text.replace('(', '<em class="card-explanation">(')
+    card_text = card_text.replace(')', ')</em>')
     # Convert new lines to html line breaks
-    cardText = Markup('<br>'.join(cardText.split('\n')))
-    cardFlavor = card['flavor']
-    cardFlavor = Markup('<br>'.join(cardFlavor.split('\n')))
+    card_text = Markup('<br>'.join(card_text.split('\n')))
+    card_flavor = card['flavor']
+    card_flavor = Markup('<br>'.join(card_flavor.split('\n')))
     return render_template(
         'card.html',
         card=card,
-        cardText=cardText,
-        cardMana=cardMana,
-        cardFlavor=cardFlavor,
-        flipCardA=flipCardA,
-        flipCardB=flipCardB)
+        card_text=card_text,
+        card_mana=card_mana,
+        card_flavor=card_flavor,
+        flip_card_a=flip_card_a,
+        flip_card_b=flip_card_b)
 
 
 @app.route('/deck/<id>')
@@ -358,6 +363,8 @@ def deck(id):
     db = get_db()
     cur = db.execute('SELECT * FROM decks WHERE id="' + id + '"')
     deck = cur.fetchone()
+    if not deck:
+        abort(404)
     cur = db.execute(
         'SELECT name, count(name), type, multiverseid FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId=1 GROUP BY name'
     )
@@ -366,51 +373,50 @@ def deck(id):
     for card in cards:
         card_count = card[1]
         count[card["multiverseid"]] = card_count
-    deckTags = deck["tags"]
-    deckTags = deckTags.split(', ')
-    deckLegality = deck["legality"]
-    deckLegality = deckLegality.split(', ')
+    deck_tags = deck["tags"]
+    deck_tags = deck_tags.split(', ')
+    deck_legality = deck["legality"]
+    deck_legality = deck_legality.split(', ')
 
-
-    def isToday(date):
+    def is_today(date):
         if (date == datetime.now().strftime("%B %d, %Y")):
             date = "today"
             return date
         else:
             return date
 
-    def formatDate(date):
+    def format_date(date):
         date = datetime.strptime(date, "%Y-%m-%d")
         date = date.strftime("%B %d, %Y")
-        date = isToday(date)
+        date = is_today(date)
         return date
 
-    deckCreated = formatDate(deck["created"])
-    deckUpdated = formatDate(deck["updated"])
-    deckDescription = deck["description"]
+    deck_created = format_date(deck["created"])
+    deck_updated = format_date(deck["updated"])
+    deck_description = deck["description"]
     # Convert new lines to html line breaks
-    deckDescription = Markup('</p><p>'.join(deckDescription.split('\n')))
+    deck_description = Markup('</p><p>'.join(deck_description.split('\n')))
     return render_template(
         'deck.html',
         deck=deck,
         cards=cards,
-        deckTags=deckTags,
-        deckLegality=deckLegality,
-        deckCreated=deckCreated,
-        deckUpdated=deckUpdated, 
+        deck_tags=deck_tags,
+        deck_legality=deck_legality,
+        deck_created=deck_created,
+        deck_updated=deck_updated,
         count=count,
-        deckDescription=deckDescription)
+        deck_description=deck_description)
 
 
 @app.route('/builder')
 def builder():
     db = get_db()
-    cur = db.execute(
+    cur_cards = db.execute(
         'select * from cards where type like "%Spirit%" and type like "%Creature%" order by multiverseId asc limit 3'
     )
     cur_sets = db.execute(
         'select * from sets order by releaseDate desc limit 5')
-    cards = cur.fetchall()
+    cards = cur_cards.fetchall()
     sets = cur_sets.fetchall()
     return render_template('builder.html', cards=cards, sets=sets)
 

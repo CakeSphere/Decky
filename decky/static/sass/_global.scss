@@ -72,6 +72,15 @@ h1 { font-size: $font-size-h1; }
 h2 { font-size: $font-size-h2; }
 h3 { font-size: $font-size-h3; }
 
+h1 svg {
+  height: $font-size-h1;
+  max-width: $font-size h1;
+  fill: $color-text;
+  float: left;
+  position: relative;
+  bottom: -3px;
+  margin-right: 0.5rem;
+}
 
 h3 {
   font-family: $font-family-text;
