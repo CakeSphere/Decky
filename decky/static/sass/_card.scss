@@ -110,12 +110,7 @@
   &.demo .flipper {
     @include demo(demo-flipper);
   }
-  h1 {
-    margin: 0;
-    font-family: $font-family-display;
-    font-style: italic;
-    font-weight: 800;
-  }
+  h1 { margin: 0; }
   h2 {
     margin-top: -0.25rem;
     color: $color-text-weak;
