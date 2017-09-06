@@ -125,20 +125,22 @@
           <div class="card-img">
             <img alt="{{card.name}}" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card">
           </div>
-          <div class="card-info">
-            <div class="card-type">
-              <div class="card-rarity">
-                <i class="ss ss-{{card.setCode.lower()}} ss-{{card.rarity.lower()}} {% if card.rarity != 'Common' %}ss-grad{% endif %}">&nbsp;</i>
-              </div>
-              {{card.type}}
+          <div class="card-type">
+            <div class="card-rarity">
+              <i class="ss ss-{{card.setCode.lower()}} ss-{{card.rarity.lower()}} {% if card.rarity != 'Common' %}ss-grad{% endif %}">&nbsp;</i>
             </div>
+            {{card.type}}
+          </div>
+          <div class="card-info">
             <p class="description">{{cardText[card.id]}}</p>
             <p class="flavor">{{card.flavor}}</p>
           </div>
-          <div class="power-toughness">
-            {{card.power}} <em>/</em>
-            {{card.toughness}}
-          </div>
+          {% if card.power != "" %}
+            <div class="power-toughness">
+              {{card.power}} <em>/</em>
+              {{card.toughness}}
+            </div>
+          {% endif %}
         </a>
         {% endfor %}
         <div class="clearfix"></div>
