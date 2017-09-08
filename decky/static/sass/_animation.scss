@@ -66,18 +66,6 @@
   to   { -webkit-transform: rotateY(360deg); transform: rotateY(360deg); }
 }
 
-/* Animation for sidebars sliding in*/
-
-@-webkit-keyframes aside-slide {
-  from { -webkit-transform: translateX(-300px); transform: translateX(-300px); }
-  to   { -webkit-transform: translateX(0); transform: translateX(0); }
-}
-
-@keyframes aside-slide {
-  from { -webkit-transform: translateX(-300px); transform: translateX(-300px); }
-  to   { -webkit-transform: translateX(0); transform: translateX(0); }
-}
-
 @keyframes foil {
   0%   { background-position: 0% 0%; }
   50%  { background-position: 100% 100%;}

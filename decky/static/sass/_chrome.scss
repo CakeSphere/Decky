@@ -223,6 +223,7 @@
 }
 
 .main-container {
+  /* This is where the main page content goes. The big window in the middle.*/
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -232,14 +233,12 @@
 }
 
 aside {
+  /* This is the sidebar where filters, metadata, or the users grimoire 
+     appear, depending on the page it's on. */
   z-index: $z-index-nav;
   height: 100%;
   width: 300px;
   padding: 1.5rem;
-  -webkit-animation-name: aside-slide;
-          animation-name: aside-slide;
-  -webkit-animation-duration: 0.3s;
-          animation-duration: 0.3s;
 }
 
 footer {
@@ -250,10 +249,10 @@ footer {
   padding: 3rem 0;
   background: tint($color-background, 2.5%);
   border-top: 1px solid tint($color-background, 5%);
-  -webkit-box-shadow: 0 -2px 4px shade($color-background, 5%);
-          box-shadow: 0 -2px 4px shade($color-background, 5%);
   color: rgba($color-text, 0.75);
   text-align: center;
+  -webkit-box-shadow: 0 -2px 4px shade($color-background, 5%);
+          box-shadow: 0 -2px 4px shade($color-background, 5%);
   .container {
     margin-top: 0;
   }
@@ -261,7 +260,7 @@ footer {
     color: $color-text;
     &:hover {
       color: shade($color-text, 15%);
-      @include underline(shade($color-text, 15%), $color-background);
+      @include underline(shade($color-text, 15%), tint($color-background, 2.5%));
     }
   }
 }

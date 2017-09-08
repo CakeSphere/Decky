@@ -17,9 +17,9 @@
   .last,
   .current-page {
     .text {
-      right: 0;
-      width : 100%;
       display: block;
+      width : 100%;
+      right: 0;
       text-align: center;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
     }
@@ -54,15 +54,15 @@
     display: block;
     position: absolute;
     z-index: $z-index-baseline;
+    width: 55.15px;
     top: 0;
     left: 0;
-    width: 55.15px;
     margin: auto;
-    text-align: center;
+    color: $color-text;
     font-family: $font-family-display;
     font-size: $font-size-lead;
     line-height: 1.25;
-    color: $color-text;
+    text-align: center;
     -webkit-transition: -webkit-transform $transition ease-out;
             transition: -webkit-transform $transition ease-out;
             transition: transform $transition ease-out;
@@ -97,8 +97,8 @@
   }
   .current-page {
     position: relative;
-    z-index: $z-index-paging;
     width: 55.15px;
+    z-index: $z-index-paging;
     text-align: center;
     margin: auto;
     font-family: $font-family-display;
@@ -110,7 +110,7 @@
         -ms-user-select: none;
             user-select: none;
     &::after {
-      /* Pagination expanation text*/
+      /* Pagination explanation text*/
       /* Content tag should usually not be used for actual page content */
       /* because it cannot be localized easily*/
       content: 'Page';
@@ -122,6 +122,9 @@
       font-family: $font-family-text;
     }
   }
+  /* Hover styles to make the pagination diamond animation work. 
+     This whole thing would be more usable without the hover animations, but
+     it looks nice. */
   &:hover {
     .prev { 
       -webkit-transform: translateX(-54px); 
