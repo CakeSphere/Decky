@@ -1,5 +1,25 @@
 {% extends "layout.html" %}
 {% block body %}
+
+<style>
+
+ul.cards-info {
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+  -webkit-column-count: 3;
+          column-count: 3;
+  -webkit-column-gap: 1rem;
+          column-gap: 1rem;
+  -webkit-column-rule: solid $color-background-tint 1px;
+          column-rule: solid $color-background-tint 1px;
+}
+
+.value {
+  display: inline-block;
+  width: calc(50% - 1rem);
+}
+</style>
+
   <div class="container">
     <a href="#" class="btn">I’m a button.</a>
     <a href="#" class="btn primary">I’m a primary button.</a>

@@ -121,6 +121,7 @@
     &.text {
       max-width: 830px;
       font-size: $font-size-lead;
+      font-family: $font-family-display;
       line-height: 1.3;
       margin-top: 0;
       a {
@@ -157,6 +158,7 @@
     &.flavor {
       max-width: 650px;
       color: shade($color-text, 20%);
+      font-family: $font-family-display;
       font-size: $font-size-sub;
       font-style: italic;
       line-height: 1.1;

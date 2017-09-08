@@ -1,15 +1,15 @@
 
 /* Buttons mixin*/
-/* Generates some fairly simple button styles, and their hover and active*/
-/* states.*/
+/* Generates some fairly simple button styles, and their hover and active 
+   states.*/
 
 @mixin btn($color) {
   $color-tint: tint($color, 15%);
   $color-shade: shade($color, 75%);
   position: relative;
-  color: $color-text;
   background: shade($color, 20%);
   border-color: $color-shade;
+  color: $color-text;
   .mana.small:after {
     background-color: transparentize(shade($color, 50%), 0.8);
   } 
@@ -37,7 +37,7 @@
   }
 }
 
-/* Color-bar Mixin*/
+/* Color-bar mixin*/
 /* Styles for the segments of color-bars*/
 
 @mixin color-bar($color) {
@@ -46,7 +46,8 @@
   color: $color;
 }
 
-/* Underline mixin, borrowed from Medium*/
+/* Underline mixin, borrowed from Medium */
+/* This should be deprecated soon by text-decoration-skip */
 
 @mixin underline($color-text, $color-background) {
            background: -webkit-linear-gradient($color-background,$color-background),
@@ -78,16 +79,19 @@
                        -0.15em 0 $color-background;
 }
 
-/* Demo animation mixin for color-bar*/
+/* Demo animation mixin for color-bar */
+/* This animation is longer than the suggested 400ms so the user has a chance
+to pick up on what's happening. It should only play the first time a user 
+visits Decky */
 
 @mixin demo($animation-name) {
   -webkit-animation: 1s cubic-bezier(0.17,0.67,0.83,0.67) 0.5s 1 $animation-name;
           animation: 1s cubic-bezier(0.17,0.67,0.83,0.67) 0.5s 1 $animation-name;
 }
 
-/*/ Helper to clear inner floats*/
-/*/ @author Nicolas Gallagher*/
-/*/ @link http://nicolasgallagher.com/micro-clearfix-hack/ Micro Clearfix*/
+/* Helper to clear inner floats*/
+/* @author Nicolas Gallagher*/
+/* @link http://nicolasgallagher.com/micro-clearfix-hack/ Micro Clearfix*/
 @mixin clearfix {
   &::after {
     display: table;
@@ -96,20 +100,20 @@
   }
 }
 
-/*/ Slightly lighten a color*/
-/*/ @access public*/
-/*/ @param {Color} $color - color to tint*/
-/*/ @param {Number} $percentage - percentage of `$color` in returned color*/
-/*/ @return {Color}*/
+/* Slightly lighten a color*/
+/* @access public*/
+/* @param {Color} $color - color to tint*/
+/* @param {Number} $percentage - percentage of `$color` in returned color*/
+/* @return {Color}*/
 @function tint($color, $percentage) {
   @return mix(white, $color, $percentage);
 }
 
-/*/ Slightly darken a color*/
-/*/ @access public*/
-/*/ @param {Color} $color - color to shade*/
-/*/ @param {Number} $percentage - percentage of `$color` in returned color*/
-/*/ @return {Color}*/
+/* Slightly darken a color*/
+/* @access public*/
+/* @param {Color} $color - color to shade*/
+/* @param {Number} $percentage - percentage of `$color` in returned color*/
+/* @return {Color}*/
 @function shade($color, $percentage) {
   @return mix(black, $color, $percentage);
 }
