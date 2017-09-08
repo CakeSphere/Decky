@@ -34,9 +34,7 @@
       stroke: $color-primary;
     }
   }
-  .export svg {
-    fill: $color-text;
-  }
+  .export svg { fill: $color-text; }
 }
 
 .color-bar {
@@ -50,10 +48,10 @@
   height: 120px;
   overflow: hidden;
   background: none;
-  -webkit-box-shadow: 0 0 5px shade($color-background, 10%);
-          box-shadow: 0 0 5px shade($color-background, 10%);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
   will-change: transform;
+  -webkit-box-shadow: 0 0 5px shade($color-background, 10%);
+          box-shadow: 0 0 5px shade($color-background, 10%);
   -webkit-transform: translateX(-63px);
           transform: translateX(-63px);
   -webkit-transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
@@ -72,7 +70,7 @@
   &:hover {
     -webkit-transform: translateX(0);
             transform: translateX(0);
-    span { opacity: 0.8; }
+    span { opacity: 1; }
   }
   .mana {
     position: relative;
@@ -126,13 +124,8 @@
   width: calc(33.33333% - 0.5rem - 14px);
   margin: 0 0.5rem 1rem 0.5rem;
   background: tint($color-background, 3%);
-  border-radius: $border-radius;
-  -webkit-box-shadow: 0 4px 4px transparentize(shade($color-background, 15%), 0.5);
-          box-shadow: 0 4px 4px transparentize(shade($color-background, 15%), 0.5);
-  cursor: pointer;
+  border-radius: $border-radius;  cursor: pointer;
   overflow: hidden;
-  -webkit-transition: none;
-          transition: none;
   white-space: nowrap;
   background: tint($color-background, 6%);
   border: 1px solid tint($color-border-strong, 15%);
@@ -143,6 +136,8 @@
           box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15),
               inset 0 0 4px rgba(255, 255, 255, 0.05),
               0 2px 3px rgba(0, 0, 0, 0.15);
+  -webkit-transition: none;
+          transition: none;
   &::after {
     position: absolute;
     top: 0;
@@ -160,12 +155,10 @@
             transition: opacity $transition;
   }
   &:hover::after { opacity: 0.1; }
-  .color-bar {
-    &:hover {
-      ~ .deck-info, ~ .deck-img {
-        -webkit-transform: translateX(63px);
-                transform: translateX(63px);
-      }
+  .color-bar:hover {
+    ~ .deck-info, ~ .deck-img {
+      -webkit-transform: translateX(63px);
+              transform: translateX(63px);
     }
   }
   .deck-info {
@@ -245,6 +238,7 @@
   }
 }
 
+/* Deck tiles in the builder*/
 aside .deck.gallery { 
   margin: 0;
   .deck-info {
