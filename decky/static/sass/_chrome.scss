@@ -170,6 +170,7 @@
     -webkit-transition: $transition;
     transition: $transition;
     .account-icon {
+      position: relative;
       width: 32px;
       height: 32px;
       margin: auto;
@@ -185,6 +186,23 @@
          -moz-user-select: none;
           -ms-user-select: none;
               user-select: none;
+      &.notification::after {
+        content: '!';
+        font-weight: bold;
+        font-family: $font-family-display;
+        color: $color-background;
+        line-height: 13px;
+        font-size: 12px;
+        text-shadow: none;
+        background: $color-mtg-r;
+        width: 13px;
+        height: 13px;
+        border: 3px solid tint($color-background, 2.5%);
+        border-radius: 50%;
+        position: absolute;
+        top: -6px;
+        right: -6px;
+      }
     }
     .account-name {
       width: calc(100px - 2rem);
