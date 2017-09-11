@@ -70,205 +70,207 @@
     </ul>
   </aside>
   <section>
-    <h1>
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 24 30" style="enable-background:new 0 0 24 24;" xml:space="preserve"><path d="M13,3c0.828,0,1.5-0.672,1.5-1.5S13.828,0,13,0s-1.5,0.672-1.5,1.5S12.172,3,13,3z M12.5,5c0,0.552,0.448,1,1,1    s1-0.448,1-1s-0.448-1-1-1S12.5,4.448,12.5,5z M10,6c0.828,0,1.5-0.672,1.5-1.5S10.828,3,10,3S8.5,3.672,8.5,4.5S9.172,6,10,6z     M18,21h-0.5v-0.025c1.91-1.622,3-3.968,3-6.475c0-1.762-0.532-3.429-1.537-4.86C19.288,9.365,19.5,8.959,19.5,8.5    C19.5,7.673,18.827,7,18,7H6C5.173,7,4.5,7.673,4.5,8.5c0,0.459,0.211,0.865,0.537,1.14C4.033,11.071,3.5,12.738,3.5,14.5    c0,2.507,1.09,4.854,3,6.475L6,21c-0.827,0-1.5,0.673-1.5,1.5S5.173,24,6,24h2c0.189,0,0.362-0.107,0.447-0.276l0.623-1.245    c1.879,0.692,3.981,0.692,5.86,0l0.623,1.245C15.638,23.893,15.811,24,16,24h2c0.827,0,1.5-0.673,1.5-1.5S18.827,21,18,21z     M6.753,17.457c-0.067,0.031-0.138,0.045-0.208,0.045c-0.189,0-0.371-0.108-0.455-0.292c-0.392-0.854-0.59-1.766-0.59-2.711    c0-0.276,0.224-0.5,0.5-0.5s0.5,0.224,0.5,0.5c0,0.8,0.168,1.572,0.5,2.294C7.115,17.045,7.004,17.342,6.753,17.457z"/></path></svg>
-      Brew a Deck
-    </h1>
-    <h3>Name</h3>
-    <input type="text">
-    <div class="container">
-      <div class="column">
-        <h3>Formats</h3>
-        <input type="text">
+    <form action="{{url_for('add_deck')}}" method="post">
+      <h1>
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 24 30" style="enable-background:new 0 0 24 24;" xml:space="preserve"><path d="M13,3c0.828,0,1.5-0.672,1.5-1.5S13.828,0,13,0s-1.5,0.672-1.5,1.5S12.172,3,13,3z M12.5,5c0,0.552,0.448,1,1,1    s1-0.448,1-1s-0.448-1-1-1S12.5,4.448,12.5,5z M10,6c0.828,0,1.5-0.672,1.5-1.5S10.828,3,10,3S8.5,3.672,8.5,4.5S9.172,6,10,6z     M18,21h-0.5v-0.025c1.91-1.622,3-3.968,3-6.475c0-1.762-0.532-3.429-1.537-4.86C19.288,9.365,19.5,8.959,19.5,8.5    C19.5,7.673,18.827,7,18,7H6C5.173,7,4.5,7.673,4.5,8.5c0,0.459,0.211,0.865,0.537,1.14C4.033,11.071,3.5,12.738,3.5,14.5    c0,2.507,1.09,4.854,3,6.475L6,21c-0.827,0-1.5,0.673-1.5,1.5S5.173,24,6,24h2c0.189,0,0.362-0.107,0.447-0.276l0.623-1.245    c1.879,0.692,3.981,0.692,5.86,0l0.623,1.245C15.638,23.893,15.811,24,16,24h2c0.827,0,1.5-0.673,1.5-1.5S18.827,21,18,21z     M6.753,17.457c-0.067,0.031-0.138,0.045-0.208,0.045c-0.189,0-0.371-0.108-0.455-0.292c-0.392-0.854-0.59-1.766-0.59-2.711    c0-0.276,0.224-0.5,0.5-0.5s0.5,0.224,0.5,0.5c0,0.8,0.168,1.572,0.5,2.294C7.115,17.045,7.004,17.342,6.753,17.457z"/></path></svg>
+        Brew a Deck
+      </h1>
+      <h3>Name</h3>
+      <input type="text" name="name">
+      <div class="container">
+        <div class="column">
+          <h3>Formats</h3>
+          <input type="text" name="formats">
+        </div>
+        <div class="column">
+          <h3>Tags</h3>
+          <input type="text" name="tags">
+        </div>
       </div>
-      <div class="column">
-        <h3>Tags</h3>
-        <input type="text">
+      <h3>Description</h3>
+      <textarea rows="5" name="description"></textarea>
+      <h3>Cards</h3>
+      <div class="builder-cards">
+        <a href="/builder" class="pull-right btn">Bulk edit</a>
+        <div class="tabs">
+          <a href="/builder" class="btn active">Mainboard</a>
+          <a href="/builder" class="btn">Sideboard</a>
+          <a href="/builder" class="btn">Maybeboard</a>
+          <a href="/builder" class="btn">Acquireboard</a>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th class="text-right">60</th>
+              <th class="desc">Name</th>
+              <th>Set</th>
+              <th>Type</th>
+              <th class="text-center" style="width: 30px">Foil</th>
+              <th class="text-center" style="width: 100px">Featured</th>
+              <th class="text-center" style="width: 100px">Commander</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-right">4</td>
+              <td><a href="/card">Aether Hub</a></td>
+              <td>Kaladesh</td>
+              <td>Land</td>
+              <td class="text-center"><input checked type="checkbox" id="1"><label for="1"></label></td>
+              <td class="text-center"><input checked type="radio" name="featured" id="1f"><label for="1f"></label></td>
+              <td class="text-center"><input checked type="radio" name="commander" id="1c"><label for="1c"></label></td>
+            </tr>
+            <tr>
+              <td class="text-right">4</td>
+              <td><a href="/card">Inspiring Vantage</a></td>
+              <td>Kaladesh</td>
+              <td>Land</td>
+              <td class="text-center"><input type="checkbox" id="2"><label for="2"></label></td>
+              <td class="text-center"><input type="radio" name="featured" id="2f"><label for="2f"></label></td>
+              <td class="text-center"><input type="radio" name="commander" id="2c"><label for="2c"></label></td>
+            </tr>
+            <tr>
+              <td class="text-right">2</td>
+              <td><a href="/card">Island</a></td>
+              <td>Hour of Devastation</td>
+              <td>Basic Land &mdash; Island</td>
+              <td class="text-center"><input type="checkbox" id="3"><label for="3"></label></td>
+              <td class="text-center"><input type="radio" name="featured" id="3f"><label for="3f"></label></td>
+              <td class="text-center"><input type="radio" name="commander" id="3c"><label for="3c"></label></td>
+            </tr>
+            <tr>
+              <td class="text-right">4</td>
+              <td><a href="/card">Plains</a></td>
+              <td>Hour of Devastation</td>
+              <td>Basic Land &mdash; Plains</td>
+              <td class="text-center"><input type="checkbox" id="4"><label for="4"></label></td>
+              <td class="text-center"><input type="radio" name="featured" id="4f"><label for="4f"></label></td>
+              <td class="text-center"><input type="radio" name="commander" id="4c"><label for="4c"></label></td>
+            </tr>
+            <tr>
+              <td class="text-right">3</td>
+              <td><a href="/card">Port Town</a></td>
+              <td>Shadows over Innistrad</td>
+              <td>Land</td>
+              <td class="text-center"><input type="checkbox" id="5"><label for="5"></label></td>
+              <td class="text-center"><input type="radio" name="featured" id="5f"><label for="5f"></label></td>
+              <td class="text-center"><input type="radio" name="commander" id="5c"><label for="5c"></label></td>
+            </tr>
+            <tr>
+              <td class="text-right">4</td>
+              <td><a href="/card">Spirebluff Canal</a></td>
+              <td>Kaladesh</td>
+              <td>Land</td>
+              <td class="text-center"><input type="checkbox" id="6"><label for="6"></label></td>
+              <td class="text-center"><input type="radio" name="featured" id="6f"><label for="6f"></label></td>
+              <td class="text-center"><input type="radio" name="commander" id="6c"><label for="6c"></label></td>
+            </tr>
+            <tr>
+              <td class="text-right">4</td>
+              <td><a href="/card">Wandering Fumarole</a></td>
+              <td>Oath of the Gatewatch</td>
+              <td>Land</td>
+              <td class="text-center"><input type="checkbox" id="7"><label for="7"></label></td>
+              <td class="text-center"><input type="radio" name="featured" id="7f"><label for="7f"></label></td>
+              <td class="text-center"><input type="radio" name="commander" id="7c"><label for="7c"></label></td>
+            </tr>
+            <tr>
+              <td class="text-right">8</td>
+              <td><a href="/card">Fevered Visions</a></td>
+              <td>Shadows over Innistrad</td>
+              <td>Enchantment</td>
+              <td class="text-center"><input type="checkbox" id="8"><label for="8"></label></td>
+              <td class="text-center"><input type="radio" name="featured" id="8f"><label for="8f"></label></td>
+              <td class="text-center"><input type="radio" name="commander" id="8c"><label for="8c"></label></td>
+            </tr>
+            <tr>
+              <td class="text-right">4</td>
+              <td><a href="/card">Reflector Mage</a></td>
+              <td>Oath of the Gatewatch</td>
+              <td>Creature &mdash; Human Wizard</td>
+              <td class="text-center"><input type="checkbox" id="9"><label for="9"></label></td>
+              <td class="text-center"><input type="radio" name="featured" id="9f"><label for="9f"></label></td>
+              <td class="text-center"><input type="radio" name="commander" id="9c"><label for="9c"></label></td>
+            </tr>
+            <tr>
+              <td class="text-right">4</td>
+              <td><a href="/card">Selfless Spirit</a></td>
+              <td>Eldritch Moon</td>
+              <td>Creature &mdash; Spirit Cleric</td>
+              <td class="text-center"><input type="checkbox" id="10"><label for="10"></label></td>
+              <td class="text-center"><input type="radio" name="featured" id="10f"><label for="10f"></label></td>
+              <td class="text-center"><input type="radio" name="commander" id="10c"><label for="10c"></label></td>
+            </tr>
+            <tr>
+              <td class="text-right">4</td>
+              <td><a href="/card">Spell Queller</a></td>
+              <td>Eldritch Moon</td>
+              <td>Creature &mdash; Spirit</td>
+              <td class="text-center"><input type="checkbox" id="11"><label for="11"></label></td>
+              <td class="text-center"><input type="radio" name="featured" id="11f"><label for="11f"></label></td>
+              <td class="text-center"><input type="radio" name="commander" id="11c"><label for="11c"></label></td>
+            </tr>
+            <tr>
+              <td class="text-right">4</td>
+              <td><a href="/card">Galvanic Bombardment</a></td>
+              <td>Eldritch Moon</td>
+              <td>Instant</td>
+              <td class="text-center"><input type="checkbox" id="12"><label for="12"></label></td>
+              <td class="text-center"><input type="radio" name="featured" id="12f"><label for="12f"></label></td>
+              <td class="text-center"><input type="radio" name="commander" id="12c"><label for="12c"></label></td>
+            </tr>
+            <tr>
+              <td class="text-right">4</td>
+              <td><a href="/card">Immolating Glare</a></td>
+              <td>Oath of the Gatewatch</td>
+              <td>Instant</td>
+              <td class="text-center"><input type="checkbox" id="13"><label for="13"></label></td>
+              <td class="text-center"><input type="radio" name="featured" id="13f"><label for="13f"></label></td>
+              <td class="text-center"><input type="radio" name="commander" id="13c"><label for="13c"></label></td>
+            </tr>
+            <tr>
+              <td class="text-right">2</td>
+              <td><a href="/card">Chandra, Torch of Defiance</a></td>
+              <td>Kaladesh</td>
+              <td>Planeswalker &mdash; Chandra</td>
+              <td class="text-center"><input type="checkbox" id="14"><label for="14"></label></td>
+              <td class="text-center"><input type="radio" name="featured" id="14f"><label for="14f"></label></td>
+              <td class="text-center"><input type="radio" name="commander" id="14c"><label for="14c"></label></td>
+            </tr>
+            <tr>
+              <td class="text-right">2</td>
+              <td><a href="/card">Gideon, Ally of Zendikar</a></td>
+              <td>Battle for Zendikar</td>
+              <td>Planeswalker &mdash; Gideon</td>
+              <td class="text-center"><input type="checkbox" id="15"><label for="15"></label></td>
+              <td class="text-center"><input type="radio" name="featured" id="15f"><label for="15f"></label></td>
+              <td class="text-center"><input type="radio" name="commander" id="15c"><label for="15c"></label></td>
+            </tr>
+            <tr>
+              <td class="text-right">4</td>
+              <td><a href="/card">Incendiary Flow</a></td>
+              <td>Eldritch Moon</td>
+              <td>Sorcery</td>
+              <td class="text-center"><input type="checkbox" id="16"><label for="16"></label></td>
+              <td class="text-center"><input type="radio" name="featured" id="16f"><label for="16f"></label></td>
+              <td class="text-center"><input type="radio" name="commander" id="16c"><label for="16c"></label></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
-    <h3>Description</h3>
-    <textarea rows="5"></textarea>
-    <h3>Cards</h3>
-    <div class="builder-cards">
-      <a href="/builder" class="pull-right btn">Bulk edit</a>
-      <div class="tabs">
-        <a href="/builder" class="btn active">Mainboard</a>
-        <a href="/builder" class="btn">Sideboard</a>
-        <a href="/builder" class="btn">Maybeboard</a>
-        <a href="/builder" class="btn">Acquireboard</a>
+      <div class="add-card">
+        <!-- Quantity -->
+        <input type="number" value="1" max="99" min="1">
+        <!-- Name -->
+        <input type="text" placeholder="Card name&hellip;" list="cardNames">
+        <a href="/builder" class="btn">Advanced Search</a>
+        <a href="/builder" class="btn">Add</a>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th class="text-right">60</th>
-            <th class="desc">Name</th>
-            <th>Set</th>
-            <th>Type</th>
-            <th class="text-center" style="width: 30px">Foil</th>
-            <th class="text-center" style="width: 100px">Featured</th>
-            <th class="text-center" style="width: 100px">Commander</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="text-right">4</td>
-            <td><a href="/card">Aether Hub</a></td>
-            <td>Kaladesh</td>
-            <td>Land</td>
-            <td class="text-center"><input checked type="checkbox" id="1"><label for="1"></label></td>
-            <td class="text-center"><input checked type="radio" name="featured" id="1f"><label for="1f"></label></td>
-            <td class="text-center"><input checked type="radio" name="commander" id="1c"><label for="1c"></label></td>
-          </tr>
-          <tr>
-            <td class="text-right">4</td>
-            <td><a href="/card">Inspiring Vantage</a></td>
-            <td>Kaladesh</td>
-            <td>Land</td>
-            <td class="text-center"><input type="checkbox" id="2"><label for="2"></label></td>
-            <td class="text-center"><input type="radio" name="featured" id="2f"><label for="2f"></label></td>
-            <td class="text-center"><input type="radio" name="commander" id="2c"><label for="2c"></label></td>
-          </tr>
-          <tr>
-            <td class="text-right">2</td>
-            <td><a href="/card">Island</a></td>
-            <td>Hour of Devastation</td>
-            <td>Basic Land &mdash; Island</td>
-            <td class="text-center"><input type="checkbox" id="3"><label for="3"></label></td>
-            <td class="text-center"><input type="radio" name="featured" id="3f"><label for="3f"></label></td>
-            <td class="text-center"><input type="radio" name="commander" id="3c"><label for="3c"></label></td>
-          </tr>
-          <tr>
-            <td class="text-right">4</td>
-            <td><a href="/card">Plains</a></td>
-            <td>Hour of Devastation</td>
-            <td>Basic Land &mdash; Plains</td>
-            <td class="text-center"><input type="checkbox" id="4"><label for="4"></label></td>
-            <td class="text-center"><input type="radio" name="featured" id="4f"><label for="4f"></label></td>
-            <td class="text-center"><input type="radio" name="commander" id="4c"><label for="4c"></label></td>
-          </tr>
-          <tr>
-            <td class="text-right">3</td>
-            <td><a href="/card">Port Town</a></td>
-            <td>Shadows over Innistrad</td>
-            <td>Land</td>
-            <td class="text-center"><input type="checkbox" id="5"><label for="5"></label></td>
-            <td class="text-center"><input type="radio" name="featured" id="5f"><label for="5f"></label></td>
-            <td class="text-center"><input type="radio" name="commander" id="5c"><label for="5c"></label></td>
-          </tr>
-          <tr>
-            <td class="text-right">4</td>
-            <td><a href="/card">Spirebluff Canal</a></td>
-            <td>Kaladesh</td>
-            <td>Land</td>
-            <td class="text-center"><input type="checkbox" id="6"><label for="6"></label></td>
-            <td class="text-center"><input type="radio" name="featured" id="6f"><label for="6f"></label></td>
-            <td class="text-center"><input type="radio" name="commander" id="6c"><label for="6c"></label></td>
-          </tr>
-          <tr>
-            <td class="text-right">4</td>
-            <td><a href="/card">Wandering Fumarole</a></td>
-            <td>Oath of the Gatewatch</td>
-            <td>Land</td>
-            <td class="text-center"><input type="checkbox" id="7"><label for="7"></label></td>
-            <td class="text-center"><input type="radio" name="featured" id="7f"><label for="7f"></label></td>
-            <td class="text-center"><input type="radio" name="commander" id="7c"><label for="7c"></label></td>
-          </tr>
-          <tr>
-            <td class="text-right">8</td>
-            <td><a href="/card">Fevered Visions</a></td>
-            <td>Shadows over Innistrad</td>
-            <td>Enchantment</td>
-            <td class="text-center"><input type="checkbox" id="8"><label for="8"></label></td>
-            <td class="text-center"><input type="radio" name="featured" id="8f"><label for="8f"></label></td>
-            <td class="text-center"><input type="radio" name="commander" id="8c"><label for="8c"></label></td>
-          </tr>
-          <tr>
-            <td class="text-right">4</td>
-            <td><a href="/card">Reflector Mage</a></td>
-            <td>Oath of the Gatewatch</td>
-            <td>Creature &mdash; Human Wizard</td>
-            <td class="text-center"><input type="checkbox" id="9"><label for="9"></label></td>
-            <td class="text-center"><input type="radio" name="featured" id="9f"><label for="9f"></label></td>
-            <td class="text-center"><input type="radio" name="commander" id="9c"><label for="9c"></label></td>
-          </tr>
-          <tr>
-            <td class="text-right">4</td>
-            <td><a href="/card">Selfless Spirit</a></td>
-            <td>Eldritch Moon</td>
-            <td>Creature &mdash; Spirit Cleric</td>
-            <td class="text-center"><input type="checkbox" id="10"><label for="10"></label></td>
-            <td class="text-center"><input type="radio" name="featured" id="10f"><label for="10f"></label></td>
-            <td class="text-center"><input type="radio" name="commander" id="10c"><label for="10c"></label></td>
-          </tr>
-          <tr>
-            <td class="text-right">4</td>
-            <td><a href="/card">Spell Queller</a></td>
-            <td>Eldritch Moon</td>
-            <td>Creature &mdash; Spirit</td>
-            <td class="text-center"><input type="checkbox" id="11"><label for="11"></label></td>
-            <td class="text-center"><input type="radio" name="featured" id="11f"><label for="11f"></label></td>
-            <td class="text-center"><input type="radio" name="commander" id="11c"><label for="11c"></label></td>
-          </tr>
-          <tr>
-            <td class="text-right">4</td>
-            <td><a href="/card">Galvanic Bombardment</a></td>
-            <td>Eldritch Moon</td>
-            <td>Instant</td>
-            <td class="text-center"><input type="checkbox" id="12"><label for="12"></label></td>
-            <td class="text-center"><input type="radio" name="featured" id="12f"><label for="12f"></label></td>
-            <td class="text-center"><input type="radio" name="commander" id="12c"><label for="12c"></label></td>
-          </tr>
-          <tr>
-            <td class="text-right">4</td>
-            <td><a href="/card">Immolating Glare</a></td>
-            <td>Oath of the Gatewatch</td>
-            <td>Instant</td>
-            <td class="text-center"><input type="checkbox" id="13"><label for="13"></label></td>
-            <td class="text-center"><input type="radio" name="featured" id="13f"><label for="13f"></label></td>
-            <td class="text-center"><input type="radio" name="commander" id="13c"><label for="13c"></label></td>
-          </tr>
-          <tr>
-            <td class="text-right">2</td>
-            <td><a href="/card">Chandra, Torch of Defiance</a></td>
-            <td>Kaladesh</td>
-            <td>Planeswalker &mdash; Chandra</td>
-            <td class="text-center"><input type="checkbox" id="14"><label for="14"></label></td>
-            <td class="text-center"><input type="radio" name="featured" id="14f"><label for="14f"></label></td>
-            <td class="text-center"><input type="radio" name="commander" id="14c"><label for="14c"></label></td>
-          </tr>
-          <tr>
-            <td class="text-right">2</td>
-            <td><a href="/card">Gideon, Ally of Zendikar</a></td>
-            <td>Battle for Zendikar</td>
-            <td>Planeswalker &mdash; Gideon</td>
-            <td class="text-center"><input type="checkbox" id="15"><label for="15"></label></td>
-            <td class="text-center"><input type="radio" name="featured" id="15f"><label for="15f"></label></td>
-            <td class="text-center"><input type="radio" name="commander" id="15c"><label for="15c"></label></td>
-          </tr>
-          <tr>
-            <td class="text-right">4</td>
-            <td><a href="/card">Incendiary Flow</a></td>
-            <td>Eldritch Moon</td>
-            <td>Sorcery</td>
-            <td class="text-center"><input type="checkbox" id="16"><label for="16"></label></td>
-            <td class="text-center"><input type="radio" name="featured" id="16f"><label for="16f"></label></td>
-            <td class="text-center"><input type="radio" name="commander" id="16c"><label for="16c"></label></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="add-card">
-      <!-- Quantity -->
-      <input type="number" value="1" max="99" min="1">
-      <!-- Name -->
-      <input type="text" placeholder="Card name&hellip;" list="cardNames">
-      <a href="/builder" class="btn">Advanced Search</a>
-      <a href="/builder" class="btn">Add</a>
-    </div>
-    <p>
-      <a href="/builder" class="btn primary">Save Changes</a>
-      <a href="/builder" class="btn">Revert</a>
-    </p>
+      <p>
+        <button class="btn primary" type="submit">Save Changes</button>
+        <a href="/builder" class="btn">Revert</a>
+      </p>
+    </form>
   </section>
 </div>
 <datalist id="cardNames">

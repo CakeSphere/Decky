@@ -4,7 +4,7 @@
     <!-- This stylesheet has to be first because of a Chrome bug -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.scss.css') }}">
     <!-- Metadata about Decky -->
-    <title>Decky &middot; Better living through alchemy</title>
+    <title>Decky  &#9670; Better living through alchemy</title>
     <meta name="description" content="">
     <meta name="author" content="Decky Team">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -24,9 +24,6 @@
     <meta name="theme-color" content="#272727">
   </head>
   <body class="{% if active_page == 'login' %}login{% endif %}">
-    {% for message in get_flashed_messages() %}
-      {{ message }}
-    {% endfor %}
     <nav class="top-nav">
       <div class="pull-right">
         <a href="/builder" class="btn primary">
@@ -34,6 +31,9 @@
           Brew a Deck
         </a>
       </div>
+      {% for message in get_flashed_messages() %}
+        <div class="flash">{{message}}</div>
+      {% endfor %}
     </nav>
     <nav class="left-nav">
       <a href="/decks" class="logo">

@@ -26,6 +26,35 @@
     margin-bottom: 0;
     &:last-child { margin-right: 0; }
   }
+  .flash {
+    position: absolute;
+    top: 0;
+    left: calc(50% - 150px - 0.25rem);
+    width: 300px;
+    margin: auto;
+    transform: translateY(-3rem);
+    background: $color-mtg-g;
+    color: $color-text;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
+    text-align: center;
+    border-radius: 0 0 $border-radius $border-radius;
+    padding: 0.5rem;
+    animation-name: flash;
+    animation-duration: 3s;
+    animation-delay: 0.4s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15),
+                inset 0 0 4px rgba(255, 255, 255, 0.05),
+                0 2px 3px rgba(0, 0, 0, 0.15);
+  }
+}
+
+@keyframes flash {
+  from { transform: translateY(-3rem)}
+  10%  { transform: translateY(0)}
+  90%  { transform: translateY(0)}
+  to   { transform: translateY(-3rem)}
 }
 
 .left-nav {
@@ -162,13 +191,14 @@
     height: calc(100px - 2rem);
     background: transparentize($color-text-weak, 0.98);
     border-top: 1px solid shade($color-background, 5%);
-    -webkit-box-shadow: 0 -1px 0 tint($color-background, 5%);
-            box-shadow: 0 -1px 0 tint($color-background, 5%);
+    cursor: pointer;
     padding: 1rem;
     text-align: center;
     text-shadow: 0 2px 4px transparentize($color-background-shade, 0.5);
+    -webkit-box-shadow: 0 -1px 0 tint($color-background, 5%);
+            box-shadow: 0 -1px 0 tint($color-background, 5%);
     -webkit-transition: $transition;
-    transition: $transition;
+            transition: $transition;
     .account-icon {
       position: relative;
       width: 32px;
@@ -202,6 +232,7 @@
         position: absolute;
         top: -6px;
         right: -6px;
+        transition: $transition;
       }
     }
     .account-name {

@@ -433,6 +433,26 @@ def builder():
     sets = cur_sets.fetchall()
     return render_template('builder.html', cards=cards, sets=sets)
 
+@app.route('/add_deck', methods=['POST'])
+def add_deck():
+    deck_author = "Casanova Killing Spree"
+    deck_colors = "{r}{b}"
+    deck_description = request.form['description']
+    deck_formats = request.form['formats']
+    deck_image = "414494"
+    deck_legality = "Standard"
+    deck_likes = 99
+    deck_mainboard = "main"
+    deck_maybeboard = "maybe"
+    deck_name = request.form['name']
+    deck_sideboard = "side"
+    deck_tags = request.form['tags']
+
+    db = get_db()
+    db.execute('INSERT INTO decks values (null, ?, ?, null, date("now"), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, date("now"))', [deck_author, deck_colors, deck_description, deck_formats, deck_image, deck_legality, deck_likes, deck_mainboard, deck_maybeboard, deck_name, deck_sideboard, deck_tags])
+    db.commit()
+    flash('Deck added')
+    return redirect(url_for('decks'))
 
 @app.route('/login')
 def index():
