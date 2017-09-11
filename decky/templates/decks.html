@@ -111,11 +111,25 @@
         {% endfor %}
       </div>
       <div class="pagination text-center">
-        <div class="current-page"><span class="text">88</span></div>
-        <a href="first" class="first"><span class="text">1</span></a>
-        <a href="last" class="last"><span class="text">99</span></a>
-        <a href="prev" class="prev"><span class="text">87</span></a>
-        <a href="next" class="next"><span class="text">89</span></a>
+        {%- for page in pagination.iter_pages() %}
+          {% if page %}
+            {% if pagination.pages != pagination.page %}
+              <a href="{{url_for_other_page(page)}}" class="last"><span class="text">{{page}}</span></a>
+            {% endif %}
+            {% if page == pagination.page %}
+             <div class="current-page"><span class="text">{{page}}</span></div>
+            {% endif %}
+            {% if pagination.page > 2 %}
+              <a href="{{url_for_other_page(1)}}" class="first"><span class="text">1</span></a>
+            {% endif %}
+            {% if pagination.page > 1 %}
+              <a href="{{url_for_other_page(pagination.page - 1)}}" class="prev"><span class="text">{{pagination.page - 1}}</span></a>
+            {% endif %}
+          {% endif %}
+        {%- endfor %}
+        {% if pagination.has_next %}
+          <a href="{{url_for_other_page(pagination.page+1)}}" class="next"><span class="text">{{pagination.page+1}}</span></a>
+        {% endif%}
       </div>
     </section>
   </div>

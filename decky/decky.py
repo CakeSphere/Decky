@@ -281,11 +281,16 @@ def show_entries(setId):
     sets = cur_sets.fetchall()
     return render_template('show_entries.html', cards=cards, sets=sets)
 
-
-@app.route('/decks')
-def decks():
+@app.route('/decks/', defaults={'page': 1})
+@app.route('/decks/page/<int:page>')
+def decks(page):
     db = get_db()
-    cur_decks = db.execute('select * from decks order by likes desc limit 33')
+    cur_count = db.execute('select count(*) from decks')
+    count = cur_count.fetchone()[0]
+    cur_decks = db.execute(
+        'select * from decks order by likes desc limit ' + str(PER_PAGE) + ' offset ' + str(PER_PAGE * page - PER_PAGE)
+    )
+    pagination = Pagination(page, PER_PAGE, count)
     cur_sets = db.execute(
         'select * from sets order by releaseDate desc limit 5')
     decks = cur_decks.fetchall()
@@ -301,7 +306,7 @@ def decks():
         legality[deck["id"]] = deck_legality
 
     return render_template(
-        'decks.html', decks=decks, sets=sets, tags=tags, legality=legality)
+        'decks.html', decks=decks, sets=sets, tags=tags, legality=legality, pagination=pagination)
 
 PER_PAGE = 45
 
