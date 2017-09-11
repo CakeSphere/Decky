@@ -312,7 +312,7 @@ def cards(page):
     cur_count = db.execute('select count(*) from cards where type like "%Vampire%" and type like "%Creature%" and multiverseid != ""')
     count = cur_count.fetchone()[0]
     cur_cards = db.execute(
-        'select * from cards where type like "%Vampire%" and type like "%Creature%" and multiverseid != "" order by multiverseid desc limit 45 offset ' + str(PER_PAGE * page)
+        'select * from cards where type like "%Vampire%" and type like "%Creature%" and multiverseid != "" order by releaseDate desc, multiverseid desc limit 45 offset ' + str(PER_PAGE * page - PER_PAGE)
     )
     cur_sets = db.execute(
         'select * from sets order by releaseDate desc limit 5')
