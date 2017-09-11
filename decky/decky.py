@@ -5,6 +5,7 @@ from HTMLParser import HTMLParser
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash, Markup
 from sassutils.wsgi import SassMiddleware
 from datetime import datetime
+from math import ceil
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -50,6 +51,43 @@ def init_db():
         db.cursor().executescript(f.read())
     db.commit()
 
+class Pagination(object):
+
+    def __init__(self, page, per_page, total_count):
+        self.page = page
+        self.per_page = per_page
+        self.total_count = total_count
+
+    @property
+    def pages(self):
+        return int(ceil(self.total_count / float(self.per_page)))
+
+    @property
+    def has_prev(self):
+        return self.page > 1
+
+    @property
+    def has_next(self):
+        return self.page < self.pages
+
+    def iter_pages(self, left_edge=1, left_current=1, right_current=1, right_edge=1):
+        last = 0
+        for num in xrange(1, self.pages + 1):
+            if num <= left_edge or \
+               (num > self.page - left_current - 1 and \
+                num < self.page + right_current) or \
+               num > self.pages - right_edge:
+                if last + 1 != num:
+                    yield None
+                yield num
+                last = num
+
+
+def url_for_other_page(page):
+    args = request.view_args.copy()
+    args['page'] = page
+    return url_for(request.endpoint, **args)
+app.jinja_env.globals['url_for_other_page'] = url_for_other_page
 
 def format_set(raw_set):
     out_set = {}
@@ -263,22 +301,23 @@ def decks():
         legality[deck["id"]] = deck_legality
 
     return render_template(
-        'decks.html',
-        decks=decks,
-        sets=sets,
-        tags=tags,
-        legality=legality)
+        'decks.html', decks=decks, sets=sets, tags=tags, legality=legality)
 
+PER_PAGE = 45
 
-@app.route('/cards')
-def cards():
+@app.route('/cards/', defaults={'page': 1})
+@app.route('/cards/page/<int:page>')
+def cards(page):
     db = get_db()
+    cur_count = db.execute('select count(*) from cards')
+    count = cur_count.fetchone()[0]
     cur_cards = db.execute(
         'select * from cards where type like "%Vampire%" and type like "%Creature%" and multiverseid != "" order by multiverseid desc limit 45'
     )
     cur_sets = db.execute(
         'select * from sets order by releaseDate desc limit 5')
     cards = cur_cards.fetchall()
+    pagination = Pagination(page, PER_PAGE, count)
     card_mana = {}
     for card in cards:
         mana = card["manaCost"]
@@ -317,7 +356,8 @@ def cards():
         cards=cards,
         sets=sets,
         card_mana=card_mana,
-        card_text=card_text)
+        card_text=card_text,
+        pagination=pagination)
 
 
 @app.route('/card/<multiverseId>')
@@ -427,11 +467,24 @@ def builder():
     cur_cards = db.execute(
         'select * from cards where type like "%Spirit%" and type like "%Creature%" order by multiverseId asc limit 3'
     )
+    cur_decks = db.execute('select * from decks order by likes desc limit 33')
     cur_sets = db.execute(
         'select * from sets order by releaseDate desc limit 5')
+    decks = cur_decks.fetchall()
     cards = cur_cards.fetchall()
     sets = cur_sets.fetchall()
-    return render_template('builder.html', cards=cards, sets=sets)
+
+    legality = {}
+    tags = {}
+    for deck in decks:
+        deck_tags = deck["tags"]
+        deck_tags = deck_tags.split(', ')
+        tags[deck["id"]] = deck_tags
+        deck_legality = deck["legality"]
+        deck_legality = deck_legality.split(', ')
+        legality[deck["id"]] = deck_legality
+    return render_template('builder.html', cards=cards, sets=sets, decks=decks, tags=tags, legality=legality)
+
 
 @app.route('/add_deck', methods=['POST'])
 def add_deck():
@@ -449,11 +502,19 @@ def add_deck():
     deck_tags = request.form['tags']
 
     db = get_db()
-    db.execute('INSERT INTO decks values (null, ?, ?, null, date("now"), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, date("now"))', [deck_author, deck_colors, deck_description, deck_formats, deck_image, deck_legality, deck_likes, deck_mainboard, deck_maybeboard, deck_name, deck_sideboard, deck_tags])
+    db.execute(
+        'INSERT INTO decks values (null, ?, ?, null, date("now"), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, date("now"))',
+        [
+            deck_author, deck_colors, deck_description, deck_formats,
+            deck_image, deck_legality, deck_likes, deck_mainboard,
+            deck_maybeboard, deck_name, deck_sideboard, deck_tags
+        ])
     db.commit()
     flash('Deck added')
     return redirect(url_for('decks'))
 
+
 @app.route('/login')
 def index():
     return render_template('login.html')
+

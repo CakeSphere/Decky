@@ -146,9 +146,24 @@
         <div class="clearfix"></div>
       </div>
       <div class="pagination text-center">
-        <div class="current-page"><span class="text">1</span></div>
-        <a class="prev disabled"><span class="text">&nbsp;</span></a>
-        <a href="next" class="next"><span class="text">2</span></a>
+        {%- for page in pagination.iter_pages() %}
+          {% if page %}
+            {% if page >= 3 %}
+              <a href="{{url_for_other_page(1)}}" class="first"><span class="text">1</span></a>
+            {% endif %}
+            {% if page >= 3 %}
+              <a href="{{url_for_other_page(pagination.page - 1)}}" class="prev"><span class="text">{{pagination.page - 1}}</span></a>
+            {% endif %}
+            {% if page !=pagination.page %}
+              <a href="{{url_for_other_page(page)}}" class="last"><span class="text">{{page}}</span></a>
+            {% else %}
+             <div class="current-page"><span class="text">{{page}}</span></div>
+            {% endif %}
+          {% endif %}
+        {%- endfor %}
+        {% if pagination.has_next %}
+          <a href="{{url_for_other_page(pagination.page+1)}}" class="next"><span class="text">{{pagination.page+1}}</span></a>
+        {% endif%}
       </div>
     </section>
   </div>
