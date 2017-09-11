@@ -148,10 +148,10 @@
       <div class="pagination text-center">
         {%- for page in pagination.iter_pages() %}
           {% if page %}
-            {% if page >= 3 %}
+            {% if pagination.page > 2 %}
               <a href="{{url_for_other_page(1)}}" class="first"><span class="text">1</span></a>
             {% endif %}
-            {% if page >= 3 %}
+            {% if pagination.page > 1 %}
               <a href="{{url_for_other_page(pagination.page - 1)}}" class="prev"><span class="text">{{pagination.page - 1}}</span></a>
             {% endif %}
             {% if page !=pagination.page %}
