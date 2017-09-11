@@ -309,10 +309,10 @@ PER_PAGE = 45
 @app.route('/cards/page/<int:page>')
 def cards(page):
     db = get_db()
-    cur_count = db.execute('select count(*) from cards')
+    cur_count = db.execute('select count(*) from cards where type like "%Vampire%" and type like "%Creature%" and multiverseid != ""')
     count = cur_count.fetchone()[0]
     cur_cards = db.execute(
-        'select * from cards where type like "%Vampire%" and type like "%Creature%" and multiverseid != "" order by multiverseid desc limit 45'
+        'select * from cards where type like "%Vampire%" and type like "%Creature%" and multiverseid != "" order by multiverseid desc limit 45 offset ' + str(PER_PAGE * page)
     )
     cur_sets = db.execute(
         'select * from sets order by releaseDate desc limit 5')

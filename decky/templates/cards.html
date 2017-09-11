@@ -154,7 +154,7 @@
             {% if pagination.page > 1 %}
               <a href="{{url_for_other_page(pagination.page - 1)}}" class="prev"><span class="text">{{pagination.page - 1}}</span></a>
             {% endif %}
-            {% if page !=pagination.page %}
+            {% if page != pagination.page %}
               <a href="{{url_for_other_page(page)}}" class="last"><span class="text">{{page}}</span></a>
             {% else %}
              <div class="current-page"><span class="text">{{page}}</span></div>
