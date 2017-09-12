@@ -1,10 +1,10 @@
-drop table if exists sets;
-drop table if exists cards;
-drop table if exists decks;
-drop table if exists decksToCards;
+DROP TABLE if exists sets;
+DROP TABLE if exists cards;
+DROP TABLE if exists decks;
+DROP TABLE if exists decksToCards;
 
-create table sets (
-  id INTEGER primary key autoincrement,
+create TABLE sets (
+  id INTEGER PRIMARY KEY autoincrement,
   block VARCHAR(50) NOT NULL,
   booster VARCHAR(50),
   border VARCHAR(50) NOT NULL,
@@ -17,8 +17,8 @@ create table sets (
   type VARCHAR(50) NOT NULL
 );
 
-create table cards (
-  id INTEGER primary key autoincrement,
+create TABLE cards (
+  id INTEGER PRIMARY KEY autoincrement,
   artist VARCHAR(50) NOT NULL,
   border VARCHAR(50),
   cmc INTEGER NOT NULL,
@@ -55,8 +55,8 @@ create table cards (
   variations VARCHAR(50)
 );
 
-create table decks (
-  id INTEGER primary key autoincrement,
+create TABLE decks (
+  id INTEGER PRIMARY KEY autoincrement,
   author VARCHAR(50) NOT NULL,
   colors VARCHAR(50),
   commander VARCHAR(50),
@@ -74,8 +74,8 @@ create table decks (
   updated VARCHAR(10)
 );
 
-create table decksToCards (
-  id INTEGER primary key autoincrement,
+create TABLE decksToCards (
+  id INTEGER PRIMARY KEY autoincrement,
   deckId INTEGER,
   cardId INTEGER,
   FOREIGN KEY(deckId) REFERENCES decks(id),
