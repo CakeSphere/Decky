@@ -22,6 +22,41 @@ app.config.update(
 
 print app.root_path
 
+PER_PAGE = 45
+ABILITY_WORDS = [
+    "battalion", "bloodrush", "channel", "chroma", "cohort", "constellation",
+    "converge", "council\'s dilemma", "delirium", "domain", "fateful hour",
+    "ferocious", "formidable", "grandeur", "hellbent", "heroic", "imprint",
+    "inspired", "join forces", "kinship", "landfall", "lieutenant",
+    "metalcraft", "morbid", "parley", "radiance", "raid", "rally", "revolt",
+    "spell mastery", "strive", "sweep", "tempting offer", "threshold",
+    "will of the council"
+]
+KEYWORD_ABILITIES = [
+    "Deathtouch", "Defender", "Double Strike", "Enchant", "Equip",
+    "First Strike", "Flash", "Flying", "Haste", "Hexproof", "Indestructible",
+    "Intimidate", "Landwalk", "Lifelink", "Protection", "Reach", "Shroud",
+    "Trample", "Vigilance", "Banding", "Rampage", "Cumulative Upkeep",
+    "Flanking", "Phasing", "Buyback", "Shadow", "Cycling", "Echo",
+    "Horsemanship", "Fading", "Kicker", "Flashback", "Madness", "Fear",
+    "Morph", "Amplify", "Provoke", "Storm", "Affinity", "Entwine", "Modular",
+    "Sunburst", "Bushido", "Soulshift", "Splice", "Offering", "Ninjutsu",
+    "Epic", "Convoke", "Dredge", "Transmute", "Bloodthirst", "Haunt",
+    "Replicate", "Forecast", "Graft", "Recover", "Ripple", "Split Second",
+    "Suspend", "Vanishing", "Absorb", "Aura Swap", "Delve", "Fortify",
+    "Frenzy", "Gravestorm", "Poisonous", "Transfigure", "Champion",
+    "Changeling", "Evoke", "Hideaway", "Prowl", "Reinforce", "Conspire",
+    "Persist", "Wither", "Retrace", "Devour", "Exalted", "Unearth", "Cascade",
+    "Annihilator", "Level Up", "Rebound", "Totem Armor", "Infect",
+    "Battle Cry", "Living Weapon", "Undying", "Miracle", "Soulbond",
+    "Overload", "Scavenge", "Unleash", "Cipher", "Evolve", "Extort", "Fuse",
+    "Bestow", "Tribute", "Dethrone", "Hidden Agenda", "Outlast", "Prowess",
+    "Dash", "Exploit", "Menace", "Renown", "Awaken", "Devoid", "Ingest",
+    "Myriad", "Surge", "Skulk", "Emerge", "Escalate", "Melee", "Crew",
+    "Fabricate", "Partner", "Undaunted", "Improvise", "Aftermath", "Embalm",
+    "Eternalize", "Afflict"
+]
+
 path_to_json = app.root_path + '/static/json'
 
 app.config.from_envvar('DECKY_SETTINGS', silent=True)
@@ -51,8 +86,8 @@ def init_db():
         db.cursor().executescript(f.read())
     db.commit()
 
-class Pagination(object):
 
+class Pagination(object):
     def __init__(self, page, per_page, total_count):
         self.page = page
         self.per_page = per_page
@@ -70,7 +105,11 @@ class Pagination(object):
     def has_next(self):
         return self.page < self.pages
 
-    def iter_pages(self, left_edge=1, left_current=1, right_current=1, right_edge=1):
+    def iter_pages(self,
+                   left_edge=1,
+                   left_current=1,
+                   right_current=1,
+                   right_edge=1):
         last = 0
         for num in xrange(1, self.pages + 1):
             if num <= left_edge or \
@@ -87,7 +126,10 @@ def url_for_other_page(page):
     args = request.view_args.copy()
     args['page'] = page
     return url_for(request.endpoint, **args)
+
+
 app.jinja_env.globals['url_for_other_page'] = url_for_other_page
+
 
 def format_set(raw_set):
     out_set = {}
@@ -281,15 +323,16 @@ def show_entries(setId):
     sets = cur_sets.fetchall()
     return render_template('show_entries.html', cards=cards, sets=sets)
 
+
 @app.route('/decks/', defaults={'page': 1})
 @app.route('/decks/page/<int:page>')
 def decks(page):
     db = get_db()
     cur_count = db.execute('select count(*) from decks')
     count = cur_count.fetchone()[0]
-    cur_decks = db.execute(
-        'select * from decks order by likes desc limit ' + str(PER_PAGE) + ' offset ' + str(PER_PAGE * page - PER_PAGE)
-    )
+    cur_decks = db.execute('select * from decks order by likes desc limit ' +
+                           str(PER_PAGE) + ' offset ' + str(PER_PAGE * page -
+                                                            PER_PAGE))
     pagination = Pagination(page, PER_PAGE, count)
     cur_sets = db.execute(
         'select * from sets order by releaseDate desc limit 5')
@@ -306,19 +349,25 @@ def decks(page):
         legality[deck["id"]] = deck_legality
 
     return render_template(
-        'decks.html', decks=decks, sets=sets, tags=tags, legality=legality, pagination=pagination)
+        'decks.html',
+        decks=decks,
+        sets=sets,
+        tags=tags,
+        legality=legality,
+        pagination=pagination)
 
-PER_PAGE = 45
 
 @app.route('/cards/', defaults={'page': 1})
 @app.route('/cards/page/<int:page>')
 def cards(page):
     db = get_db()
-    cur_count = db.execute('select count(*) from cards where type like "%Vampire%" and type like "%Creature%" and multiverseid != ""')
+    cur_count = db.execute(
+        'select count(*) from cards where type like "%Vampire%" and type like "%Creature%" and multiverseid != ""'
+    )
     count = cur_count.fetchone()[0]
     cur_cards = db.execute(
-        'select * from cards where type like "%Vampire%" and type like "%Creature%" and multiverseid != "" order by releaseDate desc, multiverseid desc limit ' + str(PER_PAGE) + ' offset ' + str(PER_PAGE * page - PER_PAGE)
-    )
+        'select * from cards where type like "%Vampire%" and type like "%Creature%" and multiverseid != "" order by releaseDate desc, multiverseid desc limit '
+        + str(PER_PAGE) + ' offset ' + str(PER_PAGE * page - PER_PAGE))
     cur_sets = db.execute(
         'select * from sets order by releaseDate desc limit 5')
     cards = cur_cards.fetchall()
@@ -335,14 +384,12 @@ def cards(page):
     for card in cards:
         text = card["text"]
         # Italicize ability words
-        text = re.compile(
-            r'(((battalion|bloodrush|channel|chroma|cohort|constellation|converge|council\'s dilemma|delirium|domain|fateful hour|ferocious|formidable|grandeur|hellbent|heroic|imprint|inspired|join forces|kinship|landfall|lieutenant|metalcraft|morbid|parley|radiance|raid|rally|revolt|spell mastery|strive|sweep|tempting offer|threshold|will of the council)\s*?)+)',
-            re.I).sub(r'<em>\1</em>', text)
+        text = re.compile(r'(((' + '|'.join(ABILITY_WORDS) + ')\s*?)+)',
+                          re.I).sub(r'<em>\1</em>', text)
         # Making keyword abilities links so they can be used for tooltips and to
         # link to the glossary eventually
         text = re.compile(
-            r'(((Deathtouch|Defender|Double Strike|Enchant|Equip|First Strike|Flash|Flying|Haste|Hexproof|Indestructible|Intimidate|Landwalk|Lifelink|Protection|Reach|Shroud|Trample|Vigilance|Banding|Rampage|Cumulative Upkeep|Flanking|Phasing|Buyback|Shadow|Cycling|Echo|Horsemanship|Fading|Kicker|Flashback|Madness|Fear|Morph|Amplify|Provoke|Storm|Affinity|Entwine|Modular|Sunburst|Bushido|Soulshift|Splice|Offering|Ninjutsu|Epic|Convoke|Dredge|Transmute|Bloodthirst|Haunt|Replicate|Forecast|Graft|Recover|Ripple|Split Second|Suspend|Vanishing|Absorb|Aura Swap|Delve|Fortify|Frenzy|Gravestorm|Poisonous|Transfigure|Champion|Changeling|Evoke|Hideaway|Prowl|Reinforce|Conspire|Persist|Wither|Retrace|Devour|Exalted|Unearth|Cascade|Annihilator|Level Up|Rebound|Totem Armor|Infect|Battle Cry|Living Weapon|Undying|Miracle|Soulbond|Overload|Scavenge|Unleash|Cipher|Evolve|Extort|Fuse|Bestow|Tribute|Dethrone|Hidden Agenda|Outlast|Prowess|Dash|Exploit|Menace|Renown|Awaken|Devoid|Ingest|Myriad|Surge|Skulk|Emerge|Escalate|Melee|Crew|Fabricate|Partner|Undaunted|Improvise|Aftermath|Embalm|Eternalize|Afflict)\s*?)+)',
-            re.I
+            r'(((' + '|'.join(KEYWORD_ABILITIES) + ')\s*?)+)', re.I
         ).sub(
             r'<span class="tooltip" href="tooltip" title="Keyword Ability: \1">\1</span>',
             text)
@@ -387,15 +434,13 @@ def card(multiverseId):
     card_mana = card_mana.replace('/', '')
     card_text = card["text"]
     # Italicize ability words
-    card_text = re.compile(
-        r'(((battalion|bloodrush|channel|chroma|cohort|constellation|converge|council\'s dilemma|delirium|domain|fateful hour|ferocious|formidable|grandeur|hellbent|heroic|imprint|inspired|join forces|kinship|landfall|lieutenant|metalcraft|morbid|parley|radiance|raid|rally|revolt|spell mastery|strive|sweep|tempting offer|threshold|will of the council)\s*?)+)',
-        re.I).sub(r'<em>\1</em>', card_text)
+    card_text = re.compile(r'(((' + '|'.join(ABILITY_WORDS) + ')\s*?)+)',
+                           re.I).sub(r'<em>\1</em>', card_text)
     # Making keyword abilities links so they can be used for tooltips and to
     # link to the glossary eventually
     card_text = re.compile(
-        r'(((Deathtouch|Defender|Double Strike|Enchant|Equip|First Strike|Flash|Flying|Haste|Hexproof|Indestructible|Intimidate|Landwalk|Lifelink|Protection|Reach|Shroud|Trample|Vigilance|Banding|Rampage|Cumulative Upkeep|Flanking|Phasing|Buyback|Shadow|Cycling|Echo|Horsemanship|Fading|Kicker|Flashback|Madness|Fear|Morph|Amplify|Provoke|Storm|Affinity|Entwine|Modular|Sunburst|Bushido|Soulshift|Splice|Offering|Ninjutsu|Epic|Convoke|Dredge|Transmute|Bloodthirst|Haunt|Replicate|Forecast|Graft|Recover|Ripple|Split Second|Suspend|Vanishing|Absorb|Aura Swap|Delve|Fortify|Frenzy|Gravestorm|Poisonous|Transfigure|Champion|Changeling|Evoke|Hideaway|Prowl|Reinforce|Conspire|Persist|Wither|Retrace|Devour|Exalted|Unearth|Cascade|Annihilator|Level Up|Rebound|Totem Armor|Infect|Battle Cry|Living Weapon|Undying|Miracle|Soulbond|Overload|Scavenge|Unleash|Cipher|Evolve|Extort|Fuse|Bestow|Tribute|Dethrone|Hidden Agenda|Outlast|Prowess|Dash|Exploit|Menace|Renown|Awaken|Devoid|Ingest|Myriad|Surge|Skulk|Emerge|Escalate|Melee|Crew|Fabricate|Partner|Undaunted|Improvise|Aftermath|Embalm|Eternalize|Afflict)\s*?)+)',
-        re.I).sub(r'<a href="tooltip" title="Keyword Ability: \1">\1</a>',
-                  card_text)
+        r'(((' + '|'.join(KEYWORD_ABILITIES) + ')\s*?)+)', re.I).sub(
+            r'<a href="tooltip" title="Keyword Ability: \1">\1</a>', card_text)
     # Convert mana symbols to styled span elements
     card_text = card_text.replace('{', '<span class="mana medium shadow s')
     card_text = card_text.replace('}', '">&nbsp;</span>')
@@ -488,7 +533,13 @@ def builder():
         deck_legality = deck["legality"]
         deck_legality = deck_legality.split(', ')
         legality[deck["id"]] = deck_legality
-    return render_template('builder.html', cards=cards, sets=sets, decks=decks, tags=tags, legality=legality)
+    return render_template(
+        'builder.html',
+        cards=cards,
+        sets=sets,
+        decks=decks,
+        tags=tags,
+        legality=legality)
 
 
 @app.route('/add_deck', methods=['POST'])
@@ -522,4 +573,3 @@ def add_deck():
 @app.route('/login')
 def index():
     return render_template('login.html')
-
