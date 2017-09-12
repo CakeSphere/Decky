@@ -362,14 +362,14 @@ def decks(page):
 def cards(page):
     db = get_db()
     cur_count = db.execute(
-        'select count(*) from cards where type like "%Vampire%" and type like "%Creature%" and multiverseid != ""'
+        'SELECT COUNT(*) FROM cards WHERE type LIKE "%Vampire%" AND type LIKE "%Creature%" AND multiverseid != ""'
     )
     count = cur_count.fetchone()[0]
     cur_cards = db.execute(
-        'select * from cards where type like "%Vampire%" and type like "%Creature%" and multiverseid != "" order by releaseDate desc, multiverseid desc limit '
+        'SELECT * FROM cards WHERE type LIKE "%Vampire%" AND type LIKE "%Creature%" AND multiverseid != "" ORDER BY releaseDate DESC, multiverseid DESC LIMIT '
         + str(PER_PAGE) + ' offset ' + str(PER_PAGE * page - PER_PAGE))
     cur_sets = db.execute(
-        'select * from sets order by releaseDate desc limit 5')
+        'SELECT * FROM sets ORDER BY releaseDate DESC LIMIT 5')
     cards = cur_cards.fetchall()
     pagination = Pagination(page, PER_PAGE, count)
     card_mana = {}
@@ -415,7 +415,7 @@ def cards(page):
 @app.route('/card/<multiverseId>')
 def card(multiverseId):
     db = get_db()
-    cur = db.execute('select * from cards where multiverseId="' + multiverseId
+    cur = db.execute('SELECT * FROM cards WHERE multiverseId="' + multiverseId
                      + '"')
     card = cur.fetchone()
     if not card:
@@ -515,11 +515,11 @@ def deck(id):
 def builder():
     db = get_db()
     cur_cards = db.execute(
-        'select * from cards where type like "%Spirit%" and type like "%Creature%" order by multiverseId asc limit 3'
+        'SELECT * FROM cards WHERE type LIKE "%Spirit%" AND type LIKE "%Creature%" ORDER BY multiverseId ASC LIMIT 3'
     )
-    cur_decks = db.execute('select * from decks order by likes desc limit 33')
+    cur_decks = db.execute('SELECT * FROM decks ORDER BY likes DESC LIMIT 33')
     cur_sets = db.execute(
-        'select * from sets order by releaseDate desc limit 5')
+        'SELECT * FROM sets ORDER BY releaseDate DESC LIMIT 5')
     decks = cur_decks.fetchall()
     cards = cur_cards.fetchall()
     sets = cur_sets.fetchall()
