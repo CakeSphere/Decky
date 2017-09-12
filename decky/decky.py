@@ -30,7 +30,7 @@ ABILITY_WORDS = [
     "inspired", "join forces", "kinship", "landfall", "lieutenant",
     "metalcraft", "morbid", "parley", "radiance", "raid", "rally", "revolt",
     "spell mastery", "strive", "sweep", "tempting offer", "threshold",
-    "will of the council"
+    "will of the council", "eminence"
 ]
 KEYWORD_ABILITIES = [
     "Deathtouch", "Defender", "Double Strike", "Enchant", "Equip",
