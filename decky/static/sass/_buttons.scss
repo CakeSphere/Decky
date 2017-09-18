@@ -172,21 +172,6 @@ button {
             transform: translateX(3px) 
                        rotate(45deg); 
   }
-  &.primary {
-    svg {
-      width: 1rem;
-      height: 1rem;
-      display: inline-block;
-      vertical-align: bottom;
-      position: relative;
-      bottom: 1px;
-      fill: $color-text;
-      -webkit-filter: drop-shadow(0 1px 2px transparentize($color-background-shade, 0.66));
-              filter: drop-shadow(0 1px 2px transparentize($color-background-shade, 0.66));
-      -webkit-transition: fill $transition;
-              transition: fill $transition;
-    }
-  }
 }
 
 .btn-group {
