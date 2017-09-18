@@ -337,10 +337,10 @@
         content: " ";
         display: block;
         position: absolute;
-        top: -1px;
-        left: -1px;
-        height: calc(100% + 2px);
-        width: calc(100% + 2px);
+        top: 53px;
+        left: 33px;
+        width: 266px;
+        height: 200px;
         border-radius: $border-radius;
         background: tint($color-background, 6%);
         border: 1px solid tint($color-border-strong, 15%);
@@ -356,8 +356,8 @@
         display: block;
         position: absolute;
         top: 600%;
-        left: 0;
-        width: 100%;
+        left: 33px;
+        width: 268px;
         text-align: center;
         color: shade($color-text, 15%);
         font-family: $font-family-text;
