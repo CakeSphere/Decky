@@ -13,7 +13,6 @@ app.config.from_object(__name__)
 app.wsgi_app = SassMiddleware(
     app.wsgi_app, {'decky': ('static/sass', 'static/css', '/static/css')})
 
-
 app.config.update(
     dict(
         DATABASE=os.path.join(app.root_path, 'decky.db'),
@@ -363,8 +362,7 @@ def decks(page):
 def cards(page):
     db = get_db()
     cur_count = db.execute(
-        'SELECT COUNT(*) FROM cards WHERE multiverseid != ""'
-    )
+        'SELECT COUNT(*) FROM cards WHERE multiverseid != ""')
     count = cur_count.fetchone()[0]
     cur_cards = db.execute(
         'SELECT * FROM cards WHERE multiverseid != "" ORDER BY releaseDate DESC, multiverseid DESC LIMIT '
@@ -500,6 +498,8 @@ def deck(id):
     deck_description = deck["description"]
     # Convert new lines to html line breaks
     deck_description = Markup('</p><p>'.join(deck_description.split('\n')))
+    print deck_legality
+    print deck_tags
     return render_template(
         'deck.html',
         deck=deck,
@@ -550,30 +550,35 @@ def add_deck():
     deck_description = request.form['description']
     deck_formats = request.form['formats']
     deck_image = "414494"
-    deck_legality = "Standard"
+    deck_legality = request.form['formats']
     deck_likes = 99
     deck_mainboard = "main"
     deck_maybeboard = "maybe"
     deck_name = request.form['name'].strip().title()
     deck_sideboard = "side"
     deck_tags = request.form['tags']
-
-    if deck_name == "":
-      error = Markup("<strong>Oops!</strong>")
-      flash(error + " Looks like your deck doesn't have a name.", 'error')
+    if deck_tags == "":
+        error = Markup("<strong>Oops!</strong>")
+        flash(error + " Looks like your deck doesn't have any tags.", 'error')
+    elif deck_legality == "":
+        error = Markup("<strong>Oops!</strong>")
+        flash(error + " Looks like your deck isn't legal in any format.", 'error')
+    elif deck_name == "":
+        error = Markup("<strong>Oops!</strong>")
+        flash(error + " Looks like your deck doesn't have a name.", 'error')
     else:
-      db = get_db()
-      db.execute(
-          'INSERT INTO decks values (null, ?, ?, null, date("now"), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, date("now"))',
-          [
-              deck_author, deck_colors, deck_description, deck_formats,
-              deck_image, deck_legality, deck_likes, deck_mainboard,
-              deck_maybeboard, deck_name, deck_sideboard, deck_tags
-          ])
-      db.commit()
+        db = get_db()
+        db.execute(
+            'INSERT INTO decks values (null, ?, ?, null, date("now"), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, date("now"))',
+            [
+                deck_author, deck_colors, deck_description, deck_formats,
+                deck_image, deck_legality, deck_likes, deck_mainboard,
+                deck_maybeboard, deck_name, deck_sideboard, deck_tags
+            ])
+        db.commit()
 
-      success = Markup("<strong>Double, double toil and trouble.</strong> ")
-      flash(success + deck_name + " was brewed successfully!", 'success')
+        success = Markup("<strong>Double, double toil and trouble!</strong> ")
+        flash(success + deck_name + " was brewed successfully.", 'success')
 
     return redirect(url_for('decks'))
 
@@ -582,6 +587,7 @@ def add_deck():
 def index():
     return render_template('login.html')
 
+
 @app.errorhandler(404)
 def page_not_found(e):
-  return render_template('404.html'), 404
+    return render_template('404.html'), 404
