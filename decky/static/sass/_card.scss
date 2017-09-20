@@ -223,206 +223,209 @@
     content: '';
     left: 0;
     position: fixed;
-    top: 0;
     right: 0;
+    top: 0;
     z-index: $z-index-background; // Hacky z-index to push it to the background.
   }
 }
 
 .row .card {
-  position: relative;
-  display: block;
-  height: auto;
-  padding: 1rem;
-  width: calc(20% - 2.47rem - 12px);
-  height: 630px;
-  float: left;
-  margin: 0 0.5rem 1rem 0.5rem;
-  background: tint($color-background, 3%);
-  border-radius: $border-radius;
-  box-shadow: 0 4px 4px transparentize(shade($color-background, 15%), 0.5);
-  cursor: pointer;
-  -webkit-transition: none;
-  transition: none;
+  @extend %pull-left;
   background: tint($color-background, 6%);
   border: 1px solid tint($color-border-strong, 15%);
   border-radius: $border-radius;
-  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15),
-              inset 0 0 4px rgba(255, 255, 255, 0.05),
-              0 2px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 -2px 0 $color-shadow,
+              inset 0 0 4px $color-highlight,
+              0 2px 3px $color-bevel;
+  cursor: pointer;
+  display: block;
+  height: 630px;
+  margin: 0 0.5rem 1rem;
+  padding: 1rem;
+  position: relative;
+  transition: none;
+  width: calc(20% - 2.47rem - 12px);
+
   &::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    background: linear-gradient(to bottom, transparent, $color-primary);
+    border-radius: $border-radius;
     bottom: 0;
     content: '';
     display: block;
+    left: 0;
     opacity: 0.05;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity $transition;
     will-change: opacity;
-    background: -webkit-gradient(linear, left top, left bottom, from(transparent), to($color-primary));
-    background: linear-gradient(to bottom, transparent, $color-primary);
-    border-radius: $border-radius;
-    -webkit-transition: opacity $transition;
-            transition: opacity $transition;
   }
+
   &:hover { text-shadow: none; }
   &:hover::after { opacity: 0.1; }
   .card-mana {
-    font-size: $font-size-sub;
+    box-shadow: inset 0 2px 4px $color-shadow;
     color: $color-text-weak;
-    text-align: right;
     background: transparentize($color-background, 0.5);
-    margin: -1rem -1rem 1rem -1rem;
-    padding: 0.5rem 1rem 0 1rem;
-    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
-
+    font-size: $font-size-sub;
+    margin: -1rem -1rem 1rem;
+    padding: 0.5rem 1rem 0;
+    text-align: right;
   }
+
   .title {
-    overflow: hidden;
+    color: $color-text;
     font-family: $font-family-display;
     font-size: $font-size-sub;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    color: $color-text;
-    text-shadow: none;
     margin-bottom: 1rem;
-  }
-  .card-info {
-    display: block;
-    color: $color-text;
+    overflow: hidden;
+    text-overflow: ellipsis;
     text-shadow: none;
-    position: relative;
+    white-space: nowrap;
+  }
+
+  .card-info {
+    color: $color-text;
+    display: block;
     height: 230px;
+    -webkit-mask-image: linear-gradient(to top, transparent, $color-black 10%, $color-black);
+    mask-image: linear-gradient(to top, transparent, $color-black 10%, $color-black);
     min-height: 0;
-    -webkit-mask-image: -webkit-linear-gradient(bottom, transparent 0%, #000 10%, #000 100%);
+    position: relative;
+    text-shadow: none;
+
     .mana.small {
-      width: 0.79rem;
+      bottom: -2px;
       height: 0.79rem;
       position: relative;
-      bottom: -2px;
+      width: 0.79rem;
     }
   }
+
   .card-img {
-    position: relative;
-    will-change: transform;
-    -webkit-transition: -webkit-transform $transition;
-            transition: -webkit-transform $transition;
-            transition: transform $transition;
-            transition: transform $transition, -webkit-transform $transition;
-    display: inline-block;
-    width: calc(100% + 2rem);
-    margin-left: -1rem;
-    height: 200px;
-    overflow: hidden;
     background: transparentize($color-background, 0.5);
     border-radius: $border-radius 0 0 $border-radius;
-    -webkit-box-shadow: none;
-            box-shadow: none;
+    box-shadow: none;
+    display: inline-block;
+    height: 200px;
+    margin-left: -1rem;
+    overflow: hidden;
+    position: relative;
+    transition: transform $transition;
+    width: calc(100% + 2rem);
+    will-change: transform;
+
     &::before {
-      display: block;
-      content: '';
-      position: absolute;
-      z-index: $z-index-background; // Hack to push the background behind the image
-      top: 0;
-      left: 0;
-      right: 0;
       bottom: 0;
-      -webkit-box-shadow: inset 0 0 20px hsla(182, 58, 0, 0.15);
-              box-shadow: inset 0 0 20px hsla(182, 58, 0, 0.15);
+      box-shadow: inset 0 0 20px $color-shadow;
+      content: '';
+      display: block;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: $z-index-background; // Hack to push the background behind the image
     }
+
     img {
-      position: relative;
       bottom: 53px;
       left: -33px;
+      position: relative;
       width: 328px;
-      &::before {  
-        content: " ";
-        display: block;
-        position: absolute;
-        top: 53px;
-        left: 33px;
-        width: 266px;
-        height: 200px;
-        border-radius: $border-radius;
+
+      &::before {
         background: tint($color-background, 6%);
         border: 1px solid tint($color-border-strong, 15%);
-        -webkit-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15),
-                    inset 0 0 4px rgba(255, 255, 255, 0.05),
-                    0 2px 3px rgba(0, 0, 0, 0.15);
-                box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15),
-                    inset 0 0 4px rgba(255, 255, 255, 0.05),
-                    0 2px 3px rgba(0, 0, 0, 0.15);
+        border-radius: $border-radius;
+        box-shadow: inset 0 -2px 0 $color-shadow,
+                    inset 0 0 4px $color-highlight,
+                    0 2px 3px $color-shadow;
+        content: ' ';
+        display: block;
+        height: 200px;
+        left: 33px;
+        position: absolute;
+        top: 53px;
+        width: 266px;
       }
-      &::after {  
+
+      &::after {
+        color: shade($color-text, 15%);
         content: attr(alt);
         display: block;
-        position: absolute;
-        top: 600%;
-        left: 33px;
-        width: 268px;
-        text-align: center;
-        color: shade($color-text, 15%);
         font-family: $font-family-text;
         font-size: $font-size-default;
+        left: 33px;
+        position: absolute;
+        text-align: center;
         text-decoration: none;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
+        text-shadow: 0 1px 2px $color-bevel;
+        top: 600%;
+        width: 268px;
       }
     }
   }
+
   .card-type {
     background: transparentize($color-background, 0.5);
-    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
-    width: calc(100% - 1.5rem);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+    color: $color-text-weak;
     margin: 0 -1rem;
     margin-top: -0.3rem;
     padding: 1rem;
     padding-right: 2.5rem;
     position: relative;
-    color: $color-text-weak;
+    width: calc(100% - 1.5rem);
+
     .card-rarity {
       position: absolute;
       right: 0.5rem;
       top: 1rem;
     }
   }
-  .description, 
+
+  .description,
   .flavor { font-family: $font-family-text; }
+
   .flavor { font-size: $font-size-default; }
+
   .power-toughness {
-    position: absolute;
-    bottom: 0;
-    width: calc(100% - 2rem);
-    left: 0;
     background: transparentize($color-background, 0.5);
-    padding: 0.5rem 1rem;
-    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+    bottom: 0;
+    box-shadow: inset 0 2px 4px $color-shadow;
     color: $color-text-weak;
-    text-align: right;
     font-family: $font-family-display;
+    left: 0;
+    padding: 0.5rem 1rem;
+    position: absolute;
+    text-align: right;
+    width: calc(100% - 2rem);
+
     em {
-      font-style: normal;
       color: shade($color-text-weak, 30%);
+      font-style: normal;
     }
   }
+
   .tooltip {
     @include underline($color-text, tint($color-background, 5%));
   }
+
   .description br {
     line-height: 2rem;
   }
+
   .card-explanation .tooltip {
     @include underline(shade($color-text, 20%), tint($color-background, 5%));
   }
 }
 
-.card-explanation { 
-  color: shade($color-text, 20%); 
-  .tooltip, a {
-    color: shade($color-text, 20%);
+.card-explanation {
+  color: shade($color-text, 20%);
+
+  .tooltip,
+  a {
     @include underline(shade($color-text, 20%), tint($color-background, 5%));
+    color: shade($color-text, 20%);
   }
 }
