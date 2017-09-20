@@ -54,7 +54,7 @@ table {
     font-weight: normal;
     position: relative;
     text-align: left;
-    text-shadow: 0 1px 3px $color-shade;
+    text-shadow: 0 1px 3px $color-shadow;
 
     &:hover {
       background: tint($color-background-tint, 10%);

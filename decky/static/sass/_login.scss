@@ -1,68 +1,70 @@
 .login {
-  .top-nav, .left-nav, footer {
+  .top-nav,
+  .left-nav,
+  footer {
     display: none;
   }
+
   .card-bg {
     img {
-      top: -35%;
+      filter: blur(15px);
       left: -10%;
+      top: -35%;
       width: 120%;
-      -webkit-filter: blur(15px);
-              filter: blur(15px);
     }
-    &::after {
-      background: transparentize($color-background, 0.9);
-    }
+
+    &::after { background: transparentize($color-background, 0.9); }
   }
+
   .container {
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: center;
     margin-left: 0;
-    width: 100%;
     min-height: 50vw;
+    width: 100%;
+
     .login-panel {
-      max-width: 80vw;
+      border-radius: $border-radius;
+      box-shadow: 0 0 50px shade($color-background, 15%);
       flex: 1;
       height: 35vw;
-      border-radius: $border-radius;
-      -webkit-box-shadow: 0 0 50px shade($color-background, 15%);
-              box-shadow: 0 0 50px shade($color-background, 15%);
-      .login-marketing, .login-form {
-        height: calc(35vw - 6rem);
+      max-width: 80vw;
+
+      .login-marketing,
+      .login-form {
         float: left;
+        height: calc(35vw - 6rem);
         padding: 3rem;
       }
+
       .login-marketing {
-        position: relative;
+        background: linear-gradient(to bottom right, transparentize($color-primary, 0.5), adjust-hue(transparentize($color-primary, 0.5), -20%));
         border-radius: $border-radius 0 0 $border-radius;
-        width: calc(66.666666666666666% - 6rem);
-        background: -webkit-gradient(linear, left top, right bottom, from(transparentize($color-primary, 0.5)), to(adjust-hue(transparentize($color-primary, 0.5), -20%)) );
-        background: linear-gradient(to bottom right, transparentize($color-primary, 0.5), adjust-hue(transparentize($color-primary, 0.5), -20%) );
+        position: relative;
         text-shadow: 0 2px 4px transparentize($color-background, 0.8);
+        width: calc(66.666666666666666% - 6rem);
+
         hgroup {
-          position: absolute;
           bottom: 3rem;
           left: 3rem;
+          position: absolute;
         }
+
         h1,
         h2,
-        h3 {
-          margin: 0;
-        }
-        h1 {
-          margin-top: 0.5rem;
-        }
-        h2 {
-          color: $color-text-weak;
-        }
+        h3 { margin: 0; }
+
+        h1 { margin-top: 0.5rem; }
+
+        h2 { color: $color-text-weak; }
       }
-      .login-form {       
-        -webkit-box-shadow: inset 3px 0 3px shade($color-background, 15%);
-                box-shadow: inset 3px 0 3px shade($color-background, 15%);
-        width: calc(33.3333333333333% - 6rem);
+
+      .login-form {
         background: tint($color-background, 3%);
         border-radius: 0 $border-radius $border-radius 0;
+        box-shadow: inset 3px 0 3px shade($color-background, 15%);
+        width: calc(33.3333333333333% - 6rem);
       }
     }
   }

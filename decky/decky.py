@@ -363,11 +363,11 @@ def decks(page):
 def cards(page):
     db = get_db()
     cur_count = db.execute(
-        'SELECT COUNT(*) FROM cards WHERE type LIKE "%Vampire%" AND type LIKE "%Creature%" AND multiverseid != ""'
+        'SELECT COUNT(*) FROM cards WHERE multiverseid != ""'
     )
     count = cur_count.fetchone()[0]
     cur_cards = db.execute(
-        'SELECT * FROM cards WHERE type LIKE "%Vampire%" AND type LIKE "%Creature%" AND multiverseid != "" ORDER BY releaseDate DESC, multiverseid DESC LIMIT '
+        'SELECT * FROM cards WHERE multiverseid != "" ORDER BY releaseDate DESC, multiverseid DESC LIMIT '
         + str(PER_PAGE) + ' offset ' + str(PER_PAGE * page - PER_PAGE))
     cur_sets = db.execute(
         'SELECT * FROM sets ORDER BY releaseDate DESC LIMIT 5')
