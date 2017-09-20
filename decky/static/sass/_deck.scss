@@ -1,98 +1,90 @@
-
-/* Common Deck Elements*/
+// Common Deck Elements
 
 .stats {
-  /* The display for comments and likes*/
+  // The display for comments and likes
   .likes,
   .comments,
   .export {
-    position: relative;
+    color: $color-text;
     display: inline-block;
     margin-right: 1rem;
     margin-top: 1.25rem;
-    color: $color-text;
     opacity: 0.8;
+    position: relative;
     text-decoration: none;
+
     svg {
-      width: 20px;
+      cursor: pointer;
+      fill: transparent;
       height: 20px;
       position: relative;
-      top: 6px;
-      fill: transparent;
       stroke: $color-text;
       stroke-width: 50px;
-      cursor: pointer;
-      -webkit-transition: fill $transition/2, stroke $transition/2;
-              transition: fill $transition/2, stroke $transition/2;
+      top: 6px;
+      transition: fill $transition / 2, stroke $transition / 2;
+      width: 20px;
     }
+
     &:hover {
       background: none;
+
       svg { fill: $color-text; }
     }
-    &:focus svg, &:active svg {
+
+    &:focus svg,
+    &:active svg {
       fill: $color-primary;
       stroke: $color-primary;
     }
   }
+
   .export svg { fill: $color-text; }
 }
 
 .color-bar {
-  /* Color-bars indicate the makeup of a deck*/
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  z-index: $z-index-baseline; /* Make sure the color bar appears above the card image */
-  width: 66px;
-  height: 120px;
-  overflow: hidden;
+  // Color-bars indicate the color makeup of a deck
   background: none;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
+  bottom: 0;
+  box-shadow: 0 0 5px shade($color-background, 10%);
+  height: 120px;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  text-shadow: 0 1px 2px $color-shadow;
+  top: 0;
+  transform: translateX(-63px);
+  transition: transform $transition / 2 cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  width: 66px;
   will-change: transform;
-  -webkit-box-shadow: 0 0 5px shade($color-background, 10%);
-          box-shadow: 0 0 5px shade($color-background, 10%);
-  -webkit-transform: translateX(-63px);
-          transform: translateX(-63px);
-  -webkit-transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
-  -webkit-transition: -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
-          transition: -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
-          transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
-          transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67), -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
+  z-index: $z-index-baseline; // Make sure the color bar appears above the card image
+
   span {
-    /* Hacky span for the text in the color-bar so that we don't animate*/
-    /* anything but opacity and transform*/
+    // Hacky span for the text in the color-bar so that we don't animate
+    // anything but opacity and transform
+    color: $color-text-weak;
     opacity: 0;
-    color: $color-text;
-    -webkit-transition: opacity $transition $transition/2;
-            transition: opacity $transition $transition/2;
+    transition: opacity $transition $transition / 2;
   }
+
   &:hover {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
     span { opacity: 1; }
   }
+
   .mana {
     position: relative;
     top: 2px;
   }
+
   div {
-    /* Centering text inside the color-bar segments*/
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+    // Centering text inside the color-bar segments
+    align-items: center;
     color: $color-text;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+    display: flex;
+    justify-content: center;
+    user-select: none;
   }
+
   .w { @include color-bar($color-mtg-w) }
   .u { @include color-bar($color-mtg-u) }
   .r { @include color-bar($color-mtg-r) }
@@ -101,16 +93,19 @@
   .c { @include color-bar($color-mtg-c) }
 }
 
-/* Deck tiles*/
-/* These styles are specific to the deck tiles that show up in searches or on*/
-/* card pages*/
+// Deck tiles
+// These styles are specific to the deck tiles that show up in searches or on
+// card pages
 
 .demo .deck:first-child {
-  .deck-img, .deck-info {
+  .deck-img,
+  .deck-info {
     @include demo(demo-slide);
   }
+
   .color-bar {
     @include demo(demo);
+
     span {
       @include demo(demo-fade);
     }
@@ -118,119 +113,115 @@
 }
 
 .deck.gallery {
-  position: relative;
-  display: inline-block;
-  height: 120px;
-  width: calc(33.33333% - 0.5rem - 14px);
-  margin: 0 0.5rem 1rem 0.5rem;
   background: tint($color-background, 3%);
-  border-radius: $border-radius;  cursor: pointer;
-  overflow: hidden;
-  white-space: nowrap;
-  background: tint($color-background, 6%);
   border: 1px solid tint($color-border-strong, 15%);
   border-radius: $border-radius;
-  -webkit-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15),
-              inset 0 0 4px rgba(255, 255, 255, 0.05),
-              0 2px 3px rgba(0, 0, 0, 0.15);
-          box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15),
-              inset 0 0 4px rgba(255, 255, 255, 0.05),
-              0 2px 3px rgba(0, 0, 0, 0.15);
-  -webkit-transition: none;
-          transition: none;
+  box-shadow: inset 0 -2px 0 $color-shadow,
+              inset 0 0 4px $color-highlight,
+              0 2px 3px $color-bevel;
+  cursor: pointer;
+  display: inline-block;
+  height: 120px;
+  margin: 0 0.5rem 1rem;
+  overflow: hidden;
+  position: relative;
+  transition: none;
+  white-space: nowrap;
+  width: calc(33.33333% - 0.5rem - 14px);
+
   &::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    background: linear-gradient(to bottom, transparent, $color-primary);
+    border-radius: $border-radius;
     bottom: 0;
     content: '';
     display: block;
+    left: 0;
     opacity: 0.05;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity $transition;
     will-change: opacity;
-    background: -webkit-gradient(linear, left top, left bottom, from(transparent), to($color-primary));
-    background: linear-gradient(to bottom, transparent, $color-primary);
-    border-radius: $border-radius;
-    -webkit-transition: opacity $transition;
-            transition: opacity $transition;
   }
+
   &:hover::after { opacity: 0.1; }
   .color-bar:hover {
-    ~ .deck-info, ~ .deck-img {
-      -webkit-transform: translateX(63px);
-              transform: translateX(63px);
+    ~ .deck-info,
+    ~ .deck-img {
+      transform: translateX(63px);
     }
   }
+
   .deck-info {
-    display: inline-block;
     color: $color-text;
-    text-shadow: none;
+    display: inline-block;
     padding: 0.5rem;
-    vertical-align: top;
-    will-change: transform;
     text-overflow: ellipsis;
+    text-shadow: none;
+    transition: transform $transition / 2 cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    vertical-align: top;
     width: calc(100% - 195px);
-    -webkit-transition: -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
-            transition: -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
-            transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
-            transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67), -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
+    will-change: transform;
+
     .title {
-      overflow: hidden;
       font-family: $font-family-display;
       font-size: $font-size-sub;
+      overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+
     .tags {
-      width: 100%;
+      margin-top: 0.5rem;
+      -webkit-mask-image: linear-gradient(to right, $color-black 0%, $color-black 90%, transparent 100%);
+      mask-image: linear-gradient(to right, $color-black 0%, $color-black 90%, transparent 100%);
       max-width: 100%;
       overflow: hidden;
-      margin-top: 0.5rem;
-      -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(#000000),color-stop(90%, #000000),to(transparent));
-      -webkit-mask-image: linear-gradient(to right, #000000 0%,#000000 90%,transparent 100%);
-              mask-image: -webkit-gradient(linear, left top, right top, from(#000000),color-stop(90%, #000000),to(transparent));
-              mask-image: linear-gradient(to right, #000000 0%,#000000 90%,transparent 100%);
+      width: 100%;
+
       .author,
       .tag { margin-right: 0.2rem; }
+
       .tag { opacity: 0.5; }
     }
   }
+
   .deck-img {
-    position: relative;
-    will-change: transform;
-    -webkit-transition: -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
-            transition: -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
-            transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
-            transition: transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67), -webkit-transform $transition/2 cubic-bezier(0.17,0.67,0.83,0.67);
-    display: inline-block;
-    width: 165px;
-    height: 120px;
-    overflow: hidden;
-    margin-left: 1px;
     background: transparentize($color-background, 0.5);
+    display: inline-block;
+    height: 120px;
+    margin-left: 1px;
+    overflow: hidden;
+    position: relative;
+    transition: transform $transition / 2 cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    width: 165px;
+    will-change: transform;
+
     &::before {
-      display: block;
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
       bottom: 0;
-      -webkit-box-shadow: inset 0 0 20px hsla(182, 58, 0, 0.15);
-              box-shadow: inset 0 0 20px hsla(182, 58, 0, 0.15);
+      box-shadow: inset 0 0 20px $color-shadow;
+      content: '';
+      display: block;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
     }
+
     img {
-      position: relative;
       bottom: 32px;
       left: -14px;
+      position: relative;
       width: 195px;
     }
   }
+
   .stats {
     .likes,
     .comments,
     .export {
-      &:hover svg, &:active svg {
+      &:hover svg,
+      &:active svg {
         fill: transparent;
         stroke: $color-text;
       }
@@ -238,83 +229,75 @@
   }
 }
 
-/* Deck tiles in the builder*/
-aside .deck.gallery { 
+// Deck tiles in the builder
+aside .deck.gallery {
   margin: 0;
+
   .deck-info {
     width: 100%;
   }
 }
 
-/* Deck page*/
-/* These styles are specific to deck.html*/
+// Deck page
+// These styles are specific to deck.html
 
 .deck-header {
-  position: relative;
-  overflow: hidden;
-  z-index: $z-index-baseline; /* Ensure that color-bar gets border-radius of deck-header */
-  height: 162px;
   background: tint($color-background, 3%);
-  -webkit-box-shadow: 0 0 50px shade($color-background, 15%);
-          box-shadow: 0 0 50px shade($color-background, 15%);
   border-radius: $border-radius;
+  box-shadow: 0 0 50px shade($color-background, 15%);
+  height: 162px;
+  overflow: hidden;
+  position: relative;
+  z-index: $z-index-baseline; // Ensure that color-bar gets border-radius of deck-header
+
   .color-bar {
     @include demo(demo);
     height: 162px;
     span { @include demo(demo-fade); }
     &:hover {
-      + hgroup, ~ .deck-img {
-        -webkit-transform: translateX(65px); 
-                transform: translateX(65px);
-      }
+      + hgroup,
+      ~ .deck-img { transform: translateX(65px); }
     }
   }
+
   .deck-img {
     @include demo(demo-slide);
+    height: 370px;
+    left: -19px;
+    -webkit-mask-image: linear-gradient(to right, $color-black 0%, transparent 94%, transparent 100%);
+    mask-image: linear-gradient(to right, $color-black 0%, transparent 94%, transparent 100%);
     pointer-events: none;
     position: relative;
-    left: -19px;
-    top:-43px;
-    height: 370px;
+    top: -43px;
+    transition: transform $transition / 2;
+    transition-timing-function: ease-in-out;
     will-change: transform;
-    -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(#000000),color-stop(94%, transparent),to(transparent));
-    -webkit-mask-image: linear-gradient(to right, #000000 0%,transparent 94%,transparent 100%);
-            mask-image: -webkit-gradient(linear, left top, right top, from(#000000),color-stop(94%, transparent),to(transparent));
-            mask-image: linear-gradient(to right, #000000 0%,transparent 94%,transparent 100%);
-    -webkit-transition: transform $transition/2;
-    -webkit-transition: -webkit-transform $transition/2;
-            transition: -webkit-transform $transition/2;
-            transition: transform $transition/2;
-            transition: transform $transition/2, -webkit-transform $transition/2;
-    -webkit-transition-timing-function: ease-in-out;
-            transition-timing-function: ease-in-out;
   }
+
   hgroup {
     @include demo(demo-slide);
-    position: absolute;
     bottom: 1rem;
     left: 1rem;
-    z-index: $z-index-baseline; /* Make sure deck info shows up above card image */
-    text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    position: absolute;
+    text-shadow: 0 2px 4px $color-shadow;
+    transition: transform $transition / 2;
+    transition-timing-function: ease-in-out;
     will-change: transform;
-    -webkit-transition: transform $transition/2;
-    -webkit-transition: -webkit-transform $transition/2;
-            transition: -webkit-transform $transition/2;
-            transition: transform $transition/2;
-            transition: transform $transition/2, -webkit-transform $transition/2;
-    -webkit-transition-timing-function: ease-in-out;
-            transition-timing-function: ease-in-out;
-    h1, 
+    z-index: $z-index-baseline; // Make sure deck info shows up above card image
+
+    h1,
     h2 { margin: 0; }
+
     h1 { font-style: italic; }
     h2 {
       font-weight: normal;
       opacity: 0.8;
     }
   }
+
   .deck-info {
-    position: absolute;
     bottom: 1rem;
+    position: absolute;
     right: 1rem;
     text-align: right;
     .date-created { opacity: 0.5; }
@@ -327,44 +310,47 @@ aside .deck.gallery {
 }
 
 .deck-contents {
-  /* These will need to be modified to allow for different formats */
-  /* (e.g. Commander/EDH)*/
+  // These will need to be modified to allow for different formats
+  // (e.g. Commander/EDH)
   margin: 0 -0.5rem;
   padding-top: 2rem;
   li { font-size: $font-size-sub; }
   h2 { font-family: $font-family-display; }
   .column {
     display: inline-block;
-    width: calc(33.3% - 1rem - 14px);
     margin: 0.5rem;
+    width: calc(33.3% - 1rem - 14px);
   }
+
   .sideboard {
-    margin-top: 0.7rem;
-    padding: 1rem;
     background: shade($color-background, 10%);
     border-radius: ($border-radius * 2.5);
-    -webkit-box-shadow: inset 1px 0 3px shade($color-background, 25%);
-            box-shadow: inset 1px 0 3px shade($color-background, 25%);
+    box-shadow: inset 1px 0 3px shade($color-background, 25%);
+    margin-top: 0.7rem;
+    padding: 1rem;
     h2 { margin-top: 0; }
   }
-  .card-type, .sideboard {
+
+  .card-type,
+  .sideboard {
     &:hover .color-bar {
-      -webkit-transform: scaleX(1);
-              transform: scaleX(1);
       opacity: 1;
+      transform: scaleX(1);
+
       div span { opacity: 1; }
     }
+
     .color-bar {
-      position: relative;
-      opacity: 0;
-      width: 100%;
-      height: 20px;
       border-radius: $border-radius;
-      margin-top: 0.5rem;
+      height: 20px;
       margin-bottom: 0.5rem;
+      margin-top: 0.5rem;
+      opacity: 0;
+      position: relative;
+      transform: scaleX(0);
+      width: 100%;
       will-change: transform;
-      -webkit-transform: scaleX(0);
-              transform: scaleX(0);
+
       div {
         display: inline-block;
         height: 20px;
@@ -376,24 +362,25 @@ aside .deck.gallery {
 }
 
 .deck-description {
-  margin-bottom: 4rem; 
+  margin-bottom: 4rem;
+
   p {
-    max-width: 900px;
     font-family: $font-family-text;
     font-size: $font-size-lead;
+    max-width: 900px;
   }
 }
 
 .count { color: $color-text-weak; }
 
-.card-costs, 
+.card-costs,
 .mana-available {
   width: 100%;
   a { text-align: center; }
 }
 
-/* Comments*/
-/* On deck.html (users can only comment on decks)*/
+// Comments
+// On deck.html (users can only comment on decks)
 
 .comment {
   padding: 1rem;
