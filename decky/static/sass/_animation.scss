@@ -30,6 +30,15 @@
 
 @keyframes foil {
   0%   { background-position: 0% 0%; }
-  50%  { background-position: 100% 100%;}
+  50%  { background-position: 100% 100%; }
   100% { background-position: 0% 0%; }
+}
+
+// Flash notification animation
+
+@keyframes flash {
+  from { transform: translateY(-5rem); }
+  5%   { transform: translateY(0); }
+  95%  { transform: translateY(0); }
+  to   { transform: translateY(-5rem); }
 }
