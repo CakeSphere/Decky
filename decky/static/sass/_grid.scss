@@ -3,19 +3,21 @@
 // We will probably need a more comprehensive grid system than this eventually
 
 .container {
-  width:  calc(100% - 100px);
   margin-left: 100px;
   margin-top: 59px;
+  width: calc(100% - 100px);
+
   .container {
-    width: 100%;
     margin: 0;
+    width: 100%;
   }
 }
 
 .column {
-  width: calc(50% - 1.1rem);
   display: inline-block;
   vertical-align: top;
+  width: calc(50% - 1.1rem);
+
   &:first-child {
     margin-right: 2rem;
   }
