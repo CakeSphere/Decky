@@ -22,9 +22,13 @@
   </head>
   <body class="{% if active_page == 'login' %}login{% endif %}">
     <nav class="top-nav">
-      {% for message in get_flashed_messages() %}
-        <div class="flash">{{message}}</div>
-      {% endfor %}
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="{{ category }} flash">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
     </nav>
     <nav class="left-nav">
       <a href="/decks" class="logo">

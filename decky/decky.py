@@ -553,21 +553,27 @@ def add_deck():
     deck_likes = 99
     deck_mainboard = "main"
     deck_maybeboard = "maybe"
-    deck_name = request.form['name']
+    deck_name = request.form['name'].strip().title()
     deck_sideboard = "side"
     deck_tags = request.form['tags']
 
-    db = get_db()
-    db.execute(
-        'INSERT INTO decks values (null, ?, ?, null, date("now"), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, date("now"))',
-        [
-            deck_author, deck_colors, deck_description, deck_formats,
-            deck_image, deck_legality, deck_likes, deck_mainboard,
-            deck_maybeboard, deck_name, deck_sideboard, deck_tags
-        ])
-    db.commit()
-    success = Markup("<strong>Double, double toil and trouble.</strong> ")
-    flash(success + deck_name + " was brewed successfully!", 'success')
+    if deck_name == "":
+      error = Markup("<strong>Oops!</strong>")
+      flash(error + " Looks like your deck doesn't have a name.", 'error')
+    else:
+      db = get_db()
+      db.execute(
+          'INSERT INTO decks values (null, ?, ?, null, date("now"), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, date("now"))',
+          [
+              deck_author, deck_colors, deck_description, deck_formats,
+              deck_image, deck_legality, deck_likes, deck_mainboard,
+              deck_maybeboard, deck_name, deck_sideboard, deck_tags
+          ])
+      db.commit()
+
+      success = Markup("<strong>Double, double toil and trouble.</strong> ")
+      flash(success + deck_name + " was brewed successfully!", 'success')
+
     return redirect(url_for('decks'))
 
 
