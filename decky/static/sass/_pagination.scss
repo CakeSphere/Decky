@@ -1,150 +1,125 @@
+// Pagination
 
-/* Pagination*/
+.prev,
+.next,
+.first,
+.last,
+.current-page {
+  .text {
+    display: block;
+    right: 0;
+    text-align: center;
+    text-shadow: 0 1px 2px $color-shadow-dark;
+    width: 100%;
+  }
+
+  &::before {
+    // Diamond decoration
+    background: tint($color-background, 6%);
+    border: 1px solid tint($color-border-strong, 15%);
+    border-radius: $border-radius;
+    box-shadow: inset -2px -2px 0 $color-bevel,
+                inset 0 0 4px $color-highlight,
+                0 0 3px $color-shadow;
+    content: '';
+    height: 37px;
+    position: absolute;
+    right: 8px;
+    top: -2px;
+    transform: rotate(45deg);
+    transition: background $transition;
+    width: 37px;
+  }
+}
+
+.prev,
+.next,
+.first,
+.last {
+  color: $color-text;
+  display: block;
+  font-family: $font-family-display;
+  font-size: $font-size-lead;
+  left: 0;
+  line-height: 1.25;
+  margin: auto;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  transition: transform $transition ease-out;
+  width: 55.15px;
+  z-index: $z-index-baseline;
+
+  &:hover {
+    background: none;
+
+    span {
+      color: $color-text;
+      text-shadow: none;
+      user-select: none;
+    }
+
+    &::before {
+      background: tint($color-background, 10%);
+    }
+  }
+
+}
+
 
 .pagination {
-  position: relative;
-  width: 55.15px;
   height: 55.15px;
   margin: auto;
   margin-top: 3rem;
+  position: relative;
+  width: 55.15px;
+
   .text {
-    z-index: $z-index-paging-text;
     position: relative;
+    z-index: $z-index-paging-text;
   }
-  .prev,
-  .next,
-  .first,
-  .last,
+
   .current-page {
-    .text {
-      display: block;
-      width : 100%;
-      right: 0;
-      text-align: center;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
-    }
-    &::before {
-      /* Diamond decoration*/
-      content: '';
-      position: absolute;
-      top: -2px;
-      right: 8px;
-      width: 37px;
-      height: 37px;
-      background: tint($color-background, 6%);
-      border: 1px solid tint($color-border-strong, 15%);
-      border-radius: $border-radius;
-      -webkit-box-shadow: inset -2px -2px 0 rgba(0, 0, 0, 0.25),
-                  inset 0 0 4px rgba(255, 255, 255, 0.05),
-                  0 0px 3px rgba(0, 0, 0, 0.15);
-              box-shadow: inset -2px -2px 0 rgba(0, 0, 0, 0.25),
-                  inset 0 0 4px rgba(255, 255, 255, 0.05),
-                  0 0px 3px rgba(0, 0, 0, 0.15);
-      -webkit-transition: background $transition;
-              transition: background $transition;
-      -webkit-transform: rotate(45deg);
-              transform: rotate(45deg);
-    }
-  }
-  .current-page .text { right: 0; }
-  .prev,
-  .next,
-  .first,
-  .last {
-    display: block;
-    position: absolute;
-    z-index: $z-index-baseline;
-    width: 55.15px;
-    top: 0;
-    left: 0;
-    margin: auto;
-    color: $color-text;
     font-family: $font-family-display;
     font-size: $font-size-lead;
     line-height: 1.25;
-    text-align: center;
-    -webkit-transition: -webkit-transform $transition ease-out;
-            transition: -webkit-transform $transition ease-out;
-            transition: transform $transition ease-out;
-            transition: transform $transition ease-out, -webkit-transform $transition ease-out;
-    &:hover {
-      background: none;
-      span { 
-        text-shadow: none; 
-        -webkit-user-select: none; 
-           -moz-user-select: none; 
-            -ms-user-select: none; 
-                user-select: none; 
-      }
-      &::before {
-        background: tint($color-background, 10%);
-      }
-    }
-    &.disabled {
-      span { color: shade($color-text, 50%); }
-      &::before { 
-        opacity: 0.5; 
-      }
-      &:hover {
-        cursor: default;
-        span { color: shade($color-text, 50%); }
-        &::before { 
-          opacity: 0.5; 
-          background: tint($color-background, 6%);
-        }
-      }
-    }
-  }
-  .current-page {
+    margin: auto;
+    pointer-events: none;
     position: relative;
+    text-align: center;
+    user-select: none;
     width: 55.15px;
     z-index: $z-index-paging;
-    text-align: center;
-    margin: auto;
-    font-family: $font-family-display;
-    font-size: $font-size-lead;
-    line-height: 1.25;
-    pointer-events: none;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+
     &::after {
-      /* Pagination explanation text*/
-      /* Content tag should usually not be used for actual page content */
-      /* because it cannot be localized easily*/
-      content: 'Page';
-      position: absolute;
-      top: 45px;
-      right: 12px;
+      // Pagination explanation text
+      // Content tag should usually not be used for actual page content
+      // because it cannot be localized easily
       color: $color-text-weak;
-      font-size: $font-size-default;
+      content: 'Page';
       font-family: $font-family-text;
+      font-size: $font-size-default;
+      position: absolute;
+      right: 12px;
+      top: 45px;
     }
+
+    .text { right: 0; }
   }
-  /* Hover styles to make the pagination diamond animation work. 
-     This whole thing would be more usable without the hover animations, but
-     it looks nice. */
+  // Hover styles to make the pagination diamond animation work.
+  // This whole thing would be more usable without the hover animations, but
+  // it looks nice.
   &:hover {
-    .prev { 
-      -webkit-transform: translateX(-54px); 
-              transform: translateX(-54px); 
+    .prev { transform: translateX(-54px); }
+    .next { transform: translateX(54px); }
+    .first {
+      transform: translateX(-108px);
+      transition-delay: $transition / 2;
     }
-    .next { 
-      -webkit-transform: translateX(54px); 
-              transform: translateX(54px); 
-    }
-    .first { 
-      -webkit-transform: translateX(-108px); 
-              transform: translateX(-108px); 
-      -webkit-transition-delay: $transition/2; 
-              transition-delay: $transition/2;
-    }
-    .last { 
-      -webkit-transform: translateX(108px); 
-              transform: translateX(108px); 
-      -webkit-transition-delay: $transition/2; 
-              transition-delay: $transition/2;
+
+    .last {
+      transform: translateX(108px);
+      transition-delay: $transition / 2;
     }
   }
 }
