@@ -87,10 +87,10 @@
 }
 
 @keyframes flash {
-  from { transform: translateY(-5rem)}
-  5%   { transform: translateY(0)}
-  95%  { transform: translateY(0)}
-  to   { transform: translateY(-5rem)}
+  from { transform: translateY(-5rem); }
+  5%   { transform: translateY(0); }
+  95%  { transform: translateY(0); }
+  to   { transform: translateY(-5rem); }
 }
 
 .left-nav {
