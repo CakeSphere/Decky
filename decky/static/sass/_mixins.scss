@@ -57,33 +57,33 @@
 // This should be deprecated soon by text-decoration-skip
 
 @mixin underline($color-text, $color-background) {
-           background: -webkit-linear-gradient($color-background,$color-background),
-                       -webkit-linear-gradient($color-background,$color-background),
-                       -webkit-linear-gradient($color-text,$color-text);
-           background: linear-gradient($color-background,$color-background),
-                       linear-gradient($color-background,$color-background),
-                       linear-gradient($color-text,$color-text);
-      background-size: .05em 1px,
-                       .05em 1px,
-                       1px 1px;
-    background-repeat: no-repeat,
-                       no-repeat,
-                       repeat-x;
+  background: -webkit-linear-gradient($color-background, $color-background),
+              -webkit-linear-gradient($color-background, $color-background),
+              -webkit-linear-gradient($color-text, $color-text);
+  background: linear-gradient($color-background, $color-background),
+              linear-gradient($color-background, $color-background),
+              linear-gradient($color-text, $color-text);
+  background-size: 0.05em 1px,
+                   0.05em 1px,
+                   1px 1px;
+  background-repeat: no-repeat,
+                     no-repeat,
+                     repeat-x;
   background-position: 0 90%,
                        100% 90%,
                        0 90%;
-          text-shadow: 0.03em 0 $color-background,
-                       -0.03em 0 $color-background,
-                       0 0.03em $color-background,
-                       0 -0.03em $color-background,
-                       0.06em 0 $color-background,
-                       -0.06em 0 $color-background,
-                       0.09em 0 $color-background,
-                       -0.09em 0 $color-background,
-                       0.12em 0 $color-background,
-                       -0.12em 0 $color-background,
-                       0.15em 0 $color-background,
-                       -0.15em 0 $color-background;
+  text-shadow: 0.03em 0 $color-background,
+               -0.03em 0 $color-background,
+               0 0.03em $color-background,
+               0 -0.03em $color-background,
+               0.06em 0 $color-background,
+               -0.06em 0 $color-background,
+               0.09em 0 $color-background,
+               -0.09em 0 $color-background,
+               0.12em 0 $color-background,
+               -0.12em 0 $color-background,
+               0.15em 0 $color-background,
+               -0.15em 0 $color-background;
 }
 
 // Demo animation mixin for color-bar
@@ -92,8 +92,7 @@
 // visits Decky
 
 @mixin demo($animation-name) {
-  -webkit-animation: 1s cubic-bezier(0.17, 0.67, 0.83, 0.67) 0.5s 1 $animation-name;
-          animation: 1s cubic-bezier(0.17, 0.67, 0.83, 0.67) 0.5s 1 $animation-name;
+  animation: 1s cubic-bezier(0.17, 0.67, 0.83, 0.67) 0.5s 1 $animation-name;
 }
 
 // Helper to clear inner floats
