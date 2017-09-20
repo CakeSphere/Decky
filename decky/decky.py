@@ -13,6 +13,7 @@ app.config.from_object(__name__)
 app.wsgi_app = SassMiddleware(
     app.wsgi_app, {'decky': ('static/sass', 'static/css', '/static/css')})
 
+
 app.config.update(
     dict(
         DATABASE=os.path.join(app.root_path, 'decky.db'),

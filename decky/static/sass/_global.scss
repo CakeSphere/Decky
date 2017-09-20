@@ -1,19 +1,19 @@
-/* Styles that are used throughout the application */
+// Styles that are used throughout the application
 
-/* Style elements (usually text) when selected by user */
-::-moz-selection { 
-  background: tint($color-background, 35%); 
-  color: transparentize($color-text, 0.3); 
+// Style elements (usually text) when selected by user
+::-moz-selection {
+  background: tint($color-background, 35%);
+  color: transparentize($color-text, 0.3);
 }
 
-::selection { 
-  background: tint($color-background, 35%); 
-  color: transparentize($color-text, 0.3); 
+::selection {
+  background: tint($color-background, 35%);
+  color: transparentize($color-text, 0.3);
 }
 
 html {
-  /* Setting a base font-size. All other font-sizes should be in rems */
-  /* (multiples of this font-size)*/
+  // Setting a base font-size. All other font-sizes should be in rems
+  // (multiples of this font-size)
   font-size: $font-size;
 }
 
@@ -21,41 +21,40 @@ body {
   background: $color-background;
   color: $color-text;
   font-family: $font-family-text;
+  font-feature-settings: 'lnum', 'dlig';
   font-size: $font-size-default;
-  /* Opentype options*/
-  font-variant-numeric: lining-nums;
-  -webkit-font-feature-settings: 'lnum', 'dlig';
-          font-feature-settings: 'lnum', 'dlig';
-  -webkit-font-smoothing: antialiased;
-          font-smoothing: antialiased;
+  // Opentype options
   -moz-osx-font-smoothing: grayscale;
-  -webkit-font-variant-ligatures: discretionary-ligatures;
-          font-variant-ligatures: discretionary-ligatures;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  font-variant-ligatures: discretionary-ligatures;
 }
 
 
 aside {
-  /* Sidebars for search filters or card/deck info*/
+  // Sidebars for search filters or card/deck info
   display: inline-block;
   width: 280px;
+
+  + section {
+    margin-top: 2rem;
+  }
+
   > h3:first-child {
-    /* Making sure things line up with the main content*/
+    // Making sure things line up with the main content
     margin-top: 0.6rem;
   }
+
   label {
     display: block;
   }
 }
 
 section {
-  /* Main content section*/
+  // Main content section
   display: inline-block;
-  width: calc(100% - 356px - 2rem);
   vertical-align: top;
-}
-
-aside + section {
-  margin-top: 2rem;
+  width: calc(100% - 356px - 2rem);
 }
 
 h1,
@@ -68,17 +67,16 @@ h5 {
 }
 
 h2 { font-size: $font-size-h2; }
-h3 { font-size: $font-size-h3; }
 
 h1 {
-  font-style: italic;
   font-size: $font-size-h1;
-  /* Styling the brew icon on the builder page */
+  font-style: italic;
+  // Styling the brew icon on the builder page
   svg {
-    height: $font-size-h1;
-    max-width: $font-size h1;
     fill: $color-text;
     float: left;
+    height: $font-size-h1;
+    max-width: $font-size-h1;
     position: relative;
     bottom: -3px;
     margin-right: 0.5rem;
@@ -86,10 +84,11 @@ h1 {
 }
 
 h3 {
-  font-family: $font-family-text;
-  font-weight: normal;
   color: $color-text-weak;
-  /* Emphasis for the card's name on the card page */
+  font-family: $font-family-text;
+  font-size: $font-size-h3;
+  font-weight: normal;
+  // Emphasis for the card's name on the card page
   em {
     color: $color-text;
   }
@@ -98,99 +97,104 @@ h3 {
 a {
   color: $color-primary;
   text-decoration: none;
-  -webkit-transition: color $transition;
-          transition: color $transition;
+  transition: color $transition;
+
   &:hover {
-    color: shade($color-primary, 15%);
     @include underline(shade($color-primary, 15%), $color-background);
+    color: shade($color-primary, 15%);
   }
+
   &:active {
-    color: shade($color-primary, 25%);
     @include underline(shade($color-primary, 25%), $color-background);
+    color: shade($color-primary, 25%);
   }
-  /* Removing some link styles when they're selected by the user */
+  // Removing some link styles when they're selected by the user
   &::-moz-selection { color: transparentize($color-primary, 0.3); }
   &::selection { color: transparentize($color-primary, 0.3); }
   &:hover::-moz-selection { text-shadow: none; }
   &:hover::selection { text-shadow: none; }
 }
 
-/* Magic colors*/
-/* These classes are used to easily color text referring to the five Magic */
-/* colors*/
+// Magic colors
+// These classes are used to easily color text referring to the five Magic
+// colors
 
-.u { color: $color-mtg-u }
-.w { color: $color-mtg-w }
-.r { color: $color-mtg-r }
-.g { color: $color-mtg-g }
-.b { color: $color-mtg-b }
+.u { color: $color-mtg-u; }
+.w { color: $color-mtg-w; }
+.r { color: $color-mtg-r; }
+.g { color: $color-mtg-g; }
+.b { color: $color-mtg-b; }
 
-/* Utility classes*/
+// Utility classes
 
-/* Easily float elements or clear those floats with these classes*/
+// Easily float elements or clear those floats with these classes
 .pull-left   { float: left; }
 .pull-right  { float: right; }
 .clearfix    { @include clearfix; }
 
-/* Text alignment classes; justify is not used*/
+// Text alignment classes; justify is not used
 .text-left   { text-align: left; }
 .text-center { text-align: center; }
 .text-right  { text-align: right; }
 
-/* Remove all styling (bullets or numbers) from a ul or ol element*/
+// Remove all styling (bullets or numbers) from a ul or ol element
 .list-unstyled {
-  list-style: none; 
+  list-style: none;
   padding-left: 0;
 }
 
-/* Adjustments to the sizes of mana symbols; see _mana.scss*/
+// Adjustments to the sizes of mana symbols; see _mana.scss
 .mana {
   color: transparent;
+
   &.small {
-    width: 0.888rem;
     height: 0.888rem;
+    width: 0.888rem;
   }
+
   &.medium {
-    width: 1.333rem;
     height: 1.333rem;
+    width: 1.333rem;
   }
-  /* Styles specific to Energy counters to make them look similar to colorless
-     mana for consistency. */
+  // Styles specific to Energy counters to make them look similar to colorless
+  // mana for consistency.
   &.medium.sE {
-    width: 1rem;
-    height: 1rem;
     background-color: $color-mtg-c;
     background-position: 88.75% 81.75%;
     border: 2.25px solid $color-mtg-c;
     border-radius: 100%;
+    height: 1rem;
     line-height: 1.1;
+    width: 1rem;
   }
-  /* Removing some styles from selected mana symbols */
+  // Removing some styles from selected mana symbols
   &::-moz-selection { background: initial; color: transparent; }
   &::selection { background: initial; color: transparent; }
 }
 
-/* Set symbols */
-i.ss-common { -webkit-text-stroke: 0.03em $color-text; }
-i.ss-rare.ss-grad, 
-i.ss-uncommon.ss-grad, 
-i.ss-mythic.ss-grad { -webkit-text-stroke: 0.03em $color-border-strong; }
+// Set symbols
+.ss-common { -webkit-text-stroke: 0.03em $color-text; }
+.ss-rare.ss-grad,
+.ss-uncommon.ss-grad,
+.ss-mythic.ss-grad { -webkit-text-stroke: 0.03em $color-border-strong; }
 
-/* Improve performance by removing animations, shadows, gradients, and masks 
-   */
+// Improve performance by removing animations, shadows, gradients, and masks
+
 .low-graphics {
-  *, *::before, *::after {
-    text-shadow: none !important;
-    -webkit-transition: none !important;
-            transition: none !important;
-    -webkit-animation: none !important;
-            animation: none !important;
-    -webkit-box-shadow: none !important;
-            box-shadow: none !important;
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    box-shadow: none !important;
     -webkit-mask-image: none !important;
-            mask-image: none !important;
+    mask-image: none !important;
+    text-shadow: none !important;
+    transition: none !important;
   }
-  .deck::after, .card::after, .card-bg {
+
+  .deck::after,
+  .card::after,
+  .card-bg {
     display: none !important;
   }
 }
