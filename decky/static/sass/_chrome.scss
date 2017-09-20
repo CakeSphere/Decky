@@ -59,18 +59,18 @@
   .flash {
     position: absolute;
     top: 0;
-    left: calc(50% - 150px - 0.25rem);
-    width: 300px;
+    left: calc(50% - 250px - 0.25rem);
+    width: 500px;
     margin: auto;
     transform: translateY(-3rem);
     background: $color-mtg-g;
     color: $color-text;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
     text-align: center;
     border-radius: 0 0 $border-radius $border-radius;
     padding: 0.5rem;
     animation-name: flash;
-    animation-duration: 3s;
+    animation-duration: 5s;
     animation-delay: 0.4s;
     animation-iteration-count: 1;
     animation-timing-function: ease-out;
@@ -81,10 +81,10 @@
 }
 
 @keyframes flash {
-  from { transform: translateY(-3rem)}
-  10%  { transform: translateY(0)}
-  90%  { transform: translateY(0)}
-  to   { transform: translateY(-3rem)}
+  from { transform: translateY(-5rem)}
+  5%   { transform: translateY(0)}
+  95%  { transform: translateY(0)}
+  to   { transform: translateY(-5rem)}
 }
 
 .left-nav {

@@ -566,7 +566,8 @@ def add_deck():
             deck_maybeboard, deck_name, deck_sideboard, deck_tags
         ])
     db.commit()
-    flash('Deck added')
+    success = Markup("<strong>Double, double toil and trouble.</strong> ")
+    flash(success + deck_name + " was brewed successfully!", 'success')
     return redirect(url_for('decks'))
 
 
