@@ -1,111 +1,108 @@
-.btn, 
+.btn,
 button {
-  display: inline-block;
-  margin-right: 6px;
-  margin-bottom: 10px;
-  max-width: 100%;
-  padding: 0.5rem 0.7rem;
-
   background-color: tint($color-background, 6%);
   border: 1px solid tint($color-border-strong, 15%);
   border-radius: $border-radius;
-  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15),
-              inset 0 0 4px rgba(255, 255, 255, 0.05),
-              0 2px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 -2px 0 $color-shadow,
+              inset 0 0 4px $color-highlight,
+              0 2px 3px $color-bevel;
   color: shade($color-text, 15%);
+  cursor: pointer;
+  display: inline-block;
   font-family: $font-family-text;
   font-size: $font-size-default;
-  text-decoration: none;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
-
-  cursor: pointer;
+  margin-bottom: 10px;
+  margin-right: 6px;
+  max-width: 100%;
   overflow: hidden;
+  padding: 0.5rem 0.7rem;
+  text-decoration: none;
   text-overflow: ellipsis;
+  text-shadow: 0 1px 2px $color-bevel;
+  transition: color $transition,
+              border-color $transition,
+              background $transition;
+  user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  -webkit-transition: color $transition, 
-                      border-color $transition, 
-                      background $transition;
-          transition: color $transition, 
-                      border-color $transition, 
-                      background $transition;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  &:hover, 
+
+  &:hover,
   &:focus {
     background: tint($color-background, 10%);
     color: $color-text;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
-    /* Set symbols' strokes adjust as text color does*/
-    i { 
-      text-shadow: none; 
-      -webkit-text-stroke: 0.03em $color-text; 
-              text-stroke: 0.03em $color-text; 
-      &::after {
-        -webkit-transform: translateX(3px) 
-                           rotate(45deg);
-                transform: translateX(3px) 
-                           rotate(45deg);
-      }
+    text-shadow: 0 1px 2px $color-bevel;
+    // Set symbols' strokes adjust as text color does
+    i {
+      text-shadow: none;
+      -webkit-text-stroke: 0.03em $color-text;
+      text-stroke: 0.03em $color-text;
+
+      &::after { transform: translateX(3px) rotate(45deg); }
       &.ss-grad {
-        -webkit-text-stroke: 0.03em $color-border-strong; 
-                text-stroke: 0.03em $color-border-strong; 
+        -webkit-text-stroke: 0.03em $color-border-strong;
+        text-stroke: 0.03em $color-border-strong;
       }
     }
   }
+
   &:active {
     background: tint($color-background, 5%);
     outline: none;
     i { text-shadow: none; }
   }
-  &:focus { outline: none; } /* Removing default webkit outline*/
+
+  &:focus { outline: none; } // Removing default webkit outline
   &.active {
     background: tint($color-background, 2%);
-    border-color: rgba(0, 0, 0, 0.25);
-    box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.25);
+    border-color: $color-bevel;
+    box-shadow: inset 0 2px 0 $color-bevel;
     color: shade($color-text-weak, 15%);
+
     .cancel {
       fill: shade($color-text-weak, 15%);
     }
   }
+
   &.link {
     background: none;
     border-color: transparent;
     box-shadow: none;
     color: $color-primary;
+
     svg {
       fill: $color-primary;
-      -webkit-transition: fill $transition;
-              transition: fill $transition;
+      transition: fill $transition;
     }
-    &:hover, &:focus {
+
+    &:hover,
+    &:focus {
       background: none;
       color: shade($color-primary, 15%);
-      /* Hacky span that we add to make underlines on text buttons work.*/
+      // Hacky span that we add to make underlines on text buttons work.
       span { @include underline(shade($color-primary, 15%), $color-background); }
       svg { fill: shade($color-primary, 15%); }
     }
+
     &:active {
       color: shade($color-primary, 25%);
+
       span {
-        /* Hacky span that we add to make underlines on text buttons work.*/
+        // Hacky span that we add to make underlines on text buttons work.
         @include underline(shade($color-primary, 25%), $color-background);
         color: shade($color-primary, 25%);
       }
     }
   }
-  /* Little x to remove filters */
+  // Little x to remove filters
   .cancel {
     fill: $color-text-weak;
-    width: 10px;
     height: 10px;
     margin-left: 0.25rem;
     position: relative;
     top: 2px;
+    width: 10px;
   }
-  /* All of our button styles, using the btn mixin (_mixins.scss)*/
+  // All of our button styles, using the btn mixin (_mixins.scss)
   &.primary { @include btn($color-primary); }
   &.w       { @include btn($color-mtg-w); }
   &.u       { @include btn($color-mtg-u); }
@@ -113,109 +110,101 @@ button {
   &.b       { @include btn($color-mtg-b); }
   &.g       { @include btn($color-mtg-g); }
   &.c       { @include btn($color-mtg-c); }
-  i { 
-    /* Set Icons*/
-    position: relative;
+  i {
+    // Set Icons
     bottom: 3px;
     margin-right: 0.5rem;
+    position: relative;
     -webkit-text-stroke: 0.03em $color-text-weak;
-    -webkit-transition: color $transition;
-            transition: -webkit-text-stroke $transition;    
+    transition: -webkit-text-stroke $transition;
+
     &::after {
-      content: '';
-      position: absolute;
-      left: -31px;
-      top: -15px;
-      right: 0;
-      bottom: 0;
-      width: 50px;
-      height: 50px;
       background-color: transparentize($color-text-weak, 0.9);
-      box-shadow: 2px -2px 2px rgba(0,0,0,0.05);
-      -webkit-transition: -webkit-transform $transition;
-              transition: -webkit-transform $transition;
-              transition: transform $transition;
-              transition: transform $transition, 
-                          -webkit-transform $transition;
-      -webkit-transform: rotate(45deg);
-              transform: rotate(45deg);
+      bottom: 0;
+      box-shadow: 2px -2px 2px $color-shadow;
+      content: '';
+      height: 50px;
+      left: -31px;
+      position: absolute;
+      right: 0;
+      top: -15px;
+      transform: rotate(45deg);
+      transition: transform $transition;
+      width: 50px;
     }
   }
-  .mana.small { 
-    /* Mana Icons*/
+
+  .mana.small {
+    // Mana Icons
+    margin-right: 1rem;
     position: relative;
     top: 2px;
-    margin-right: 1rem;
+
     &::after {
-      position: absolute;
-      left: -31px;
-      top: -18px;
-      right: 0;
-      bottom: 0;
-      width: 50px;
-      height: 50px;
-      content: '';
       background-color: transparentize($color-text-weak, 0.9);
-      box-shadow: 2px -2px 2px rgba(0,0,0,0.05);
-      -webkit-transition: -webkit-transform $transition;
-              transition: -webkit-transform $transition;
-              transition: transform $transition;
-              transition: transform $transition, 
-                          -webkit-transform $transition;
-      -webkit-transform: rotate(45deg);
-              transform: rotate(45deg);
+      bottom: 0;
+      box-shadow: 2px -2px 2px $color-shadow;
+      content: '';
+      height: 50px;
+      left: -31px;
+      position: absolute;
+      right: 0;
+      top: -18px;
+      transform: rotate(45deg);
+      transition: transform $transition;
+      width: 50px;
     }
   }
-  &:hover .mana.small::after { 
-    -webkit-transform: translateX(3px) 
-                       rotate(45deg); 
-            transform: translateX(3px) 
-                       rotate(45deg); 
-  }
+
+  &:hover .mana.small::after { transform: translateX(3px) rotate(45deg); }
 }
 
 .btn-group {
-  /* Currently used to indicate the amount of each Color in a deck */
+  // Currently used to indicate the amount of each Color in a deck
   display: inline-block;
-  .btn, 
-  a.btn, 
+
+  .btn,
   button {
+    border-radius: 0;
+    margin-right: -4px; // Removes the space next to an inline-block element
+    padding: 0.5rem;
     position: relative;
     z-index: $z-index-baseline;
-    margin-right: -4px; /* Removes the space next to an inline-block element*/
-    border-radius: 0;
-    padding: 0.5rem;
-    &.w, 
-    &.u, 
+
+    &.w,
+    &.u,
     &.r,
-    &.b, 
+    &.b,
     &.g,
-    &.c { z-index: $z-index-paging; } /* Color buttons have higher priority */
-    &.primary { z-index: $z-index-paging-text; } /* Primary buttons are highest priority */
+    &.c { z-index: $z-index-paging; } // Color buttons have higher priority
+    &.primary { z-index: $z-index-paging-text; } // Primary buttons are highest priority
     &:first-child { border-radius: $border-radius 0 0 $border-radius; }
     &:last-child {
-      margin-right: 6px;
       border-radius: 0 $border-radius $border-radius 0;
+      margin-right: 6px;
     }
   }
-  &.card-costs, &.mana-available {
+
+  &.card-costs,
+  &.mana-available {
     .mana {
-      position: absolute;
       left: calc(50% - 0.66665rem);
-      top: calc(50% - 0.66665rem);
       opacity: 0.25;
+      position: absolute;
+      top: calc(50% - 0.66665rem);
       z-index: -1;
     }
   }
 }
 
 .tabs {
-  box-shadow: inset 0 -4px 4px rgba(0,0,0,0.1);
+  box-shadow: inset 0 -4px 4px $color-shadow;
+
   a.btn {
     border-radius: 0;
     margin-bottom: 0;
     margin-right: -4px;
-    &:first-child { border-radius: $border-radius 0 0 0; }
+    &:first-child { border-radius: $border-radius 0 0; }
     &:last-child  { border-radius: 0 $border-radius 0 0; }
   }
 }

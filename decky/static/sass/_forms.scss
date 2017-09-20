@@ -1,81 +1,77 @@
-/* Common form elements*/
+// Common form elements
 
-/* For the most part inputs and textareas should be styled similarly*/
-input[type='text'], 
-input[type="email"], 
-input[type="search"], 
-input[type="number"], 
+// For the most part inputs and textareas should be styled similarly
+input[type='text'],
+input[type="email"],
+input[type="search"],
+input[type="number"],
 textarea {
-  display: inline-block;
-  padding: 0.5rem 0.7rem;
-  margin-right: 6px;
-  margin-bottom: 10px;
-  width: 115px;
   background: tint($color-background, 2%);
-  border: 1px solid  rgba(0, 0, 0, 0.25);
-  -webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.25);
-          box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.25);
-  color: shade($color-text-weak, 15%);
+  border: 1px solid  $color-bevel;
   border-radius: $border-radius;
+  box-shadow: inset 0 2px 2px $color-bevel;
+  color: shade($color-text-weak, 15%);
+  display: inline-block;
   font-family: $font-family-text;
   font-size: $font-size-default;
+  margin-bottom: 10px;
+  margin-right: 6px;
+  padding: 0.5rem 0.7rem;
   text-decoration: none;
+  transition: border-color $transition, background $transition;
+  user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  -webkit-transition: border-color $transition;
-          -webkit-transition: border-color $transition, background $transition;
-          transition: border-color $transition, background $transition;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  &.block {
-    width: calc(100% - 1.4rem);
-  }
+  width: 115px;
+
+  &.block { width: calc(100% - 1.4rem); }
   &:focus {
-    outline: none;
     background: tint($color-background, 4%);
+    outline: none;
   }
+
   &::-webkit-input-placeholder {
     color: shade($color-text-weak, 20%);
-    -webkit-transition: color $transition;
     transition: color $transition;
   }
-  &:focus::-webkit-input-placeholder {
-    color: shade($color-text, 20%);
-  }
+
+  &:focus::-webkit-input-placeholder { color: shade($color-text, 20%); }
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
 }
 
-input::-webkit-calendar-picker-indicator {
-  display: none;
-}
+input::-webkit-calendar-picker-indicator { display: none; }
 
-select, select.btn {
+select,
+select.btn {
   -moz-appearance: none;
   -webkit-appearance: none;
+  appearance: none;
   background: tint($color-background, 6%) url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333333' stroke='%23ababab' stroke-width='0.5' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center;
   background-size: 10px 12px;
   padding-right: calc(10px + 1.4rem);
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background: tint($color-background, 6%) url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333333' stroke='%23f7f7f7' stroke-width='0.5' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center;
     background-size: 10px 12px;
   }
 }
 
-/* Input groups*/
-/* These are currently only used to indicate currency when searching*/
+// Input groups
+// These are currently only used to indicate currency when searching
 .input-group {
   display: inline-block;
   margin-right: 6px;
+
   input {
     margin-right: 0;
     width: 89px;
+
     &:last-child {
       border-left: 0;
     }
@@ -83,175 +79,128 @@ select, select.btn {
 }
 
 .input-group-addon {
+  background: tint($color-background, 4%);
+  border: 1px solid shade($color-border, 75%);
+  border-radius: $border-radius;
+  box-shadow: inset 0 1px 1px $color-bevel;
+  cursor: default;
   display: inline-block;
   margin-right: -4px;
-  padding-right: 0;
-  border-radius: $border-radius;
-  border: 1px solid $color-border;
-  padding: 0.5rem 0.5rem;
-  cursor: default;
+  padding: 0.5rem;
   pointer-events: none;
+  user-select: none;
   vertical-align: top;
-  border: 1px solid shade($color-border, 75%);
-  background: tint($color-background, 4%);
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.25);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.25);
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  + input[type="text"] {
+
+  + [type="text"] {
     border-radius: 0 $border-radius $border-radius 0;
   }
+
   &:not(:last-child) {
-    border-right: 0;
     border-bottom-right-radius: 0;
+    border-right: 0;
     border-top-right-radius: 0;
   }
 }
 
-/* Search bar styles*/
-/* For the large search bar at the top of the Search page*/
+// Checkboxes
 
-.search {
-  input {
-    margin-right: -4px;
-    /* This width is kind of a mess*/
-    width: calc(100% - 1.5rem - 100px);
-    background: tint($color-background, 3%);
-    border-color: rgba($color-primary, 0.25);
-    border-radius: $border-radius 0 0 $border-radius;
-    -webkit-box-shadow: inset 0 0 6px shade($color-background, 2.5%);
-            box-shadow: inset 0 0 6px shade($color-background, 2.5%);
-    color: $color-text;
-    font-size: $font-size-sub;
-    &:focus {
-      background: $color-background;
-      border-color: rgba($color-primary, 0.5);
-      -webkit-box-shadow: inset 0 4px 8px shade($color-background, 7.5%);
-              box-shadow: inset 0 4px 8px shade($color-background, 7.5%);
-    }
-  }
-  a.btn {
-    height: 27px;
-    width: 73px;
-    margin-right: 0;
-    background: tint($color-background, 3%);
-    border-color: rgba($color-primary, 0.25);
-    border-radius: 0 $border-radius $border-radius 0;
-    -webkit-box-shadow: inset 0 0 6px shade($color-background, 2.5%);
-            box-shadow: inset 0 0 6px shade($color-background, 2.5%);
-    font-size: $font-size-sub;
-    text-align: center;
-    &:hover {
-      border-color: rgba($color-primary, 0.35);
-    }
-    &:active {
-      background: $color-background;
-      border-color: rgba($color-primary, 0.5);
-      -webkit-box-shadow: inset 0 4px 8px shade($color-background, 7.5%);
-              box-shadow: inset 0 4px 8px shade($color-background, 7.5%);
-    }
-  }
-}
-
-/* Checkboxes */
-
-input[type="checkbox"], input[type="radio"] {
-  position: absolute;
+input[type="checkbox"],
+input[type="radio"] {
   left: -9999px;
+  position: absolute;
+
   + label {
-    position: relative;
-    padding-left: 1.75rem;
-    line-height: 24px;
-    -webkit-transition: color $transition;
-    transition: color $transition;
     color: $color-text-weak;
     cursor: pointer;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-    &:hover { 
-      color: $color-text; 
+    line-height: 24px;
+    padding-left: 1.75rem;
+    position: relative;
+    transition: color $transition;
+    user-select: none;
+
+    &:hover {
+      color: $color-text;
+
       &::before {
         background: tint($color-background, 5%);
       }
     }
-    /* Checkbox background*/
+
+    // Checkbox background
     &::before {
-      content: '';
-      position: absolute;
-      left: 0; 
-      top: 0;
-      width: 20px; 
-      height: 20px;
-      border-radius: $border-radius;
       background: tint($color-background, 2%);
-      border: 1px solid rgba(0, 0, 0, 0.25);
-      transition: background $transition;
-      -webkit-box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.25);
-              box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.25);
-    }
-    /* Checkbox check*/
-    &::after {
-      content: '✕';
+      border: 1px solid $color-bevel;
+      border-radius: $border-radius;
+      box-shadow: inset 0 2px 0 $color-bevel;
+      content: '';
+      height: 20px;
+      left: 0;
       position: absolute;
-      top: 0.1rem; 
-      left: 0.25rem;
-      font-size: $font-size-default;
-      color: $color-text-weak;
-      -webkit-transition: opacity $transition, -webkit-transform $transition;
-      transition: opacity $transition, -webkit-transform $transition;
-      transition: transform $transition, opacity $transition;
-      transition: transform $transition, opacity $transition, -webkit-transform $transition;
-      opacity: 0;
-      -webkit-transform: scale(0);
-              transform: scale(0);
+      top: 0;
+      transition: background $transition;
+      width: 20px;
     }
+
+    // Checkbox check
+    &::after {
+      color: $color-text-weak;
+      content: '✕';
+      font-size: $font-size-default;
+      left: 0.25rem;
+      opacity: 0;
+      position: absolute;
+      top: 0.1rem;
+      transform: scale(2);
+      transition: transform $transition, opacity $transition;
+    }
+
     &:empty { padding-left: 1.25rem; }
   }
-  /* When the checkbox is checked, show the check*/
+
+  // When the checkbox is checked, show the check
   &:checked + label {
     color: $color-text;
+
     &::after {
-    opacity: 1;
-    -webkit-transform: scale(1);
-            transform: scale(1);
+      opacity: 1;
+      transform: scale(1);
     }
   }
 }
 
-/* Radio buttons work the same as checkboxes, but using a bullet instead of*/
-/* a multiplication symbol*/
+// Radio buttons work the same as checkboxes, but using a bullet instead of
+// a multiplication symbol
 input[type="radio"] + label {
   &::before {
     border-radius: 50%;
   }
+
   &::after {
-    content: '';
-    border-radius: 50%;
-    width: 0.5rem;
-    height: 0.5rem;
-    top: 0.39rem;
-    left: 0.36rem;
     background-color: $color-text-weak;
+    border-radius: 50%;
+    content: '';
+    height: 0.5rem;
+    left: 0.36rem;
+    top: 0.39rem;
+    width: 0.5rem;
   }
 }
 
-/* Textareas are currently only used for comments; changes will have to be*/
-/* made for other uses*/
+// Textareas are currently only used for comments; changes will have to be
+// made for other uses
 
 textarea {
-  display: block;
-  width: calc(100% - 1.5rem);
-  resize: none;
-  color: $color-text;
   border-radius: $border-radius;
-  white-space: normal;
+  color: $color-text;
+  display: block;
   font-size: $font-size-sub;
+  resize: none;
+  white-space: normal;
+  width: calc(100% - 1.5rem);
+
   &:focus {
     border-color: shade($color-border, 60%);
+
     + .submit {
       border-color: shade($color-border, 60%);
     }
@@ -259,13 +208,13 @@ textarea {
 }
 
 .submit {
-  border-radius: 0 0 $border-radius $border-radius;
   background: none;
-  margin-top: -1rem;
+  border-radius: 0 0 $border-radius $border-radius;
   margin-bottom: 1rem;
-  padding: 1rem 0 0.5rem 0;
-  -webkit-transition: border-color $transition;
-          transition: border-color $transition;
+  margin-top: -1rem;
+  padding: 1rem 0 0.5rem;
+  transition: border-color $transition;
+
   .btn {
     margin-bottom: 0;
     margin-right: 0;
