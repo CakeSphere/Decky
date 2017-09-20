@@ -1,68 +1,85 @@
 
 table {
-  width: 100%;
   background: $color-background-tint;
   border-collapse: collapse;
+  width: 100%;
+
   a:hover {
     @include underline(shade($color-primary, 15%), $color-background-tint);
   }
+
   thead {
     background: tint($color-background-tint, 5%);
   }
+
   tbody tr {
     &:first-child {
-      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+      box-shadow: inset 0 2px 4px $color-shadow;
     }
+
     &:nth-child(even) {
       background: tint($color-background-tint, 2.5%);
+
       a:hover {
         @include underline(shade($color-primary, 15%), tint($color-background-tint, 2.5%));
       }
     }
-    &:last-child {  
-      box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
+
+    &:last-child {
+      box-shadow: inset 0 -2px 0 $color-shadow;
+
       td {
         padding-bottom: calc(0.3rem + 2px);
       }
     }
   }
-  td, th {
+
+  td,
+  th {
     border-bottom: 1px solid transparentize($color-border-strong, 0.95);
     border-right: 1px solid shade($color-text-weak, 78%);
     border-top: 1px solid transparentize($color-text, 0.95);
-    padding: 0.3rem;
     color: $color-text-weak;
+    padding: 0.3rem;
     transition: $transition;
+
     &:last-child {
-      border-right: none;
-    }
-  }
-  th {
-    position: relative;
-    text-align: left;
-    font-weight: normal;
-    color: shade($color-text-weak, 20%);
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-    border-right: 1px solid shade($color-text-weak, 75%);
-    &:hover {
-      cursor: pointer;
-      background: tint($color-background-tint, 10%);
-    }
-    &:last-child {
-      border-top-right-radius: $border-radius;
       border-right: 0;
     }
-    &.desc:after, &.asc:after {
-      position: absolute;
-      top: 0.6rem;
-      right: 0.6rem;
-      font-size: 0.5rem;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  }
+
+  th {
+    border-right: 1px solid shade($color-text-weak, 75%);
+    color: shade($color-text-weak, 20%);
+    font-weight: normal;
+    position: relative;
+    text-align: left;
+    text-shadow: 0 1px 3px $color-shade;
+
+    &:hover {
+      background: tint($color-background-tint, 10%);
+      cursor: pointer;
     }
-    &.desc:after {
+
+    &:last-child {
+      border-right: 0;
+      border-top-right-radius: $border-radius;
+    }
+
+    &.desc::after,
+    &.asc::after {
+      font-size: 0.5rem;
+      position: absolute;
+      right: 0.6rem;
+      text-shadow: 0 1px 3px $color-shadow;
+      top: 0.6rem;
+    }
+
+    &.desc::after {
       content: '▼';
     }
-    &.asc:after {
+
+    &.asc::after {
       content: '▲';
     }
   }
