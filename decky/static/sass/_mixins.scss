@@ -1,7 +1,7 @@
 
-/* Buttons mixin*/
-/* Generates some fairly simple button styles, and their hover and active 
-   states.*/
+// Buttons mixin
+// Generates some fairly simple button styles, and their hover and active
+// states.
 
 @mixin btn($color) {
   $color-tint: tint($color, 15%);
@@ -10,44 +10,51 @@
   background: shade($color, 20%);
   border-color: $color-shade;
   color: $color-text;
-  .mana.small:after {
+
+  .mana.small::after {
     background-color: transparentize(shade($color, 50%), 0.8);
-  } 
+  }
+
   &:active {
     border-color: $color-shade;
     color: $color-tint;
   }
+
   &:hover {
     background: tint($color, 5%);
     border-color: $color-shade;
+
     .cancel {
       fill: $color-tint;
     }
   }
+
   &.active {
     background: shade($color, 50%);
     border-color: $color-shade;
     color: shade($color-text-weak, 15%);
+
     .cancel {
       fill: transparentize($color-text-weak, 0.5);
     }
   }
+
   .cancel {
     fill: $color-text;
   }
 }
 
-/* Color-bar mixin*/
-/* Styles for the segments of color-bars*/
+// Color-bar mixin
+// Styles for the segments of color-bars
 
 @mixin color-bar($color) {
-  background: shade($color, 20%); 
+  background: shade($color, 20%);
   box-shadow: inset 0 0 5px darken($color, 5%);
   color: $color;
 }
 
-/* Underline mixin, borrowed from Medium */
-/* This should be deprecated soon by text-decoration-skip */
+// Underline mixin, borrowed from Medium
+// This should be deprecated soon by text-decoration-skip
 
 @mixin underline($color-text, $color-background) {
            background: -webkit-linear-gradient($color-background,$color-background),
@@ -65,55 +72,55 @@
   background-position: 0 90%,
                        100% 90%,
                        0 90%;
-          text-shadow: 0.03em 0 $color-background, 
-                       -0.03em 0 $color-background, 
-                       0 0.03em $color-background, 
-                       0 -0.03em $color-background, 
-                       0.06em 0 $color-background, 
-                       -0.06em 0 $color-background, 
-                       0.09em 0 $color-background, 
-                       -0.09em 0 $color-background, 
-                       0.12em 0 $color-background, 
-                       -0.12em 0 $color-background, 
-                       0.15em 0 $color-background, 
+          text-shadow: 0.03em 0 $color-background,
+                       -0.03em 0 $color-background,
+                       0 0.03em $color-background,
+                       0 -0.03em $color-background,
+                       0.06em 0 $color-background,
+                       -0.06em 0 $color-background,
+                       0.09em 0 $color-background,
+                       -0.09em 0 $color-background,
+                       0.12em 0 $color-background,
+                       -0.12em 0 $color-background,
+                       0.15em 0 $color-background,
                        -0.15em 0 $color-background;
 }
 
-/* Demo animation mixin for color-bar */
-/* This animation is longer than the suggested 400ms so the user has a chance
-to pick up on what's happening. It should only play the first time a user 
-visits Decky */
+// Demo animation mixin for color-bar
+// This animation is longer than the suggested 400ms so the user has a chance
+// to pick up on what's happening. It should only play the first time a user
+// visits Decky
 
 @mixin demo($animation-name) {
-  -webkit-animation: 1s cubic-bezier(0.17,0.67,0.83,0.67) 0.5s 1 $animation-name;
-          animation: 1s cubic-bezier(0.17,0.67,0.83,0.67) 0.5s 1 $animation-name;
+  -webkit-animation: 1s cubic-bezier(0.17, 0.67, 0.83, 0.67) 0.5s 1 $animation-name;
+          animation: 1s cubic-bezier(0.17, 0.67, 0.83, 0.67) 0.5s 1 $animation-name;
 }
 
-/* Helper to clear inner floats*/
-/* @author Nicolas Gallagher*/
-/* @link http://nicolasgallagher.com/micro-clearfix-hack/ Micro Clearfix*/
+// Helper to clear inner floats
+// @author Nicolas Gallagher
+// @link http://nicolasgallagher.com/micro-clearfix-hack/ Micro Clearfix
 @mixin clearfix {
   &::after {
-    display: table;
-    content: '';
     clear: both;
+    content: ' ';
+    display: table;
   }
 }
 
-/* Slightly lighten a color*/
-/* @access public*/
-/* @param {Color} $color - color to tint*/
-/* @param {Number} $percentage - percentage of `$color` in returned color*/
-/* @return {Color}*/
+// Slightly lighten a color
+// @access public
+// @param {Color} $color - color to tint
+// @param {Number} $percentage - percentage of `$color` in returned color
+// @return {Color}
 @function tint($color, $percentage) {
-  @return mix(white, $color, $percentage);
+  @return mix($color-white, $color, $percentage);
 }
 
-/* Slightly darken a color*/
-/* @access public*/
-/* @param {Color} $color - color to shade*/
-/* @param {Number} $percentage - percentage of `$color` in returned color*/
-/* @return {Color}*/
+// Slightly darken a color
+// @access public
+// @param {Color} $color - color to shade
+// @param {Number} $percentage - percentage of `$color` in returned color
+// @return {Color}
 @function shade($color, $percentage) {
-  @return mix(black, $color, $percentage);
+  @return mix($color-black, $color, $percentage);
 }
