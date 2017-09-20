@@ -128,8 +128,12 @@ a {
 // Utility classes
 
 // Easily float elements or clear those floats with these classes
-.pull-left   { float: left; }
-.pull-right  { float: right; }
+.pull-left,
+%pull-left { float: left; }
+
+.pull-right,
+%pull-right { float: right; }
+
 .clearfix    { @include clearfix; }
 
 // Text alignment classes; justify is not used
