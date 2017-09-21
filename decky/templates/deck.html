@@ -135,7 +135,7 @@
           <ul class="list-unstyled">
             {% for card in cards %}
               {% if "Land" in card.type %}
-                <li>{{count[card.multiverseid]}} <a href="/card/{{card.multiverseId}}">{{card.name}}</a></li>
+                <li>{{count[card.multiverseid]}} <a href="{{ url_for('card', multiverseId=card.multiverseId)}}">{{card.name}}</a></li>
               {% endif %}
             {% endfor %}
           </ul>
@@ -150,7 +150,7 @@
           <ul class="list-unstyled">
             {% for card in cards %}
               {% if "Planeswalker" in card.type %}
-                <li>{{count[card.multiverseid]}} <a href="/card/{{card.multiverseId}}">{{card.name}}</a></li>
+                <li>{{count[card.multiverseid]}} <a href="{{ url_for('card', multiverseId=card.multiverseId)}}">{{card.name}}</a></li>
               {% endif %}
             {% endfor %}
           </ul>
@@ -165,7 +165,7 @@
           <ul class="list-unstyled">
             {% for card in cards %}
               {% if "Creature" in card.type %}
-                <li>{{count[card.multiverseid]}} <a href="/card/{{card.multiverseId}}">{{card.name}}</a></li>
+                <li>{{count[card.multiverseid]}} <a href="{{ url_for('card', multiverseId=card.multiverseId)}}">{{card.name}}</a></li>
               {% endif %}
             {% endfor %}
           </ul>
@@ -182,7 +182,7 @@
           <ul class="list-unstyled">
             {% for card in cards %}
               {% if "Sorcery" in card.type %}
-                <li>{{count[card.multiverseid]}} <a href="/card/{{card.multiverseId}}">{{card.name}}</a></li>
+                <li>{{count[card.multiverseid]}} <a href="{{ url_for('card', multiverseId=card.multiverseId)}}">{{card.name}}</a></li>
               {% endif %}
             {% endfor %}
           </ul>
@@ -197,7 +197,7 @@
           <ul class="list-unstyled">
             {% for card in cards %}
               {% if "Instant" in card.type %}
-                <li>{{count[card.multiverseid]}} <a href="/card/{{card.multiverseId}}">{{card.name}}</a></li>
+                <li>{{count[card.multiverseid]}} <a href="{{ url_for('card', multiverseId=card.multiverseId)}}">{{card.name}}</a></li>
               {% endif %}
             {% endfor %}
           </ul>
@@ -212,7 +212,7 @@
           <ul class="list-unstyled">
             {% for card in cards %}
               {% if "Enchantment" in card.type %}
-                <li>{{count[card.multiverseid]}} <a href="/card/{{card.multiverseId}}">{{card.name}}</a></li>
+                <li>{{count[card.multiverseid]}} <a href="{{ url_for('card', multiverseId=card.multiverseId)}}">{{card.name}}</a></li>
               {% endif %}
             {% endfor %}
           </ul>

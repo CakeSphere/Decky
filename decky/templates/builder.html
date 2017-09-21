@@ -7,7 +7,7 @@
     <h3>My Decks</h3>
     <input type="text" placeholder="Filter decks by name&hellip;">
     {% for deck in decks %}
-      <a class="deck gallery" href="/deck/{{deck.id}}" title="{{deck.name}}" style="width: 100%">
+      <a class="deck gallery" href="{{url_for('deck', id=deck.id)}}" title="{{deck.name}}" style="width: 100%">
         <div class="color-bar">
           <div class="u" style="height: 30%"><span><span class="mana small su shadow">&nbsp;</span> 30%</span></div>
           <div class="g" style="height: 30%"><span><span class="mana small sg shadow">&nbsp;</span> 30%</span></div>
@@ -47,7 +47,7 @@
           <div class="card-name">
             {{card. name}}
           </div>
-          <a href="/builder" class="btn">Add</a>
+          <a href="{{ url_for('builder')}}" class="btn">Add</a>
         </li>
       {% endfor %}
       <li class="in-deck">
@@ -57,7 +57,7 @@
         <div class="card-name">
           Spell Queller
         </div>
-        <a href="/builder" class="btn">Add</a>
+        <a href="{{ url_for('builder')}}" class="btn">Add</a>
       </li>
       {% for card in cards %}
         <li>
@@ -67,7 +67,7 @@
           <div class="card-name">
             {{card. name}}
           </div>
-          <a href="/builder" class="btn">Add</a>
+          <a href="{{ url_for('builder')}}" class="btn">Add</a>
         </li>
       {% endfor %}
     </ul>
@@ -94,12 +94,12 @@
       <textarea rows="5" name="description"></textarea>
       <h3>Cards</h3>
       <div class="builder-cards">
-        <a href="/builder" class="pull-right btn">Bulk edit</a>
+        <a href="{{ url_for('builder')}}" class="pull-right btn">Bulk edit</a>
         <div class="tabs">
-          <a href="/builder" class="btn active">Mainboard</a>
-          <a href="/builder" class="btn">Sideboard</a>
-          <a href="/builder" class="btn">Maybeboard</a>
-          <a href="/builder" class="btn">Acquireboard</a>
+          <a href="{{ url_for('builder')}}" class="btn active">Mainboard</a>
+          <a href="{{ url_for('builder')}}" class="btn">Sideboard</a>
+          <a href="{{ url_for('builder')}}" class="btn">Maybeboard</a>
+          <a href="{{ url_for('builder')}}" class="btn">Acquireboard</a>
         </div>
         <table>
           <thead>
@@ -266,12 +266,12 @@
         <input type="number" value="1" max="99" min="1">
         <!-- Name -->
         <input type="text" placeholder="Card name&hellip;" list="cardNames">
-        <a href="/builder" class="btn">Advanced Search</a>
-        <a href="/builder" class="btn">Add</a>
+        <a href="{{ url_for('builder')}}" class="btn">Advanced Search</a>
+        <a href="{{ url_for('builder')}}" class="btn">Add</a>
       </div>
       <p>
         <button class="btn primary" type="submit">Save Changes</button>
-        <a href="/builder" class="btn">Revert</a>
+        <a href="{{ url_for('builder')}}" class="btn">Revert</a>
       </p>
     </form>
   </section>
