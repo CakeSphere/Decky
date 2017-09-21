@@ -557,15 +557,15 @@ def add_deck():
     deck_name = request.form['name'].strip().title()
     deck_sideboard = "side"
     deck_tags = request.form['tags']
-    if deck_tags == "":
+    if deck_name == "":
+        error = Markup("<strong>Oops!</strong>")
+        flash(error + " Looks like your deck doesn't have a name.", 'error')
+    elif deck_tags == "":
         error = Markup("<strong>Oops!</strong>")
         flash(error + " Looks like your deck doesn't have any tags.", 'error')
     elif deck_legality == "":
         error = Markup("<strong>Oops!</strong>")
         flash(error + " Looks like your deck isn't legal in any format.", 'error')
-    elif deck_name == "":
-        error = Markup("<strong>Oops!</strong>")
-        flash(error + " Looks like your deck doesn't have a name.", 'error')
     else:
         db = get_db()
         db.execute(

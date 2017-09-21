@@ -1,6 +1,6 @@
 // CSS Animations
 
-// Color-bar demo animations*/
+// Color-bar demo animations
 
 @keyframes demo {
   from { transform: translateX(-63px); }
@@ -29,9 +29,9 @@
 }
 
 @keyframes foil {
-  0%   { background-position: 0% 0%; }
+  0%   { background-position: 0 0; }
   50%  { background-position: 100% 100%; }
-  100% { background-position: 0% 0%; }
+  100% { background-position: 0 0; }
 }
 
 // Flash notification animation

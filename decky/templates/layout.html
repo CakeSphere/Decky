@@ -4,7 +4,7 @@
     <!-- This stylesheet has to be first because of a Chrome bug -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.scss.css') }}">
     <!-- Metadata about Decky -->
-    <title>Decky  &#9670; Better living through alchemy</title>
+    <title>{% block title %}{% endblock %}{% if title %} &#9670; {% endif %}Decky &#9670; Better living through alchemy </title>
     <meta name="description" content="Decky lets users create, search, and view decks for Magic: The Gathering.">
     <meta name="author" content="Decky Team">
     <meta http-equiv="x-ua-compatible" content="ie=edge">

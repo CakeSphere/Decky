@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% set active_page = "cards" %}
+{% block title %}{{card.name}}{% endblock %}
 {% block body %}
 <div class="card-bg">
   <img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="">
