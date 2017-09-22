@@ -58,7 +58,7 @@
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     background: tint($color-background, 6%);
-    box-shadow: 0 2px 4px shade($color-background, 15%);
+    box-shadow: 0 2px 2px shade($color-background, 15%);
     left: 0;
     position: absolute;
     top: 0;
@@ -89,7 +89,7 @@
       position: absolute;
       text-align: center;
       text-decoration: none;
-      text-shadow: 0 1px 2px $color-bevel;
+      text-shadow: 0 1px 0 $color-bevel;
       top: 50%;
       width: 100%;
     }
@@ -235,8 +235,8 @@
   border: 1px solid tint($color-border-strong, 15%);
   border-radius: $border-radius;
   box-shadow: inset 0 -2px 0 $color-shadow,
-              inset 0 0 4px $color-highlight,
-              0 2px 3px $color-bevel;
+              inset 0 0 2px $color-highlight,
+              0 2px 1px $color-bevel;
   cursor: pointer;
   display: block;
   height: 630px;
@@ -264,7 +264,7 @@
   &:hover { text-shadow: none; }
   &:hover::after { opacity: 0.1; }
   .card-mana {
-    box-shadow: inset 0 2px 4px $color-shadow;
+    box-shadow: inset 0 2px 2px $color-shadow;
     color: $color-text-weak;
     background: transparentize($color-background, 0.5);
     font-size: $font-size-sub;
@@ -318,7 +318,6 @@
 
     &::before {
       bottom: 0;
-      box-shadow: inset 0 0 20px $color-shadow;
       content: '';
       display: block;
       left: 0;
@@ -339,8 +338,8 @@
         border: 1px solid tint($color-border-strong, 15%);
         border-radius: $border-radius;
         box-shadow: inset 0 -2px 0 $color-shadow,
-                    inset 0 0 4px $color-highlight,
-                    0 2px 3px $color-shadow;
+                    inset 0 0 2px $color-highlight,
+                    0 2px 1px $color-shadow;
         content: ' ';
         display: block;
         height: 200px;
@@ -360,7 +359,7 @@
         position: absolute;
         text-align: center;
         text-decoration: none;
-        text-shadow: 0 1px 2px $color-bevel;
+        text-shadow: 0 1px 0 $color-bevel;
         top: 600%;
         width: 268px;
       }
@@ -369,7 +368,7 @@
 
   .card-type {
     background: transparentize($color-background, 0.5);
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.15);
     color: $color-text-weak;
     margin: 0 -1rem;
     margin-top: -0.3rem;
@@ -393,7 +392,7 @@
   .power-toughness {
     background: transparentize($color-background, 0.5);
     bottom: 0;
-    box-shadow: inset 0 2px 4px $color-shadow;
+    box-shadow: inset 0 2px 2px $color-shadow;
     color: $color-text-weak;
     font-family: $font-family-display;
     left: 0;

@@ -2,7 +2,7 @@
 
 .top-nav {
   border-bottom: 1px solid tint($color-background, 5%);
-  box-shadow: 0 4px 8px $color-shadow;
+  box-shadow: 0 4px 2px $color-shadow;
   height: 58px;
   left: 0;
   position: fixed;
@@ -23,42 +23,6 @@
     z-index: $z-index-background; // Pushing blurry background to the "back"
   }
 
-  .btn,
-  button {
-    background: transparentize($color-text-weak, 0.98);
-    border: 0;
-    border-radius: 0;
-    box-shadow: none;
-    display: block;
-    height: 58px;
-    line-height: 58px;
-    margin-bottom: 0;
-    margin-right: -4px;
-    padding: 0 1rem;
-    position: relative;
-    text-align: center;
-    text-shadow: 0 2px 4px transparentize($color-background-shade, 0.5);
-    width: 100px;
-
-    &:hover,
-    &:active,
-    &:focus {
-      background: transparentize($color-text-weak, 0.95);
-    }
-
-    svg {
-      bottom: 20px;
-      display: inline-block;
-      fill: $color-text;
-      filter: drop-shadow(0 1px 2px transparentize($color-background-shade, 0.66));
-      height: 1rem;
-      position: relative;
-      transition: fill $transition;
-      vertical-align: bottom;
-      width: 1rem;
-    }
-  }
-
   .flash {
     animation-delay: 0.4s;
     animation-duration: 5s;
@@ -68,15 +32,15 @@
     background: $color-mtg-b;
     border-radius: 0 0 $border-radius $border-radius;
     box-shadow: inset 0 -2px 0 $color-bevel,
-                inset 0 0 4px $color-highlight,
-                0 2px 3px $color-shadow;
+                inset 0 0 2px $color-highlight,
+                0 2px 1px $color-shadow;
     color: $color-text;
     left: calc(50% - 250px - 0.25rem);
     margin: auto;
     padding: 0.5rem;
     position: absolute;
     text-align: center;
-    text-shadow: 0 1px 2px $color-shadow;
+    text-shadow: 0 1px 0 $color-shadow;
     top: 0;
     transform: translateY(-3rem);
     width: 500px;
@@ -88,7 +52,7 @@
 .left-nav {
   border-right: 1px solid tint($color-background, 5%);
   bottom: 0;
-  box-shadow: 0 4px 4px $color-shadow-dark;
+  box-shadow: 0 4px 2px $color-shadow-dark;
   left: 0;
   position: fixed;
   top: 0;
@@ -142,7 +106,7 @@
     padding: 0;
     position: relative;
     text-align: center;
-    text-shadow: 0 2px 4px transparentize($color-background-shade, 0.5);
+    text-shadow: 0 2px 2px transparentize($color-background-shade, 0.5);
     width: 100px;
 
     &::before {
@@ -167,7 +131,7 @@
     svg {
       display: block;
       fill: transparentize($color-text-weak, 0.5);
-      filter: drop-shadow(0 2px 4px transparentize($color-background-shade, 0.5));
+      filter: drop-shadow(0 2px 2px transparentize($color-background-shade, 0.5));
       margin: auto;
       margin-top: 1.5rem;
       transition: fill $transition;
@@ -239,8 +203,8 @@
       background: -webkit-gradient(linear, left top, right bottom, from($color-primary), to(adjust-hue($color-primary, -20%)));
       background: linear-gradient(to bottom right, $color-primary, adjust-hue($color-primary, -20%));
       border-radius: $border-radius-circle;
-      box-shadow: 0 2px 4px $color-shadow,
-                  inset 0 0 8px $color-bevel;
+      box-shadow: 0 2px 2px $color-shadow,
+                  inset 0 0 4px $color-bevel;
       height: 32px;
       margin: auto;
       margin-bottom: 1rem;
@@ -311,7 +275,7 @@ footer {
   // Footer with some legal info and credits
   background: tint($color-background, 2.5%);
   border-top: 1px solid tint($color-background, 5%);
-  box-shadow: 0 -2px 4px shade($color-background, 5%);
+  box-shadow: 0 -2px 2px shade($color-background, 5%);
   color: rgba($color-text, 0.75);
   margin-top: 5.5rem;
   padding: 3rem 0;

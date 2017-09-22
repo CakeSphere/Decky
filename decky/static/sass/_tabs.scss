@@ -6,8 +6,8 @@
   .btn.active {
     background: tint($color-background, 10%);
     box-shadow: inset 0 -2px 0 $color-shadow,
-                inset 0 0 4px $color-highlight,
-                0 2px 3px $color-shadow;
+                inset 0 0 2px $color-highlight,
+                0 2px 1px $color-shadow;
     color: $color-text;
   }
 }

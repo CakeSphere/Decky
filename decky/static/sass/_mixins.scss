@@ -49,7 +49,6 @@
 
 @mixin color-bar($color) {
   background: shade($color, 20%);
-  box-shadow: inset 0 0 5px darken($color, 5%);
   color: $color;
 }
 
@@ -57,9 +56,6 @@
 // This should be deprecated soon by text-decoration-skip
 
 @mixin underline($color-text, $color-background) {
-  background: -webkit-linear-gradient($color-background, $color-background),
-              -webkit-linear-gradient($color-background, $color-background),
-              -webkit-linear-gradient($color-text, $color-text);
   background: linear-gradient($color-background, $color-background),
               linear-gradient($color-background, $color-background),
               linear-gradient($color-text, $color-text);

@@ -14,7 +14,7 @@ table {
 
   tbody tr {
     &:first-child {
-      box-shadow: inset 0 2px 4px $color-shadow;
+      box-shadow: inset 0 2px 2px $color-shadow;
     }
 
     &:nth-child(even) {
@@ -54,7 +54,7 @@ table {
     font-weight: normal;
     position: relative;
     text-align: left;
-    text-shadow: 0 1px 3px $color-shadow;
+    text-shadow: 0 1px 0 $color-shadow;
 
     &:hover {
       background: tint($color-background-tint, 10%);
@@ -71,7 +71,7 @@ table {
       font-size: 0.5rem;
       position: absolute;
       right: 0.6rem;
-      text-shadow: 0 1px 3px $color-shadow;
+      text-shadow: 0 1px 0 $color-shadow;
       top: 0.6rem;
     }
 

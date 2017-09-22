@@ -9,7 +9,7 @@ textarea {
   background: tint($color-background, 2%);
   border: 1px solid  $color-bevel;
   border-radius: $border-radius;
-  box-shadow: inset 0 2px 2px $color-bevel;
+  box-shadow: inset 0 2px 0 $color-bevel;
   color: shade($color-text-weak, 15%);
   display: inline-block;
   font-family: $font-family-text;
@@ -82,7 +82,7 @@ select.btn {
   background: tint($color-background, 4%);
   border: 1px solid shade($color-border, 75%);
   border-radius: $border-radius;
-  box-shadow: inset 0 1px 1px $color-bevel;
+  box-shadow: inset 0 1px 0 $color-bevel;
   cursor: default;
   display: inline-block;
   margin-right: -4px;
