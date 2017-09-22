@@ -30,6 +30,9 @@ body {
   font-variant-ligatures: discretionary-ligatures;
 }
 
+.lead {
+  font-size: $font-size-lead;
+}
 
 aside {
   // Sidebars for search filters or card/deck info

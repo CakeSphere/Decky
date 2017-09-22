@@ -6,6 +6,7 @@ from flask import Flask, request, session, g, redirect, url_for, abort, render_t
 from sassutils.wsgi import SassMiddleware
 from datetime import datetime
 from math import ceil
+from random import randint
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -590,4 +591,5 @@ def index():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html'), 404
+    version = randint(0,2)
+    return render_template('404.html', version=version), 404

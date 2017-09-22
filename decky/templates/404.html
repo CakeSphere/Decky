@@ -1,7 +1,46 @@
 {% extends "layout.html" %}
 {% block title %}Page Not Found{% endblock %}
 {% block body %}
-  <h1>Page Not Found</h1>
-  <p>What you were looking for is just not there.
-  <p><a href="{{ url_for('index') }}">go somewhere nice</a>
+  {% if version == 0 %}
+  <div class="card-bg">
+    <img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=370651&type=card" alt="">
+  </div>
+  <div class="container">
+    <aside></aside>
+    <section>
+      <img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=370651&type=card" alt="Scroll Thief" class="card-img">
+      <h1>This page is missing&hellip;</h1>
+      <p class="lead">Perhaps a thief has stolen it. Perhaps it never existed at all.</p>
+      <p class="lead"><a href="{{ url_for('index') }}">Maybe we have something else that will interest you.</a></p>
+    </section>
+  </div>
+  {% endif %}
+  {% if version == 1 %}
+  <div class="card-bg">
+    <img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=198382&type=card" alt="">
+  </div>
+  <div class="container">
+    <aside></aside>
+    <section>
+      <img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=198382&type=card" alt="Scroll Thief" class="card-img">
+      <h1>This page is missing&hellip;</h1>
+      <p class="lead">Perhaps some rats have been nibbling at the pages. Perhaps the page never existed at all.</p>
+      <p class="lead"><a href="{{ url_for('index') }}">Maybe we have something else that will interest you.</a></p>
+    </section>
+  </div>
+  {% endif %}
+  {% if version == 2 %}
+  <div class="card-bg">
+    <img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=413670&type=card" alt="">
+  </div>
+  <div class="container">
+    <aside></aside>
+    <section>
+      <img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=413670&type=card" alt="Scroll Thief" class="card-img">
+      <h1>This page is missing&hellip;</h1>
+      <p class="lead">Perhaps some looters have ransacked the place. Perhaps the page never existed at all.</p>
+      <p class="lead"><a href="{{ url_for('index') }}">Maybe we have something else that will interest you.</a></p>
+    </section>
+  </div>
+  {% endif %}
 {% endblock %}
