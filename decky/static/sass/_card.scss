@@ -246,6 +246,10 @@
   transition: none;
   width: calc(20% - 2.47rem - 12px);
 
+  animation-name: decks;
+  animation-duration: 0.2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: backwards;
   &::after {
     background: linear-gradient(to bottom, transparent, $color-primary);
     border-radius: $border-radius;

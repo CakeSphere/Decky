@@ -368,7 +368,7 @@ def cards(page):
         'SELECT COUNT(*) FROM cards WHERE multiverseid != ""')
     count = cur_count.fetchone()[0]
     cur_cards = db.execute(
-        'SELECT * FROM cards WHERE multiverseid != "" AND releaseDate == "" ORDER BY multiverseid DESC LIMIT '
+        'SELECT * FROM cards WHERE multiverseid != "" AND releaseDate == "" AND cmc != "" AND colorIdentity like "B, G" ORDER BY cmc DESC LIMIT '
         + str(PER_PAGE) + ' offset ' + str(PER_PAGE * page - PER_PAGE))
     cur_sets = db.execute(
         'SELECT * FROM sets ORDER BY releaseDate DESC LIMIT 5')
@@ -385,6 +385,7 @@ def cards(page):
     card_text = {}
     for card in cards:
         text = card["text"]
+        text = text.replace('/', '')
         # Italicize ability words
         text = re.compile(r'(((' + '|'.join(ABILITY_WORDS) + ')\s*?)+)',
                           re.I).sub(r'<em>\1</em>', text)
@@ -435,6 +436,7 @@ def card(multiverseId):
     card_mana = card_mana.replace('}', '')
     card_mana = card_mana.replace('/', '')
     card_text = card["text"]
+    card_text = card_text.replace('/', '')
     # Italicize ability words
     card_text = re.compile(r'(((' + '|'.join(ABILITY_WORDS) + ')\s*?)+)',
                            re.I).sub(r'<em>\1</em>', card_text)

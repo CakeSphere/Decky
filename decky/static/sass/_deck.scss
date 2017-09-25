@@ -113,6 +113,10 @@
 }
 
 .deck.gallery {
+  animation-name: decks;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: backwards;
   background: tint($color-background, 3%);
   border: 1px solid tint($color-border-strong, 15%);
   border-radius: $border-radius;
