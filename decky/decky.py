@@ -385,7 +385,6 @@ def cards(page):
     card_text = {}
     for card in cards:
         text = card["text"]
-        text = text.replace('/', '')
         # Italicize ability words
         text = re.compile(r'(((' + '|'.join(ABILITY_WORDS) + ')\s*?)+)',
                           re.I).sub(r'<em>\1</em>', text)
@@ -399,9 +398,20 @@ def cards(page):
         # Convert mana symbols to styled span elements
         text = text.replace('{', '<span class="mana small shadow s')
         text = text.replace('}', '">&nbsp;</span>')
+        text = text.replace('sB/G', 'sbg')
         # Text on cards in parentheses is always italicized
         text = text.replace('(', '<em class="card-explanation">(')
         text = text.replace(')', ')</em>')
+        text = text.replace('sW/U', 'swu')
+        text = text.replace('sW/B', 'swb')
+        text = text.replace('sU/B', 'sub')
+        text = text.replace('sU/R', 'sur')
+        text = text.replace('sB/R', 'sbr')
+        text = text.replace('sB/G', 'sbg')
+        text = text.replace('sR/W', 'srw')
+        text = text.replace('sR/G', 'srg')
+        text = text.replace('sG/W', 'sgw')
+        text = text.replace('sG/U', 'sgu')
         # Convert new lines to html line breaks
         text = Markup('<br>'.join(text.split('\n')))
         card_text[card["id"]] = text
@@ -436,7 +446,6 @@ def card(multiverseId):
     card_mana = card_mana.replace('}', '')
     card_mana = card_mana.replace('/', '')
     card_text = card["text"]
-    card_text = card_text.replace('/', '')
     # Italicize ability words
     card_text = re.compile(r'(((' + '|'.join(ABILITY_WORDS) + ')\s*?)+)',
                            re.I).sub(r'<em>\1</em>', card_text)
@@ -451,6 +460,16 @@ def card(multiverseId):
     # Text on cards in parentheses is always italicized
     card_text = card_text.replace('(', '<em class="card-explanation">(')
     card_text = card_text.replace(')', ')</em>')
+    card_text = card_text.replace('sW/U', 'swu')
+    card_text = card_text.replace('sW/B', 'swb')
+    card_text = card_text.replace('sU/B', 'sub')
+    card_text = card_text.replace('sU/R', 'sur')
+    card_text = card_text.replace('sB/R', 'sbr')
+    card_text = card_text.replace('sB/G', 'sbg')
+    card_text = card_text.replace('sR/W', 'srw')
+    card_text = card_text.replace('sR/G', 'srg')
+    card_text = card_text.replace('sG/W', 'sgw')
+    card_text = card_text.replace('sG/U', 'sgu')
     # Convert new lines to html line breaks
     card_text = Markup('<br>'.join(card_text.split('\n')))
     card_flavor = card['flavor']
