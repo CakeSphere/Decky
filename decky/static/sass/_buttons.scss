@@ -26,6 +26,12 @@ button {
   vertical-align: middle;
   white-space: nowrap;
 
+  &.btn-block {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+
   &:hover,
   &:focus {
     background: tint($color-background, 10%);
@@ -96,10 +102,11 @@ button {
   // Little x to remove filters
   .cancel {
     fill: $color-text-weak;
+    float: right;
     height: 10px;
     margin-left: 0.25rem;
     position: relative;
-    top: 2px;
+    top: 7px;
     width: 10px;
   }
   // All of our button styles, using the btn mixin (_mixins.scss)
@@ -121,7 +128,6 @@ button {
     &::after {
       background-color: transparentize($color-text-weak, 0.9);
       bottom: 0;
-      box-shadow: 2px -2px 0 $color-shadow;
       content: '';
       height: 50px;
       left: -31px;
@@ -143,15 +149,14 @@ button {
     &::after {
       background-color: transparentize($color-text-weak, 0.9);
       bottom: 0;
-      box-shadow: 2px -2px 0 $color-shadow;
       content: '';
       height: 50px;
       left: -31px;
       position: absolute;
       right: 0;
       top: -18px;
-      transform: rotate(45deg);
-      transition: transform $transition;
+      transform: translateX(0) rotate(45deg);
+      transition: transform $transition * 3;
       width: 50px;
     }
   }
