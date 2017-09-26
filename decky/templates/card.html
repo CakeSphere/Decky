@@ -6,7 +6,7 @@
   <img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="">
 </div>
 <div class="container card">
-  <aside>
+  <aside class="sidebar">
     <h3>Color Identity</h3>
     {% if card.colorIdentity|length > 0 %}
       {% for color in card.colorIdentity.split(', ') %}
@@ -72,7 +72,7 @@
       </span>
     {% endif %}
   </aside>
-  <section class="card-details">
+  <section class="content card-details">
     <div class="card-container">
       {% if not flip_card_a and not flip_card_b %}
         <img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">

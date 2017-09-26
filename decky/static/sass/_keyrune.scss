@@ -1,5 +1,4 @@
-/**
- * Global */
+// Global
 @font-face {
   font-family: 'Keyrune';
   src: url('../fonts/keyrune.eot?v=3.1.4');
@@ -7,52 +6,58 @@
   font-weight: normal;
   font-style: normal;
 }
+
 .ss {
   display: inline-block;
   font: normal normal normal 14px/1 Keyrune;
   font-size: inherit;
-  line-height: 1em;
-  text-rendering: auto;
-  -webkit-transform: translate(0, 0);
-          transform: translate(0, 0);
-  speak: none;
-  text-transform: none;
-  vertical-align: middle;
-  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1em;
+  speak: none;
+  text-rendering: auto;
+  text-transform: none;
+  transform: translate(0, 0);
+  vertical-align: middle;
 }
-.ss:before {
-  content: "\e684";
+
+.ss::before {
+  content: '\e684';
 }
-/**
- * Larger sizes */
+// Larger sizes
 .ss-2x {
   font-size: 2em;
 }
+
 .ss-3x {
   font-size: 3em;
 }
+
 .ss-4x {
   font-size: 4em;
 }
+
 .ss-5x {
   font-size: 5em;
 }
+
 .ss-6x {
   font-size: 6em;
 }
-/**
- * Rarity colors */
+
+// Rarity colors
 .ss-common {
-  color: #1A1718;
+  color: #1a1718;
 }
+
 .ss-common.ss-grad {
-  /* Chrome,Safari4+ */
+  // Chrome,Safari4+
   background: -webkit-linear-gradient(left, #302b2c 1%, #474040 50%, #302b2c 100%);
   -webkit-text-stroke: 0.03em #000;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 .ss-common.ss-grad.ss-no-border {
   -webkit-text-stroke: 0;
 }

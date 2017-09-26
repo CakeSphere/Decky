@@ -3,7 +3,7 @@
 {% block title %}Decks{% endblock %}
 {% block body %}
   <div class="container">
-    <aside class="search-filters">
+    <aside class="sidebar search-filters">
       <h3>Deck Name</h3>
       <input class="block" type="text" placeholder="Search by deck name&hellip;">
       <h3>Color</h3>
@@ -73,7 +73,7 @@
         <option>Most Controversial</option>
       </select>
     </aside>
-    <section>
+    <section class="content">
       <div class="row">
         {% for deck in decks %}
         <a class="deck gallery" href="{{url_for('deck', id=deck.id)}}" title="{{deck.name}}">

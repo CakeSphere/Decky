@@ -3,7 +3,7 @@
 {% block title %}Cards{% endblock %}
 {% block body %}
   <div class="container">
-    <aside class="search-filters">
+    <aside class="sidebar search-filters">
       <h3>Card Name</h3>
       <input class="block" type="text" placeholder="Search by card name&hellip;">
       <h3>Color</h3>
@@ -111,7 +111,7 @@
         <option>Most Controversial</option>
       </select>
     </aside>
-    <section>
+    <section class="content">
       <div class="row">
         {% for card in cards %}
         <a class="card" href="{{ url_for('card', multiverseId=card.multiverseId)}}" title="{{card.name}}">

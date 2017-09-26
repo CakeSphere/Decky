@@ -43,12 +43,13 @@
   to   { transform: translateY(-5rem); }
 }
 
-@keyframes decks {
-  from { transform: translateY(10px); opacity: 0; }
-  to   { transform: translateY(0); opacity: 1; }
+@keyframes load-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @for $i from 1 to 11 {
-  .deck.gallery:nth-child(#{$i}) { animation-delay: $i * 0.05s; }
-  .row .card:nth-child(#{$i}) { animation-delay: $i * 0.05s; }
+  .deck.gallery:nth-child(#{$i}),
+  .row .card:nth-child(#{$i}),
+  .builder .my-cards li:nth-child(#{$i}) { animation-delay: $i * 0.025s; }
 }

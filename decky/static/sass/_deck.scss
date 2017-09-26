@@ -61,7 +61,7 @@
   span {
     // Hacky span for the text in the color-bar so that we don't animate
     // anything but opacity and transform
-    color: $color-text-weak;
+    color: $color-text;
     opacity: 0;
     transition: opacity $transition $transition / 2;
   }
@@ -113,10 +113,7 @@
 }
 
 .deck.gallery {
-  animation-name: decks;
-  animation-duration: 0.3s;
-  animation-iteration-count: 1;
-  animation-fill-mode: backwards;
+  animation: load-in 0.2s 1 backwards;
   background: tint($color-background, 3%);
   border: 1px solid tint($color-border-strong, 15%);
   border-radius: $border-radius;
@@ -233,7 +230,7 @@
 }
 
 // Deck tiles in the builder
-aside .deck.gallery {
+.sidebar .deck.gallery {
   margin: 0;
 
   .deck-info {
@@ -254,9 +251,7 @@ aside .deck.gallery {
   z-index: $z-index-baseline; // Ensure that color-bar gets border-radius of deck-header
 
   .color-bar {
-    @include demo(demo);
     height: 162px;
-    span { @include demo(demo-fade); }
     &:hover {
       + hgroup,
       ~ .deck-img { transform: translateX(65px); }
@@ -264,7 +259,6 @@ aside .deck.gallery {
   }
 
   .deck-img {
-    @include demo(demo-slide);
     height: 370px;
     left: -19px;
     -webkit-mask-image: linear-gradient(to right, $color-black 0%, transparent 94%, transparent 100%);
@@ -278,7 +272,6 @@ aside .deck.gallery {
   }
 
   hgroup {
-    @include demo(demo-slide);
     bottom: 1rem;
     left: 1rem;
     position: absolute;
@@ -309,6 +302,21 @@ aside .deck.gallery {
       margin-bottom: 1rem;
       :last-child { margin-right: 0; }
     }
+  }
+}
+
+.demo .deck-header {
+  .color-bar {
+    @include demo(demo);
+    span { @include demo(demo-fade); }
+  }
+
+  .deck-img {
+    @include demo(demo-slide);
+  }
+  
+  hgroup {
+    @include demo(demo-slide);
   }
 }
 
