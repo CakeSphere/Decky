@@ -327,7 +327,7 @@ def show_entries(setId):
 
 @app.route('/', defaults={'page': 1})
 @app.route('/decks/', defaults={'page': 1})
-@app.route('/decks/page/<int:page>')
+@app.route('/decks/<int:page>')
 def decks(page):
     PER_PAGE = 36
     db = get_db()
@@ -361,7 +361,7 @@ def decks(page):
 
 
 @app.route('/cards/', defaults={'page': 1})
-@app.route('/cards/page/<int:page>')
+@app.route('/cards/<int:page>')
 def cards(page):
     db = get_db()
     cur_count = db.execute(
