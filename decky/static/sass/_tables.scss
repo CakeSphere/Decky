@@ -46,6 +46,10 @@ table {
     &:last-child {
       border-right: 0;
     }
+
+    label {
+      bottom: 11px;
+    }
   }
 
   th {

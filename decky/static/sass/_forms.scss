@@ -122,13 +122,13 @@ input[type="radio"] {
       color: $color-text;
 
       &::before {
-        background: tint($color-background, 5%);
+        background: tint($color-background, 7.5%);
       }
     }
 
     // Checkbox background
     &::before {
-      background: tint($color-background, 2%);
+      background: tint($color-background, 5%);
       border: 1px solid $color-bevel;
       border-radius: $border-radius;
       box-shadow: inset 0 2px 0 $color-bevel;
