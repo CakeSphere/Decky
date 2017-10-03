@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+{% set active_page = "settings" %}
+{% block title %}Settings{% endblock %}
+{% block body %}
+<style>
+  h2 {
+    margin-top: 3rem;
+  }
+  .help {
+    margin-left: 35px;
+    color: #999;
+    font-style: italic;
+  }
+  .container .container {
+    max-width: 900px;
+  }
+</style>
+<div class="container">
+  <aside class="sidebar">
+    &nbsp;
+  </aside>
+  <section class="content">
+    <h1>
+      <svg style="bottom: -9px" class="icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100 125" ><path  d="M89,19H48c-1.104,0-2,0.896-2,2s0.896,2,2,2h41c1.104,0,2-0.896,2-2S90.104,19,89,19z"/><path d="M11,23h9.202c0.929,4.559,4.969,8,9.798,8c5.514,0,10-4.486,10-10s-4.486-10-10-10  c-4.829,0-8.869,3.441-9.798,8H11c-1.104,0-2,0.896-2,2S9.896,23,11,23z M30,15c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6  S26.691,15,30,15z"/><path d="M89,48H77c-1.104,0-2,0.896-2,2s0.896,2,2,2h12c1.104,0,2-0.896,2-2S90.104,48,89,48z"/><path d="M11,52h39.202c0.929,4.559,4.969,8,9.798,8c5.514,0,10-4.486,10-10s-4.486-10-10-10  c-4.829,0-8.869,3.441-9.798,8H11c-1.104,0-2,0.896-2,2S9.896,52,11,52z M60,44c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6  S56.691,44,60,44z"/><path d="M89,74H56c-1.104,0-2,0.896-2,2s0.896,2,2,2h33c1.104,0,2-0.896,2-2S90.104,74,89,74z"/><path d="M11,78h18.202c0.929,4.559,4.969,8,9.798,8c5.514,0,10-4.486,10-10s-4.486-10-10-10  c-4.829,0-8.869,3.441-9.798,8H11c-1.104,0-2,0.896-2,2S9.896,78,11,78z M39,70c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6  S35.691,70,39,70z"/></svg>
+      Settings
+    </h1>
+    <p class="lead">Take control of your experience and customize Decky to your own needs.
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam a eveniet iste maxime enim nulla aliquid necessitatibus aliquam! Quia, quae! Illo fugiat inventore cupiditate. Ad dolore aspernatur odit veritatis, consequuntur.</p>
+    <div class="container">
+      <div class="column">
+        <h2><em>Privacy &amp; Content Settings</em></h2>
+        <p>
+          <input type="checkbox" id="private">
+          <label for="private">Make my profile private</label>
+          <p class="help">With this option selected other users will be unable
+          to view your profile.</p>
+        </p>
+        <p>
+          <input type="checkbox" id="decks-private">
+          <label for="decks-private">Make my decks private</label>
+          <p class="help">With this option selected other users will be unable
+          to see the decks you build.</p>
+        </p>
+        <p>
+          <input type="checkbox" id="censor">
+          <label for="censor">Censor graphic language</label>
+          <p class="help">Certain English words will be replaced with asterisks 
+            throughout Decky. The list of censored words is maintained 
+            <a href="">here</a>.
+          </p>
+        </p>
+      </div>
+      <div class="column">
+        <h2><em>Accessibility Settings</em></h2>
+        <p>
+          <input type="checkbox" id="low">
+          <label for="low">Low-graphics mode</label>
+          <p class="help">Disable effects such as gradients, shadows, and animations
+          throughout Decky to improve performance and limit lag.</p>
+        </p>
+        <p>
+          <input type="checkbox" id="contrast">
+          <label for="contrast">High-contrast mode</label>
+          <p class="help">Increase the contrast between text colors and background
+          colors throughout Decky to improve clarity in certain situations.</p>
+        </p>
+        <p>
+          <input type="checkbox" id="colorblind">
+          <label for="colorblind">Colorblind mode</label>
+          <p class="help">Limit Decky’s reliance on color to communicate
+          meaning and modify some colors to be more easily differentiated. </p>
+        </p>
+      </div>
+    </div>
+    
+    <h2><em>Deck Brew Settings</em></h2>
+    <p>
+      <input type="checkbox" id="card-limit">
+      <label for="card-limit">Limit card search to cards in my Grimoire</label>
+      <p class="help">Only cards that you have added to your Grimoire will be 
+      available when brewing a deck.</p>
+    </p>
+    </p>
+    <h2><em>User Blocklist</em></h2>
+    <div class="container" style="max-width: 900px">
+      <div class="column">
+        <input type="radio" id="block-comments" name="block">
+        <label for="block-comments">Hide comments from these users</label>
+      </div>
+      <div class="column">
+        <input type="radio" id="block-all" name="block">
+        <label for="block-all">Hide everything from these users</label>
+      </div>
+    </div>
+    <p>
+      <textarea name="" id="" cols="30" rows="10" style="width: 900px"> </textarea>
+    </p>
+    <a href="" class="btn primary">
+      Save my preferences
+    </a>
+    <a href="" class="btn">
+      Restore default preferences
+    </a>
+  </section>
+</div>
+{% endblock %}
