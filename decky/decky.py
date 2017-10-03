@@ -611,6 +611,11 @@ def add_deck():
 def index():
     return render_template('login.html')
 
+@app.route('/settings')
+def settings():
+    return render_template('settings.html')
+
+
 
 @app.errorhandler(404)
 def page_not_found(e):

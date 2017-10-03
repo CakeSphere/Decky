@@ -54,6 +54,10 @@ body {
   display: inline-block;
   vertical-align: top;
   width: calc(100% - 356px - 2rem);
+  > p {
+    max-width: 900px;
+  }
+  h1 { margin-top: 0; }
 }
 
 h1,
@@ -144,6 +148,13 @@ label {
 .text-left   { text-align: left; }
 .text-center { text-align: center; }
 .text-right  { text-align: right; }
+
+ul {
+  list-style-type: '◆ ';
+   ul {
+    list-style-type: '◇ ';
+  }
+}
 
 // Remove all styling (bullets or numbers) from a ul or ol element
 .list-unstyled {

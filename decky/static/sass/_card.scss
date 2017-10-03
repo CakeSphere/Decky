@@ -305,7 +305,7 @@
 
   .card-img {
     background: transparentize($color-background, 0.5);
-    border-radius: $border-radius 0 0 $border-radius;
+    border-radius: 0;
     box-shadow: none;
     display: inline-block;
     height: 200px;
@@ -314,7 +314,6 @@
     position: relative;
     transition: transform $transition;
     width: calc(100% + 2rem);
-    will-change: transform;
 
     &::before {
       bottom: 0;
