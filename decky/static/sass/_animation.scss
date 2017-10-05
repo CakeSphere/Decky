@@ -49,7 +49,6 @@
 }
 
 @for $i from 1 to 11 {
-  .deck.gallery:nth-child(#{$i}),
-  .row .card:nth-child(#{$i}),
-  .builder .my-cards li:nth-child(#{$i}) { animation-delay: $i * 0.025s; }
+  .row .deck.gallery:nth-child(#{$i}),
+  .row .card:nth-child(#{$i}) { animation-delay: $i * 0.025s; }
 }

@@ -17,7 +17,7 @@
 
   &:active {
     border-color: $color-shade;
-    color: $color-tint;
+    color: shade($color-text, 15%);
   }
 
   &:hover {

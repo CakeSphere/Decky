@@ -365,7 +365,8 @@ def decks(page):
 def cards(page):
     db = get_db()
     cur_count = db.execute(
-        'SELECT COUNT(*) FROM cards WHERE multiverseid != "" AND releaseDate ==""')
+        'SELECT COUNT(*) FROM cards WHERE multiverseid != "" AND releaseDate ==""'
+    )
     count = cur_count.fetchone()[0]
     cur_cards = db.execute(
         'SELECT * FROM cards WHERE multiverseid != "" AND releaseDate == "" ORDER BY multiverseId DESC LIMIT '
@@ -522,8 +523,6 @@ def deck(id):
     deck_description = deck["description"]
     # Convert new lines to html line breaks
     deck_description = Markup('</p><p>'.join(deck_description.split('\n')))
-    print deck_legality
-    print deck_tags
     return render_template(
         'deck.html',
         deck=deck,
@@ -589,7 +588,8 @@ def add_deck():
         flash(error + " Looks like your deck doesn't have any tags.", 'error')
     elif deck_legality == "":
         error = Markup("<strong>Oops!</strong>")
-        flash(error + " Looks like your deck isn't legal in any format.", 'error')
+        flash(error + " Looks like your deck isn't legal in any format.",
+              'error')
     else:
         db = get_db()
         db.execute(
@@ -611,13 +611,13 @@ def add_deck():
 def index():
     return render_template('login.html')
 
+
 @app.route('/settings')
 def settings():
     return render_template('settings.html')
 
 
-
 @app.errorhandler(404)
 def page_not_found(e):
-    version = randint(0,2)
+    version = randint(0, 2)
     return render_template('404.html', version=version), 404

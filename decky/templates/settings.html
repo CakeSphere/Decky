@@ -3,11 +3,8 @@
 {% block title %}Settings{% endblock %}
 {% block body %}
 <style>
-  h2 {
-    margin-top: 3rem;
-  }
   .help {
-    margin-left: 35px;
+    margin-left: 33px;
     color: #999;
     font-style: italic;
   }
@@ -72,24 +69,36 @@
         </p>
       </div>
     </div>
-    
-    <h2><em>Deck Brew Settings</em></h2>
-    <p>
-      <input type="checkbox" id="card-limit">
-      <label for="card-limit">Limit card search to cards in my Grimoire</label>
-      <p class="help">Only cards that you have added to your Grimoire will be 
-      available when brewing a deck.</p>
-    </p>
-    </p>
+    <div class="container">
+      <div class="column">
+        <h2><em>Deck Brew Settings</em></h2>
+        <p>
+          <input type="checkbox" id="card-limit">
+          <label for="card-limit">Limit card search to cards in my Grimoire</label>
+          <p class="help">Only cards that you have added to your Grimoire will be 
+          available when brewing a deck.</p>
+        </p>
+      </div>
+      <div class="column">
+        <h2><em>Deck Search Settings</em></h2>
+        <p>
+          <input type="checkbox" id="deck-limit">
+          <label for="deck-limit">Limit deck search to legal decks</label>
+          <p class="help">Only decks that are legal in their specified format
+          will be visible on the Decks page and in the list of decks on a Card
+          page.</p>
+        </p>
+      </div>
+    </div>
     <h2><em>User Blocklist</em></h2>
     <div class="container" style="max-width: 900px">
       <div class="column">
-        <input type="radio" id="block-comments" name="block">
+        <input type="radio" id="block-comments" name="block" checked>
         <label for="block-comments">Hide comments from these users</label>
       </div>
       <div class="column">
         <input type="radio" id="block-all" name="block">
-        <label for="block-all">Hide everything from these users</label>
+        <label for="block-all">Hide all content from these users</label>
       </div>
     </div>
     <p>

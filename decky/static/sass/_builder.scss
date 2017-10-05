@@ -4,7 +4,6 @@
   input { width: calc(100% - 1.4rem); }
   .in-deck { opacity: 0.5; }
   .my-cards {
-    li { animation: 0.2s ease-in-out 1 backwards load-in; }
     margin-top: 0;
 
     .card-name,

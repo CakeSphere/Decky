@@ -113,7 +113,6 @@
 }
 
 .deck.gallery {
-  animation: load-in 0.2s 1 backwards;
   background: tint($color-background, 3%);
   border: 1px solid tint($color-border-strong, 15%);
   border-radius: $border-radius;
@@ -227,6 +226,10 @@
       }
     }
   }
+}
+
+.row .deck.gallery {
+  animation: load-in 0.2s 1 backwards;
 }
 
 // Deck tiles in the builder
