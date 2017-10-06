@@ -52,3 +52,12 @@
   .row .deck.gallery:nth-child(#{$i}),
   .row .card:nth-child(#{$i}) { animation-delay: $i * 0.025s; }
 }
+
+
+@keyframes loader {
+  from { transform: rotate(0deg);   }
+  30%  { transform: rotate(-30deg); }
+  70%  { transform: rotate(390deg); }
+  90%  { transform: rotate(360deg); }
+  to   { transform: rotate(360deg); }
+}

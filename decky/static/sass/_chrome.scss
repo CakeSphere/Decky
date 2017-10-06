@@ -161,7 +161,7 @@
   .active a {
     background: tint($color-background, 2.5%);
     border-left: 2px solid transparentize($color-primary, 0.25);
-    width: 98px; // Default width minus the border-right width
+    width: 98px; // Default width minus the border-left width
 
     &::before {
       background: transparentize($color-text-weak, 0.9);

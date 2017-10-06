@@ -106,10 +106,11 @@
         <a href="/card/{{card.multiverseId+1}}" class="btn">Next Card</a></em>
       </p>
     </div>
+    {% if decks %}
     <div class="most-liked">
       <h3>Most Liked Decks Including <em>{{card.name}}</em></h3>
       <div class="row">
-        {% for deck in card.types %}
+        {% for deck in decks %}
           <a href="{{ url_for('deck', id=1)}}" class="deck gallery" title="{{deck.name}}">
             <div class="color-bar">
               <div class="u" style="height: 30%"><span><span class="mana small su shadow">&nbsp;</span> 30%</span></div>
@@ -117,12 +118,12 @@
               <div class="b" style="height: 40%"><span><span class="mana small sb shadow">&nbsp;</span> 40%</span></div>
             </div>
             <div class="deck-img">
-              <img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
+              <img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{deck.image}}&type=card" alt="{{card.name}}">
             </div>
             <div class="deck-info">
-              <div class="title">Deck Name</div>
+              <div class="title">{{deck.name}}</div>
               <div class="tags">
-                <span class="author">senordiablo</span>
+                <span class="author">{{deck.author}}</span>
                 <span class="tag">modern</span>
                 <span class="tag">competitive</span>
                 <span class="tag">spirits</span>
@@ -141,6 +142,7 @@
           </a>
         {% endfor %}
       </div>
+      {% endif %}
     </div>
   </section>
 </div>
