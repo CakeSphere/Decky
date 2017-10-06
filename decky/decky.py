@@ -434,8 +434,17 @@ def card(multiverseId):
     card = cur.fetchone()
     if not card:
         abort(404)
-    cur_decks = db.execute('SELECT * FROM decksToCards INNER JOIN decks ON deckId=decks.id WHERE cardId=(?) GROUP BY name', (card['multiverseId'],))
+    cur_decks = db.execute('SELECT * FROM decksToCards INNER JOIN decks ON deckId=decks.id WHERE cardId=(?) ORDER BY likes DESC', (card['multiverseId'],))
     decks = cur_decks.fetchall()
+    legality = {}
+    tags = {}
+    for deck in decks:
+        deck_tags = deck["tags"]
+        deck_tags = deck_tags.split(', ')
+        tags[deck["id"]] = deck_tags
+        deck_legality = deck["legality"]
+        deck_legality = deck_legality.split(', ')
+        legality[deck["id"]] = deck_legality
     card_number = card['number']
     flip_card_a = False
     flip_card_b = False
@@ -485,7 +494,9 @@ def card(multiverseId):
         card_flavor=card_flavor,
         flip_card_a=flip_card_a,
         flip_card_b=flip_card_b,
-        decks=decks)
+        decks=decks,
+        legality=legality,
+        tags=tags)
 
 
 @app.route('/deck/<id>')
