@@ -434,7 +434,7 @@ def card(multiverseId):
     card = cur.fetchone()
     if not card:
         abort(404)
-    cur_decks = db.execute('SELECT * FROM decksToCards INNER JOIN decks ON deckId=decks.id WHERE cardId=(?) ORDER BY likes DESC', (card['multiverseId'],))
+    cur_decks = db.execute('SELECT DISTINCT decks.id, name, tags, legality, image, likes FROM decksToCards INNER JOIN decks ON deckId=decks.id WHERE cardId=(?) ORDER BY likes DESC', (card['multiverseId'],))
     decks = cur_decks.fetchall()
     legality = {}
     tags = {}
