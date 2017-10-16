@@ -2,16 +2,6 @@
 {% set active_page = "settings" %}
 {% block title %}Settings{% endblock %}
 {% block body %}
-<style>
-  .help {
-    margin-left: 33px;
-    color: #999;
-    font-style: italic;
-  }
-  .container .container {
-    max-width: 900px;
-  }
-</style>
 <div class="container">
   <aside class="sidebar">
     &nbsp;
@@ -23,19 +13,19 @@
     </h1>
     <p class="lead">Take control of your experience and customize Decky to your own needs.
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam a eveniet iste maxime enim nulla aliquid necessitatibus aliquam! Quia, quae! Illo fugiat inventore cupiditate. Ad dolore aspernatur odit veritatis, consequuntur.</p>
-    <div class="container">
+    <div class="container settings">
       <div class="column">
         <h2><em>Privacy &amp; Content Settings</em></h2>
         <p>
           <input type="checkbox" id="private">
           <label for="private">Make my profile private</label>
-          <p class="help">With this option selected other users will be unable
+          <p class="help">Other users will be unable
           to view your profile.</p>
         </p>
         <p>
           <input type="checkbox" id="decks-private">
           <label for="decks-private">Make my decks private</label>
-          <p class="help">With this option selected other users will be unable
+          <p class="help">Other users will be unable
           to see the decks you build.</p>
         </p>
         <p>
@@ -75,7 +65,7 @@
         </p>
       </div>
     </div>
-    <div class="container">
+    <div class="container settings">
       <div class="column">
         <h2><em>Deck Brew Settings</em></h2>
         <p>
@@ -97,7 +87,7 @@
       </div>
     </div>
     <h2><em>User Blocklist</em></h2>
-    <div class="container" style="max-width: 900px">
+    <div class="container settings">
       <div class="column">
         <input type="radio" id="block-comments" name="block" checked>
         <label for="block-comments">Hide comments from these users</label>

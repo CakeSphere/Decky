@@ -1,15 +1,21 @@
 
 // Grid styles
 // We will probably need a more comprehensive grid system than this eventually
+// Look into CSS Grid Layout
 
 .container {
   margin-left: 100px;
   margin-top: 59px;
-  width: calc(100% - 100px);
   overflow: hidden;
+  width: calc(100% - 100px);
+
   .container {
     margin: 0;
     width: 100%;
+  }
+
+  &.settings {
+    max-width: 900px;
   }
 }
 

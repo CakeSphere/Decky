@@ -507,7 +507,7 @@ def deck(id):
     if not deck:
         abort(404)
     cur = db.execute(
-        'SELECT name, count(name), type, multiverseid FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId=1 GROUP BY name'
+        'SELECT name, count(name), type, multiverseid FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId="' + id + '" GROUP BY name'
     )
     cards = cur.fetchall()
     count = {}
@@ -618,7 +618,7 @@ def add_deck():
         success = Markup("<strong>Double, double toil and trouble!</strong> ")
         flash(success + deck_name + " was brewed successfully.", 'success')
 
-    return redirect(url_for('decks'))
+    return redirect(url_for('builder'))
 
 
 @app.route('/login')
