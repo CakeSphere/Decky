@@ -4,7 +4,7 @@
   border-bottom: 1px solid tint($color-background, 5%);
   box-shadow: 0 4px 2px $color-shadow;
   height: 58px;
-  left: 0;
+  left: 101px;
   position: fixed;
   right: 0;
   top: 0;
@@ -93,7 +93,7 @@
   }
 
   ul { margin-top: 0; }
-  .btn {
+  li .btn {
     background: transparentize($color-text-weak, 0.98);
     border: 0;
     border-bottom: 1px solid tint($color-background, 5%);
@@ -185,7 +185,7 @@
   }
 
   .account-info {
-    background: transparentize($color-text-weak, 0.98);
+    background: tint($color-background, 2%);
     border-top: 1px solid shade($color-background, 5%);
     bottom: 0;
     box-shadow: 0 -1px 0 tint($color-background, 5%);
@@ -196,7 +196,7 @@
     position: absolute;
     text-align: center;
     text-shadow: 0 2px 4px transparentize($color-background-shade, 0.5);
-    transition: $transition;
+    transition: height $transition 0s;
     width: calc(100px - 2rem);
 
     .account-icon {
@@ -211,7 +211,11 @@
       position: relative;
       user-select: none;
       width: 32px;
+      &.not-logged-in {
+      background: -webkit-gradient(linear, left top, right bottom, from($color-mtg-g), to(adjust-hue($color-mtg-g, -20%)));
+      background: linear-gradient(to bottom right, $color-mtg-g, adjust-hue($color-mtg-g, -20%));
 
+      }
       &.notification::after {
         background: $color-mtg-r;
         border: 3px solid tint($color-background, 2.5%);
@@ -241,11 +245,47 @@
     }
 
     &:hover {
-      height: calc(147px - 2rem);
-
+      // height: calc(147px - 2rem);
+      .sign-in {
+        transition-delay: 0.1s;
+      }
       .account-name {
         overflow-wrap: break-word;
         white-space: initial;
+      }
+    }
+    &:active {
+      height: 200px;
+      .sign-in {
+        transform: translateX(0);
+        transition-delay: 0
+      }
+    }
+    .sign-in {
+      position: absolute;
+      bottom: 0;
+      left: 100px;
+      padding: 1rem;
+      height: 200px;
+      width: 315px;
+      background: transparentize($color-background, 0.1);
+      border-top: 1px solid shade($color-background, 5%);
+      border-left: 1px solid tint($color-background, 5%);
+      border-right: 1px solid tint($color-background, 5%);
+      bottom: 0;
+      box-shadow: 0 -1px 0 tint($color-background, 5%);
+      transform: translateX(-450px);
+      transition: 0.2s;
+      transition-delay: 0.75s;
+      -webkit-backdrop-filter: blur(5px);
+      backdrop-filter: blur(5px);
+      text-align: left;
+      z-index: -9999;
+      label {
+        width: 100%;
+      }
+      input {
+        width: calc(100% - 1.5rem);
       }
     }
   }
