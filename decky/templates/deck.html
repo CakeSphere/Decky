@@ -4,31 +4,19 @@
 {% block body %}
 <div class="container deck">
   <aside class="sidebar">
-    <h3>Card Costs</h3>
+    <h3>Colors</h3>
     <div class="btn-group card-costs">
-      <button class="btn w" title="White: 16%" style="width: calc(16.66666667% - 1px)">
+      <button class="btn w" title="White: 32%" style="width: 32%">
         <span class="mana medium sw shadow">&nbsp;</span>
-        16%
+        32%
       </button>
-      <button class="btn u" title="Blue: 16%" style="width: calc(16.66666667% - 1px)">
+      <button class="btn u" title="Blue: 34%" style="width: 34%">
         <span class="mana medium su shadow">&nbsp;</span>
-        16%
+        35%
       </button>
-      <button class="btn r" title="Red: 16%" style="width: calc(16.66666667% - 1px)">
+      <button class="btn r" title="Red: 32%" style="width: 32%">
         <span class="mana medium sr shadow">&nbsp;</span>
-        16%
-      </button>
-      <button class="btn b" title="Black: 16%" style="width: calc(16.66666667% - 1px)">
-        <span class="mana medium sb shadow">&nbsp;</span>
-        16%
-      </button>
-      <button class="btn g" title="Green: 16%" style="width: calc(16.66666667% - 1px)">
-        <span class="mana medium sg shadow">&nbsp;</span>
-        16%
-      </button>
-      <button class="btn c" title="Colorless: 16%" style="width: calc(16.66666667% - 1px)">
-        <span class="mana medium sc shadow">&nbsp;</span>
-        16%
+        32%
       </button>
     </div>
     <h3>Mana Available</h3>
@@ -46,6 +34,8 @@
         32%
       </button>
     </div>
+    <h3>Mana Curve</h3>
+    <p><span class="weak">Average mana cost:</span> 1.24</p>
     <h3>Legal Formats</h3>
     {% for legality in deck_legality %}
       <button class="btn">{{legality}}</button>
