@@ -190,7 +190,7 @@
     bottom: 0;
     box-shadow: 0 -1px 0 tint($color-background, 5%);
     cursor: pointer;
-    height: calc(100px - 2rem);
+    height: 111px;
     left: 0;
     padding: 1rem;
     position: absolute;
@@ -198,6 +198,8 @@
     text-shadow: 0 2px 4px transparentize($color-background-shade, 0.5);
     transition: height $transition 0s;
     width: calc(100px - 2rem);
+    align-items: center;
+    display: flex;
 
     .account-icon {
       background: -webkit-gradient(linear, left top, right bottom, from($color-primary), to(adjust-hue($color-primary, -20%)));
@@ -291,7 +293,7 @@
       label {
         width: 100%;
       }
-      input {
+      input[type="email"], input[type="password"] {
         width: calc(100% - 1.5rem);
       }
     }

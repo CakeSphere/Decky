@@ -79,26 +79,28 @@
         </li>
       </ul>
       <div class="account-info">
-        <div class="account-icon not-logged-in">
-          &nbsp;
-        </div>
-        <div class="account-name">
-          Sign in
-        </div>
-        <div class="sign-in">
-          <label>
-            Email
-            <input type="text">
-          </label>
-          <label>
-            Password
-            <input type="password">
-          </label>
-          <br>
-          <a href="" class="btn g">Sign in</a>
-          <a href="" class="btn">Register</a>
-          <input type="checkbox" id="only-colors"> 
-          <a href="" class="btn link">Forgot password?</a>
+        <div>
+          <div class="account-icon not-logged-in">
+            &nbsp;
+          </div>
+          <div class="account-name">
+            Sign in
+          </div>
+          <form class="sign-in">
+            <label>
+              Email
+              <input type="email" class="email">
+            </label>
+            <label>
+              Password
+              <input type="password">
+            </label>
+            <br>
+            <input type="submit" value="Sign in" class="btn g">
+            <a href="" class="btn">Register</a>
+            <input type="checkbox" id="only-colors"> 
+            <a href="" class="btn link">Forgot password?</a>
+          </form>
         </div>
       </div>
     </nav>
@@ -128,6 +130,7 @@
 <script>
   $('.account-info').click(function() {
     $(this).addClass('open');
+    $('.email').focus();
   });
   $(document).click(function(event) {
     if(!$(event.target).closest('.account-info').length) {
