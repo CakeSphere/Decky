@@ -267,3 +267,12 @@ ul {
   font-style: italic;
   margin-left: 33px;
 }
+
+.token {
+  width: calc(50% - 0.5rem);
+  border-radius: $border-radius * 2.5;
+  margin-bottom: 0.5rem;
+  &:nth-child(odd) {
+    margin-right: 0.5rem;
+  }
+}
