@@ -266,20 +266,29 @@
       bottom: 0;
       left: 100px;
       padding: 1rem;
-      height: 200px;
+      height: 201px;
       width: 315px;
-      background: transparentize($color-background, 0.1);
-      border-top: 1px solid shade($color-background, 5%);
+      border-top: 1px solid tint($color-background, 5%);
       border-left: 1px solid tint($color-background, 5%);
       border-right: 1px solid tint($color-background, 5%);
-      box-shadow: 0 -1px 0 tint($color-background, 5%);
+      box-shadow: 0 2px 15px 4px shade($color-background, 15%);
       transform: translateX(-450px);
       transition: 0.2s;
       transition-delay: 0.75s;
-      -webkit-backdrop-filter: blur(5px);
-      backdrop-filter: blur(5px);
       text-align: left;
       z-index: -9999;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+        background: transparentize($color-background, 0.1);
+      }
       label {
         width: 100%;
       }
