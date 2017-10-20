@@ -19,6 +19,10 @@
     <link rel="mask-icon" href="{{ url_for('static', filename='images/safari-pinned-tab.svg') }}?v=9BaWAXKO6p" color="#dd5ef8">
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}?v=9BaWAXKO6p">
     <meta name="theme-color" content="#272727">
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+      crossorigin="anonymous"></script>
   </head>
   <body class="{% if active_page == 'login' %}login{% endif %}">
     <nav class="top-nav">
@@ -120,3 +124,16 @@
 -->
 
 <script> </script>
+
+<script>
+  $('.account-info').click(function() {
+    $(this).addClass('open');
+  });
+  $(document).click(function(event) {
+    if(!$(event.target).closest('.account-info').length) {
+      if($('.account-info').hasClass('open')) {
+        $('.account-info').removeClass('open');
+      }
+    }
+  });
+</script>

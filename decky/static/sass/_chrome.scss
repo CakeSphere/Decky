@@ -254,7 +254,7 @@
         white-space: initial;
       }
     }
-    &:active {
+    &.open {
       height: 200px;
       .sign-in {
         transform: translateX(0);
@@ -274,7 +274,6 @@
       box-shadow: 0 2px 15px 4px shade($color-background, 15%);
       transform: translateX(-450px);
       transition: 0.2s;
-      transition-delay: 0.75s;
       text-align: left;
       z-index: -9999;
       &::after {
