@@ -14,8 +14,6 @@ $(function () {
       data: JSON.stringify(data),
       dataType: 'json',
       contentType: 'application/json; charset=utf-8'
-    }).done(function(msg) {
-      console.log('cardName');
     });
   });
   $('.account-info').click(function() {

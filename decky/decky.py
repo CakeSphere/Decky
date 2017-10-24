@@ -2,7 +2,7 @@ import os, sqlite3, sass, json, smartypants, re
 
 from pprint import pprint
 from HTMLParser import HTMLParser
-from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash, Markup, jsonify
+from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash, Markup, jsonify, Response
 from sassutils.wsgi import SassMiddleware
 from datetime import datetime
 from math import ceil
@@ -558,12 +558,17 @@ def builder():
     if card_name:
         card_name = card_name['cardName']
         card_data = db.execute(
-            'SELECT setId, type FROM cards WHERE name LIKE "' + card_name +
+            'SELECT multiverseid, setId, type FROM cards WHERE name LIKE "' + card_name +
             '"')
-        card_data = card_data.fetchone()
-        card_set = card_data[0]
-        card_type = card_data[1]
-        print card_set + ' ' + card_type
+        card_data = card_data.fetchall()
+        for card in card_data:
+          card_id = str(card[0])
+          card_set = card[1]
+          card_type = card[2]
+          print card_id + ' ' +card_set + ' ' + card_type
+          return card_id
+          return card_set
+          return card_type
     return render_template('builder.html')
 
 
