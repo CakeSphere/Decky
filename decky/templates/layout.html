@@ -129,10 +129,10 @@
 
 <script>
   $('.account-info').click(function() {
-    $(this).addClass('open');
-    if (!this.hasClass('open')) {
+    if (!$(this).hasClass('open')) {
       $('.email').focus();
-    };
+    }
+    $(this).addClass('open');
   });
   $(document).click(function(event) {
     if(!$(event.target).closest('.account-info').length) {
