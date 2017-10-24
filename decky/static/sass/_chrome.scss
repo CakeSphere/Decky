@@ -185,11 +185,13 @@
   }
 
   .account-info {
+    align-items: center;
     background: tint($color-background, 2%);
     border-top: 1px solid shade($color-background, 5%);
     bottom: 0;
     box-shadow: 0 -1px 0 tint($color-background, 5%);
     cursor: pointer;
+    display: flex;
     height: 111px;
     left: 0;
     padding: 1rem;
@@ -198,8 +200,6 @@
     text-shadow: 0 2px 4px transparentize($color-background-shade, 0.5);
     transition: height $transition 0s;
     width: calc(100px - 2rem);
-    align-items: center;
-    display: flex;
 
     .account-icon {
       background: -webkit-gradient(linear, left top, right bottom, from($color-primary), to(adjust-hue($color-primary, -20%)));
@@ -213,11 +213,12 @@
       position: relative;
       user-select: none;
       width: 32px;
-      &.not-logged-in {
-      background: -webkit-gradient(linear, left top, right bottom, from($color-mtg-g), to(adjust-hue($color-mtg-g, -20%)));
-      background: linear-gradient(to bottom right, $color-mtg-g, adjust-hue($color-mtg-g, -20%));
 
+      &.not-logged-in {
+        background: -webkit-gradient(linear, left top, right bottom, from($color-mtg-g), to(adjust-hue($color-mtg-g, -20%)));
+        background: linear-gradient(to bottom right, $color-mtg-g, adjust-hue($color-mtg-g, -20%));
       }
+
       &.notification::after {
         background: $color-mtg-r;
         border: 3px solid tint($color-background, 2.5%);
@@ -251,49 +252,58 @@
       .sign-in {
         transition-delay: 0.1s;
       }
+
       .account-name {
         overflow-wrap: break-word;
         white-space: initial;
       }
     }
+
     &.open {
       height: 200px;
+
       .sign-in {
         transform: translateX(0);
         transition-delay: 0s;
       }
     }
+
     .sign-in {
-      position: absolute;
-      bottom: 0;
-      left: 100px;
-      padding: 1rem;
-      height: 201px;
-      width: 315px;
-      border-top: 1px solid tint($color-background, 5%);
       border-left: 1px solid tint($color-background, 5%);
       border-right: 1px solid tint($color-background, 5%);
+      border-top: 1px solid tint($color-background, 5%);
+      bottom: 0;
       box-shadow: 0 2px 15px 4px shade($color-background, 15%);
+      cursor: default;
+      height: 201px;
+      left: 100px;
+      padding: 1rem;
+      position: absolute;
+      text-align: left;
       transform: translateX(-450px);
       transition: 0.2s;
-      text-align: left;
+      width: 315px;
       z-index: -9999;
+
       &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
         -webkit-backdrop-filter: blur(5px);
         backdrop-filter: blur(5px);
         background: transparentize($color-background, 0.1);
+        content: '';
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: -1;
       }
+
       label {
         width: 100%;
       }
-      input[type="email"], input[type="password"] {
+
+      [type="email"],
+      [type="password"] {
         width: calc(100% - 1.5rem);
       }
     }

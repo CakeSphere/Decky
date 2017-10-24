@@ -1,11 +1,11 @@
 // Common form elements
 
 // For the most part inputs and textareas should be styled similarly
-input[type='text'],
-input[type='password'],
-input[type="email"],
-input[type="search"],
-input[type="number"],
+[type='text'],
+[type='password'],
+[type="email"],
+[type="search"],
+[type="number"],
 textarea {
   background: tint($color-background, 2%);
   border: 1px solid  $color-bevel;

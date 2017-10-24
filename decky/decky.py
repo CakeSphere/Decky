@@ -2,7 +2,7 @@ import os, sqlite3, sass, json, smartypants, re
 
 from pprint import pprint
 from HTMLParser import HTMLParser
-from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash, Markup
+from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash, Markup, jsonify
 from sassutils.wsgi import SassMiddleware
 from datetime import datetime
 from math import ceil
@@ -549,7 +549,7 @@ def deck(id):
         deck_description=deck_description)
 
 
-@app.route('/builder')
+@app.route('/builder', methods=['GET', 'POST'])
 def builder():
     db = get_db()
     cur_cards = db.execute(
@@ -571,6 +571,7 @@ def builder():
         deck_legality = deck["legality"]
         deck_legality = deck_legality.split(', ')
         legality[deck["id"]] = deck_legality
+    print request.get_json()
     return render_template(
         'builder.html',
         cards=cards,

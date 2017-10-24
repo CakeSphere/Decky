@@ -29,7 +29,9 @@ The deck builder exists but is not currently functional.
 The glossary is in the conceptual stage.
 
 :white_medium_square:  **Settings & User Profile**:
-The settings menu is in the conceptual stage.
+Some HTML has been written for the Settings screen. Still need to come up with
+Settings requirements. User Profile does not exist so far.
+
 
 :white_medium_square:  **Account Registration & Authorization**: 
 Some work has gone into mocking up this process, but it is not currently functional.
@@ -41,7 +43,7 @@ Some work has gone into mocking up this process, but it is not currently functio
 
 1. Ensure Flask is installed by following the instructions [here](http://flask.pocoo.org/docs/0.12/installation/).
 2. Run `. venv/bin/activate` to activate the virtual environment.
-3. Run `pip install -r requirements.txt` to install the required.
+3. Run `pip install -r requirements.txt` to install Decky’s dependencies.
 4. Run `export FLASK_APP=decky` to set Decky as your Flask application.
 5. *Optionally* run `export FLASK_DEBUG=true` to run the Flask debugger.
 6. Run `flask run` to run the Decky app.
