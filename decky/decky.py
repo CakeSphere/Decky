@@ -434,7 +434,9 @@ def card(multiverseId):
     card = cur.fetchone()
     if not card:
         abort(404)
-    cur_decks = db.execute('SELECT DISTINCT decks.id, name, tags, legality, image, likes FROM decksToCards INNER JOIN decks ON deckId=decks.id WHERE cardId=(?) ORDER BY likes DESC', (card['multiverseId'],))
+    cur_decks = db.execute(
+        'SELECT DISTINCT decks.id, name, tags, legality, image, likes FROM decksToCards INNER JOIN decks ON deckId=decks.id WHERE cardId=(?) ORDER BY likes DESC',
+        (card['multiverseId'], ))
     decks = cur_decks.fetchall()
     legality = {}
     tags = {}
@@ -507,8 +509,8 @@ def deck(id):
     if not deck:
         abort(404)
     cur = db.execute(
-        'SELECT name, count(name), type, multiverseid FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId="' + id + '" GROUP BY name'
-    )
+        'SELECT name, count(name), type, multiverseid FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId="'
+        + id + '" GROUP BY name')
     cards = cur.fetchall()
     count = {}
     for card in cards:
@@ -552,33 +554,17 @@ def deck(id):
 @app.route('/builder', methods=['GET', 'POST'])
 def builder():
     db = get_db()
-    cur_cards = db.execute(
-        'SELECT * FROM cards WHERE type LIKE "%Spirit%" AND type LIKE "%Creature%" ORDER BY multiverseId ASC LIMIT 3'
-    )
-    cur_decks = db.execute('SELECT * FROM decks ORDER BY likes DESC LIMIT 33')
-    cur_sets = db.execute(
-        'SELECT * FROM sets ORDER BY releaseDate DESC LIMIT 5')
-    decks = cur_decks.fetchall()
-    cards = cur_cards.fetchall()
-    sets = cur_sets.fetchall()
-
-    legality = {}
-    tags = {}
-    for deck in decks:
-        deck_tags = deck["tags"]
-        deck_tags = deck_tags.split(', ')
-        tags[deck["id"]] = deck_tags
-        deck_legality = deck["legality"]
-        deck_legality = deck_legality.split(', ')
-        legality[deck["id"]] = deck_legality
-    print request.get_json()
-    return render_template(
-        'builder.html',
-        cards=cards,
-        sets=sets,
-        decks=decks,
-        tags=tags,
-        legality=legality)
+    card_name = request.get_json()
+    if card_name:
+        card_name = card_name['cardName']
+        card_data = db.execute(
+            'SELECT setId, type FROM cards WHERE name LIKE "' + card_name +
+            '"')
+        card_data = card_data.fetchone()
+        card_set = card_data[0]
+        card_type = card_data[1]
+        print card_set + ' ' + card_type
+    return render_template('builder.html')
 
 
 @app.route('/add_deck', methods=['POST'])
