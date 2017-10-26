@@ -21,6 +21,7 @@
     <meta name="theme-color" content="#272727">
   </head>
   <body class="{% if active_page == 'login' %}login{% endif %}">
+    <div class="loader"></div>
     <nav class="top-nav">
       {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}

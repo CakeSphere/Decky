@@ -3,22 +3,22 @@ $(function () {
     event.preventDefault();
     var cardQuantity = $('.card-quantity').val();
     var cardName = $('.card-name').val();
-    if (cardName.length >= 3 && cardQuantity.length >= 1) {
-      var newRow = $('<tr><td class="text-right">' + cardQuantity + '</td><td><a href="/card">' + cardName + '</a></td><td>Kaladesh</td><td>Land</td><td><input type="checkbox" id="1"><label for="1"></label></td><td><input type="radio" name="featured" id="1f"><label for="1f"></label></td><td><input type="radio" name="commander" id="1c"><label for="1c"></label></td></tr>');
-      $('.builder-table tbody').append(newRow);
-      $('.card-quantity').val(1);
-      $('.card-name').val('').focus();
-    }
-    
-    var data = {
-      cardName: cardName
-    };
-    $.ajax({
+    var data = { cardName: cardName };
+    var cardRequest = $.ajax({
       type: 'POST',
       url: window.location.href,
       data: JSON.stringify(data),
       dataType: 'json',
-      contentType: 'application/json; charset=utf-8'
+      contentType: 'application/json; charset=utf-8',
+      success: function(card_return) {
+        console.log(card_return[`card_set`]);
+        if (cardName.length >= 3 && cardQuantity.length >= 1) {
+          var newRow = $('<tr><td class="text-right">' + cardQuantity + '</td><td><a href="/card/' + card_return['card_id'] + '">' + cardName + '</a></td><td>' + card_return['card_set'] + '</td><td>' + card_return['card_type'] + '</td><td><input type="checkbox" id="' + card_return['card_id'] + '"><label for="' + card_return['card_id'] + '"></label></td><td><input type="radio" name="featured" id="' + card_return['card_id'] + 'f"><label for="' + card_return['card_id'] + 'f"></label></td><td><input type="radio" name="commander" id="' + card_return['card_id'] + 'c"><label for="' + card_return['card_id'] + 'c"></label></td></tr>');
+          $('.builder-table tbody').append(newRow);
+          $('.card-quantity').val(1);
+          $('.card-name').val('').focus();
+        }
+      }
     });
   });
   $('.account-info').click(function() {
