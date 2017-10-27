@@ -554,22 +554,34 @@ def deck(id):
 @app.route('/builder', methods=['GET', 'POST'])
 def builder():
     db = get_db()
-    if request.method == 'POST':
-        card_name = request.get_json()
-        if card_name:
-            card_name = card_name['cardName']
-            card_data = db.execute(
-                'SELECT multiverseid, setId, type FROM cards WHERE name LIKE "'
-                + card_name + '"')
-            card_data = card_data.fetchall()
+    card_name = request.get_json()
+    if card_name:
+        card_name = card_name['cardName']
+        card_data = db.execute(
+            'SELECT multiverseid, setId, type FROM cards WHERE name LIKE "'
+            + card_name +
+            '" AND multiverseid != "" AND releaseDate == "" ORDER BY multiverseid ASC '
+        )
+        card_data = card_data.fetchall()
+        if len(card_data) != 0:
             card_id = ''
             for card in card_data:
                 card_id = unicode(card[0])
                 card_set = unicode(card[1])
                 card_type = unicode(card[2])
-                print card_id + ' ' + card_set + ' ' + card_type
-                card_return = json.dumps({'card_id': card_id, 'card_set': card_set, 'card_type': card_type})
-            return card_return
+                card_return = json.dumps({
+                    'card_found': True,
+                    'card_id': card_id,
+                    'card_set': card_set,
+                    'card_type': card_type
+                })
+                return card_return
+        if len(card_data) == 0:
+          card_return = json.dumps({
+            'card_found': False
+            })
+          return card_return
+
     return render_template('builder.html')
 
 
