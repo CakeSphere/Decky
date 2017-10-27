@@ -292,6 +292,6 @@ ul {
   box-shadow: 0 2px 4px $color-shadow-dark;
   height: 311px;
   padding: 0;
-  position: absolute;
+  position: fixed;
   z-index: $z-index-fixed;
 }
