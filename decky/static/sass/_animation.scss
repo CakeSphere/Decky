@@ -48,6 +48,11 @@
   to   { opacity: 1; transform: translateX(0) rotate(0); }
 }
 
+@keyframes tooltip {
+  from { opacity: 0; transform: translateX(100px) rotate(15deg); }
+  to   { opacity: 1; transform: translateX(0) rotate(0); }
+}
+
 @for $i from 1 to 11 {
   .row .deck.gallery:nth-child(#{$i}),
   .row .card:nth-child(#{$i}) { animation-delay: $i * 0.025s; }
