@@ -35,15 +35,26 @@
   }
 }
 
+.bulk-edit {
+  background: $color-text-weak;
+  border-radius: 0 0 $border-radius $border-radius;
+  color: $color-background;
+  font-family: monospace;
+  font-size: 0.833rem;
+
+  &:focus {
+    background: $color-text;
+  }
+}
+
 .builder-cards {
-  .btn {
+  [class^="btn-tab-"] {
     border-radius: $border-radius $border-radius 0 0;
-    margin-bottom: 0;
-    margin-right: 0;
   }
 
   table {
     position: relative;
+    text-transform: capitalize;
     z-index: $z-index-paging;
 
     td,

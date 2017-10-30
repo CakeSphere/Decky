@@ -1,4 +1,6 @@
 $(function () {
+  $('[class^=tab-]').hide();
+  $('.tab-1').show();
   // Add rows to the Builder table when the user clicks Add.
   $('.add-row').click(function() {
     event.preventDefault();
@@ -14,13 +16,11 @@ $(function () {
       contentType: 'application/json; charset=utf-8',
       success: function(card_return) {
         if (card_return.card_found != false) {
-          if (cardName.length >= 3 && cardQuantity.length) {
-            var newRow = $('<tr><td class="text-right">' + cardQuantity + '</td><td><a href="/card/' + card_return.card_id + '">' + cardName + '</a></td><td>' + card_return.card_set + '</td><td>' + card_return.card_type + '</td><td><input type="checkbox" id="' + card_return.card_id + '"><label for="' + card_return.card_id + '"></label></td><td><input type="radio" name="featured" id="' + card_return.card_id + 'f"><label for="' + card_return.card_id + 'f"></label></td><td><input type="radio" name="commander" id="' + card_return.card_id + 'c"><label for="' + card_return.card_id + 'c"></label></td></tr>');
-            $('.builder-table tbody').append(newRow);
-            //Reset the form
-            $('.card-quantity').val(1);
-            $('.card-name').val('').focus();
-          }
+          var newRow = $('<tr><td class="text-right">' + cardQuantity + '</td><td><a href="/card/' + card_return.card_id + '" class="tooltip" data-img="' + card_return.card_id + '">' + cardName + '</a></td><td>' + card_return.card_set + '</td><td>' + card_return.card_type + '</td><td><input type="checkbox" id="' + card_return.card_id + '"><label for="' + card_return.card_id + '"></label></td><td><input type="radio" name="featured" id="' + card_return.card_id + 'f"><label for="' + card_return.card_id + 'f"></label></td><td><input type="radio" name="commander" id="' + card_return.card_id + 'c"><label for="' + card_return.card_id + 'c"></label></td></tr>');
+          $('.builder-table tbody').append(newRow);
+          // Reset the form
+          $('.card-quantity').val(1);
+          $('.card-name').val('').focus();
           deck[card_return.card_id] = {
             "quantity": cardQuantity,
             "name": cardName
@@ -32,6 +32,14 @@ $(function () {
       }
     });
     console.log(deck);
+  });
+  $('.tabs .btn').click(function() {
+      event.preventDefault();
+      var tab = $(this).attr('data-tab');
+      $('.tabs .btn').removeClass('active');
+      $('[class^="tab-"]').hide();
+      $(this).addClass('active');
+      $('.' + tab).show();
   });
   $('.tooltip').hover(function(e) {
     // Card tooltips

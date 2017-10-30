@@ -560,7 +560,7 @@ def builder():
         card_data = db.execute(
             'SELECT multiverseid, setId, type FROM cards WHERE name LIKE "'
             + card_name +
-            '" AND multiverseid != "" AND releaseDate == "" ORDER BY multiverseid ASC '
+            '" AND multiverseid != "" AND releaseDate == "" ORDER BY multiverseid DESC '
         )
         card_data = card_data.fetchall()
         if len(card_data) != 0:
