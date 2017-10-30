@@ -287,11 +287,12 @@ ul {
   animation-duration: 0.2s;
   animation-iteration-count: 1;
   animation-name: tooltip;
+  animation-timing-function: ease-out;
   background: $color-background;
   border-radius: $border-radius * 3;
   box-shadow: 0 2px 4px $color-shadow-dark;
   height: 311px;
   padding: 0;
-  position: fixed;
+  position: absolute;
   z-index: $z-index-fixed;
 }

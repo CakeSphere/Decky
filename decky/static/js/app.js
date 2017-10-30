@@ -33,6 +33,7 @@ $(function () {
     console.log(deck);
   });
   $('.tooltip').hover(function(e) {
+    // Card tooltips
     this.t = $(this).attr('data-img');
     $('body').append('<div class="card-preview"><img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=' + this.t + '&type=card"/></div>');
     $('.card-preview')
@@ -51,6 +52,7 @@ $(function () {
       .css("left",(e.pageX + 30) + "px");
   });
   $('.account-info').click(function() {
+    // Show and hide the sign in dialog
     if (!$(this).hasClass('open')) {
       $(this).addClass('open');
       $('.email').focus();
