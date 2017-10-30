@@ -26,7 +26,8 @@ $(function () {
             "name": cardName
           };
         } else {
-          console.log('No card was found with that name.');
+          $('.top-nav').append('<div class="error flash"><strong>Oops!</strong> Looks like no card exists with that name.</div>');
+          $('.card-name').select();
         }
       }
     });
