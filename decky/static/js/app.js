@@ -1,13 +1,18 @@
 $(function () {
+  // Instantiate the deck object for the builder
+  var deck = [];
+  // Hide all tabs on page load
   $('[class^=tab-]').hide();
+  // Show the first tab by default
   $('.tab-1').show();
   // Add rows to the Builder table when the user clicks Add.
   $('.add-row').click(function() {
     event.preventDefault();
+
     var cardQuantity = $('.card-quantity').val();
     var cardName = $('.card-name').val();
     var data = { cardName: cardName };
-    var deck = [];
+
     var cardRequest = $.ajax({
       type: 'POST',
       url: window.location.href,
@@ -17,21 +22,26 @@ $(function () {
       success: function(card_return) {
         if (card_return.card_found != false) {
           var newRow = $('<tr><td class="text-right">' + cardQuantity + '</td><td><a href="/card/' + card_return.card_id + '" class="tooltip" data-img="' + card_return.card_id + '">' + cardName + '</a></td><td>' + card_return.card_set + '</td><td>' + card_return.card_type + '</td><td><input type="checkbox" id="' + card_return.card_id + '"><label for="' + card_return.card_id + '"></label></td><td><input type="radio" name="featured" id="' + card_return.card_id + 'f"><label for="' + card_return.card_id + 'f"></label></td><td><input type="radio" name="commander" id="' + card_return.card_id + 'c"><label for="' + card_return.card_id + 'c"></label></td></tr>');
+          // Add a new row to the builder table
           $('.builder-table tbody').append(newRow);
           // Reset the form
           $('.card-quantity').val(1);
           $('.card-name').val('').focus();
+          // Add the card to the deck object
           deck[card_return.card_id] = {
             "quantity": cardQuantity,
-            "name": cardName
+            "foil": false,
+            "featured": false,
+            "commander": false
           };
+          console.log(deck);
         } else {
+          // If card isn't found, flash an error and select the text in the form
           $('.top-nav').append('<div class="error flash"><strong>Oops!</strong> Looks like no card exists with that name.</div>');
           $('.card-name').select();
         }
       }
     });
-    console.log(deck);
   });
   $('.tabs .btn').click(function() {
       event.preventDefault();
