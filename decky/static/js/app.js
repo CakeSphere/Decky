@@ -1,6 +1,8 @@
 $(function () {
   // Instantiate the deck object for the builder
-  var deck = [];
+  var deck = {
+    "totalQuantity": 0
+  };
   // Hide all tabs on page load
   $('[class^=tab-]').hide();
   // Show the first tab by default
@@ -34,6 +36,10 @@ $(function () {
             "featured": false,
             "commander": false
           };
+          // Update the total quantity with the number of cards added
+          deck.totalQuantity = deck.totalQuantity + Number(cardQuantity);
+          // Update the quantity display on the UI
+          $('.builder-quantity').text(deck.totalQuantity);
           console.log(deck);
         } else {
           // If card isn't found, flash an error and select the text in the form
@@ -44,12 +50,13 @@ $(function () {
     });
   });
   $('.tabs .btn').click(function() {
-      event.preventDefault();
-      var tab = $(this).attr('data-tab');
-      $('.tabs .btn').removeClass('active');
-      $('[class^="tab-"]').hide();
-      $(this).addClass('active');
-      $('.' + tab).show();
+    // Handle hiding and showing tabs
+    event.preventDefault();
+    var tab = $(this).attr('data-tab');
+    $('.tabs .btn').removeClass('active');
+    $('[class^="tab-"]').hide();
+    $(this).addClass('active');
+    $('.' + tab).show();
   });
   $('.tooltip').hover(function(e) {
     // Card tooltips
@@ -60,12 +67,15 @@ $(function () {
       .css("left",(e.pageX + 30) + "px");
   },
   function() {
-    $('.card-preview').fadeOut(200, complete);
+    // Hide the tooltip when user mouses out
+    $('.card-preview').fadeOut(100, complete);
   });
   function complete() {
+    // Delete the tooltip when it finishes fading out
     this.remove();
   }
   $('.tooltip').mousemove(function(e){
+    // Move the tooltip when the mouse moves
     $('.card-preview')
       .css("top",(e.pageY - 10) + "px")
       .css("left",(e.pageX + 30) + "px");
@@ -78,6 +88,7 @@ $(function () {
     }
   });
   $(document).click(function(event) {
+    // Close the sign in dialog when the user clicks outside it
     if(!$(event.target).closest('.account-info').length) {
       if($('.account-info').hasClass('open')) {
         $('.account-info').removeClass('open');

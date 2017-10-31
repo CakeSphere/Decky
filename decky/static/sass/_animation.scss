@@ -49,15 +49,9 @@
 }
 
 @keyframes tooltip {
-  from { opacity: 0; transform: translateX(100px) rotate(15deg); }
+  from { opacity: 0; transform: translateX(100px) rotate(5deg); }
   to   { opacity: 1; transform: translateX(0) rotate(0); }
 }
-
-@for $i from 1 to 11 {
-  .row .deck.gallery:nth-child(#{$i}),
-  .row .card:nth-child(#{$i}) { animation-delay: $i * 0.025s; }
-}
-
 
 @keyframes loader {
   from { transform: rotate(0deg);   }
@@ -66,3 +60,9 @@
   90%  { transform: rotate(360deg); }
   to   { transform: rotate(360deg); }
 }
+
+@for $i from 1 to 11 {
+  .row .deck.gallery:nth-child(#{$i}),
+  .row .card:nth-child(#{$i}) { animation-delay: $i * 0.025s; }
+}
+
