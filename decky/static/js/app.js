@@ -43,12 +43,17 @@ $(function () {
           console.log(deck);
         } else {
           // If card isn't found, flash an error and select the text in the form
-          $('.top-nav').append('<div class="error flash"><strong>Oops!</strong> Looks like no card exists with that name.</div>');
+          flash('<strong>Oops!</strong> Looks like no card exists with that name.', 'error');
           $('.card-name').select();
         }
       }
     });
   });
+  // Function that does the same thing as the Python Flask flash function.
+  function flash(message, type) {
+    $('.top-nav').append('<div class="' + type + ' flash">' + message + '</div>');
+    setTimeout(function() { $('.flash').remove(); }, 5500);
+  }
   $('.tabs .btn').click(function() {
     // Handle hiding and showing tabs
     event.preventDefault();

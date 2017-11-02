@@ -60,7 +60,7 @@
     td,
     th {
       &:first-child {
-        width: 30px;
+        width: 45px;
       }
     }
   }
@@ -78,12 +78,12 @@
     &[type="number"] {
       border-radius: $border-radius 0 0 $border-radius;
       text-align: right;
-      width: 15px;
+      width: 20px;
     }
 
     &[type="text"] {
       border-radius: 0;
-      width: calc(100% - 261px);
+      width: calc(100% - 266px);
     }
   }
 
