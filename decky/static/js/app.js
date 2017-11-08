@@ -23,24 +23,37 @@ $(function () {
       contentType: 'application/json; charset=utf-8',
       success: function(card_return) {
         if (card_return.card_found != false) {
-          var newRow = $('<tr><td class="text-right">' + cardQuantity + '</td><td><a href="/card/' + card_return.card_id + '" class="tooltip" data-img="' + card_return.card_id + '">' + cardName + '</a></td><td>' + card_return.card_set + '</td><td>' + card_return.card_type + '</td><td><input type="checkbox" id="' + card_return.card_id + '"><label for="' + card_return.card_id + '"></label></td><td><input type="radio" name="featured" id="' + card_return.card_id + 'f"><label for="' + card_return.card_id + 'f"></label></td><td><input type="radio" name="commander" id="' + card_return.card_id + 'c"><label for="' + card_return.card_id + 'c"></label></td></tr>');
-          // Add a new row to the builder table
-          $('.builder-table tbody').append(newRow);
-          // Reset the form
-          $('.card-quantity').val(1);
-          $('.card-name').val('').focus();
-          // Add the card to the deck object
-          deck[card_return.card_id] = {
-            "quantity": cardQuantity,
-            "foil": false,
-            "featured": false,
-            "commander": false
-          };
+          if (!deck[card_return.card_id]) {
+            var newRow = $('<tr class="row-' + card_return.card_id + '"><td class="text-right quantity">' + cardQuantity + '</td><td><a href="/card/' + card_return.card_id + '" class="tooltip" data-img="' + card_return.card_id + '">' + cardName + '</a></td><td>' + card_return.card_set + '</td><td>' + card_return.card_type + '</td><td><input type="checkbox" id="' + card_return.card_id + '"><label for="' + card_return.card_id + '"></label></td><td><input type="radio" name="featured" id="' + card_return.card_id + 'f"><label for="' + card_return.card_id + 'f"></label></td><td><input type="radio" name="commander" id="' + card_return.card_id + 'c"><label for="' + card_return.card_id + 'c"></label></td></tr>');
+            // Add a new row to the builder table
+            $('.builder-table tbody').append(newRow);
+            // Reset the form
+            $('.card-quantity').val(1);
+            $('.card-name').val('').focus();
+            // Add the card to the deck object
+            deck[card_return.card_id] = {
+              "quantity": cardQuantity,
+              "foil": false,
+              "featured": false,
+              "commander": false
+            };
+          } else {
+            // Add the quantity in the form to the quantity in the table
+            var currentQuantity = Number($('.row-' + card_return.card_id + ' .quantity').text());
+            currentQuantity = currentQuantity + Number(cardQuantity);
+            $('.row-' + card_return.card_id + ' .quantity').text(currentQuantity);
+            // Reset the form
+            $('.card-quantity').val(1);
+            $('.card-name').val('').focus();
+          }
+          deck.name = $('[name="name"]').val();
+          deck.description = $('.description').val();
+          deck.formats = $('[name="formats"]').val();
+          deck.tags = $('[name="tags"]').val();
           // Update the total quantity with the number of cards added
           deck.totalQuantity = deck.totalQuantity + Number(cardQuantity);
           // Update the quantity display on the UI
           $('.builder-quantity').text(deck.totalQuantity);
-          console.log(deck);
         } else {
           // If card isn't found, flash an error and select the text in the form
           flash('<strong>Oops!</strong> Looks like no card exists with that name.', 'error');
@@ -80,7 +93,7 @@ $(function () {
     this.remove();
   }
   $('.tooltip').mousemove(function(e){
-    // Move the tooltip when the mouse moves
+    // Update the tooltip position when the mouse moves
     $('.card-preview')
       .css("top",(e.pageY - 10) + "px")
       .css("left",(e.pageX + 30) + "px");

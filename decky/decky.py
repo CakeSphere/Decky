@@ -58,7 +58,7 @@ KEYWORD_ABILITIES = [
     "Eternalize", "Afflict"
 ]
 
-path_to_json = app.root_path + '/static/json'
+PATH_TO_JSON = app.root_path + '/static/json'
 
 app.config.from_envvar('DECKY_SETTINGS', silent=True)
 
@@ -219,11 +219,11 @@ def import_sets():
     init_db()
     print('\033[92m\033[1mInitialized the database.\033[0m')
     json_files = [
-        pos_json for pos_json in os.listdir(path_to_json)
+        pos_json for pos_json in os.listdir(PATH_TO_JSON)
         if pos_json.endswith('.json')
     ]
     for file in json_files:
-        with open(os.path.join(path_to_json, file)) as json_file:
+        with open(os.path.join(PATH_TO_JSON, file)) as json_file:
             set_data = json.load(json_file)
             set_data = format_set(set_data)
             db = get_db()
@@ -249,11 +249,11 @@ def import_cards():
     print('\033[92m\033[1mInitialized the database.\033[0m')
     db = get_db()
     json_files = [
-        pos_json for pos_json in os.listdir(path_to_json)
+        pos_json for pos_json in os.listdir(PATH_TO_JSON)
         if pos_json.endswith('.json')
     ]
     for file in json_files:
-        with open(os.path.join(path_to_json, file)) as json_file:
+        with open(os.path.join(PATH_TO_JSON, file)) as json_file:
             set_data = json.load(json_file)
             set_data = format_set(set_data)
             print "\033[96m\033[1m" + set_data["code"] + " " + set_data[
@@ -558,8 +558,8 @@ def builder():
     if card_name:
         card_name = card_name['cardName']
         card_data = db.execute(
-            'SELECT multiverseid, setId, type FROM cards WHERE name LIKE "'
-            + card_name +
+            'SELECT multiverseid, setId, type FROM cards WHERE name LIKE "' +
+            card_name +
             '" AND multiverseid != "" AND releaseDate == "" ORDER BY multiverseid DESC '
         )
         card_data = card_data.fetchall()
@@ -577,10 +577,8 @@ def builder():
                 })
                 return card_return
         if len(card_data) == 0:
-          card_return = json.dumps({
-            'card_found': False
-            })
-          return card_return
+            card_return = json.dumps({'card_found': False})
+            return card_return
 
     return render_template('builder.html')
 

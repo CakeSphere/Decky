@@ -37,13 +37,15 @@
 
 .bulk-edit {
   background: $color-text-weak;
-  border-radius: 0 0 $border-radius $border-radius;
+  border-top-left-radius: 0;
+  box-shadow: inset 0 -2px 2px $color-shadow;
   color: $color-background;
-  font-family: 'fira mono', monospace;
+  font-family: 'prestige-elite-std', monospace;
   font-size: 0.833rem;
+  -webkit-font-smoothing: subpixel-antialiased;
 
   &:focus {
-    background: $color-text;
+    background: $color-text-weak;
   }
 }
 
