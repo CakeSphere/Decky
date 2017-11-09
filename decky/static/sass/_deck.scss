@@ -399,6 +399,10 @@
 .comment {
   border-bottom: 2px solid shade($color-border, 60%);
   padding: 1rem;
+  border-radius: $border-radius;
+  background: tint($color-background, 2.5%);
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px $color-shadow;
 
   .date {
     color: shade($color-text-weak, 35%);
@@ -406,7 +410,6 @@
   }
 
   &:last-child {
-    border-bottom: 0;
     margin-bottom: 0;
   }
 
