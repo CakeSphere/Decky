@@ -397,9 +397,19 @@
 // On deck.html (users can only comment on decks)
 
 .comment {
+  border-bottom: 2px solid shade($color-border, 60%);
   padding: 1rem;
-  &:nth-child(even) { background: shade($color-border, 60%); }
-  &:last-child { margin-bottom: 0; }
+
+  .date {
+    color: shade($color-text-weak, 35%);
+    font-size: 0.833rem;
+  }
+
+  &:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+  }
+
   em { color: $color-text-weak; }
   .username { color: $color-text; }
   p {

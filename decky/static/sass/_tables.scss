@@ -1,4 +1,3 @@
-
 table {
   background: $color-background-tint;
   border-collapse: collapse;
@@ -61,6 +60,7 @@ table {
     text-shadow: 0 1px 0 $color-shadow;
 
     &:hover {
+      border-top-color: tint($color-background-tint, 15%);
       background: tint($color-background-tint, 10%);
       cursor: pointer;
     }
