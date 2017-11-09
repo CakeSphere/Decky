@@ -586,13 +586,13 @@ def builder():
 @app.route('/add_deck', methods=['GET', 'POST'])
 def add_deck():
     deck = request.get_json()
-    print json.dumps(deck, indent=2)
     if deck:
         deck_description = deck['description']
         deck_formats = deck['formats']
         deck_legality = deck['formats']
         deck_tags = deck['tags']
         deck_name = deck['name'].strip().title()
+        deck_cards = deck['cards']
     deck_author = "Casanova Killing Spree"
     deck_colors = "{r}{b}"
     deck_image = "414494"
@@ -612,18 +612,16 @@ def add_deck():
               'error')
     else:
         db = get_db()
-        db.execute(
-            'INSERT INTO decks values (null, ?, ?, null, date("now"), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, date("now"))',
-            [
-                deck_author, deck_colors, deck_description, deck_formats,
-                deck_image, deck_legality, deck_likes, deck_mainboard,
-                deck_maybeboard, deck_name, deck_sideboard, deck_tags
-            ])
+        cur_cards = db.execute('INSERT INTO decks values (null, ?, ?, null, date("now"), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, date("now"))', (deck_author, deck_colors, deck_description, deck_formats, deck_image, deck_legality, deck_likes, deck_mainboard, deck_maybeboard, deck_name, deck_sideboard, deck_tags))
+        deck_row = cur_cards.lastrowid
+        for card in deck_cards:
+          db.execute(
+            'INSERT INTO decksToCards VALUES(NULL, ' + str(deck_row) + ', ' + card + ')')
+          print "Inserted Multiverse ID " + card
         db.commit()
 
         success = Markup("<strong>Double, double toil and trouble!</strong> ")
         flash(success + deck_name + " was brewed successfully.", 'success')
-        print('Success')
 
     return redirect(url_for('decks'))
 
