@@ -583,20 +583,23 @@ def builder():
     return render_template('builder.html')
 
 
-@app.route('/add_deck', methods=['POST'])
+@app.route('/add_deck', methods=['GET', 'POST'])
 def add_deck():
+    deck = request.get_json()
+    print json.dumps(deck, indent=2)
+    if deck:
+        deck_description = deck['description']
+        deck_formats = deck['formats']
+        deck_legality = deck['formats']
+        deck_tags = deck['tags']
+        deck_name = deck['name'].strip().title()
     deck_author = "Casanova Killing Spree"
     deck_colors = "{r}{b}"
-    deck_description = request.form['description']
-    deck_formats = request.form['formats']
     deck_image = "414494"
-    deck_legality = request.form['formats']
     deck_likes = 99
     deck_mainboard = "main"
     deck_maybeboard = "maybe"
-    deck_name = request.form['name'].strip().title()
     deck_sideboard = "side"
-    deck_tags = request.form['tags']
     if deck_name == "":
         error = Markup("<strong>Oops!</strong>")
         flash(error + " Looks like your deck doesn't have a name.", 'error')
@@ -620,8 +623,9 @@ def add_deck():
 
         success = Markup("<strong>Double, double toil and trouble!</strong> ")
         flash(success + deck_name + " was brewed successfully.", 'success')
+        print('Success')
 
-    return redirect(url_for('builder'))
+    return redirect(url_for('decks'))
 
 
 @app.route('/login')
