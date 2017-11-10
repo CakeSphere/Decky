@@ -52,7 +52,6 @@ $(function () {
           deck.totalQuantity = deck.totalQuantity + Number(cardQuantity);
           // Update the quantity display on the UI
           $('.builder-quantity').text(deck.totalQuantity);
-          console.log(deck)
         } else {
           // If card isn't found, flash an error and select the text in the form
           flash('<strong>Oops!</strong> Looks like no card exists with that name.', 'error');
@@ -64,7 +63,13 @@ $(function () {
   $('.builder-table tbody').on('click', '.delete-card', function(event) {
     event.preventDefault();
     var row = $(this).closest('tr');
+    var rowId = row.attr('class').slice(4);
+    deck.totalQuantity = deck.totalQuantity - deck.cards[rowId]['quantity']
+    delete deck.cards[rowId];
     row.remove();
+    // Update the quantity display on the UI
+    $('.builder-quantity').text(deck.totalQuantity);
+    console.log(deck)
   });
   $('.save-deck').click(function() {
     event.preventDefault();
@@ -99,6 +104,7 @@ $(function () {
     $('.' + tab).show();
   });
   $('.tooltip').hover(function(e) {
+    console.log('hover');
     // Card tooltips
     this.t = $(this).attr('data-img');
     $('body').append('<div class="card-preview"><img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=' + this.t + '&type=card"/></div>');
