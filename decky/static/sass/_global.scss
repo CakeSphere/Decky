@@ -289,9 +289,10 @@ ul {
   animation-name: tooltip;
   animation-timing-function: ease-out;
   background: $color-background;
-  border-radius: $border-radius * 3;
+  border-radius: $border-radius * 4;
   box-shadow: 0 2px 4px $color-shadow-dark;
   height: 311px;
+  overflow: hidden;
   padding: 0;
   position: absolute;
   z-index: $z-index-fixed;
