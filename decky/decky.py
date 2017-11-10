@@ -615,9 +615,11 @@ def add_deck():
         cur_cards = db.execute('INSERT INTO decks values (null, ?, ?, null, date("now"), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, date("now"))', (deck_author, deck_colors, deck_description, deck_formats, deck_image, deck_legality, deck_likes, deck_mainboard, deck_maybeboard, deck_name, deck_sideboard, deck_tags))
         deck_row = cur_cards.lastrowid
         for card in deck_cards:
-          db.execute(
-            'INSERT INTO decksToCards VALUES(NULL, ' + str(deck_row) + ', ' + card + ')')
-          print "Inserted Multiverse ID " + card
+          quantity = deck_cards[card]['quantity']
+          for i in range(int(quantity)):
+            db.execute(
+              'INSERT INTO decksToCards VALUES(NULL, ' + str(deck_row) + ', ' + card + ')')
+          print "Inserted Multiverse ID " + card + " into Deck " + str(deck_row) + " " + quantity + " times."
         db.commit()
 
         success = Markup("<strong>Double, double toil and trouble!</strong> ")
