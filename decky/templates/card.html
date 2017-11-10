@@ -111,7 +111,7 @@
       <h3>Most Liked Decks Including <em>{{card.name}}</em></h3>
       <div class="row">
         {% for deck in decks %}
-          <a href="{{ url_for('deck', id=1)}}" class="deck gallery" title="{{deck.name}}">
+          <a href="{{ url_for('deck', id=deck.id)}}" class="deck gallery" title="{{deck.name}}">
             <div class="color-bar">
               <div class="w" style="height: 30%"><span><span class="mana small sw shadow">&nbsp;</span> 30%</span></div>
               <div class="u" style="height: 30%"><span><span class="mana small su shadow">&nbsp;</span> 30%</span></div>
