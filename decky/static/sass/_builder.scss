@@ -98,3 +98,8 @@
     }
   }
 }
+
+table tbody tr td a.delete-card:hover,
+.delete-card:hover  {
+  background: none;
+}

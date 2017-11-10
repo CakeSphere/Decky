@@ -99,16 +99,6 @@ button {
       }
     }
   }
-  // Little x to remove filters
-  .cancel {
-    fill: $color-text-weak;
-    float: right;
-    height: 10px;
-    margin-left: 0.25rem;
-    position: relative;
-    top: 7px;
-    width: 10px;
-  }
   // All of our button styles, using the btn mixin (_mixins.scss)
   &.primary { @include btn($color-primary); }
   &.w       { @include btn($color-mtg-w); }
@@ -162,6 +152,27 @@ button {
   }
 
   &:hover .mana.small::after { transform: translateX(3px) rotate(45deg); }
+}
+
+
+// Little x to remove filters
+.cancel {
+  fill: $color-text-weak;
+  width: 16px;
+  height: 16px;
+  top: 3px;
+  position: relative;
+  &:hover {
+    fill: $color-text;
+  }
+}
+
+.btn .cancel {
+  float: right;
+  height: 10px;
+  margin-left: 0.25rem;
+  top: 7px;
+  width: 10px;
 }
 
 .btn-group {
