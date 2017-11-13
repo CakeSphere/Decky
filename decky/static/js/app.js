@@ -76,6 +76,7 @@ $(function () {
     deck.description = $('.description').val();
     deck.formats = $('[name="formats"]').val();
     deck.tags = $('[name="tags"]').val();
+    // Should all of these fields be required?
     if (deck.name == "") {
       flash('<strong>Oops!</strong> Looks like your deck doesn\’t have a name.', 'error');
     } else if (deck.formats == "") {
@@ -84,8 +85,6 @@ $(function () {
       flash('<strong>Oops!</strong> Looks like your deck doesn\’t have any tags.', 'error');
     } else if (deck.description == "") {
       flash('<strong>Oops!</strong> Looks like your deck doesn\’t have a description.', 'error');
-    } else if ( deck.cards.length == undefined ) {
-      flash('<strong>Oops!</strong> Looks like your deck doesn\’t have any cards in it.', 'error');
     } else {
       var cardRequest = $.ajax({
         type: 'POST',
