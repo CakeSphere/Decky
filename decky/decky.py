@@ -623,7 +623,7 @@ def add_deck():
                 db.execute('INSERT INTO decksToCards VALUES(NULL, ' + str(
                     deck_row) + ', ' + card + ')')
             print "Inserted Multiverse ID " + card + " into Deck " + str(
-                deck_row) + " " + quantity + " times."
+                deck_row) + " " + str(quantity) + " times."
         db.commit()
         return 'success'
     return redirect(url_for('decks'))
