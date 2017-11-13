@@ -399,7 +399,6 @@ def cards(page):
         # Convert mana symbols to styled span elements
         text = text.replace('{', '<span class="mana small shadow s')
         text = text.replace('}', '">&nbsp;</span>')
-        text = text.replace('sB/G', 'sbg')
         # Text on cards in parentheses is always italicized
         text = text.replace('(', '<em class="card-explanation">(')
         text = text.replace(')', ')</em>')
@@ -612,19 +611,21 @@ def add_deck():
               'error')
     else:
         db = get_db()
-        cur_cards = db.execute('INSERT INTO decks values (null, ?, ?, null, date("now"), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, date("now"))', (deck_author, deck_colors, deck_description, deck_formats, deck_image, deck_legality, deck_likes, deck_mainboard, deck_maybeboard, deck_name, deck_sideboard, deck_tags))
+        cur_cards = db.execute(
+            'INSERT INTO decks values (null, ?, ?, null, date("now"), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, date("now"))',
+            (deck_author, deck_colors, deck_description, deck_formats,
+             deck_image, deck_legality, deck_likes, deck_mainboard,
+             deck_maybeboard, deck_name, deck_sideboard, deck_tags))
         deck_row = cur_cards.lastrowid
         for card in deck_cards:
-          quantity = deck_cards[card]['quantity']
-          for i in range(int(quantity)):
-            db.execute(
-              'INSERT INTO decksToCards VALUES(NULL, ' + str(deck_row) + ', ' + card + ')')
-          print "Inserted Multiverse ID " + card + " into Deck " + str(deck_row) + " " + quantity + " times."
+            quantity = deck_cards[card]['quantity']
+            for i in range(int(quantity)):
+                db.execute('INSERT INTO decksToCards VALUES(NULL, ' + str(
+                    deck_row) + ', ' + card + ')')
+            print "Inserted Multiverse ID " + card + " into Deck " + str(
+                deck_row) + " " + quantity + " times."
         db.commit()
-
-        success = Markup("<strong>Double, double toil and trouble!</strong> ")
-        flash(success + deck_name + " was brewed successfully.", 'success')
-
+        return 'success'
     return redirect(url_for('decks'))
 
 

@@ -69,7 +69,6 @@ $(function () {
     row.remove();
     // Update the quantity display on the UI
     $('.builder-quantity').text(deck.totalQuantity);
-    console.log(deck)
   });
   $('.save-deck').click(function() {
     event.preventDefault();
@@ -77,17 +76,29 @@ $(function () {
     deck.description = $('.description').val();
     deck.formats = $('[name="formats"]').val();
     deck.tags = $('[name="tags"]').val();
-    // flash('<strong>Double, double toil and trouble!</strong> ' + deck.name + ' was brewed successfully.', 'success')
-    var cardRequest = $.ajax({
-      type: 'POST',
-      url: '/add_deck',
-      data: JSON.stringify(deck),
-      dataType: 'json',
-      contentType: 'application/json; charset=utf-8',
-      success: function(deck_return) {
-        console.log('success?')
-      }
-    });
+    if (deck.name == "") {
+      flash('<strong>Oops!</strong> Looks like your deck doesn\’t have a name.', 'error');
+    } else if (deck.formats == "") {
+      flash('<strong>Oops!</strong> Looks like your deck doesn\’t have any formats.', 'error');
+    } else if (deck.tags == "") {
+      flash('<strong>Oops!</strong> Looks like your deck doesn\’t have any tags.', 'error');
+    } else if (deck.description == "") {
+      flash('<strong>Oops!</strong> Looks like your deck doesn\’t have a description.', 'error');
+    } else if ( deck.cards.length == undefined ) {
+      flash('<strong>Oops!</strong> Looks like your deck doesn\’t have any cards in it.', 'error');
+    } else {
+      var cardRequest = $.ajax({
+        type: 'POST',
+        url: '/add_deck',
+        data: JSON.stringify(deck),
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        success: function(deck_return) {
+          console.log('success')
+        }
+      });
+      flash('<strong>Double, double toil and trouble!</strong> ' + deck.name + ' was brewed successfully.', 'success')
+    }
   });
   // Function that does the same thing as the Python Flask flash function.
   function flash(message, type) {
