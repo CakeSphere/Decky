@@ -9,7 +9,7 @@ $(function () {
   // Show the first tab by default
   $('.tab-1').show();
   // Add rows to the Builder table when the user clicks Add.
-  $('.add-row').click(function() {
+  $('.add-row').click(function(event) {
     event.preventDefault();
 
     var cardQuantity = $('.card-quantity').val();
