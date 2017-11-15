@@ -53,10 +53,12 @@
         Colorless
       </button>
     {% endif %}
+    {% if card_mana %}
     <h3>Mana Cost</h3>
-    {% for mana in card_mana.split(" ") %}
-      <span class="mana medium s{{mana.lower()}} shadow">{{mana}}</span>
-    {% endfor %}
+      {% for mana in card_mana.split(" ") %}
+        <span class="mana medium s{{mana.lower()}} shadow">{{mana}}</span>
+      {% endfor %}
+    {% endif %}
     {% if card.power or card.toughness %}
       <h3>Power &amp; Toughness</h3>
       <span class="power-toughness">
@@ -98,11 +100,6 @@
           {{card_flavor}}
         </p>
       {% endif %}
-      <!-- <p>
-        <em>Dev &mdash; 
-        <a href="/card/{{card.multiverseId-1}}" class="btn">Previous Card</a>
-        <a href="/card/{{card.multiverseId+1}}" class="btn">Next Card</a></em>
-      </p> -->
     </div>
     {% if decks %}
     <div class="most-liked">

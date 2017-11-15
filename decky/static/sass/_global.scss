@@ -21,9 +21,8 @@ body {
   background: $color-background;
   color: $color-text;
   font-family: $font-family-text;
-  font-feature-settings: 'lnum', 'dlig';
+  font-feature-settings: 'lnum' on, 'dlig' on;
   font-size: $font-size-default;
-  // Opentype options
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
