@@ -3,9 +3,11 @@
   height: 45px;
   position: relative;
   z-index: $z-index-baseline;
-  a.btn {
+
+  .btn {
     height: 22px;
     vertical-align: bottom;
+
     &.active {
       background: tint($color-background, 10%);
       border-radius: $border-radius $border-radius 0 0;
@@ -14,6 +16,7 @@
                   0 2px 1px $color-shadow;
       color: $color-text;
       height: 25px;
+      padding-right: 0.5rem;
       position: relative;
       vertical-align: bottom;
     }
