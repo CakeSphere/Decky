@@ -137,14 +137,14 @@ input[type="radio"] {
       background: tint($color-background, 5%);
       border: 1px solid $color-bevel;
       border-radius: $border-radius;
-      box-shadow: inset 0 2px 0 $color-bevel;
+      box-shadow: inset 0 1px 0 $color-bevel;
       content: '';
       height: 20px;
       left: 0;
       position: absolute;
       top: 0;
       transition: background $transition;
-      width: 19px;
+      width: 20px;
     }
 
     // Checkbox check
@@ -155,7 +155,7 @@ input[type="radio"] {
       left: 0rem;
       opacity: 0;
       position: absolute;
-      top: 0.075rem;
+      top: 0.05rem;
       transform: scale(2);
       transition: transform $transition, opacity $transition;
     }
@@ -166,7 +166,9 @@ input[type="radio"] {
   // When the checkbox is checked, show the check
   &:checked + label {
     color: $color-text;
-
+    &::before {
+      background: tint($color-background, 2.5%);
+    }
     &::after {
       opacity: 1;
       transform: scale(1);
