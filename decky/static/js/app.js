@@ -112,7 +112,7 @@ $(function () {
     $('.top-nav').append('<div class="' + type + ' flash">' + message + '</div>');
     setTimeout(function() { $('.flash').remove(); }, 5500);
   }
-  $('.tabs .btn').click(function() {
+  $('.tabs .btn').click(function(event) {
     // Handle hiding and showing tabs
     event.preventDefault();
     var tab = $(this).attr('data-tab');

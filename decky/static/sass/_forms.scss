@@ -203,7 +203,7 @@ textarea {
   display: block;
   font-size: $font-size-sub;
   resize: none;
-  white-space: normal;
+  white-space: pre-wrap;
   width: calc(100% - 1.5rem);
 
   &:focus {
