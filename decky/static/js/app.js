@@ -78,6 +78,12 @@ $(function () {
     deck.description = $('.description').val();
     deck.formats = $('[name="formats"]').val();
     deck.tags = $('[name="tags"]').val();
+
+    var foils = $('input:checkbox:checked');
+    foils.each(function(index) {
+      console.log(index + ": " + $(this).attr('id'));
+    });
+
     // Should all of these fields be required?
     if (deck.name == "") {
       flash('<strong>Oops!</strong> Looks like your deck doesn\’t have a name.', 'error');
