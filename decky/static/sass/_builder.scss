@@ -70,7 +70,7 @@
 
 .add-card {
   background: tint($color-background, 10%);
-  box-shadow: inset 0 -2px 0 $color-shadow;
+  box-shadow: inset 0 2px 0 $color-bevel;
   padding: 0.5rem 0.5rem 0.2rem;
 
   input {

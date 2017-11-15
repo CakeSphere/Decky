@@ -592,13 +592,18 @@ def add_deck():
         deck_tags = deck['tags']
         deck_name = deck['name'].strip().title()
         deck_cards = deck['cards']
+    # This needs to be set to the currently logged-in user.
     deck_author = "Casanova Killing Spree"
+    # This needs to be calculated somehow.
     deck_colors = "{r}{b}"
+    # This is based on the Featured image selected while building.
     deck_image = "414494"
-    deck_likes = 99
+    deck_likes = 0
+    # These are probably obsolete.
     deck_mainboard = "main"
     deck_maybeboard = "maybe"
     deck_sideboard = "side"
+    # Double checking form fields that should've been verified on the front-end.
     if deck_name == "":
         error = Markup("<strong>Oops!</strong>")
         flash(error + " Looks like your deck doesn't have a name.", 'error')

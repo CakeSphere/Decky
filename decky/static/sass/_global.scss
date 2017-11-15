@@ -233,6 +233,7 @@ ul {
   top: 0;
   width: 100%;
   z-index: 99999;
+  animation: fadein 0.25s ease-out;
 
   &::before {
     background: transparentize($color-background, 0.05);

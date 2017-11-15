@@ -12,10 +12,6 @@ table {
   }
 
   tbody tr {
-    &:first-child {
-      box-shadow: inset 0 2px 2px $color-shadow;
-    }
-
     &:nth-child(even) {
       background: tint($color-background-tint, 2.5%);
 
@@ -24,12 +20,12 @@ table {
       }
     }
 
-    &:last-child {
-      box-shadow: inset 0 -2px 0 $color-shadow;
+    &:last-child  td {
+      padding-bottom: calc(0.3rem + 2px);
+    }
 
-      td {
-        padding-bottom: calc(0.3rem + 2px);
-      }
+    &:first-child {
+      box-shadow: inset 0 2px 2px $color-shadow;
     }
   }
 
