@@ -9,7 +9,7 @@ $(function () {
   // Show the first tab by default
   $('.tab-1').show();
   // Add rows to the Builder table when the user clicks Add.
-  $('.add-row').click(function() {
+  $('.add-row').click(function(event) {
     event.preventDefault();
 
     var cardQuantity = $('.card-quantity').val();
@@ -77,6 +77,13 @@ $(function () {
     deck.description = $('.description').val();
     deck.formats = $('[name="formats"]').val();
     deck.tags = $('[name="tags"]').val();
+
+    var foils = $('input:checkbox:checked');
+    foils.each(function(index) {
+      var foilId = $(this).attr('id');
+      deck.cards[foilId].foil = true;
+    });
+
     // Should all of these fields be required?
     if (deck.name == "") {
       flash('<strong>Oops!</strong> Looks like your deck doesn\’t have a name.', 'error');

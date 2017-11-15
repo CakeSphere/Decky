@@ -63,6 +63,8 @@ button {
     border-color: $color-bevel;
     box-shadow: inset 0 2px 0 $color-bevel;
     color: shade($color-text-weak, 15%);
+    padding-right: 1.5rem;
+    position: relative;
 
     .cancel {
       fill: shade($color-text-weak, 15%);
@@ -168,10 +170,11 @@ button {
 }
 
 .btn .cancel {
-  float: right;
   height: 10px;
   margin-left: 0.25rem;
-  top: 7px;
+  position: absolute;
+  top: 16px;
+  right: 7px;
   width: 10px;
 }
 
