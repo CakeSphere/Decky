@@ -52,7 +52,6 @@ $(function () {
           // Update the total quantity with the number of cards added
           deck.totalQuantity = deck.totalQuantity + Number(cardQuantity);
           // Update the quantity display on the UI
-          console.log(deck)
           $('.builder-quantity').text(deck.totalQuantity);
         } else {
           // If card isn't found, flash an error and select the text in the form
