@@ -7,6 +7,33 @@
 </div>
 <div class="container card">
   <aside class="sidebar">
+    <h3>Set</h3>
+    <button class="btn">
+      <i class="ss ss-fw ss-{{card.setCode.lower()}} ss-{{card.rarity.lower()}} {% if card.rarity != 'Common' %}ss-grad{% endif %}">&nbsp;</i>
+      {{card.setId}} <span class="rarity">&mdash; {{card.rarity}}</span>
+    </button>
+    <h3>Legal Formats</h3>
+    <button class="btn">Standard</button>
+    <button class="btn">Modern</button>
+    <button class="btn">Legacy</button>
+    <button class="btn">Vintage</button>
+    <button class="btn">Commander</button>
+    <button class="btn">Casual</button>
+    <h3>Value</h3>
+    <button class="btn">
+      $ <span class="price">6.00</span>
+    </button>
+    <button class="btn">
+      $ <span class="price">8.00</span> Foil
+    </button> 
+    <span class="price-source">TCGPlayer</span>
+    <button class="btn">
+      $ <span class="price">6.00</span>
+    </button>
+    <button class="btn">
+      $ <span class="price">8.00</span> Foil
+    </button> 
+    <span class="price-source">Isle of Cards</span>
     <h3>Color Identity</h3>
     {% if card.colorIdentity|length > 0 %}
       {% for color in card.colorIdentity.split(', ') %}
@@ -26,39 +53,10 @@
         Colorless
       </button>
     {% endif %}
-    <h3>Legal Formats</h3>
-    <button class="btn">Standard</button>
-    <button class="btn">Modern</button>
-    <button class="btn">Legacy</button>
-    <button class="btn">Vintage</button>
-    <button class="btn">Commander</button>
-    <button class="btn">Casual</button>
-    <h3>Set</h3>
-    <button class="btn">
-      <i class="ss ss-fw ss-{{card.setCode.lower()}} ss-{{card.rarity.lower()}} {% if card.rarity != 'Common' %}ss-grad{% endif %}">&nbsp;</i>
-      {{card.setId}} <span class="rarity">&mdash; {{card.rarity}}</span>
-    </button>
-    <h3>Value</h3>
-    <button class="btn">
-      $ <span class="price">6.00</span>
-    </button>
-    <button class="btn">
-      $ <span class="price">8.00</span> Foil
-    </button> 
-    <span class="price-source">TCGPlayer</span>
-    <button class="btn">
-      $ <span class="price">6.00</span>
-    </button>
-    <button class="btn">
-      $ <span class="price">8.00</span> Foil
-    </button> 
-    <span class="price-source">Isle of Cards</span>
-    {% if cardMana|length > 0 %}
-      <h3>Mana Cost</h3>
-      {% for mana in card_mana.split(" ") %}
-        <span class="mana medium s{{mana.lower()}} shadow">{{mana}}</span>
-      {% endfor %}
-    {% endif %}
+    <h3>Mana Cost</h3>
+    {% for mana in card_mana.split(" ") %}
+      <span class="mana medium s{{mana.lower()}} shadow">{{mana}}</span>
+    {% endfor %}
     {% if card.power or card.toughness %}
       <h3>Power &amp; Toughness</h3>
       <span class="power-toughness">

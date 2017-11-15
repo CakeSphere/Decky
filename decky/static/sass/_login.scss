@@ -29,13 +29,21 @@
       box-shadow: 0 0 50px shade($color-background, 15%);
       flex: 1;
       height: 35vw;
-      max-width: 80vw;
+      max-width: 50vw;
 
       .login-marketing,
       .login-form {
         float: left;
         height: calc(35vw - 6rem);
         padding: 3rem;
+
+        input[type="text"], input[type="password"], input[type="email"] {
+          width: auto;
+        }
+
+        h2 {
+          margin-top: 0;
+        }
       }
 
       .login-marketing {
