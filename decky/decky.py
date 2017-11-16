@@ -413,7 +413,7 @@ def cards(page):
         text = text.replace('sG/W', 'sgw')
         text = text.replace('sG/U', 'sgu')
         # Convert new lines to html line breaks
-        text = Markup('<br><br>'.join(text.split('\n')))
+        text = Markup('</p><p class="description">'.join(text.split('\n')))
         card_text[card["id"]] = text
     sets = cur_sets.fetchall()
     return render_template(

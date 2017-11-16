@@ -162,6 +162,7 @@
       font-size: $font-size-sub;
       font-style: italic;
       line-height: 1.1;
+      margin-bottom: 0.25rem;
       margin-top: 0;
       max-width: 650px;
 
@@ -386,7 +387,7 @@
   .description,
   .flavor { font-family: $font-family-text; }
 
-  .flavor { font-size: $font-size-default; }
+  .flavor { font-size: $font-size-default; line-height: 1; }
 
   .power-toughness {
     background: transparentize($color-background, 0.5);
