@@ -37,24 +37,11 @@ button {
     background: tint($color-background, 10%);
     color: $color-text;
     text-shadow: 0 1px 0 $color-bevel;
-    // Set symbols' strokes adjust as text color does
-    i {
-      text-shadow: none;
-      -webkit-text-stroke: 0.03em $color-text;
-      text-stroke: 0.03em $color-text;
-
-      &::after { transform: translateX(3px) rotate(45deg); }
-      &.ss-grad {
-        -webkit-text-stroke: 0.03em $color-border-strong;
-        text-stroke: 0.03em $color-border-strong;
-      }
-    }
   }
 
   &:active {
     background: tint($color-background, 5%);
     outline: none;
-    i { text-shadow: none; }
   }
 
   &:focus { outline: none; } // Removing default webkit outline
@@ -114,7 +101,6 @@ button {
     bottom: 3px;
     margin-right: 0.5rem;
     position: relative;
-    -webkit-text-stroke: 0.03em $color-text-weak;
     transition: -webkit-text-stroke $transition;
 
     &::after {
