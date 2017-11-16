@@ -413,7 +413,7 @@ def cards(page):
         text = text.replace('sG/W', 'sgw')
         text = text.replace('sG/U', 'sgu')
         # Convert new lines to html line breaks
-        text = Markup('<br>'.join(text.split('\n')))
+        text = Markup('</p><p class="description">'.join(text.split('\n')))
         card_text[card["id"]] = text
     sets = cur_sets.fetchall()
     return render_template(
@@ -484,9 +484,9 @@ def card(multiverseId):
     card_text = card_text.replace('sG/W', 'sgw')
     card_text = card_text.replace('sG/U', 'sgu')
     # Convert new lines to html line breaks
-    card_text = Markup('<br>'.join(card_text.split('\n')))
+    card_text = Markup('</p><p class="text">'.join(card_text.split('\n')))
     card_flavor = card['flavor']
-    card_flavor = Markup('<br>'.join(card_flavor.split('\n')))
+    card_flavor = Markup('</p><p class="flavor">'.join(card_flavor.split('\n')))
     return render_template(
         'card.html',
         card=card,
