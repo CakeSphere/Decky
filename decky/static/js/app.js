@@ -71,7 +71,7 @@ $(function () {
     // Update the quantity display on the UI
     $('.builder-quantity').text(deck.totalQuantity);
   });
-  $('.save-deck').click(function() {
+  $('.save-deck').click(function(event) {
     event.preventDefault();
     deck.name = $('[name="name"]').val();
     deck.description = $('.description').val();

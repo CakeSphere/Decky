@@ -135,7 +135,7 @@ input[type="radio"] {
     // Checkbox background
     &::before {
       background: tint($color-background, 5%);
-      border: 1px solid $color-bevel;
+      border: 1px solid shade($color-bevel, 10%);
       border-radius: $border-radius;
       box-shadow: inset 0 1px 0 $color-bevel;
       content: '';
@@ -150,12 +150,14 @@ input[type="radio"] {
     // Checkbox check
     &::after {
       color: $color-text-weak;
-      content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='gray' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' width='18px' height='18px' x='0px' y='0px'><line x1='18' y1='6' x2='6' y2='18'/><line x1='6' y1='6' x2='18' y2='18'/></svg>");
+      content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 20' fill='none' stroke='gray' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' width='18px' height='20px' x='0px' y='0px'><line x1='18' y1='6' x2='6' y2='18'/><line x1='6' y1='6' x2='18' y2='18'/></svg>");
       font-size: $font-size-default;
       left: 0rem;
       opacity: 0;
       position: absolute;
-      top: 0.05rem;
+      top: 0.0rem;
+      width: 18px;
+      height: 18px;
       transform: scale(2);
       transition: transform $transition, opacity $transition;
     }

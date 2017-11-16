@@ -562,7 +562,7 @@ def builder():
             '" AND multiverseid != "" AND releaseDate == "" ORDER BY multiverseid DESC '
         )
         card_data = card_data.fetchall()
-        if len(card_data) != 0:
+        if card_data:
             card_id = ''
             for card in card_data:
                 card_id = unicode(card[0])
@@ -575,7 +575,7 @@ def builder():
                     'card_type': card_type
                 })
                 return card_return
-        if len(card_data) == 0:
+        else:
             card_return = json.dumps({'card_found': False})
             return card_return
 
