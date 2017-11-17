@@ -44,7 +44,7 @@ $(function () {
             var currentQuantity = Number($('.row-' + card_return.card_id + ' .quantity').text());
             currentQuantity = currentQuantity + Number(cardQuantity);
             $('.row-' + card_return.card_id + ' .quantity').text(currentQuantity);
-            deck.cards[card_return.card_id].quantity = Number(deck.cards[card_return.card_id].quantity) + 1
+            deck.cards[card_return.card_id].quantity = Number(deck.cards[card_return.card_id].quantity) + 1;
             // Reset the form
             $('.card-quantity').val(1);
             $('.card-name').val('').focus();
@@ -65,7 +65,7 @@ $(function () {
     event.preventDefault();
     var row = $(this).closest('tr');
     var rowId = row.attr('class').slice(4);
-    deck.totalQuantity = deck.totalQuantity - deck.cards[rowId]['quantity']
+    deck.totalQuantity = deck.totalQuantity - deck.cards[rowId].quantity;
     delete deck.cards[rowId];
     row.remove();
     // Update the quantity display on the UI
@@ -78,11 +78,18 @@ $(function () {
     deck.formats = $('[name="formats"]').val();
     deck.tags = $('[name="tags"]').val();
 
+    // Flag cards with foil in the deck object
     var foils = $('input:checkbox:checked');
     foils.each(function(index) {
       var foilId = $(this).attr('id');
       deck.cards[foilId].foil = true;
     });
+
+    // Flag the featured card and the commander in the deck object.
+    var featured = $('input:radio:checked[id*="f"]').attr('id').slice(0,-1);
+    deck.cards[featured].featured = true;
+    var commander = $('input:radio:checked[id*="c"]').attr('id').slice(0,-1);
+    deck.cards[commander].commander = true;
 
     // Should all of these fields be required?
     if (deck.name == "") {
