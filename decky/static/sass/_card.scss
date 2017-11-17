@@ -109,68 +109,66 @@
     font-weight: normal;
     margin-top: -0.25rem;
   }
-
-  p {
-    &.text {
-      font-family: $font-family-display;
-      font-size: $font-size-lead;
-      line-height: 1.3;
+  .card-text {
+    font-family: $font-family-display;
+    font-size: $font-size-lead;
+    line-height: 1.3;
+    max-width: 830px;
+    margin-bottom: 0.5rem;
+    p {
       margin-bottom: 0.5rem;
       margin-top: 0;
-      max-width: 830px;
+    }
 
-      a {
-        @include underline($color-text, tint($color-background, 5%));
-        color: $color-text;
-        cursor: help;
+    a {
+      @include underline($color-text, tint($color-background, 5%));
+      color: $color-text;
+      cursor: help;
 
-        &::-moz-selection {
-          color: $color-text-weak;
-          text-shadow: 0.03em 0 $color-background, -0.03em 0 $color-background, 0 0.03em $color-background, 0 -0.03em $color-background, 0.06em 0 $color-background, -0.06em 0 $color-background, 0.09em 0 $color-background, -0.09em 0 $color-background, 0.12em 0 $color-background, -0.12em 0 $color-background, 0.15em 0 $color-background, -0.15em 0 $color-background;
-        }
-
-        &::selection {
-          color: $color-text-weak;
-          text-shadow: 0.03em 0 $color-background, -0.03em 0 $color-background, 0 0.03em $color-background, 0 -0.03em $color-background, 0.06em 0 $color-background, -0.06em 0 $color-background, 0.09em 0 $color-background, -0.09em 0 $color-background, 0.12em 0 $color-background, -0.12em 0 $color-background, 0.15em 0 $color-background, -0.15em 0 $color-background;
-        }
-
-        &:hover {
-          @include underline(shade($color-text, 15%), tint($color-background, 5%));
-          color: shade($color-text, 15%);
-        }
+      &::-moz-selection {
+        color: $color-text-weak;
+        text-shadow: 0.03em 0 $color-background, -0.03em 0 $color-background, 0 0.03em $color-background, 0 -0.03em $color-background, 0.06em 0 $color-background, -0.06em 0 $color-background, 0.09em 0 $color-background, -0.09em 0 $color-background, 0.12em 0 $color-background, -0.12em 0 $color-background, 0.15em 0 $color-background, -0.15em 0 $color-background;
       }
 
-      .card-explanation {
-        color: shade($color-text, 20%);
-        .tooltip,
-        a {
-          @include underline(shade($color-text, 20%), tint($color-background, 5%));
-          color: shade($color-text, 20%);
-        }
+      &::selection {
+        color: $color-text-weak;
+        text-shadow: 0.03em 0 $color-background, -0.03em 0 $color-background, 0 0.03em $color-background, 0 -0.03em $color-background, 0.06em 0 $color-background, -0.06em 0 $color-background, 0.09em 0 $color-background, -0.09em 0 $color-background, 0.12em 0 $color-background, -0.12em 0 $color-background, 0.15em 0 $color-background, -0.15em 0 $color-background;
       }
 
-
-      .mana.medium {
-        position: relative;
-        top: 5px;
-        + .mana.medium { margin-left: 3px; }
+      &:hover {
+        @include underline(shade($color-text, 15%), tint($color-background, 5%));
+        color: shade($color-text, 15%);
       }
     }
 
-    &.flavor {
+    .card-explanation {
       color: shade($color-text, 20%);
-      font-family: $font-family-display;
-      font-size: $font-size-sub;
-      font-style: italic;
-      line-height: 1.1;
+      .tooltip,
+      a {
+        @include underline(shade($color-text, 20%), tint($color-background, 5%));
+        color: shade($color-text, 20%);
+      }
+    }
+    .mana.medium {
+      position: relative;
+      top: 5px;
+      + .mana.medium { margin-left: 3px; }
+    }
+  }
+  .card-flavor {
+    color: shade($color-text, 20%);
+    font-family: $font-family-display;
+    font-size: $font-size-sub;
+    font-style: italic;
+    line-height: 1.1;
+    max-width: 650px;
+    p {
       margin-bottom: 0.25rem;
       margin-top: 0;
-      max-width: 650px;
-
-      cite {
-        display: block;
-        font-style: normal;
-      }
+    }
+    cite {
+      display: block;
+      font-style: normal;
     }
   }
 
@@ -295,6 +293,7 @@
     -webkit-mask-image: linear-gradient(to top, transparent, $color-black 10%, $color-black);
     mask-image: linear-gradient(to top, transparent, $color-black 10%, $color-black);
     min-height: 0;
+    padding-top: 1rem;
     position: relative;
     text-shadow: none;
 
@@ -386,10 +385,16 @@
     }
   }
 
-  .description,
-  .flavor { font-family: $font-family-text; }
+  .card-text {
+    margin-bottom: 0.25rem;
+  }
 
-  .flavor { font-size: $font-size-default; line-height: 1; }
+  .card-text, 
+  .card-flavor { 
+    font-family: $font-family-text;
+    font-size: $font-size-default; 
+    line-height: 1; 
+  }
 
   .power-toughness {
     background: transparentize($color-background, 0.5);

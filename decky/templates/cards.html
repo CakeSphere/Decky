@@ -133,8 +133,16 @@
             {{card.type}}
           </div>
           <div class="card-info">
-            <p class="description">{{card_text[card.id]}}</p>
-            <p class="flavor">{{card.flavor}}</p>
+            <div class="card-text">
+              <p>
+                {{card_text[card.id]}}
+              </p>
+            </div>
+            <div class="card-flavor">
+              <p>
+                {{card.flavor}}
+              </p>
+            </div>
           </div>
           {% if card.power != "" %}
             <div class="power-toughness">

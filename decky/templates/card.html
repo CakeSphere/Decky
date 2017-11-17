@@ -93,12 +93,18 @@
       <h1>{{card.name}}</h1>
       <h2>{{card.type}}</h2>
       {% if card.Text|length > 0 %}
-        <p class="text">{{card_text}}</p>
+        <div class="card-text">
+          <p>
+            {{card_text}}
+          </p>
+        </div>
       {% endif %}
       {% if card.Flavor|length > 0 %}
-        <p class="flavor">
-          {{card_flavor}}
-        </p>
+        <div class="card-flavor">
+          <p>
+            {{card_flavor}}
+          </p>
+        </div>
       {% endif %}
     </div>
     {% if decks %}

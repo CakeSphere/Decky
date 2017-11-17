@@ -210,7 +210,6 @@ textarea {
   width: calc(100% - 1.5rem);
 
   &:focus {
-    border-color: shade($color-border, 60%);
 
     + .submit {
       border-color: shade($color-border, 60%);

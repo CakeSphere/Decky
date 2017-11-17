@@ -1,9 +1,9 @@
 $(function () {
   // Instantiate the deck object for the builder
   var deck = {
-    'totalQuantity': 0
+    'totalQuantity': 0,
+    cards: {}
   };
-  deck.cards = {};
   // Hide all tabs on page load
   $('[class^=tab-]').hide();
   // Show the first tab by default
