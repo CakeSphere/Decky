@@ -24,21 +24,6 @@
     &:hover .flipper {
       transform: rotateY(180deg);
     }
-
-    &.foil::after {
-      animation: foil 5s ease-in-out infinite;
-      background: linear-gradient(120deg, $rainbow);
-      background-size: 150% 150%;
-      border-radius: 8px;
-      content: '';
-      height: 95%;
-      left: 3.75%;
-      mix-blend-mode: hard-light;
-      opacity: 0.15;
-      position: absolute;
-      top: 2.5%;
-      width: 92.5%;
-    }
   }
 
   .card-container,
@@ -203,6 +188,22 @@
       }
     }
   }
+}
+
+.card-container.foil::after,
+.card-preview.foil::after {
+  animation: foil 5s ease-in-out infinite;
+  background: linear-gradient(120deg, $rainbow);
+  background-size: 150% 150%;
+  border-radius: 8px;
+  content: '';
+  height: 95%;
+  left: 3.75%;
+  mix-blend-mode: hard-light;
+  opacity: 0.15;
+  position: absolute;
+  top: 2.5%;
+  width: 92.5%;
 }
 
 .card-bg {
@@ -389,11 +390,11 @@
     margin-bottom: 0.25rem;
   }
 
-  .card-text, 
-  .card-flavor { 
+  .card-text,
+  .card-flavor {
     font-family: $font-family-text;
-    font-size: $font-size-default; 
-    line-height: 1; 
+    font-size: $font-size-default;
+    line-height: 1;
   }
 
   .power-toughness {

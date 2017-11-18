@@ -525,13 +525,14 @@ def deck(id):
         foil[card["multiverseid"]] = card_foil
         card_featured = card['featured']
         featured[card["multiverseid"]] = card_featured
+        if featured[card["multiverseid"]] == 1:
+          deck_featured = card["multiverseid"]
         card_commander = card['commander']
         commander[card["multiverseid"]] = card_commander
     deck_tags = deck["tags"]
     deck_tags = deck_tags.split(', ')
     deck_legality = deck["legality"]
     deck_legality = deck_legality.split(', ')
-
     def is_today(date):
         if (date == datetime.now().strftime("%B %d, %Y")):
             date = "today"
@@ -555,6 +556,7 @@ def deck(id):
         deck=deck,
         cards=cards,
         foil=foil,
+        deck_featured=deck_featured,
         deck_tags=deck_tags,
         deck_legality=deck_legality,
         deck_created=deck_created,

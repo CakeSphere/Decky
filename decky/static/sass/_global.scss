@@ -124,6 +124,10 @@ label {
   display: block;
 }
 
+small {
+  color: $color-text-weak;
+}
+
 // Magic colors
 // These classes are used to easily color text referring to the five Magic
 // colors

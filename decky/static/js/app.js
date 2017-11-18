@@ -129,10 +129,14 @@ $(function () {
     $('.' + tab).show();
   });
   $('.tooltip').hover(function(e) {
-    console.log('hover');
     // Card tooltips
     this.t = $(this).attr('data-img');
-    $('body').append('<div class="card-preview"><img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=' + this.t + '&type=card"/></div>');
+    if($(this).hasClass('foil')) {
+      $('body').append('<div class="card-preview foil"><img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=' + this.t + '&type=card"/></div>');
+    } else {
+      $('body').append('<div class="card-preview"><img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=' + this.t + '&type=card"/></div>');
+    }
+
     $('.card-preview')
       .css("top",(e.pageY - 10) + "px")
       .css("left",(e.pageX + 30) + "px");
