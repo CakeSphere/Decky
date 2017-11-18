@@ -516,11 +516,17 @@ def deck(id):
     cards = cur.fetchall()
     count = {}
     foil = {}
+    featured = {}
+    commander = {}
     for card in cards:
         card_count = card[1]
         count[card["multiverseid"]] = card_count
         card_foil = card['foil']
         foil[card["multiverseid"]] = card_foil
+        card_featured = card['featured']
+        featured[card["multiverseid"]] = card_featured
+        card_commander = card['commander']
+        commander[card["multiverseid"]] = card_commander
     deck_tags = deck["tags"]
     deck_tags = deck_tags.split(', ')
     deck_legality = deck["legality"]
@@ -554,6 +560,8 @@ def deck(id):
         deck_created=deck_created,
         deck_updated=deck_updated,
         count=count,
+        commander=commander,
+        featured=featured,
         deck_description=deck_description)
 
 

@@ -151,7 +151,7 @@
           <ul class="list-unstyled">
             {% for card in cards %}
               {% if "Creature" in card.type %}
-                <li>{{count[card.multiverseid]}} {{foil[card.multiverseid]}} <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip" data-img="{{card.multiverseId}}">{{card.name}}</a></li>
+                <li>{{count[card.multiverseid]}} {{foil[card.multiverseid]}} {{featured[card.multiverseid]}} {{commander[card.multiverseid]}} <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip" data-img="{{card.multiverseId}}">{{card.name}}</a></li>
               {% endif %}
             {% endfor %}
           </ul>
