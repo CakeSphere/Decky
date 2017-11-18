@@ -83,37 +83,37 @@
       <div class="color-bar">
         <div class="w" style="height: 16.66666667%">
           <span>
-            <span class="mana small sw shadow">&nbsp;</span> 
+            <span class="mana small sw shadow">&nbsp;</span>
             16%
           </span>
         </div>
         <div class="u" style="height: 16.66666667%">
           <span>
-            <span class="mana small su shadow">&nbsp;</span> 
+            <span class="mana small su shadow">&nbsp;</span>
             16%
           </span>
         </div>
         <div class="r" style="height: 16.66666667%">
           <span>
-            <span class="mana small sr shadow">&nbsp;</span> 
+            <span class="mana small sr shadow">&nbsp;</span>
             16%
           </span>
         </div>
         <div class="b" style="height: 16.66666667%">
           <span>
-            <span class="mana small sb shadow">&nbsp;</span> 
+            <span class="mana small sb shadow">&nbsp;</span>
             16%
           </span>
         </div>
         <div class="g" style="height: 16.66666667%">
           <span>
-            <span class="mana small sg shadow">&nbsp;</span> 
+            <span class="mana small sg shadow">&nbsp;</span>
             16%
           </span>
         </div>
         <div class="c" style="height: 16.66666667%">
           <span>
-            <span class="mana small sc shadow">&nbsp;</span> 
+            <span class="mana small sc shadow">&nbsp;</span>
             16%
           </span>
         </div>
@@ -151,7 +151,7 @@
           <ul class="list-unstyled">
             {% for card in cards %}
               {% if "Creature" in card.type %}
-                <li>{{count[card.multiverseid]}} <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip" data-img="{{card.multiverseId}}">{{card.name}}</a></li>
+                <li>{{count[card.multiverseid]}} {{foil[card.multiverseid]}} <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip" data-img="{{card.multiverseId}}">{{card.name}}</a></li>
               {% endif %}
             {% endfor %}
           </ul>

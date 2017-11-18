@@ -1,4 +1,4 @@
-import os, sqlite3, sass, json, smartypants, re
+import os, sqlite3, sass, json, smartypants, re, sys
 
 from pprint import pprint
 from HTMLParser import HTMLParser
@@ -7,6 +7,9 @@ from sassutils.wsgi import SassMiddleware
 from datetime import datetime
 from math import ceil
 from random import randint
+
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -256,8 +259,8 @@ def import_cards():
         with open(os.path.join(PATH_TO_JSON, file)) as json_file:
             set_data = json.load(json_file)
             set_data = format_set(set_data)
-            print "\033[96m\033[1m" + set_data["code"] + " " + set_data[
-                "name"] + "\n\033[0m\033[94m"
+            print "\033[96m\033[1m" + set_data["code"].encode("utf8") + " " + set_data[
+                "name"].encode("utf8") + "\n\033[0m\033[94m"
             import_sets_query = "INSERT INTO 'sets' (name, code, gathererCode, oldCode, magicCardsInfoCode, releaseDate, border, type, block) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);"
             db.execute(import_sets_query, \
              (set_data["name"],\
@@ -273,7 +276,7 @@ def import_cards():
                 card_data = format_card(card_data)
                 import_cards_query = 'INSERT INTO `cards` (layout, name, names, manaCost, cmc, colors, colorIdentity, type, supertypes, types, subtypes, rarity, text, flavor, artist, number, power, toughness, loyalty, multiverseid, variations, watermark, border, timeshifted, hand, life, reserved, releaseDate, starter, mciNumber, imageName, setId, setCode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);'
                 print str(card_data["multiverseid"]).zfill(
-                    6) + " " + card_data["name"]
+                    6) + " " + card_data["name"].encode("utf8")
                 db.execute(import_cards_query, \
                  (card_data["layout"], \
                   card_data["name"], \
@@ -508,13 +511,16 @@ def deck(id):
     if not deck:
         abort(404)
     cur = db.execute(
-        'SELECT name, count(name), type, multiverseid FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId="'
+        'SELECT name, count(name), type, multiverseid, foil, featured, commander FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId="'
         + id + '" GROUP BY name')
     cards = cur.fetchall()
     count = {}
+    foil = {}
     for card in cards:
         card_count = card[1]
         count[card["multiverseid"]] = card_count
+        card_foil = card['foil']
+        foil[card["multiverseid"]] = card_foil
     deck_tags = deck["tags"]
     deck_tags = deck_tags.split(', ')
     deck_legality = deck["legality"]
@@ -542,6 +548,7 @@ def deck(id):
         'deck.html',
         deck=deck,
         cards=cards,
+        foil=foil,
         deck_tags=deck_tags,
         deck_legality=deck_legality,
         deck_created=deck_created,
@@ -625,8 +632,21 @@ def add_deck():
         for card in deck_cards:
             quantity = deck_cards[card]['quantity']
             for i in range(int(quantity)):
+                if deck_cards[card]['foil'] == 1:
+                    card_foil = 1
+                else:
+                    card_foil = 0
+                if deck_cards[card]['featured'] == 1:
+                    card_featured = 1
+                else:
+                    card_featured = 0
+                if deck_cards[card]['commander'] == 1:
+                    card_commander = 1
+                else:
+                    card_commander = 0
+                print card_foil + card_featured + card_commander
                 db.execute('INSERT INTO decksToCards VALUES(NULL, ' + str(
-                    deck_row) + ', ' + card + ')')
+                    deck_row) + ', ' + card + ', ' + str(card_foil) + ', ' + str(card_featured) + ', ' + str(card_commander) + ')')
             print "Inserted Multiverse ID " + card + " into Deck " + str(
                 deck_row) + " " + str(quantity) + " times."
         db.commit()
