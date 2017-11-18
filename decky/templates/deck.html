@@ -122,7 +122,7 @@
         <h1>{{deck.name}}</h1>
         <h2>{{deck.author}}</h2>
       </hgroup>
-      <img class="deck-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{deck_featured}}&type=card" alt="{{deck.name}}">
+      <img class="deck-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{deck_image}}&type=card" alt="{{deck.name}}">
     </div>
     <div class="deck-contents">
       <div class="column">
@@ -131,7 +131,15 @@
           <ul class="list-unstyled">
             {% for card in cards %}
               {% if "Land" in card.type %}
-                <li>{{count[card.multiverseid]}} <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip" data-img="{{card.multiverseId}}">{{card.name}}</a></li>
+                <li>
+                  {{count[card.multiverseid]}}
+                  <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
+                    {{card.name}}
+                  </a>
+                  {% if foil[card.multiverseid] %}
+                    <small>Foil</small>
+                  {% endif %}
+                </li>
               {% endif %}
             {% endfor %}
           </ul>
@@ -141,7 +149,15 @@
           <ul class="list-unstyled">
             {% for card in cards %}
               {% if "Planeswalker" in card.type %}
-                <li>{{count[card.multiverseid]}} <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip" data-img="{{card.multiverseId}}">{{card.name}}</a></li>
+                <li>
+                  {{count[card.multiverseid]}}
+                  <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
+                    {{card.name}}
+                  </a>
+                  {% if foil[card.multiverseid] %}
+                    <small>Foil</small>
+                  {% endif %}
+                </li>
               {% endif %}
             {% endfor %}
           </ul>
@@ -171,7 +187,15 @@
           <ul class="list-unstyled">
             {% for card in cards %}
               {% if "Sorcery" in card.type %}
-                <li>{{count[card.multiverseid]}} <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip" data-img="{{card.multiverseId}}">{{card.name}}</a></li>
+                <li>
+                  {{count[card.multiverseid]}}
+                  <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
+                    {{card.name}}
+                  </a>
+                  {% if foil[card.multiverseid] %}
+                    <small>Foil</small>
+                  {% endif %}
+                </li>
               {% endif %}
             {% endfor %}
           </ul>
@@ -181,7 +205,15 @@
           <ul class="list-unstyled">
             {% for card in cards %}
               {% if "Instant" in card.type %}
-                <li>{{count[card.multiverseid]}} <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip" data-img="{{card.multiverseId}}">{{card.name}}</a></li>
+                <li>
+                  {{count[card.multiverseid]}}
+                  <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
+                    {{card.name}}
+                  </a>
+                  {% if foil[card.multiverseid] %}
+                    <small>Foil</small>
+                  {% endif %}
+                </li>
               {% endif %}
             {% endfor %}
           </ul>
@@ -191,7 +223,15 @@
           <ul class="list-unstyled">
             {% for card in cards %}
               {% if "Enchantment" in card.type %}
-                <li>{{count[card.multiverseid]}} <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip" data-img="{{card.multiverseId}}">{{card.name}}</a></li>
+                <li>
+                  {{count[card.multiverseid]}}
+                  <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
+                    {{card.name}}
+                  </a>
+                  {% if foil[card.multiverseid] %}
+                    <small>Foil</small>
+                  {% endif %}
+                </li>
               {% endif %}
             {% endfor %}
           </ul>

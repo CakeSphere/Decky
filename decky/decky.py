@@ -529,6 +529,7 @@ def deck(id):
           deck_featured = card["multiverseid"]
         card_commander = card['commander']
         commander[card["multiverseid"]] = card_commander
+    deck_image = deck["image"]
     deck_tags = deck["tags"]
     deck_tags = deck_tags.split(', ')
     deck_legality = deck["legality"]
@@ -557,6 +558,7 @@ def deck(id):
         cards=cards,
         foil=foil,
         deck_featured=deck_featured,
+        deck_image=deck_image,
         deck_tags=deck_tags,
         deck_legality=deck_legality,
         deck_created=deck_created,
@@ -633,6 +635,9 @@ def add_deck():
               'error')
     else:
         db = get_db()
+        for card in deck_cards:
+          if deck_cards[card]['featured'] == 1:
+            deck_image = card
         cur_cards = db.execute(
             'INSERT INTO decks values (null, ?, ?, null, date("now"), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, date("now"))',
             (deck_author, deck_colors, deck_description, deck_formats,
@@ -654,7 +659,6 @@ def add_deck():
                     card_commander = 1
                 else:
                     card_commander = 0
-                print card_foil + card_featured + card_commander
                 db.execute('INSERT INTO decksToCards VALUES(NULL, ' + str(
                     deck_row) + ', ' + card + ', ' + str(card_foil) + ', ' + str(card_featured) + ', ' + str(card_commander) + ')')
             print "Inserted Multiverse ID " + card + " into Deck " + str(

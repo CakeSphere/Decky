@@ -90,7 +90,6 @@ $(function () {
     deck.cards[featured].featured = true;
     var commander = $('input:radio:checked[id*="c"]').attr('id').slice(0,-1);
     deck.cards[commander].commander = true;
-
     // Should all of these fields be required?
     if (deck.name == "") {
       flash('<strong>Oops!</strong> Looks like your deck doesn\’t have a name.', 'error');
