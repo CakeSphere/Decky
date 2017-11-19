@@ -317,7 +317,7 @@
   .deck-img {
     @include demo(demo-slide);
   }
-  
+
   hgroup {
     @include demo(demo-slide);
   }
@@ -352,6 +352,12 @@
       transform: scaleX(1);
 
       div span { opacity: 1; }
+    }
+
+    div {
+      display: inline-block;
+      min-width: 12px;
+      text-align: right;
     }
 
     .color-bar {
