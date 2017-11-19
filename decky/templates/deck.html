@@ -232,7 +232,27 @@
           <h2>Enchantments</h2>
           <ul class="list-unstyled">
             {% for card in cards %}
-              {% if "Enchantment" in card.type %}
+              {% if "Enchantment" in card.type and "Artifact" not in card.type %}
+                <li>
+                  <div>
+                    {{count[card.multiverseid]}}
+                  </div>
+                  <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
+                    {{card.name}}
+                  </a>
+                  {% if foil[card.multiverseid] %}
+                    <small>Foil</small>
+                  {% endif %}
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="card-type">
+          <h2>Artifact</h2>
+          <ul class="list-unstyled">
+            {% for card in cards %}
+              {% if "Artifact" in card.type %}
                 <li>
                   <div>
                     {{count[card.multiverseid]}}
