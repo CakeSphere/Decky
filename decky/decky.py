@@ -531,21 +531,22 @@ def deck(id):
         foil[card["multiverseid"]] = card_foil
         card_commander = card['commander']
         commander[card["multiverseid"]] = card_commander
+
         # Sort the cards by type
         if "Land" in card["type"]:
-          lands[card['multiverseid']] = True
+            lands[card['multiverseid']] = True
         if "Planeswalker" in card["type"]:
-          planeswalkers[card['multiverseid']] = True
+            planeswalkers[card['multiverseid']] = True
         if "Creature" in card["type"]:
-          creatures[card['multiverseid']] = True
+            creatures[card['multiverseid']] = True
         if "Sorcery" in card["type"]:
-          sorceries[card['multiverseid']] = True
+            sorceries[card['multiverseid']] = True
         if "Instant" in card["type"]:
-          instants[card['multiverseid']] = True
+            instants[card['multiverseid']] = True
         if "Enchantment" in card["type"] and "Artifact" not in card["type"]:
-          enchantments[card['multiverseid']] = True
+            enchantments[card['multiverseid']] = True
         if "Artifact" in card["type"]:
-          artifacts[card['multiverseid']] = True
+            artifacts[card['multiverseid']] = True
 
     deck_image = deck["image"]
     deck_tags = deck["tags"]
