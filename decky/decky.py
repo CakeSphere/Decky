@@ -534,19 +534,20 @@ def deck(id):
 
         # Sort the cards by type
         if "Land" in card["type"]:
-            lands[card['multiverseid']] = True
+            lands[card['multiverseid']] = card
+            print card
         if "Planeswalker" in card["type"]:
-            planeswalkers[card['multiverseid']] = True
+            planeswalkers[card['multiverseid']] = card
         if "Creature" in card["type"]:
-            creatures[card['multiverseid']] = True
+            creatures[card['multiverseid']] = card
         if "Sorcery" in card["type"]:
-            sorceries[card['multiverseid']] = True
+            sorceries[card['multiverseid']] = card
         if "Instant" in card["type"]:
-            instants[card['multiverseid']] = True
+            instants[card['multiverseid']] = card
         if "Enchantment" in card["type"] and "Artifact" not in card["type"]:
-            enchantments[card['multiverseid']] = True
+            enchantments[card['multiverseid']] = card
         if "Artifact" in card["type"]:
-            artifacts[card['multiverseid']] = True
+            artifacts[card['multiverseid']] = card
 
     deck_image = deck["image"]
     deck_tags = deck["tags"]
@@ -573,6 +574,13 @@ def deck(id):
     deck_description = Markup('</p><p>'.join(deck_description.split('\n')))
     return render_template(
         'deck.html',
+        lands=lands,
+        planeswalkers=planeswalkers,
+        creatures=creatures,
+        sorceries=sorceries,
+        instants=instants,
+        enchantments=enchantments,
+        artifacts=artifacts,
         deck=deck,
         cards=cards,
         foil=foil,
