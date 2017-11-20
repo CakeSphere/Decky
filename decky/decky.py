@@ -517,6 +517,13 @@ def deck(id):
     count = {}
     foil = {}
     commander = {}
+    lands = {}
+    planeswalkers = {}
+    creatures = {}
+    sorceries = {}
+    instants = {}
+    enchantments = {}
+    artifacts = {}
     for card in cards:
         card_count = card[1]
         count[card["multiverseid"]] = card_count
@@ -524,6 +531,22 @@ def deck(id):
         foil[card["multiverseid"]] = card_foil
         card_commander = card['commander']
         commander[card["multiverseid"]] = card_commander
+        # Sort the cards by type
+        if "Land" in card["type"]:
+          lands[card['multiverseid']] = True
+        if "Planeswalker" in card["type"]:
+          planeswalkers[card['multiverseid']] = True
+        if "Creature" in card["type"]:
+          creatures[card['multiverseid']] = True
+        if "Sorcery" in card["type"]:
+          sorceries[card['multiverseid']] = True
+        if "Instant" in card["type"]:
+          instants[card['multiverseid']] = True
+        if "Enchantment" in card["type"] and "Artifact" not in card["type"]:
+          enchantments[card['multiverseid']] = True
+        if "Artifact" in card["type"]:
+          artifacts[card['multiverseid']] = True
+
     deck_image = deck["image"]
     deck_tags = deck["tags"]
     deck_tags = deck_tags.split(', ')
