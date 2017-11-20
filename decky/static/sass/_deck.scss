@@ -356,8 +356,8 @@
 
     div {
       display: inline-block;
-      min-width: 12px;
       text-align: right;
+      font-feature-settings: "tnum", "lnum";
     }
 
     .color-bar {

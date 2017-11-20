@@ -570,7 +570,7 @@ def builder():
         card_name = card_name['cardName']
         card_data = db.execute(
             'SELECT multiverseid, setId, type FROM cards WHERE name LIKE "' +
-            card_name +
+            HTMLParser().unescape(smartypants.smartypants(card_name)) +
             '" AND multiverseid != "" AND releaseDate == "" ORDER BY multiverseid DESC '
         )
         card_data = card_data.fetchall()
