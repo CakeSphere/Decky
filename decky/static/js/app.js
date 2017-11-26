@@ -31,11 +31,16 @@ $(function () {
             // Add a new row to the builder table
             $('.builder-table tbody').append(newRow);
             var selectSet = document.getElementById('select-set-' + card_return.card_id);
-            for(var i = 0; i < sets.length; i++) {
-                var opt = document.createElement('option');
-                opt.innerHTML = card_return.card_sets[sets[i]];
-                opt.value = card_return.card_sets[sets[i]];
-                selectSet.appendChild(opt);
+            // Add options to the set selector
+            if (sets.length > 1) {
+              for (var i = 0; i < sets.length; i++) {
+                  var opt = document.createElement('option');
+                  opt.innerHTML = card_return.card_sets[sets[i]];
+                  opt.value = card_return.card_sets[sets[i]];
+                  selectSet.appendChild(opt);
+              }
+            } else {
+              selectSet.replaceWith(card_return.card_sets[sets[0]])
             }
             // Reset the form
             $('.card-quantity').val(1);
