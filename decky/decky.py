@@ -598,6 +598,7 @@ def deck(id):
 def builder():
     db = get_db()
     card_name = request.get_json()
+    card_sets = {}
     if card_name:
         card_name = card_name['cardName']
         card_data = db.execute(
@@ -609,16 +610,18 @@ def builder():
         if card_data:
             card_id = ''
             for card in card_data:
+                print unicode(card[1])
                 card_id = unicode(card[0])
-                card_set = unicode(card[1])
+                card_sets[card_id] = unicode(card[1])
                 card_type = unicode(card[2])
                 card_return = json.dumps({
                     'card_found': True,
                     'card_id': card_id,
-                    'card_set': card_set,
+                    'card_sets': card_sets,
                     'card_type': card_type
                 })
-                return card_return
+
+            return card_return
         else:
             card_return = json.dumps({'card_found': False})
             return card_return
