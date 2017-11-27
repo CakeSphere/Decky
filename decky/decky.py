@@ -610,7 +610,6 @@ def builder():
         if card_data:
             card_id = ''
             for card in card_data:
-                print unicode(card[1])
                 card_id = unicode(card[0])
                 card_sets[card_id] = unicode(card[1])
                 card_type = unicode(card[2])
@@ -632,6 +631,7 @@ def builder():
 @app.route('/add_deck', methods=['GET', 'POST'])
 def add_deck():
     deck = request.get_json()
+    print deck
     if deck:
         deck_description = deck['description']
         deck_formats = deck['formats']

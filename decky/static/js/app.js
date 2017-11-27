@@ -34,14 +34,16 @@ $(function () {
             // Add options to the set selector
             if (sets.length > 1) {
               for (var i = 0; i < sets.length; i++) {
-                  var opt = document.createElement('option');
-                  opt.innerHTML = card_return.card_sets[sets[i]];
-                  opt.value = card_return.card_sets[sets[i]];
-                  selectSet.appendChild(opt);
+                var opt = document.createElement('option');
+                opt.innerHTML = card_return.card_sets[sets[i]];
+                opt.value = sets[i];
+                selectSet.appendChild(opt);
               }
             } else {
               selectSet.replaceWith(card_return.card_sets[sets[0]])
             }
+
+
             // Reset the form
             $('.card-quantity').val(1);
             $('.card-name').val('').focus();
@@ -53,6 +55,31 @@ $(function () {
               "featured": false,
               "commander": false
             };
+            $(selectSet).on('change', function () {
+              var row = $(this).parents('[class^="row"]');
+              console.log(row.attr('class'));
+              var featured = $(row).find($('input:radio[id*="f"]'));
+              console.log(featured)
+              var commander = $(row).find($('input:radio[id*="c"]'));
+              var foil = $(row).find($('input:checkbox'));
+              delete deck.cards[cardId];
+              for (var i = 0; i < sets.length; i++) {
+                delete deck.cards[sets[i]]
+              }
+              $(row).find($('input:radio[id*="f"] + label')).attr('for', selectSet.value + "f");
+              featured.attr('id', selectSet.value + "f");
+              $(row).find($('input:radio[id*="c"] + label')).attr('for', selectSet.value + "c");
+              commander.attr('id', selectSet.value + "c");
+              $(row).find($('input:checkbox + label')).attr('for', selectSet.value);
+              foil.attr('id', selectSet.value);
+
+              deck.cards[selectSet.value] = {
+                "quantity": cardQuantity,
+                "foil": false,
+                "featured": false,
+                "commander": false
+              }
+            })
           } else {
             // Add the quantity in the form to the quantity in the table
             var currentQuantity = Number($('.row-' + card_return.card_id + ' .quantity').text());

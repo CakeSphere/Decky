@@ -69,7 +69,7 @@ select.btn {
 }
 
 table select.btn {
-  background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333333' stroke='%23ababab' stroke-width='0.5' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
+  background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333333' stroke='%23ababab' stroke-width='0.5' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.25rem;
   background-size: 10px 12px;
   border: 0;
   box-shadow: none;
@@ -78,10 +78,11 @@ table select.btn {
   margin-top: calc(-0.3rem + 1px);
   padding: 0.1rem;
   padding-bottom: 0.25rem;
+  padding-top: 0;
   width: 100%;
 
   &:hover, &:focus {
-    background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333333' stroke='%23f7f7f7' stroke-width='0.5' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center;
+    background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333333' stroke='%23ababab' stroke-width='0.5' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.25rem;
     background-size: 10px 12px;
   }
 
