@@ -42,6 +42,7 @@ $(function () {
                 opt.value = sets[i];
                 selectSet.appendChild(opt);
               }
+              $(selectSet).find('option').last().attr('selected', true);
             } else {
               selectSet.replaceWith(card_return.card_sets[sets[0]])
             }
