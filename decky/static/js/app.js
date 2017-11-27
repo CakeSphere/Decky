@@ -55,11 +55,12 @@ $(function () {
               "featured": false,
               "commander": false
             };
+            // Change everything in the row and in the deck object when the
+            // user changes the printing.
             $(selectSet).on('change', function () {
               var row = $(this).parents('[class^="row"]');
-              console.log(row.attr('class'));
+              row.find($('a')).attr('href', "/card/" + selectSet.value);
               var featured = $(row).find($('input:radio[id*="f"]'));
-              console.log(featured)
               var commander = $(row).find($('input:radio[id*="c"]'));
               var foil = $(row).find($('input:checkbox'));
               delete deck.cards[cardId];
