@@ -60,8 +60,9 @@ $(function () {
             $(selectSet).on('change', function () {
               // Get the parent row of the select element
               var row = $(this).parents('[class^="row"]')
+              row.attr('class', 'row-' + selectSet.value);
               // Change the link to point to the new printing
-              var card_link = row.find($('a'))
+              var card_link = row.find($('.tooltip'))
               card_link.attr('href', "/card/" + selectSet.value);
               card_link.attr('data-img', selectSet.value);
               // Get the associated inputs
