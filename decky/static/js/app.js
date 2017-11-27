@@ -30,6 +30,7 @@ $(function () {
 
             // Add a new row to the builder table
             $('.builder-table tbody').append(newRow);
+            $('tbody tr').first().find('[type=radio]').prop('checked', true)
             var selectSet = document.getElementById('select-set-' + card_return.card_id);
             // Add options to the set selector
             if (sets.length > 1) {

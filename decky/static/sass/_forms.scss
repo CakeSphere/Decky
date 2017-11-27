@@ -181,7 +181,7 @@ input[type="radio"] {
       top: 0.0rem;
       width: 18px;
       height: 18px;
-      transform: scale(2);
+      transform: scale(2) rotate(-10deg);
       transform-origin: center;
       transition: transform $transition, opacity $transition;
     }
@@ -197,7 +197,7 @@ input[type="radio"] {
     }
     &::after {
       opacity: 1;
-      transform: scale(1);
+      transform: scale(1) rotate(0deg);
     }
   }
 }
