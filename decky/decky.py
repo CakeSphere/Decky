@@ -603,7 +603,7 @@ def builder():
         card_data = db.execute(
             'SELECT multiverseid, setId, type FROM cards WHERE name LIKE "' +
             HTMLParser().unescape(smartypants.smartypants(card_name)) +
-            '" AND multiverseid != "" AND releaseDate == "" ORDER BY multiverseid DESC '
+            '" AND multiverseid != "" AND releaseDate == "" ORDER BY multiverseid ASC '
         )
         card_data = card_data.fetchall()
         if card_data:
