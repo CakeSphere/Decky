@@ -58,22 +58,31 @@ $(function () {
             // Change everything in the row and in the deck object when the
             // user changes the printing.
             $(selectSet).on('change', function () {
-              var row = $(this).parents('[class^="row"]');
-              row.find($('a')).attr('href', "/card/" + selectSet.value);
+              // Get the parent row of the select element
+              var row = $(this).parents('[class^="row"]')
+              // Change the link to point to the new printing
+              var card_link = row.find($('a'))
+              card_link.attr('href', "/card/" + selectSet.value);
+              card_link.attr('data-img', selectSet.value);
+              // Get the associated inputs
               var featured = $(row).find($('input:radio[id*="f"]'));
               var commander = $(row).find($('input:radio[id*="c"]'));
               var foil = $(row).find($('input:checkbox'));
+              // Delete the old printing from the deck object
               delete deck.cards[cardId];
+              // Delete any previously added printings
               for (var i = 0; i < sets.length; i++) {
                 delete deck.cards[sets[i]]
               }
+              // Change all of the inputs and their labels to match the new
+              // printing
               $(row).find($('input:radio[id*="f"] + label')).attr('for', selectSet.value + "f");
               featured.attr('id', selectSet.value + "f");
               $(row).find($('input:radio[id*="c"] + label')).attr('for', selectSet.value + "c");
               commander.attr('id', selectSet.value + "c");
               $(row).find($('input:checkbox + label')).attr('for', selectSet.value);
               foil.attr('id', selectSet.value);
-
+              // Add the new printing to the deck object.
               deck.cards[selectSet.value] = {
                 "quantity": cardQuantity,
                 "foil": false,
@@ -190,6 +199,30 @@ $(function () {
     // Delete the tooltip when it finishes fading out
     this.remove();
   }
+
+  $('.builder-table tbody').on('mouseenter', '.tooltip', function(e) {
+    console.log('mouse in')
+
+    // Card tooltips
+    this.t = $(this).attr('data-img');
+    if($(this).hasClass('foil')) {
+      $('body').append('<div class="card-preview foil"><img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=' + this.t + '&type=card"/></div>');
+    } else {
+      $('body').append('<div class="card-preview"><img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=' + this.t + '&type=card"/></div>');
+    }
+    $('.card-preview')
+      .css("top",(e.pageY - 10) + "px")
+      .css("left",(e.pageX + 30) + "px");
+  });
+  $('.builder-table tbody').on('mouseleave', '.tooltip', function(e) {
+    $('.card-preview').fadeOut(100, complete);
+  });
+  $('.builder-table tbody').on('mousemove', '.tooltip', function(e) {
+    // Update the tooltip position when the mouse moves
+    $('.card-preview')
+      .css("top",(e.pageY - 10) + "px")
+      .css("left",(e.pageX + 30) + "px");
+  });
   $('.tooltip').mousemove(function(e){
     // Update the tooltip position when the mouse moves
     $('.card-preview')
