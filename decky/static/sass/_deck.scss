@@ -326,8 +326,7 @@
 .deck-contents {
   // These will need to be modified to allow for different formats
   // (e.g. Commander/EDH)
-  margin: 0 -0.5rem;
-  padding-top: 2rem;
+  padding: 2rem 0;
   columns: 3;
   li { font-size: $font-size-sub; }
   h2 { font-family: $font-family-display; font-style: italic; margin-top: 0; }
