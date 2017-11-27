@@ -535,7 +535,6 @@ def deck(id):
         # Sort the cards by type
         if "Land" in card["type"]:
             lands[card['multiverseid']] = card
-            print card
         if "Planeswalker" in card["type"]:
             planeswalkers[card['multiverseid']] = card
         if "Creature" in card["type"]:
@@ -631,7 +630,6 @@ def builder():
 @app.route('/add_deck', methods=['GET', 'POST'])
 def add_deck():
     deck = request.get_json()
-    print deck
     if deck:
         deck_description = deck['description']
         deck_formats = deck['formats']

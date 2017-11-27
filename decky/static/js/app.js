@@ -30,7 +30,9 @@ $(function () {
 
             // Add a new row to the builder table
             $('.builder-table tbody').append(newRow);
-            $('tbody tr').first().find('[type=radio]').prop('checked', true)
+            if (newRow.is(':first-child')) {
+              newRow.find('[type=radio]').prop('checked', true);
+            }
             var selectSet = document.getElementById('select-set-' + card_return.card_id);
             // Add options to the set selector
             if (sets.length > 1) {
@@ -90,8 +92,8 @@ $(function () {
                 "foil": false,
                 "featured": false,
                 "commander": false
-              }
-            })
+              };
+            });
           } else {
             // Add the quantity in the form to the quantity in the table
             var currentQuantity = Number($('.row-' + card_return.card_id + ' .quantity').text());
