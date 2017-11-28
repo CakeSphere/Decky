@@ -537,7 +537,7 @@ def deck(id):
             lands[card['multiverseid']] = card
         if "Planeswalker" in card["type"]:
             planeswalkers[card['multiverseid']] = card
-        if "Creature" in card["type"]:
+        if "Creature" in card["type"] and "Land" not in card["type"]:
             creatures[card['multiverseid']] = card
         if "Sorcery" in card["type"]:
             sorceries[card['multiverseid']] = card
