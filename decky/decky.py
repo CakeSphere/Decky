@@ -7,6 +7,7 @@ from sassutils.wsgi import SassMiddleware
 from datetime import datetime
 from math import ceil
 from random import randint
+from titlecase import titlecase
 
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -635,7 +636,7 @@ def add_deck():
         deck_formats = deck['formats']
         deck_legality = deck['formats']
         deck_tags = deck['tags']
-        deck_name = deck['name'].strip().title()
+        deck_name = titlecase(deck['name'].strip())
         deck_cards = deck['cards']
     # This needs to be set to the currently logged-in user.
     deck_author = "Casanova Killing Spree"
