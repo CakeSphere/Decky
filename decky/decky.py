@@ -594,7 +594,7 @@ def deck(id):
         deck_description=deck_description)
 
 
-@app.route('/builder/', defaults={'id': False})
+@app.route('/builder/', defaults={'id': False}, methods=['GET', 'POST'])
 @app.route('/builder/<id>', methods=['GET', 'POST'])
 def builder(id):
     db = get_db()
@@ -614,7 +614,6 @@ def builder(id):
         edit_mode = True
         edit_data = db.execute('SELECT * FROM decks WHERE id=' + id + ';')
         edit_data = edit_data.fetchone()
-        print edit_data
         edit_name = edit_data["name"]
         edit_formats = edit_data["formats"]
         edit_tags = edit_data["tags"]

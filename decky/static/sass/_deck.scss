@@ -208,10 +208,10 @@
     }
 
     img {
-      bottom: 32px;
-      left: -14px;
+      bottom: 40px;
+      left: -25px;
       position: relative;
-      width: 195px;
+      width: 219px;
     }
   }
 
@@ -255,6 +255,7 @@
 
   .color-bar {
     height: 162px;
+
     &:hover {
       + hgroup,
       ~ .deck-img { transform: translateX(65px); }
@@ -262,13 +263,13 @@
   }
 
   .deck-img {
-    height: 370px;
-    left: -19px;
-    -webkit-mask-image: linear-gradient(to right, $color-black 0%, transparent 94%, transparent 100%);
-    mask-image: linear-gradient(to right, $color-black 0%, transparent 94%, transparent 100%);
+    height: 385px;
+    left: -30px;
+    -webkit-mask-image: linear-gradient(to right, $color-black 0%, transparent 92%, transparent 100%);
+    mask-image: linear-gradient(to right, $color-black 0%, transparent 92%, transparent 100%);
     pointer-events: none;
     position: relative;
-    top: -43px;
+    top: -47px;
     transition: transform $transition / 2;
     transition-timing-function: ease-in-out;
     will-change: transform;
