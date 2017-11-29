@@ -24,7 +24,7 @@
   }
 
   .flash {
-    animation-delay: 0.4s;
+    animation-delay: 0s;
     animation-duration: 5s;
     animation-iteration-count: 1;
     animation-name: flash;
@@ -42,7 +42,7 @@
     text-align: center;
     text-shadow: 0 1px 0 $color-shadow;
     top: 0;
-    transform: translateY(-3rem);
+    transform: translateY(-4rem);
     width: 500px;
     &.success { background: $color-mtg-g; }
     &.error { background: $color-mtg-r; }
