@@ -282,7 +282,7 @@
     text-shadow: 0 2px 2px $color-shadow;
     transition: transform $transition / 2;
     transition-timing-function: ease-in-out;
-    width: 100%;
+    width: calc(100% - 200px);
     will-change: transform;
     z-index: $z-index-baseline; // Make sure deck info shows up above card image
 
@@ -293,7 +293,7 @@
       font-style: italic;
       line-height: 0.8;
       margin-bottom: 0.5rem;
-      max-width: 60%;
+      max-width: 70%;
     }
 
     h2 {
