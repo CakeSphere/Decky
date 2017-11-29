@@ -594,11 +594,48 @@ def deck(id):
         deck_description=deck_description)
 
 
-@app.route('/builder', methods=['GET', 'POST'])
-def builder():
+@app.route('/builder/', defaults={'id': False})
+@app.route('/builder/<id>', methods=['GET', 'POST'])
+def builder(id):
     db = get_db()
     card_name = request.get_json()
     card_sets = {}
+    edit_mode = False
+    edit_name = ''
+    edit_formats = ''
+    edit_tags = ''
+    edit_description = ''
+    edit_cards = ''
+    edit_sets = {}
+    count = ''
+    commander = ''
+    foil = ''
+    if id:
+        edit_mode = True
+        edit_data = db.execute('SELECT * FROM decks WHERE id=' + id + ';')
+        edit_data = edit_data.fetchone()
+        print edit_data
+        edit_name = edit_data["name"]
+        edit_formats = edit_data["formats"]
+        edit_tags = edit_data["tags"]
+        edit_description = edit_data["description"]
+        cur = db.execute(
+            'SELECT name, setId, count(name), type, multiverseid, foil, featured, commander FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId="'
+            + id + '" GROUP BY name')
+        edit_cards = cur.fetchall()
+        count = {}
+        foil = {}
+        commander = {}
+        for card in edit_cards:
+          card_count = card[2]
+          count[card["multiverseid"]] = card_count
+          card_foil = card['foil']
+          foil[card["multiverseid"]] = card_foil
+          card_commander = card['commander']
+          commander[card["multiverseid"]] = card_commander
+          card_id = card["multiverseid"]
+          edit_sets[card_id] = card["setId"]
+
     if card_name:
         card_name = card_name['cardName']
         card_data = db.execute(
@@ -625,7 +662,9 @@ def builder():
             card_return = json.dumps({'card_found': False})
             return card_return
 
-    return render_template('builder.html')
+    return render_template('builder.html', edit_mode=edit_mode, edit_name=edit_name, edit_formats=edit_formats, edit_tags=edit_tags, edit_description=edit_description, edit_cards=edit_cards,
+        count=count,
+        commander=commander, foil=foil, edit_sets=edit_sets)
 
 
 @app.route('/add_deck', methods=['GET', 'POST'])
