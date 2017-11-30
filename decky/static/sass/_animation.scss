@@ -66,6 +66,11 @@
   to   { opacity: 1; }
 }
 
+@keyframes dialog {
+  from { transform: rotateX(-60deg) scale(0.95); opacity: 0; }
+  to   { transform: rotateX(0) scale(1); opacity: 1; }
+}
+
 @for $i from 1 to 11 {
   .row .deck.gallery:nth-child(#{$i}),
   .row .card:nth-child(#{$i}) { animation-delay: $i * 0.025s; }

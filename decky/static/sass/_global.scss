@@ -301,3 +301,44 @@ ul {
   position: absolute;
   z-index: $z-index-fixed;
 }
+
+.dialog {
+  animation: dialog 0.3s 1;
+  animation-timing-function: ease-in-out;
+  background: $color-background;
+  border: 1px solid tint($color-background, 5%);
+  border-radius: $border-radius;
+  box-shadow: 0 10px 50px 2px $color-shadow-dark;
+  display: none;
+  left: calc(50% - 12vw);
+  padding: 2rem;
+  padding-top: 2.5rem;
+  perspective: 2000px;
+  position: fixed;
+  top: calc(50% - 100px);
+  transform-style: preserve-3d;
+  width: 24vw;
+  z-index: $z-index-fixed;
+
+  p {
+    margin-top: 0;
+  }
+
+  .btn {
+    margin-bottom: 0;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .btn-cancel {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+
+    &:hover {
+      background: none;
+    }
+  }
+}
