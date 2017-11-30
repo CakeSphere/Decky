@@ -260,7 +260,6 @@
     right: 0;
     top: 0;
     transition: opacity $transition;
-    will-change: opacity;
   }
 
   &:hover { text-shadow: none; }

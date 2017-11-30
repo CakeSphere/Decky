@@ -72,7 +72,6 @@
   transform: translateX(-63px);
   transition: transform $transition / 2 cubic-bezier(0.17, 0.67, 0.83, 0.67);
   width: 66px;
-  will-change: transform;
   z-index: $z-index-baseline; // Make sure the color bar appears above the card image
 
   span {
@@ -158,7 +157,6 @@
     right: 0;
     top: 0;
     transition: opacity $transition;
-    will-change: opacity;
   }
 
   &:hover::after { opacity: 0.1; }
@@ -178,7 +176,6 @@
     transition: transform $transition / 2 cubic-bezier(0.17, 0.67, 0.83, 0.67);
     vertical-align: top;
     width: calc(100% - 195px);
-    will-change: transform;
 
     .title {
       font-family: $font-family-display;
@@ -212,7 +209,6 @@
     position: relative;
     transition: transform $transition / 2 cubic-bezier(0.17, 0.67, 0.83, 0.67);
     width: 165px;
-    will-change: transform;
 
     &::before {
       bottom: 0;
@@ -289,7 +285,6 @@
     top: -47px;
     transition: transform $transition / 2;
     transition-timing-function: ease-in-out;
-    will-change: transform;
   }
 
   hgroup {
@@ -300,7 +295,6 @@
     transition: transform $transition / 2;
     transition-timing-function: ease-in-out;
     width: calc(100% - 200px);
-    will-change: transform;
     z-index: $z-index-baseline; // Make sure deck info shows up above card image
 
     h1,
@@ -394,7 +388,6 @@
       position: relative;
       transform: scaleX(0);
       width: 100%;
-      will-change: transform;
 
       div {
         display: inline-block;
