@@ -743,6 +743,15 @@ def settings():
     return render_template('settings.html')
 
 
+@app.route('/delete_deck/<id>', methods=['GET', 'POST'])
+def delete_deck(id):
+    db = get_db()
+    db.execute('DELETE FROM decks WHERE id=' + id + ';')
+    db.execute('DELETE FROM decksToCards where deckId=' + id + ';')
+    db.commit()
+    flash('Deck ' + id + ' was successfully deleted.', 'success')
+    return redirect(url_for('decks'))
+
 @app.errorhandler(404)
 def page_not_found(e):
     version = randint(0, 2)
