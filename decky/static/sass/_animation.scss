@@ -72,7 +72,10 @@
 }
 
 @for $i from 1 to 11 {
-  .row .deck.gallery:nth-child(#{$i}),
   .row .card:nth-child(#{$i}) { animation-delay: $i * 0.025s; }
 }
 
+
+@for $i from 1 to 22 {
+  .row .deck.gallery:nth-child(#{$i}) { animation-delay: $i * 0.015s; }
+}
