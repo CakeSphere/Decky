@@ -5,6 +5,7 @@ $(function () {
     cards: {}
   };
   // Hide delete dialog on page load
+  $('.dialog-bg').hide();
   $('.dialog').hide();
   // Hide all tabs on page load
   $('[class^=tab-]').hide();
@@ -14,11 +15,13 @@ $(function () {
   $('.delete').click(function(event) {
     event.preventDefault();
     $('.dialog').show();
+    $('.dialog-bg').fadeIn(300);
   });
   // Close dialog
   $('.close').click(function(event) {
     event.preventDefault();
-    $('.dialog').fadeOut(100);
+    $('.dialog').fadeOut(300);
+    $('.dialog-bg').fadeOut(300);
   });
   // Add rows to the Builder table when the user clicks Add.
   $('.add-row').click(function(event) {

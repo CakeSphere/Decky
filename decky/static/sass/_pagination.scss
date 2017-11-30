@@ -46,7 +46,7 @@
   position: absolute;
   text-align: center;
   top: 0;
-  transition: transform $transition ease-out;
+  transition: transform $transition/2 ease-out;
   width: 55.15px;
   z-index: $z-index-baseline;
 
