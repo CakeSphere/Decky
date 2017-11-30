@@ -2,6 +2,23 @@
 
 .stats {
   // The display for comments and likes
+  .delete {
+    svg {
+      cursor: pointer;
+      fill: $color-text-weak;
+      height: 20px;
+      position: relative;
+      top: 5px;
+      transition: fill $transition / 2, stroke $transition / 2;
+      width: 20px;
+    }
+    &:hover {
+      background: none;
+      svg {
+        fill: $color-text;
+      }
+    }
+  }
   .likes,
   .comments,
   .export {
