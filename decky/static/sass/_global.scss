@@ -309,7 +309,6 @@ ul {
   border: 1px solid tint($color-background, 5%);
   border-radius: $border-radius;
   box-shadow: 0 10px 50px 2px $color-shadow-dark;
-  display: none;
   left: calc(50% - 12vw);
   padding: 2rem;
   padding-top: 2.5rem;
@@ -319,6 +318,10 @@ ul {
   transform-style: preserve-3d;
   width: 24vw;
   z-index: $z-index-fixed;
+
+  em {
+    color: $color-text-weak;
+  }
 
   p {
     margin-top: 0;

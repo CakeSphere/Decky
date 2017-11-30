@@ -4,10 +4,22 @@ $(function () {
     'totalQuantity': 0,
     cards: {}
   };
+  // Hide delete dialog on page load
+  $('.dialog').hide();
   // Hide all tabs on page load
   $('[class^=tab-]').hide();
   // Show the first tab by default
   $('.tab-1').show();
+  // Delete Deck
+  $('.delete').click(function(event) {
+    event.preventDefault();
+    $('.dialog').show();
+  });
+  // Close dialog
+  $('.close').click(function(event) {
+    event.preventDefault();
+    $('.dialog').fadeOut(100);
+  });
   // Add rows to the Builder table when the user clicks Add.
   $('.add-row').click(function(event) {
     event.preventDefault();
