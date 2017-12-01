@@ -544,7 +544,7 @@ def deck(id):
             sorceries[card['multiverseid']] = card
         if "Instant" in card["type"]:
             instants[card['multiverseid']] = card
-        if "Enchantment" in card["type"] and "Artifact" not in card["type"]:
+        if "Enchantment" in card["type"] and "Artifact" not in card["type"] and "Creature" not in card["type"]:
             enchantments[card['multiverseid']] = card
         if "Artifact" in card["type"] and "Creature" not in card["type"]:
             artifacts[card['multiverseid']] = card
