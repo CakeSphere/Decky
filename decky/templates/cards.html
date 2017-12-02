@@ -36,7 +36,7 @@
         <span class="mana small sc">&nbsp;</span>
         Colorless
       </button>
-      <input type="checkbox" id="only-colors"> 
+      <input type="checkbox" id="only-colors">
       <label for="only-colors">Only selected colors</label>
       <h3>Legal Format</h3>
       <div class="active">
@@ -157,7 +157,7 @@
       <div class="pagination text-center">
         {%- for page in pagination.iter_pages() %}
           {% if page %}
-            {% if pagination.pages != pagination.page %}
+            {% if pagination.pages != pagination.page and pagination.pages > 2 %}
               <a href="{{url_for_other_page(page)}}" class="last"><span class="text">{{page}}</span></a>
             {% endif %}
             {% if page == pagination.page %}
