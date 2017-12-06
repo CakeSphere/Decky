@@ -260,8 +260,9 @@ def import_cards():
         with open(os.path.join(PATH_TO_JSON, file)) as json_file:
             set_data = json.load(json_file)
             set_data = format_set(set_data)
-            print "\033[96m\033[1m" + set_data["code"].encode("utf8") + " " + set_data[
-                "name"].encode("utf8") + "\n\033[0m\033[94m"
+            print "\033[96m\033[1m" + set_data["code"].encode(
+                "utf8") + " " + set_data["name"].encode(
+                    "utf8") + "\n\033[0m\033[94m"
             import_sets_query = "INSERT INTO 'sets' (name, code, gathererCode, oldCode, magicCardsInfoCode, releaseDate, border, type, block) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);"
             db.execute(import_sets_query, \
              (set_data["name"],\
@@ -544,7 +545,8 @@ def deck(id):
             sorceries[card['multiverseid']] = card
         if "Instant" in card["type"]:
             instants[card['multiverseid']] = card
-        if "Enchantment" in card["type"] and "Artifact" not in card["type"] and "Creature" not in card["type"]:
+        if "Enchantment" in card["type"] and "Artifact" not in card[
+                "type"] and "Creature" not in card["type"]:
             enchantments[card['multiverseid']] = card
         if "Artifact" in card["type"] and "Creature" not in card["type"]:
             artifacts[card['multiverseid']] = card
@@ -554,6 +556,7 @@ def deck(id):
     deck_tags = deck_tags.split(', ')
     deck_legality = deck["legality"]
     deck_legality = deck_legality.split(', ')
+
     def is_today(date):
         if (date == datetime.now().strftime("%B %d, %Y")):
             date = "today"
@@ -710,8 +713,8 @@ def add_deck():
     else:
         db = get_db()
         for card in deck_cards:
-          if deck_cards[card]['featured'] == 1:
-            deck_image = card
+            if deck_cards[card]['featured'] == 1:
+                deck_image = card
         cur_cards = db.execute(
             'INSERT INTO decks values (null, ?, ?, null, date("now"), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, date("now"))',
             (deck_author, deck_colors, deck_description, deck_formats,
@@ -734,7 +737,9 @@ def add_deck():
                 else:
                     card_commander = 0
                 db.execute('INSERT INTO decksToCards VALUES(NULL, ' + str(
-                    deck_row) + ', ' + card + ', ' + str(card_foil) + ', ' + str(card_featured) + ', ' + str(card_commander) + ')')
+                    deck_row) + ', ' + card + ', ' + str(card_foil) + ', ' +
+                           str(card_featured) + ', ' + str(
+                               card_commander) + ')')
             print "Inserted Multiverse ID " + card + " into Deck " + str(
                 deck_row) + " " + str(quantity) + " times."
         db.commit()
@@ -760,6 +765,7 @@ def delete_deck(id):
     db.commit()
     flash('Deck ' + id + ' was successfully deleted.', 'success')
     return redirect(url_for('decks'))
+
 
 @app.errorhandler(404)
 def page_not_found(e):
