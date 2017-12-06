@@ -1,5 +1,8 @@
 $(function () {
   // Instantiate the deck object for the builder
+  if (typeof edit_deck != 'undefined') {
+    console.log(edit_deck);
+  }
   var deck = {
     'totalQuantity': 0,
     cards: {}
@@ -58,13 +61,11 @@ $(function () {
                 var opt = document.createElement('option');
                 opt.innerHTML = card_return.card_sets[sets[i]];
                 opt.value = sets[i];
-                console.log(sets);
                 selectSet.appendChild(opt);
               }
             } else {
               selectSet.replaceWith(card_return.card_sets[sets[0]])
             }
-
 
             // Reset the form
             $('.card-quantity').val(1);
@@ -181,7 +182,7 @@ $(function () {
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         success: function(deck_return) {
-          console.log('success')
+
         }
       });
       flash('<strong>Double, double toil and trouble!</strong> ' + deck.name + ' was brewed successfully.', 'success')
@@ -224,8 +225,6 @@ $(function () {
   }
 
   $('.builder-table tbody').on('mouseenter', '.tooltip', function(e) {
-    console.log('mouse in')
-
     // Card tooltips
     this.t = $(this).attr('data-img');
     if($(this).hasClass('foil')) {

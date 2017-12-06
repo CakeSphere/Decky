@@ -110,7 +110,21 @@
             </thead>
             <tbody>
               {% if edit_mode %}
+                <script>
+                  var edit_deck = {
+                    'totalQuantity': 0,
+                    cards: {}
+                  }
+                </script>
                 {% for card in edit_cards %}
+                <script>
+                  edit_deck.cards['{{card.multiverseid}}'] = {
+                    "quantity": {{count[card.multiverseid]}},
+                    "foil": false,
+                    "featured": false,
+                    "commander": false
+                  };
+                </script>
                 <tr class="row-{{card.multiverseid}}">
                   <td class="text-right quantity">{{count[card.multiverseid]}}</td>
                   <td>

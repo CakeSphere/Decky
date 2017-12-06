@@ -626,14 +626,14 @@ def builder(id):
         foil = {}
         commander = {}
         for card in edit_cards:
-          card_count = card[2]
-          count[card["multiverseid"]] = card_count
-          card_foil = card['foil']
-          foil[card["multiverseid"]] = card_foil
-          card_commander = card['commander']
-          commander[card["multiverseid"]] = card_commander
-          card_id = card["multiverseid"]
-          edit_sets[card_id] = card["setId"]
+            card_count = card[2]
+            count[card["multiverseid"]] = card_count
+            card_foil = card['foil']
+            foil[card["multiverseid"]] = card_foil
+            card_commander = card['commander']
+            commander[card["multiverseid"]] = card_commander
+            card_id = card["multiverseid"]
+            edit_sets[card_id] = card["setId"]
 
     if card_name:
         card_name = card_name['cardName']
@@ -661,9 +661,18 @@ def builder(id):
             card_return = json.dumps({'card_found': False})
             return card_return
 
-    return render_template('builder.html', edit_mode=edit_mode, edit_name=edit_name, edit_formats=edit_formats, edit_tags=edit_tags, edit_description=edit_description, edit_cards=edit_cards,
+    return render_template(
+        'builder.html',
+        edit_mode=edit_mode,
+        edit_name=edit_name,
+        edit_formats=edit_formats,
+        edit_tags=edit_tags,
+        edit_description=edit_description,
+        edit_cards=edit_cards,
         count=count,
-        commander=commander, foil=foil, edit_sets=edit_sets)
+        commander=commander,
+        foil=foil,
+        edit_sets=edit_sets)
 
 
 @app.route('/add_deck', methods=['GET', 'POST'])
