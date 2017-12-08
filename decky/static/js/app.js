@@ -1,12 +1,17 @@
 $(function () {
   // Instantiate the deck object for the builder
   if (typeof edit_deck != 'undefined') {
-    console.log(edit_deck);
+    var editMode = true;
+    console.log("Edit mode is active.");
+    var deck = edit_deck;
+    $('.builder-quantity').text(deck.totalQuantity);
+  } else {
+    var deck = {
+      'totalQuantity': 0,
+      cards: {}
+    };
   }
-  var deck = {
-    'totalQuantity': 0,
-    cards: {}
-  };
+  console.log(deck);
   // Hide delete dialog on page load
   $('.dialog-bg').hide();
   $('.dialog').hide();
