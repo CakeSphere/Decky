@@ -2,7 +2,6 @@ $(function () {
   // Instantiate the deck object for the builder
   if (typeof edit_deck != 'undefined') {
     var editMode = true;
-    console.log("Edit mode is active.");
     var deck = edit_deck;
     $('.builder-quantity').text(deck.totalQuantity);
   } else {
@@ -11,7 +10,7 @@ $(function () {
       cards: {}
     };
   }
-  console.log(deck);
+  console.log(deck)
   // Hide delete dialog on page load
   $('.dialog-bg').hide();
   $('.dialog').hide();
@@ -187,7 +186,6 @@ $(function () {
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         success: function(deck_return) {
-
         }
       });
       flash('<strong>Double, double toil and trouble!</strong> ' + deck.name + ' was brewed successfully.', 'success')

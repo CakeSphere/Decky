@@ -613,7 +613,9 @@ def builder(id):
     count = ''
     commander = ''
     foil = ''
+    edit_id = ''
     if id:
+        edit_id = id
         edit_mode = True
         edit_data = db.execute('SELECT * FROM decks WHERE id=' + id + ';')
         edit_data = edit_data.fetchone()
@@ -667,6 +669,7 @@ def builder(id):
     return render_template(
         'builder.html',
         edit_mode=edit_mode,
+        edit_id=edit_id,
         edit_name=edit_name,
         edit_formats=edit_formats,
         edit_tags=edit_tags,
@@ -682,12 +685,14 @@ def builder(id):
 def add_deck():
     deck = request.get_json()
     if deck:
+        deck_id = deck['editId']
         deck_description = deck['description']
         deck_formats = deck['formats']
         deck_legality = deck['formats']
         deck_tags = deck['tags']
         deck_name = titlecase(deck['name'].strip())
         deck_cards = deck['cards']
+    print deck
     # This needs to be set to the currently logged-in user.
     deck_author = "Casanova Killing Spree"
     # This needs to be calculated somehow.
@@ -715,11 +720,12 @@ def add_deck():
         for card in deck_cards:
             if deck_cards[card]['featured'] == 1:
                 deck_image = card
-        cur_cards = db.execute(
-            'INSERT INTO decks values (null, ?, ?, null, date("now"), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, date("now"))',
-            (deck_author, deck_colors, deck_description, deck_formats,
-             deck_image, deck_legality, deck_likes, deck_mainboard,
-             deck_maybeboard, deck_name, deck_sideboard, deck_tags))
+        if deck_id == '':
+            cur_cards = db.execute('INSERT INTO decks values (null, ?, ?, null, date("now"), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, date("now"))',(deck_author, deck_colors, deck_description, deck_formats, deck_image, deck_legality, deck_likes, deck_mainboard, deck_maybeboard, deck_name, deck_sideboard, deck_tags))
+
+        else:
+            cur_cards = db.execute('UPDATE decks SET colors = ?, description = ?, formats = ?, image = ?, legality = ?, name = ?, tags = ? WHERE id = ?',(deck_colors, deck_description, deck_formats, deck_image, deck_legality, deck_name, deck_tags, deck_id))
+
         deck_row = cur_cards.lastrowid
         for card in deck_cards:
             quantity = deck_cards[card]['quantity']
@@ -736,12 +742,14 @@ def add_deck():
                     card_commander = 1
                 else:
                     card_commander = 0
-                db.execute('INSERT INTO decksToCards VALUES(NULL, ' + str(
-                    deck_row) + ', ' + card + ', ' + str(card_foil) + ', ' +
-                           str(card_featured) + ', ' + str(
-                               card_commander) + ')')
-            print "Inserted Multiverse ID " + card + " into Deck " + str(
-                deck_row) + " " + str(quantity) + " times."
+                if deck_id == '':
+                    db.execute('INSERT INTO decksToCards VALUES(NULL, ' + str(
+                        deck_row) + ', ' + card + ', ' + str(card_foil) + ', ' +
+                               str(card_featured) + ', ' + str(
+                                   card_commander) + ')')
+            if deck_id == '':
+                print "Inserted Multiverse ID " + card + " into Deck " + str(
+                    deck_row) + " " + str(quantity) + " times."
         db.commit()
         return 'success'
     return redirect(url_for('decks'))
