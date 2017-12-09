@@ -605,6 +605,7 @@ def builder(id):
     card_sets = {}
     edit_mode = False
     edit_name = ''
+    edit_featured = ''
     edit_formats = ''
     edit_tags = ''
     edit_description = ''
@@ -620,6 +621,7 @@ def builder(id):
         edit_data = db.execute('SELECT * FROM decks WHERE id=' + id + ';')
         edit_data = edit_data.fetchone()
         edit_name = edit_data["name"]
+        edit_featured = edit_data["image"]
         edit_formats = edit_data["formats"]
         edit_tags = edit_data["tags"]
         edit_description = edit_data["description"]
@@ -666,12 +668,14 @@ def builder(id):
             card_return = json.dumps({'card_found': False})
             return card_return
 
+    print edit_featured
     return render_template(
         'builder.html',
         edit_mode=edit_mode,
         edit_id=edit_id,
         edit_name=edit_name,
         edit_formats=edit_formats,
+        edit_featured=edit_featured,
         edit_tags=edit_tags,
         edit_description=edit_description,
         edit_cards=edit_cards,
@@ -685,7 +689,7 @@ def builder(id):
 def add_deck():
     deck = request.get_json()
     if deck:
-        deck_id = deck['editId']
+        deck_id = deck['edit_id']
         deck_description = deck['description']
         deck_formats = deck['formats']
         deck_legality = deck['formats']

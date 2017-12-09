@@ -121,15 +121,15 @@
                   </td>
                   <td>{{card.type}}</td>
                   <td>
-                    <input type="checkbox" id="{{card.multiverseid}}">
+                    <input type="checkbox" id="{{card.multiverseid}}" {% if foil[card.multiverseid] %}checked{% endif %}>
                     <label for="{{card.multiverseid}}"></label>
                   </td>
                   <td>
-                    <input type="radio" name="featured" id="{{card.multiverseid}}f">
+                    <input type="radio" name="featured" id="{{card.multiverseid}}f" {% if card.multiverseid == edit_featured | int %}checked{% endif %}>
                     <label for="{{card.multiverseid}}f"></label>
                   </td>
                   <td>
-                    <input type="radio" name="commander" id="{{card.multiverseid}}c">
+                    <input type="radio" name="commander" id="{{card.multiverseid}}c" {% if commander[card.multiverseid] %}checked{% endif %}>
                     <label for="{{card.multiverseid}}c"></label>
                   </td>
                   <td class="text-center">
@@ -257,7 +257,7 @@
       var edit_deck = {
         'totalQuantity': 0,
         cards: {},
-        'editId': {{edit_id}}
+        edit_id: {{edit_id}}
       }
     </script>
     {% for card in edit_cards %}

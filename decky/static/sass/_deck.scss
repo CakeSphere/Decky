@@ -2,6 +2,24 @@
 
 .stats {
   // The display for comments and likes
+  .edit {
+    margin-right: 0.5rem;
+    svg {
+      cursor: pointer;
+      fill: $color-text-weak;
+      height: 20px;
+      position: relative;
+      top: 4px;
+      transition: fill $transition / 2, stroke $transition / 2;
+      width: 20px;
+    }
+    &:hover {
+      background: none;
+      svg {
+        fill: $color-text;
+      }
+    }
+  }
   .delete {
     svg {
       cursor: pointer;
@@ -24,7 +42,7 @@
   .export {
     color: $color-text;
     display: inline-block;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
     margin-top: 1.25rem;
     opacity: 0.8;
     position: relative;
