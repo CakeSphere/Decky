@@ -10,7 +10,6 @@ $(function () {
       cards: {}
     };
   }
-  console.log(deck)
   // Hide delete dialog on page load
   $('.dialog-bg').hide();
   $('.dialog').hide();

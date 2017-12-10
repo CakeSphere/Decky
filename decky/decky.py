@@ -668,7 +668,6 @@ def builder(id):
             card_return = json.dumps({'card_found': False})
             return card_return
 
-    print edit_featured
     return render_template(
         'builder.html',
         edit_mode=edit_mode,
@@ -696,7 +695,6 @@ def add_deck():
         deck_tags = deck['tags']
         deck_name = titlecase(deck['name'].strip())
         deck_cards = deck['cards']
-    print deck
     # This needs to be set to the currently logged-in user.
     deck_author = "Casanova Killing Spree"
     # This needs to be calculated somehow.
@@ -751,6 +749,9 @@ def add_deck():
                         deck_row) + ', ' + card + ', ' + str(card_foil) + ', ' +
                                str(card_featured) + ', ' + str(
                                    card_commander) + ')')
+                else:
+                    db.execute('UPDATE decksToCards SET featured = 0 WHERE featured = 1;')
+                    db.execute('UPDATE decksToCards SET foil = ?, featured = ?, commander = ? WHERE cardId = ?', (card_foil, card_featured, card_commander, card))
             if deck_id == '':
                 print "Inserted Multiverse ID " + card + " into Deck " + str(
                     deck_row) + " " + str(quantity) + " times."
