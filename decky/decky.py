@@ -615,6 +615,11 @@ def builder(id):
     commander = ''
     foil = ''
     edit_id = ''
+    edit_card = {
+      'edit_names': [],
+      'edit_sets': [],
+      'edit_ids': []
+    }
     if id:
         edit_id = id
         edit_mode = True
@@ -640,8 +645,12 @@ def builder(id):
             card_commander = card['commander']
             commander[card["multiverseid"]] = card_commander
             card_id = card["multiverseid"]
-            edit_sets[card_id] = card["setId"]
-
+            edit_sets_data = db.execute('SELECT multiverseid, name, setId FROM cards WHERE name LIKE "' + HTMLParser().unescape(smartypants.smartypants(card[0])) + '" AND multiverseid != "" AND releaseDate == "" ORDER BY multiverseid DESC LIMIT 5 ')
+            edit_sets = edit_sets_data.fetchall()
+            for edit_set in edit_sets:
+                edit_card['edit_names'].append(edit_set[1])
+                edit_card['edit_ids'].append(str(edit_set[0]))
+                edit_card['edit_sets'].append(edit_set[2])
     if card_name:
         card_name = card_name['cardName']
         card_data = db.execute(
@@ -667,7 +676,6 @@ def builder(id):
         else:
             card_return = json.dumps({'card_found': False})
             return card_return
-
     return render_template(
         'builder.html',
         edit_mode=edit_mode,
@@ -681,7 +689,7 @@ def builder(id):
         count=count,
         commander=commander,
         foil=foil,
-        edit_sets=edit_sets)
+        edit_card=edit_card)
 
 
 @app.route('/add_deck', methods=['GET', 'POST'])

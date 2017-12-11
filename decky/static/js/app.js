@@ -7,7 +7,8 @@ $(function () {
   } else {
     var deck = {
       'totalQuantity': 0,
-      cards: {}
+      cards: {},
+      'edit_id': ''
     };
   }
   // Hide delete dialog on page load
@@ -187,6 +188,7 @@ $(function () {
         success: function(deck_return) {
         }
       });
+      console.log(deck)
       flash('<strong>Double, double toil and trouble!</strong> ' + deck.name + ' was brewed successfully.', 'success')
     }
   });

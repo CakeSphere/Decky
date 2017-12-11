@@ -117,7 +117,13 @@
                     <a href="/card/{{card.multiverseid}}" target="_blank" class="tooltip" data-img="{{card.multiverseid}}">{{card.name}}</a>
                   </td>
                   <td>
-                    {{card.setId}}
+                    <select name="" id="select-set-{{card.multiverseid}}" class="btn">
+                      {% for name in edit_card['edit_names'] %}
+                        {% if name == card.name %}
+                          <option value="edit_card['edit_ids'][loop.index-1]">{{edit_card['edit_sets'][loop.index-1]}}</option>
+                        {% endif %}
+                      {% endfor %}
+                    </select>
                   </td>
                   <td>{{card.type}}</td>
                   <td>
