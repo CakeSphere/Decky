@@ -10,31 +10,30 @@ Decky is an application that makes it easy to build decks for the Magic: The Gat
 
 ### Current functionality is extremely limited:
 
-:white_square_button:  **Deck Search**: 
+**Deck Search**:
 Decks are visible and formatted but it is not currently possible to search.
 
-:white_square_button:  **Deck Details**: 
+**Deck Details**:
 Decks’ contents are visible but in progress. Prices are unavailable and many controls don’t work.
 
-:white_square_button:  **Card Search**: 
+**Card Search**:
 Cards are visible and formatted but it is not currently possible to search.
 
-:white_square_button: **Card Details**: 
+**Card Details**:
 Cards contents are visible and properly formatted, but only cards from the past ten or so sets are available. Prices are unavailable and many controls don’t work.
 
-:white_square_button:  **Deck Builder**: 
-The deck builder exists but is not currently functional.
+**Deck Builder**:
+Basic Deck Builder functionality exists but the finer details are in progress. This page
+needs a redesign and Edit Deck functionality needs a lot of work.
 
-:white_medium_square:  **Glossary**:
+**Glossary**:
 The glossary is in the conceptual stage.
 
-:white_medium_square:  **Settings & User Profile**:
-Some HTML has been written for the Settings screen. Still need to come up with
-Settings requirements. User Profile does not exist so far.
+**Settings & User Profile**:
+HTML and CSS exist for the Settings screen. This page still needs specific requirements. User Profile does not exist so far.
 
-
-:white_medium_square:  **Account Registration & Authorization**: 
-Some work has gone into mocking up this process, but it is not currently functional.
+**Account Registration & Authorization**:
+A sign-in page and dialog box exist. The full-page sign-in will probably not be used. Authorization, like User Profiles, does not exist in any form.
 
 
 ---
@@ -53,19 +52,19 @@ Some work has gone into mocking up this process, but it is not currently functio
 
 ###### Decky issues are tracked on [Trello](https://trello.com/b/eI9QlmUi/decky).
 
-###### Decky is not in any way associated with [Wizards of the Coast](http://wizards.com/). 
+###### Decky is not in any way associated with [Wizards of the Coast](http://wizards.com/).
 
 ###### Special thanks to [MTGJSON](http://mtgjson.com/), [Keyrune](https://andrewgioia.github.io/Keyrune/), and [Mana-Cost](https://github.com/micku/mana-cost).
 
-<!-- 
+<!--
 ```
-______          _          
-|  _  \        | |         
-| | | |___  ___| | ___   _ 
+______          _
+|  _  \        | |
+| | | |___  ___| | ___   _
 | | | / _ \/ __| |/ / | | |
 | |/ /  __/ (__|   <| |_| |
 |___/ \___|\___|_|\_\\__, |v0.0.01a
                       __/ |
-                     |___/ 
+                     |___/
 ```
  -->

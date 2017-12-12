@@ -20,19 +20,23 @@
     <button class="btn">Commander</button>
     <button class="btn">Casual</button>
     <h3>Value</h3>
-    <button class="btn">
+    <a href="https://shop.tcgplayer.com/magic/{{card.setId|replace(' ', '-')|replace('-Edition', '')}}/{{card.name|replace(' ', '-')}}"
+    class="btn"
+    target="_blank">
       $ <span class="price">6.00</span>
-    </button>
-    <button class="btn">
+    </a>
+    <a href="https://shop.tcgplayer.com/magic/{{card.setId|replace(' ', '-')|replace('-Edition', '')}}/{{card.name|replace(' ', '-')}}"
+    class="btn"
+    target="_blank">
       $ <span class="price">8.00</span> Foil
-    </button>
+    </a>
     <span class="price-source">TCGPlayer</span>
-    <button class="btn">
+    <a href="" class="btn">
       $ <span class="price">6.00</span>
-    </button>
-    <button class="btn">
+    </a>
+    <a href="" class="btn">
       $ <span class="price">8.00</span> Foil
-    </button>
+    </a>
     <span class="price-source">Isle of Cards</span>
     <h3>Color Identity</h3>
     {% if card.colorIdentity|length > 0 %}
@@ -65,6 +69,8 @@
         <strong>{{card.power}}</strong>/<strong>{{card.toughness}}</strong>
       </span>
     {% endif %}
+      <h3>Artist</h3>
+      <span class="power-toughness">{{card.artist}}</span>
     {% if card.loyalty %}
       <h3>Starting Loyalty</h3>
       <span class="power-toughness">

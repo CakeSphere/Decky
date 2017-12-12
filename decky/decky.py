@@ -452,6 +452,7 @@ def card(multiverseId):
         deck_legality = deck_legality.split(', ')
         legality[deck["id"]] = deck_legality
     card_number = card['number']
+    # Use card['layout'] instead of this jank
     flip_card_a = False
     flip_card_b = False
     if re.search('[a]', unicode(card_number)):
