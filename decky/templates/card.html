@@ -20,12 +20,13 @@
     <button class="btn">Commander</button>
     <button class="btn">Casual</button>
     <h3>Value</h3>
-    <a href="https://shop.tcgplayer.com/magic/{{card.setId|replace(' ', '-')|replace('-Edition', '')}}/{{card.name|replace(' ', '-')}}"
+    <!-- This URL cleaning should be done on the server -->
+    <a href="https://shop.tcgplayer.com/magic/{{card.setId|replace(' ', '-')|replace('-Edition', '')|replace('.', '')|replace(':', '')}}/{{card.name|replace(' ', '-')}}"
     class="btn"
     target="_blank">
       $ <span class="price">6.00</span>
     </a>
-    <a href="https://shop.tcgplayer.com/magic/{{card.setId|replace(' ', '-')|replace('-Edition', '')}}/{{card.name|replace(' ', '-')}}"
+    <a href="https://shop.tcgplayer.com/magic/{{card.setId|replace(' ', '-')|replace('-Edition', '')|replace('.', '')|replace(':', '')}}/{{card.name|replace(' ', '-')}}"
     class="btn"
     target="_blank">
       $ <span class="price">8.00</span> Foil

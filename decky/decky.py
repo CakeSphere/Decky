@@ -738,9 +738,12 @@ def add_deck():
             cur_cards = db.execute('UPDATE decks SET colors = ?, description = ?, formats = ?, image = ?, legality = ?, name = ?, tags = ? WHERE id = ?',(deck_colors, deck_description, deck_formats, deck_image, deck_legality, deck_name, deck_tags, deck_id))
 
         deck_row = cur_cards.lastrowid
+        if deck_id != '':
+            db.execute('DELETE FROM decksToCards WHERE deckId=?', (deck_id,))
         for card in deck_cards:
             quantity = deck_cards[card]['quantity']
             for i in range(int(quantity)):
+                print deck_cards[card]
                 if deck_cards[card]['foil'] == 1:
                     card_foil = 1
                 else:
@@ -759,11 +762,15 @@ def add_deck():
                                str(card_featured) + ', ' + str(
                                    card_commander) + ')')
                 else:
+                    db.execute('INSERT INTO decksToCards VALUES(NULL, ?, ?, ?, ?, ?);', (deck_id, card, card_foil, card_featured, card_commander))
                     db.execute('UPDATE decksToCards SET featured = 0 WHERE featured = 1;')
                     db.execute('UPDATE decksToCards SET foil = ?, featured = ?, commander = ? WHERE cardId = ?', (card_foil, card_featured, card_commander, card))
+
             if deck_id == '':
                 print "Inserted Multiverse ID " + card + " into Deck " + str(
                     deck_row) + " " + str(quantity) + " times."
+            else:
+                print "Inserted Multiverse ID " + str(card) + " into Deck " + str(deck_id) + " " + str(quantity) + " times."
         db.commit()
         return 'success'
     return redirect(url_for('decks'))
@@ -779,6 +786,10 @@ def settings():
     return render_template('settings.html')
 
 
+@app.route('/appendices')
+def appendices():
+    return render_template('appendices.html')
+
 @app.route('/delete_deck/<id>', methods=['GET', 'POST'])
 def delete_deck(id):
     db = get_db()
@@ -787,6 +798,8 @@ def delete_deck(id):
     db.commit()
     flash('Deck ' + id + ' was successfully deleted.', 'success')
     return redirect(url_for('decks'))
+
+
 
 
 @app.errorhandler(404)

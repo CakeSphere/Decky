@@ -155,7 +155,8 @@ small {
 .text-right  { text-align: right; }
 
 ul {
-  list-style-type: '◆ ';
+  list-style-type: '⬩ ';
+  padding-left: 0.8rem;
 
    ul {
     list-style-type: '◇ ';
