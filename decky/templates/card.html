@@ -80,44 +80,48 @@
     {% endif %}
   </aside>
   <section class="content card-details">
-    <div class="card-container">
-      {% if not flip_card_a and not flip_card_b %}
-        <img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
-      {% endif %}
-      {% if flip_card_a %}
-        <div class="flipper">
+    <div style="    display: flex;
+    width: auto;">
+      <div class="card-container">
+        {% if not flip_card_a and not flip_card_b %}
           <img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
-          <img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId+1}}&type=card" alt="{{card.name}}">
-        </div>
-      {% elif flip_card_b %}
-        <div class="flipper">
-          <img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
-          <img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId-1}}&type=card" alt="{{card.name}}">
-        </div>
-      {% endif %}
+        {% endif %}
+        {% if flip_card_a %}
+          <div class="flipper">
+            <img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
+            <img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId+1}}&type=card" alt="{{card.name}}">
+          </div>
+        {% elif flip_card_b %}
+          <div class="flipper">
+            <img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
+            <img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId-1}}&type=card" alt="{{card.name}}">
+          </div>
+        {% endif %}
+      </div>
+      <div class="card-info">
+        <h1>{{card.name}}</h1>
+        <h2>{{card.type}}</h2>
+        {% if card.Text|length > 0 %}
+          <div class="card-text">
+            <p>
+              {{card_text}}
+            </p>
+          </div>
+        {% endif %}
+        {% if card.Flavor|length > 0 %}
+          <div class="card-flavor">
+            <p>
+              {{card_flavor}}
+            </p>
+          </div>
+        {% endif %}
+      </div>
     </div>
-    <div class="card-info">
-      <h1>{{card.name}}</h1>
-      <h2>{{card.type}}</h2>
-      {% if card.Text|length > 0 %}
-        <div class="card-text">
-          <p>
-            {{card_text}}
-          </p>
-        </div>
-      {% endif %}
-      {% if card.Flavor|length > 0 %}
-        <div class="card-flavor">
-          <p>
-            {{card_flavor}}
-          </p>
-        </div>
-      {% endif %}
-    </div>
+
     {% if decks %}
     <div class="most-liked">
       <h3>Most Liked Decks Including <em>{{card.name}}</em></h3>
-      <div class="row">
+      <div class="content grid-3">
         {% for deck in decks %}
           <a href="{{ url_for('deck', id=deck.id)}}" class="deck gallery" title="{{deck.name}}">
             <div class="color-bar">

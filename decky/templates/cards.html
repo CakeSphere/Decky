@@ -111,49 +111,46 @@
         <option>Most Controversial</option>
       </select>
     </aside>
-    <section class="content">
-      <div class="row">
-        {% for card in cards %}
-        <a class="card" href="{{ url_for('card', multiverseId=card.multiverseId)}}" title="{{card.name}}">
-          <div class="card-mana">
-            {% if card_mana[card.id]|length > 0 %}
-              {% for mana in card_mana[card.id].split(" ") %}
-                <span class="mana small s{{mana.lower()}} shadow">{{mana}}</span>
-              {% endfor %}
-            {% endif %}
-          </div>
-          <div class="title">{{card.name}}</div>
-          <div class="card-img">
-            <img alt="{{card.name}}" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card">
-          </div>
-          <div class="card-type">
-            <div class="card-rarity">
-              <i class="ss ss-{{card.setCode.lower()}} ss-{{card.rarity.lower()}} {% if card.rarity != 'Common' %}ss-grad{% endif %}">&nbsp;</i>
-            </div>
-            {{card.type}}
-          </div>
-          <div class="card-info">
-            <div class="card-text">
-              <p>
-                {{card_text[card.id]}}
-              </p>
-            </div>
-            <div class="card-flavor">
-              <p>
-                {{card.flavor}}
-              </p>
-            </div>
-          </div>
-          {% if card.power != "" %}
-            <div class="power-toughness">
-              {{card.power}} <em>/</em>
-              {{card.toughness}}
-            </div>
+    <section class="content grid-5">
+      {% for card in cards %}
+      <a class="card" href="{{ url_for('card', multiverseId=card.multiverseId)}}" title="{{card.name}}">
+        <div class="card-mana">
+          {% if card_mana[card.id]|length > 0 %}
+            {% for mana in card_mana[card.id].split(" ") %}
+              <span class="mana small s{{mana.lower()}} shadow">{{mana}}</span>
+            {% endfor %}
           {% endif %}
-        </a>
-        {% endfor %}
-        <div class="clearfix"></div>
-      </div>
+        </div>
+        <div class="title">{{card.name}}</div>
+        <div class="card-img">
+          <img alt="{{card.name}}" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card">
+        </div>
+        <div class="card-type">
+          <div class="card-rarity">
+            <i class="ss ss-{{card.setCode.lower()}} ss-{{card.rarity.lower()}} {% if card.rarity != 'Common' %}ss-grad{% endif %}">&nbsp;</i>
+          </div>
+          {{card.type}}
+        </div>
+        <div class="card-info">
+          <div class="card-text">
+            <p>
+              {{card_text[card.id]}}
+            </p>
+          </div>
+          <div class="card-flavor">
+            <p>
+              {{card.flavor}}
+            </p>
+          </div>
+        </div>
+        {% if card.power != "" %}
+          <div class="power-toughness">
+            {{card.power}} <em>/</em>
+            {{card.toughness}}
+          </div>
+        {% endif %}
+      </a>
+      {% endfor %}
       <div class="pagination text-center">
         {%- for page in pagination.iter_pages() %}
           {% if page %}

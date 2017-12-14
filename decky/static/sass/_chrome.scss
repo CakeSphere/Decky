@@ -324,9 +324,7 @@
 .sidebar {
   // This is the sidebar where filters, metadata, or the users grimoire
   // appear, depending on the page it's on.
-  height: 100%;
   padding: 1.5rem;
-  width: 300px;
   z-index: $z-index-nav;
 }
 
@@ -343,6 +341,7 @@
   z-index: $z-index-nav;
 
   .container {
+    display: block;
     margin-top: 0;
   }
 

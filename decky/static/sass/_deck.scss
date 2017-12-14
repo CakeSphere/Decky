@@ -154,14 +154,11 @@
               inset 0 0 2px $color-highlight,
               0 2px 1px $color-bevel;
   cursor: pointer;
-  display: inline-block;
   height: 120px;
-  margin: 0 0.5rem 1rem;
   overflow: hidden;
   position: relative;
   transition: none;
   white-space: nowrap;
-  width: calc(33.33333% - 0.5rem - 14px);
 
   &::after {
     background: linear-gradient(to bottom, transparent, $color-primary);
@@ -259,7 +256,7 @@
   }
 }
 
-.row .deck.gallery {
+.content > .deck.gallery {
   animation: load-in 0.2s 1 backwards;
 }
 

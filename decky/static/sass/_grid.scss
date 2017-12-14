@@ -4,6 +4,15 @@
 // Look into CSS Grid Layout
 
 .container {
+  display: grid;
+  grid-template-columns: calc(300px + 3rem) 100%;
+  margin-left: 100px;
+  margin-top: 59px;
+  overflow: hidden;
+  width: calc(100% - 100px);
+}
+
+.container {
   margin-left: 100px;
   margin-top: 59px;
   overflow: hidden;

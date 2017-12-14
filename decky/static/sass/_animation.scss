@@ -72,10 +72,10 @@
 }
 
 @for $i from 1 to 11 {
-  .row .card:nth-child(#{$i}) { animation-delay: $i * 0.025s; }
+  .content > .card:nth-child(#{$i}) { animation-delay: $i * 0.025s; }
 }
 
 
 @for $i from 1 to 22 {
-  .row .deck.gallery:nth-child(#{$i}) { animation-delay: $i * 0.015s; }
+  .content > .deck.gallery:nth-child(#{$i}) { animation-delay: $i * 0.015s; }
 }

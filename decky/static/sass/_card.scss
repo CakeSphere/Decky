@@ -6,7 +6,6 @@
 
 // Styles specific to card.html
 .card {
-  .card-details .card-container,
   .card-info {
     display: flex;
     flex-direction: column;
@@ -230,8 +229,7 @@
   }
 }
 
-.row .card {
-  @extend %pull-left;
+.content > .card {
   animation: load-in 0.4s 1 backwards;
   background: tint($color-background, 6%);
   border: 1px solid tint($color-border-strong, 15%);
@@ -242,12 +240,11 @@
   cursor: pointer;
   display: block;
   height: 630px;
-  margin: 0 0.5rem 1rem;
+  min-width: 0;
   outline: none;
   padding: 1rem;
   position: relative;
   transition: none;
-  width: calc(20% - 2.47rem - 12px);
   &::after {
     background: linear-gradient(to bottom, transparent, $color-primary);
     border-radius: $border-radius;

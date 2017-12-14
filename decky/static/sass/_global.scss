@@ -35,8 +35,6 @@ body {
 
 .sidebar {
   // Sidebars for search filters or card/deck info
-  display: inline-block;
-  width: 280px;
 
   + .content {
     margin-top: 2rem;
@@ -50,8 +48,8 @@ body {
 
 .content {
   // Main content section
-  display: inline-block;
-  vertical-align: top;
+  display: grid;
+  grid-gap: 1rem;
   width: calc(100% - 356px - 2rem);
 
   > p {
@@ -59,6 +57,22 @@ body {
   }
 
   h1 { margin-top: 0; }
+
+
+  &.grid-5 {
+    grid-template-columns: repeat(5, 1fr);
+    .pagination { grid-column: span 5; }
+  }
+
+  &.grid-4 {    grid-template-columns: repeat(4, 1fr);
+    .pagination { grid-column: span 4; }
+  }
+
+  &.grid-3 {
+    grid-auto-rows: minmax(100px, 122px);
+    grid-template-columns: repeat(3, 1fr);
+    .pagination { grid-column: span 3; }
+  }
 }
 
 h1,
