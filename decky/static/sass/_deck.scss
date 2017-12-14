@@ -260,6 +260,10 @@
   animation: load-in 0.2s 1 backwards;
 }
 
+.card-details .deck.gallery {
+  animation: none;
+}
+
 // Deck tiles in the builder
 .sidebar .deck.gallery {
   margin: 0;
