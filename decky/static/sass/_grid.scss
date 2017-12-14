@@ -24,6 +24,9 @@
   }
 
   &.settings {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: 1fr 1fr;
     max-width: 900px;
   }
 }
@@ -31,13 +34,4 @@
 .column {
   display: inline-block;
   vertical-align: top;
-  width: calc(50% - 1.1rem);
-
-  &:first-child {
-    margin-right: 2rem;
-  }
-}
-
-.row {
-  margin: 0 -0.5rem;
 }
