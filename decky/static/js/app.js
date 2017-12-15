@@ -33,8 +33,7 @@ $(function () {
   // Add rows to the Builder table when the user clicks Add.
   $('.add-row').click(function(event) {
     event.preventDefault();
-
-    var cardQuantity = $('.card-quantity').val();
+    var cardQuantity = parseInt($('.card-quantity').val());
     var cardName = $('.card-name').val();
     var data = { cardName: cardName };
 
@@ -90,6 +89,7 @@ $(function () {
               row.attr('class', 'row-' + selectSet.value);
               // Change the link to point to the new printing
               var card_link = row.find($('.tooltip'))
+              var cardQuantity = Number(row.find($('.quantity')).text());
               card_link.attr('href', "/card/" + selectSet.value);
               card_link.attr('data-img', selectSet.value);
               // Get the associated inputs
@@ -110,7 +110,9 @@ $(function () {
               commander.attr('id', selectSet.value + "c");
               $(row).find($('input:checkbox + label')).attr('for', selectSet.value);
               foil.attr('id', selectSet.value);
-              // Add the new printing to the deck object.
+              console.log(cardQuantity)
+              console.log(deck)
+              // Add the new printing to the deck object
               deck.cards[selectSet.value] = {
                 "quantity": cardQuantity,
                 "foil": false,

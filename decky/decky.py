@@ -792,10 +792,10 @@ def appendices():
 @app.route('/delete_deck/<id>', methods=['GET', 'POST'])
 def delete_deck(id):
     db = get_db()
-    cur_deck_name = db.execute('SELECT name FROM decks WHERE id=?;', id)
-    cur_deck_name = cur_deck_name.fetchone();
-    db.execute('DELETE FROM decks WHERE id=?;', id)
-    db.execute('DELETE FROM decksToCards where deckId=?;', id)
+    cur_deck_name = db.execute('SELECT name FROM decks WHERE id=?;', (id,))
+    cur_deck_name = cur_deck_name.fetchone()
+    db.execute('DELETE FROM decks WHERE id=?;', (id,))
+    db.execute('DELETE FROM decksToCards where deckId=?;', (id,))
     db.commit()
     flash(cur_deck_name[0] + ' was successfully deleted.', 'success')
     return redirect(url_for('decks'))
