@@ -417,6 +417,11 @@ def cards(page):
         text = text.replace('sR/G', 'srg')
         text = text.replace('sG/W', 'sgw')
         text = text.replace('sG/U', 'sgu')
+        text = text.replace('sW/P', 'swp')
+        text = text.replace('sU/P', 'sup')
+        text = text.replace('sB/P', 'sbp')
+        text = text.replace('sR/P', 'srp')
+        text = text.replace('sG/P', 'sgp')
         # Convert new lines to html line breaks
         text = Markup('</p><p>'.join(text.split('\n')))
         card_text[card["id"]] = text
@@ -489,6 +494,11 @@ def card(multiverseId):
     card_text = card_text.replace('sR/G', 'srg')
     card_text = card_text.replace('sG/W', 'sgw')
     card_text = card_text.replace('sG/U', 'sgu')
+    card_text = card_text.replace('sW/P', 'swp')
+    card_text = card_text.replace('sU/P', 'sup')
+    card_text = card_text.replace('sB/P', 'sbp')
+    card_text = card_text.replace('sR/P', 'srp')
+    card_text = card_text.replace('sG/P', 'sgp')
     # Convert new lines to html line breaks
     card_text = Markup('</p><p>'.join(card_text.split('\n')))
     card_flavor = card['flavor']
