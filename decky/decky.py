@@ -368,17 +368,43 @@ def decks(page):
 @app.route('/cards/', defaults={'page': 1})
 @app.route('/cards/<int:page>')
 def cards(page):
+    filter_set = request.args.get('set')
+    filter_subtype = request.args.get('subtype')
     db = get_db()
-    cur_count = db.execute(
-        'SELECT COUNT(*) FROM cards WHERE multiverseid != "" AND releaseDate ==""'
-    )
-    count = cur_count.fetchone()[0]
-    cur_cards = db.execute(
-        'SELECT * FROM cards WHERE multiverseid != "" AND releaseDate == "" ORDER BY multiverseId DESC LIMIT '
-        + str(PER_PAGE) + ' offset ' + str(PER_PAGE * page - PER_PAGE))
-    cur_sets = db.execute(
-        'SELECT * FROM sets ORDER BY releaseDate DESC LIMIT 5')
-    cards = cur_cards.fetchall()
+    if filter_subtype:
+        cur_count = db.execute(
+            'SELECT COUNT(*) FROM cards WHERE multiverseid != "" AND subtypes like "%' + filter_subtype + '%" AND releaseDate ==""'
+        )
+        count = cur_count.fetchone()[0]
+        cur_cards = db.execute(
+            'SELECT * FROM cards WHERE multiverseid != "" AND subtypes like "%' + filter_subtype + '%" AND releaseDate == "" ORDER BY multiverseId DESC LIMIT '
+            + str(PER_PAGE) + ' offset ' + str(PER_PAGE * page - PER_PAGE))
+        cur_sets = db.execute(
+            'SELECT * FROM sets ORDER BY releaseDate DESC LIMIT 5')
+        cards = cur_cards.fetchall()
+    elif filter_set:
+        cur_count = db.execute(
+            'SELECT COUNT(*) FROM cards WHERE multiverseid != "" AND setCode = "' + filter_set.upper() + '" AND releaseDate ==""'
+        )
+        count = cur_count.fetchone()[0]
+        cur_cards = db.execute(
+            'SELECT * FROM cards WHERE multiverseid != "" AND setCode = "' + filter_set.upper() + '" AND releaseDate == "" ORDER BY multiverseId DESC LIMIT '
+            + str(PER_PAGE) + ' offset ' + str(PER_PAGE * page - PER_PAGE))
+        cur_sets = db.execute(
+            'SELECT * FROM sets ORDER BY releaseDate DESC LIMIT 5')
+        cards = cur_cards.fetchall()
+    else:
+        cur_count = db.execute(
+            'SELECT COUNT(*) FROM cards WHERE multiverseid != ""AND releaseDate ==""'
+        )
+        count = cur_count.fetchone()[0]
+        cur_cards = db.execute(
+            'SELECT * FROM cards WHERE multiverseid != ""AND releaseDate == "" ORDER BY multiverseId DESC LIMIT '
+            + str(PER_PAGE) + ' offset ' + str(PER_PAGE * page - PER_PAGE))
+        cur_sets = db.execute(
+            'SELECT * FROM sets ORDER BY releaseDate DESC LIMIT 5')
+        cards = cur_cards.fetchall()
+
     pagination = Pagination(page, PER_PAGE, count)
     card_mana = {}
     for card in cards:
@@ -432,7 +458,8 @@ def cards(page):
         sets=sets,
         card_mana=card_mana,
         card_text=card_text,
-        pagination=pagination)
+        pagination=pagination,
+        filter_set=filter_set)
 
 
 @app.route('/card/<multiverseId>')
