@@ -64,7 +64,8 @@ body {
     .pagination { grid-column: span 5; }
   }
 
-  &.grid-4 {    grid-template-columns: repeat(4, 1fr);
+  &.grid-4 {
+    grid-template-columns: repeat(4, 1fr);
     .pagination { grid-column: span 4; }
   }
 

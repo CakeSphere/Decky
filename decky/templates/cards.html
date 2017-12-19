@@ -5,7 +5,7 @@
   <div class="container">
     <aside class="sidebar search-filters">
       <h3>Card Name</h3>
-      <input class="block" type="text" placeholder="Search by card name&hellip;">
+      <input class="block" {% if filter_name %} value="{{filter_name}}" {% endif %} type="text" placeholder="Search by card name&hellip;">
       <h3>Color</h3>
       <div class="active">
         <button class="btn u active">
@@ -73,17 +73,21 @@
         Other&hellip;
       </button>
       <h3>Type</h3>
-      <div class="active">
-        <button class="btn active">
-          Creature
-          <svg class="cancel" xmlns="http://www.w3.org/2000/svg"x="0px" y="0px" viewBox="0 0 823.93427 1029.8962375"><title>Cancel</title><path d="m 776.75678,0 c -12.064,0 -24.124,4.608 -33.345,13.828 L 411.94378,345.27301 80.52575,13.879 c -18.443,-18.441 -48.255,-18.441 -66.695,0 -18.441,18.44 -18.441,48.244 0,66.685 l 331.418,331.39601 -331.418,331.399 c -18.441,18.44 -18.441,48.25 0,66.691 9.198,9.198 21.272,13.817 33.347,13.817 12.073,0 24.15,-4.619 33.348,-13.817 l 331.41803,-331.398 331.468,331.445 c 9.197,9.198 21.271,13.82 33.345,13.82 12.074,0 24.101,-4.622 33.346,-13.82 18.442,-18.441 18.442,-48.247 0,-66.687 l -331.464,-331.446 331.464,-331.44501 c 18.442,-18.441 18.442,-48.25 0,-66.691 C 800.88178,4.608 788.81678,0 776.75678,0 Z"/></svg>
-        </button>
-      </div>
-      <button class="btn">Planeswalker</button>
-      <button class="btn">Sorcery</button>
-      <button class="btn">Instant</button>
-      <button class="btn">Enchantment</button>
-      <button class="btn">Artifact</button>
+      {% for type in card_types %}
+        {% if type == filter_type %}
+        <a href="/cards" class="btn active">
+            {{ type }}
+            <svg class="cancel" xmlns="http://www.w3.org/2000/svg"x="0px" y="0px" viewBox="0 0 823.93427 1029.8962375"><title>Cancel</title><path d="m 776.75678,0 c -12.064,0 -24.124,4.608 -33.345,13.828 L 411.94378,345.27301 80.52575,13.879 c -18.443,-18.441 -48.255,-18.441 -66.695,0 -18.441,18.44 -18.441,48.244 0,66.685 l 331.418,331.39601 -331.418,331.399 c -18.441,18.44 -18.441,48.25 0,66.691 9.198,9.198 21.272,13.817 33.347,13.817 12.073,0 24.15,-4.619 33.348,-13.817 l 331.41803,-331.398 331.468,331.445 c 9.197,9.198 21.271,13.82 33.345,13.82 12.074,0 24.101,-4.622 33.346,-13.82 18.442,-18.441 18.442,-48.247 0,-66.687 l -331.464,-331.446 331.464,-331.44501 c 18.442,-18.441 18.442,-48.25 0,-66.691 C 800.88178,4.608 788.81678,0 776.75678,0 Z"/></svg>
+        </a>
+        {% endif %}
+      {% endfor %}
+      {% for type in card_types %}
+        {% if type != filte_type %}
+          <a href="?type={{type}}" class="btn">
+            {{type}}
+          </a>
+        {% endif %}
+      {% endfor %}
       <h3>Subtype</h3>
       <div class="active">
         <button class="btn active">
@@ -122,6 +126,11 @@
         <option>Most Controversial</option>
       </select>
     </aside>
+    {% if cards|length == 0 %}
+      <section class="content">
+        <p class="lead text-center">No cards. Why not look at these <a href="?subtype=Dinosaur">dinos</a>.</p>
+      </section>
+    {% endif %}
     <section class="content grid-5">
       {% for card in cards %}
       <a class="card" href="{{ url_for('card', multiverseId=card.multiverseId)}}" title="{{card.name}}">
@@ -166,21 +175,21 @@
         {%- for page in pagination.iter_pages() %}
           {% if page %}
             {% if pagination.pages != pagination.page and pagination.pages > 2 %}
-              <a href="{{url_for_other_page(page)}}" class="last"><span class="text">{{page}}</span></a>
+              <a href="{{url_for_other_page(page)}}?{{query_string}}" class="last"><span class="text">{{page}}</span></a>
             {% endif %}
             {% if page == pagination.page %}
              <div class="current-page"><span class="text">{{page}}</span></div>
             {% endif %}
             {% if pagination.page > 2 %}
-              <a href="{{url_for_other_page(1)}}" class="first"><span class="text">1</span></a>
+              <a href="{{url_for_other_page(1)}}?{{query_string}}" class="first"><span class="text">1</span></a>
             {% endif %}
             {% if pagination.page > 1 %}
-              <a href="{{url_for_other_page(pagination.page - 1)}}" class="prev"><span class="text">{{pagination.page - 1}}</span></a>
+              <a href="{{url_for_other_page(pagination.page - 1)}}?{{query_string}}" class="prev"><span class="text">{{pagination.page - 1}}</span></a>
             {% endif %}
           {% endif %}
         {%- endfor %}
         {% if pagination.has_next %}
-          <a href="{{url_for_other_page(pagination.page+1)}}" class="next"><span class="text">{{pagination.page+1}}</span></a>
+          <a href="{{url_for_other_page(pagination.page+1)}}?{{query_string}}" class="next"><span class="text">{{pagination.page+1}}</span></a>
         {% endif%}
       </div>
     </section>

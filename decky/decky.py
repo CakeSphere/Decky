@@ -61,6 +61,9 @@ KEYWORD_ABILITIES = [
     "Fabricate", "Partner", "Undaunted", "Improvise", "Aftermath", "Embalm",
     "Eternalize", "Afflict"
 ]
+CARD_TYPES = [
+    "Land", "Creature", "Artifact", "Enchantment", "Planeswalker", "Instant", 
+    "Sorcery", "Tribal"]
 
 PATH_TO_JSON = app.root_path + '/static/json'
 
@@ -368,31 +371,31 @@ def decks(page):
 @app.route('/cards/', defaults={'page': 1})
 @app.route('/cards/<int:page>')
 def cards(page):
+    filter_name = request.args.get('name')
     filter_set = request.args.get('set')
     filter_subtype = request.args.get('subtype')
-    db = get_db()
+    filter_type = request.args.get('type')
+    sql_query = 'FROM cards WHERE multiverseid != "" AND releaseDate == ""'
+    if filter_name:
+        sql_query = sql_query + ' AND name LIKE "%' + filter_name + '%"'
+    if filter_set:
+        sql_query = sql_query + ' AND setCode = "' + filter_set.upper() + '"'
+    if filter_type:
+        sql_query = sql_query + ' AND type LIKE "%' + filter_type + '%"'
     if filter_subtype:
+        sql_query = sql_query + ' AND subtypes LIKE "%' + filter_subtype + '%"'
+    db = get_db()
+    if filter_name or filter_set or filter_subtype or filter_type:
         cur_count = db.execute(
-            'SELECT COUNT(*) FROM cards WHERE multiverseid != "" AND subtypes like "%' + filter_subtype + '%" AND releaseDate ==""'
+            'SELECT COUNT(*) ' + sql_query
         )
         count = cur_count.fetchone()[0]
         cur_cards = db.execute(
-            'SELECT * FROM cards WHERE multiverseid != "" AND subtypes like "%' + filter_subtype + '%" AND releaseDate == "" ORDER BY multiverseId DESC LIMIT '
-            + str(PER_PAGE) + ' offset ' + str(PER_PAGE * page - PER_PAGE))
-        cur_sets = db.execute(
-            'SELECT * FROM sets ORDER BY releaseDate DESC LIMIT 5')
-        cards = cur_cards.fetchall()
-    elif filter_set:
-        cur_count = db.execute(
-            'SELECT COUNT(*) FROM cards WHERE multiverseid != "" AND setCode = "' + filter_set.upper() + '" AND releaseDate ==""'
+            'SELECT * ' + sql_query + ' ORDER BY multiverseId DESC LIMIT ' + str(PER_PAGE) + ' offset ' + str(PER_PAGE * page - PER_PAGE)
         )
-        count = cur_count.fetchone()[0]
-        cur_cards = db.execute(
-            'SELECT * FROM cards WHERE multiverseid != "" AND setCode = "' + filter_set.upper() + '" AND releaseDate == "" ORDER BY multiverseId DESC LIMIT '
-            + str(PER_PAGE) + ' offset ' + str(PER_PAGE * page - PER_PAGE))
+        cards = cur_cards.fetchall()
         cur_sets = db.execute(
             'SELECT * FROM sets ORDER BY releaseDate DESC LIMIT 5')
-        cards = cur_cards.fetchall()
     else:
         cur_count = db.execute(
             'SELECT COUNT(*) FROM cards WHERE multiverseid != ""AND releaseDate ==""'
@@ -404,7 +407,6 @@ def cards(page):
         cur_sets = db.execute(
             'SELECT * FROM sets ORDER BY releaseDate DESC LIMIT 5')
         cards = cur_cards.fetchall()
-
     pagination = Pagination(page, PER_PAGE, count)
     card_mana = {}
     for card in cards:
@@ -452,6 +454,7 @@ def cards(page):
         text = Markup('</p><p>'.join(text.split('\n')))
         card_text[card["id"]] = text
     sets = cur_sets.fetchall()
+    query_string = request.query_string
     return render_template(
         'cards.html',
         cards=cards,
@@ -459,7 +462,12 @@ def cards(page):
         card_mana=card_mana,
         card_text=card_text,
         pagination=pagination,
-        filter_set=filter_set)
+        query_string=query_string,
+        filter_set=filter_set,
+        filter_type=filter_type,
+        filter_subtype=filter_subtype,
+        filter_name=filter_name,
+        card_types=CARD_TYPES)
 
 
 @app.route('/card/<multiverseId>')
