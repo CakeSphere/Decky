@@ -48,6 +48,7 @@ body {
 
 .content {
   // Main content section
+  align-content: start;
   display: grid;
   grid-gap: 1rem;
   width: calc(100% - 356px - 2rem);
