@@ -1,7 +1,11 @@
 // Builder Elements
 
 .builder {
+  grid-template-columns: calc(300px + 3rem) calc(100% - 600px - 7.5rem) calc(300px + 4.5rem);
   input { width: calc(100% - 1.4rem); }
+  h1 {
+    margin-bottom: -0.4rem;
+  }
   .in-deck { opacity: 0.5; }
   .my-cards {
     margin-top: 0;
@@ -31,6 +35,16 @@
     .btn {
       margin-right: 0;
       vertical-align: top;
+    }
+  }
+
+  .content {
+    width: 100%;
+
+    + aside {
+      margin-left: 1.5rem;
+      padding: 1.5rem;
+      width: 300px;
     }
   }
 }

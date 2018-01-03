@@ -76,6 +76,6 @@
 }
 
 
-@for $i from 1 to 22 {
+@for $i from 1 to 26 {
   .content > .deck.gallery:nth-child(#{$i}) { animation-delay: $i * 0.015s; }
 }

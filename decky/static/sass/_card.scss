@@ -206,6 +206,8 @@
 }
 
 .card-bg {
+  position: fixed;
+  z-index: $z-index-background;
   img {
     bottom: 0;
     filter: blur(15px) grayscale(100%);
@@ -432,4 +434,11 @@
 
 .card-details {
   margin-top: 2rem;
+}
+
+.no-results {
+  h1 {
+    margin-bottom: 0;
+    margin-top: 2rem;
+  }
 }
