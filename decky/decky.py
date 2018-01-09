@@ -395,7 +395,7 @@ def cards(page):
         )
         cards = cur_cards.fetchall()
         cur_sets = db.execute(
-            'SELECT * FROM sets ORDER BY releaseDate DESC LIMIT 5')
+            'SELECT * FROM sets ORDER BY releaseDate DESC')
     else:
         cur_count = db.execute(
             'SELECT COUNT(*) FROM cards WHERE multiverseid != ""AND releaseDate ==""'
@@ -478,10 +478,15 @@ def card(multiverseId):
     card = cur.fetchone()
     if not card:
         abort(404)
+    card_name = card[15]
+    cur_cards = db.execute(
+        'SELECT multiverseid FROM cards WHERE name=(?)', (card_name, ))
     cur_decks = db.execute(
-        'SELECT DISTINCT decks.id, name, tags, legality, image, likes FROM decksToCards INNER JOIN decks ON deckId=decks.id WHERE cardId=(?) ORDER BY likes DESC',
-        (card['multiverseId'], ))
+        'SELECT DISTINCT decks.id, name, tags, legality, image, likes FROM decksToCards INNER JOIN decks ON deckId=decks.id WHERE cardId=(?) ORDER BY likes DESC', (multiverseId, ))
+
     decks = cur_decks.fetchall()
+
+    print decks
     legality = {}
     tags = {}
     for deck in decks:

@@ -44,6 +44,7 @@
     backface-visibility: hidden;
     background: tint($color-background, 6%);
     box-shadow: 0 2px 2px shade($color-background, 15%);
+    color: transparent;
     left: 0;
     position: absolute;
     top: 0;

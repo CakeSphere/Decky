@@ -326,6 +326,9 @@
   // appear, depending on the page it's on.
   padding: 1.5rem;
   z-index: $z-index-nav;
+  .active {
+    text-transform: capitalize;
+  }
 }
 
 .main-footer {
