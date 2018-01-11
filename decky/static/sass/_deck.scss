@@ -262,7 +262,8 @@
 
 // Deck tiles in the builder
 .sidebar .deck.gallery {
-  margin: 0;
+  display: block;
+  margin-bottom: 1rem;
 
   .deck-info {
     width: 100%;
@@ -461,3 +462,17 @@
 }
 
 .discussion { max-width: 900px; }
+
+.my-decks {
+  max-height: calc(100vh - 5rem);
+  overflow: hidden;
+  .deck {
+    max-width: 100%;
+    transition: 0.2s width;
+    width: 300px;
+  }
+  &:hover {
+    overflow-y: auto;
+    padding-right: 0.5rem;
+  }
+}

@@ -65,10 +65,17 @@
       {% endfor %}
       {% for set in sets[:6] %}
         {% if set.code != filter_set %}
-        <a href="?set={{set.code}}" class="btn">
-          <i class="ss ss-{{ set.code }} ss-common">&nbsp;</i>
-          {{ set.name }}
-        </a>
+          {% if filter_type or filter_subtype or filter_name %}
+            <a href="?{{query_string}}&set={{set.code}}" class="btn">
+              <i class="ss ss-{{ set.code }} ss-common">&nbsp;</i>
+              {{ set.name }}
+            </a>
+            {% else %}
+            <a href="?set={{set.code}}" class="btn">
+              <i class="ss ss-{{ set.code }} ss-common">&nbsp;</i>
+              {{ set.name }}
+            </a>
+          {% endif %}
         {% endif %}
       {% endfor %}
       <button class="btn">

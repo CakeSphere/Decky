@@ -323,7 +323,7 @@ ul {
   animation: dialog 0.3s 1;
   animation-timing-function: ease-in-out;
   background: $color-background;
-  border: 1px solid tint($color-background, 5%);
+  border: 1px solid shade($color-background, 1%);
   border-radius: $border-radius;
   box-shadow: 0 10px 50px 2px $color-shadow-dark;
   left: calc(50% - 12vw);
