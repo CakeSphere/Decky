@@ -464,16 +464,17 @@
 .discussion { max-width: 900px; }
 
 .my-decks {
-  background: $color-background;
+  background: transparentize($color-text-weak, 0.98);
   border-right: 1px solid tint($color-background, 5%);
   bottom: 0;
   box-shadow: 0 4px 2px $color-shadow-dark;
   left: 100px;
+  max-height: 100vw;
   overflow: hidden;
   position: fixed;
   top: 59px;
   width: 300px;
-  max-height: 100vw;
+
   &::after {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
@@ -486,18 +487,17 @@
     top: 0;
     z-index: $z-index-background; // Pushing blurry background to the "back"
   }
+
   .deck {
     max-width: 100%;
     transition: 0.2s width;
     width: 300px;
-    &:last-child {
-      margin-bottom: 10rem;
-    }
   }
+
   &:hover {
     overflow-y: auto;
-    padding-right: 0.5rem;
   }
+
   + .content {
     margin-left: 385px;
     width: calc(100vw - 550px);
