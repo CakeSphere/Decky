@@ -489,7 +489,8 @@
   }
 
   .deck {
-    max-width: 100%;
+    max-width: 300px;
+    min-width: 300px;
     transition: 0.2s width;
     width: 300px;
   }

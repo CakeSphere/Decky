@@ -62,8 +62,9 @@ KEYWORD_ABILITIES = [
     "Eternalize", "Afflict"
 ]
 CARD_TYPES = [
-    "Land", "Creature", "Artifact", "Enchantment", "Planeswalker", "Instant", 
-    "Sorcery", "Tribal"]
+    "Land", "Creature", "Artifact", "Enchantment", "Planeswalker", "Instant",
+    "Sorcery", "Tribal"
+]
 
 PATH_TO_JSON = app.root_path + '/static/json'
 
@@ -332,6 +333,7 @@ def show_entries(setId):
     sets = cur_sets.fetchall()
     return render_template('show_entries.html', cards=cards, sets=sets)
 
+
 @app.route('/decks/', defaults={'page': 1})
 @app.route('/decks/<int:page>')
 def decks(page):
@@ -384,16 +386,13 @@ def cards(page):
         sql_query = sql_query + ' AND subtypes LIKE "%' + filter_subtype + '%"'
     db = get_db()
     if filter_name or filter_set or filter_subtype or filter_type:
-        cur_count = db.execute(
-            'SELECT COUNT(*) ' + sql_query
-        )
+        cur_count = db.execute('SELECT COUNT(*) ' + sql_query)
         count = cur_count.fetchone()[0]
         cur_cards = db.execute(
-            'SELECT * ' + sql_query + ' ORDER BY multiverseId DESC LIMIT ' + str(PER_PAGE) + ' offset ' + str(PER_PAGE * page - PER_PAGE)
-        )
+            'SELECT * ' + sql_query + ' ORDER BY multiverseId DESC LIMIT ' +
+            str(PER_PAGE) + ' offset ' + str(PER_PAGE * page - PER_PAGE))
         cards = cur_cards.fetchall()
-        cur_sets = db.execute(
-            'SELECT * FROM sets ORDER BY releaseDate DESC')
+        cur_sets = db.execute('SELECT * FROM sets ORDER BY releaseDate DESC')
     else:
         cur_count = db.execute(
             'SELECT COUNT(*) FROM cards WHERE multiverseid != ""AND releaseDate ==""'
@@ -477,10 +476,11 @@ def card(multiverseId):
     if not card:
         abort(404)
     card_name = card[15]
-    cur_cards = db.execute(
-        'SELECT multiverseid FROM cards WHERE name=(?)', (card_name, ))
+    cur_cards = db.execute('SELECT multiverseid FROM cards WHERE name=(?)',
+                           (card_name, ))
     cur_decks = db.execute(
-        'SELECT DISTINCT decks.id, name, tags, legality, image, likes FROM decksToCards INNER JOIN decks ON deckId=decks.id WHERE cardId=(?) ORDER BY likes DESC', (multiverseId, ))
+        'SELECT DISTINCT decks.id, name, tags, legality, image, likes FROM decksToCards INNER JOIN decks ON deckId=decks.id WHERE cardId=(?) ORDER BY likes DESC',
+        (multiverseId, ))
 
     decks = cur_decks.fetchall()
 
@@ -664,11 +664,7 @@ def builder(id):
     commander = ''
     foil = ''
     edit_id = ''
-    edit_card = {
-      'edit_names': [],
-      'edit_sets': [],
-      'edit_ids': []
-    }
+    edit_card = {'edit_names': [], 'edit_sets': [], 'edit_ids': []}
     if id:
         edit_id = id
         edit_mode = True
@@ -694,7 +690,11 @@ def builder(id):
             card_commander = card['commander']
             commander[card["multiverseid"]] = card_commander
             card_id = card["multiverseid"]
-            edit_sets_data = db.execute('SELECT multiverseid, name, setId FROM cards WHERE name LIKE "' + HTMLParser().unescape(smartypants.smartypants(card[0])) + '" AND multiverseid != "" AND releaseDate == "" ORDER BY multiverseid DESC LIMIT 5 ')
+            edit_sets_data = db.execute(
+                'SELECT multiverseid, name, setId FROM cards WHERE name LIKE "'
+                + HTMLParser().unescape(smartypants.smartypants(card[0])) +
+                '" AND multiverseid != "" AND releaseDate == "" ORDER BY multiverseid DESC LIMIT 5 '
+            )
             edit_sets = edit_sets_data.fetchall()
             for edit_set in edit_sets:
                 edit_card['edit_names'].append(edit_set[1])
@@ -744,6 +744,7 @@ def builder(id):
 @app.route('/add_deck', methods=['GET', 'POST'])
 def add_deck():
     deck = request.get_json()
+    # Check if we're editing an existing deck
     if deck:
         deck_id = deck['edit_id']
         deck_description = deck['description']
@@ -780,14 +781,21 @@ def add_deck():
             if deck_cards[card]['featured'] == 1:
                 deck_image = card
         if deck_id == '':
-            cur_cards = db.execute('INSERT INTO decks values (null, ?, ?, null, date("now"), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, date("now"))',(deck_author, deck_colors, deck_description, deck_formats, deck_image, deck_legality, deck_likes, deck_mainboard, deck_maybeboard, deck_name, deck_sideboard, deck_tags))
+            cur_cards = db.execute(
+                'INSERT INTO decks values (null, ?, ?, null, date("now"), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, date("now"))',
+                (deck_author, deck_colors, deck_description, deck_formats,
+                 deck_image, deck_legality, deck_likes, deck_mainboard,
+                 deck_maybeboard, deck_name, deck_sideboard, deck_tags))
 
         else:
-            cur_cards = db.execute('UPDATE decks SET colors = ?, description = ?, formats = ?, image = ?, legality = ?, name = ?, tags = ? WHERE id = ?',(deck_colors, deck_description, deck_formats, deck_image, deck_legality, deck_name, deck_tags, deck_id))
+            cur_cards = db.execute(
+                'UPDATE decks SET colors = ?, description = ?, formats = ?, image = ?, legality = ?, name = ?, tags = ? WHERE id = ?',
+                (deck_colors, deck_description, deck_formats, deck_image,
+                 deck_legality, deck_name, deck_tags, deck_id))
 
         deck_row = cur_cards.lastrowid
         if deck_id != '':
-            db.execute('DELETE FROM decksToCards WHERE deckId=?', (deck_id,))
+            db.execute('DELETE FROM decksToCards WHERE deckId=?', (deck_id, ))
         for card in deck_cards:
             quantity = deck_cards[card]['quantity']
             for i in range(int(quantity)):
@@ -805,19 +813,28 @@ def add_deck():
                     card_commander = 0
                 if deck_id == '':
                     db.execute('INSERT INTO decksToCards VALUES(NULL, ' + str(
-                        deck_row) + ', ' + card + ', ' + str(card_foil) + ', ' +
-                               str(card_featured) + ', ' + str(
+                        deck_row) + ', ' + card + ', ' + str(card_foil) + ', '
+                               + str(card_featured) + ', ' + str(
                                    card_commander) + ')')
                 else:
-                    db.execute('INSERT INTO decksToCards VALUES(NULL, ?, ?, ?, ?, ?);', (deck_id, card, card_foil, card_featured, card_commander))
-                    db.execute('UPDATE decksToCards SET featured = 0 WHERE featured = 1;')
-                    db.execute('UPDATE decksToCards SET foil = ?, featured = ?, commander = ? WHERE cardId = ?', (card_foil, card_featured, card_commander, card))
+                    db.execute(
+                        'INSERT INTO decksToCards VALUES(NULL, ?, ?, ?, ?, ?);',
+                        (deck_id, card, card_foil, card_featured,
+                         card_commander))
+                    db.execute(
+                        'UPDATE decksToCards SET featured = 0 WHERE featured = 1;'
+                    )
+                    db.execute(
+                        'UPDATE decksToCards SET foil = ?, featured = ?, commander = ? WHERE cardId = ?',
+                        (card_foil, card_featured, card_commander, card))
 
             if deck_id == '':
                 print "Inserted Multiverse ID " + card + " into Deck " + str(
                     deck_row) + " " + str(quantity) + " times."
             else:
-                print "Inserted Multiverse ID " + str(card) + " into Deck " + str(deck_id) + " " + str(quantity) + " times."
+                print "Inserted Multiverse ID " + str(
+                    card) + " into Deck " + str(deck_id) + " " + str(
+                        quantity) + " times."
         db.commit()
         return 'success'
     return redirect(url_for('decks'))
@@ -836,6 +853,7 @@ def settings():
 @app.route('/appendices')
 def appendices():
     return render_template('appendices.html')
+
 
 @app.route('/')
 @app.route('/grimoire')
@@ -859,24 +877,19 @@ def grimoire():
         legality[deck["id"]] = deck_legality
 
     return render_template(
-        'grimoire.html',
-        decks=decks,
-        sets=sets,
-        tags=tags,
-        legality=legality)
+        'grimoire.html', decks=decks, sets=sets, tags=tags, legality=legality)
+
 
 @app.route('/delete_deck/<id>', methods=['GET', 'POST'])
 def delete_deck(id):
     db = get_db()
-    cur_deck_name = db.execute('SELECT name FROM decks WHERE id=?;', (id,))
+    cur_deck_name = db.execute('SELECT name FROM decks WHERE id=?;', (id, ))
     cur_deck_name = cur_deck_name.fetchone()
-    db.execute('DELETE FROM decks WHERE id=?;', (id,))
-    db.execute('DELETE FROM decksToCards where deckId=?;', (id,))
+    db.execute('DELETE FROM decks WHERE id=?;', (id, ))
+    db.execute('DELETE FROM decksToCards where deckId=?;', (id, ))
     db.commit()
     flash(cur_deck_name[0] + ' was successfully deleted.', 'success')
     return redirect(url_for('decks'))
-
-
 
 
 @app.errorhandler(404)

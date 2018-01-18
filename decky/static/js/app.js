@@ -24,6 +24,9 @@ $(function () {
     $('.dialog').show();
     $('.dialog-bg').fadeIn(300);
   });
+  function compareNumbers(a, b) {
+    return a - b;
+  }
   // Close dialog
   $('.close').click(function(event) {
     event.preventDefault();
@@ -46,9 +49,6 @@ $(function () {
       success: function(card_return) {
         if (card_return.card_found != false) {
           if (!deck.cards[card_return.card_id]) {
-            function compareNumbers(a, b) {
-              return a - b;
-            }
             var sets = Object.getOwnPropertyNames(card_return.card_sets).sort(compareNumbers).reverse();
             var newRow = $('<tr class="row-' + card_return.card_id + '"><td class="text-right quantity">' + cardQuantity + '</td><td><a href="/card/' + card_return.card_id + '" target="_blank" class="tooltip" data-img="' + card_return.card_id + '">' + cardName + '</a></td><td><select class="btn" id="select-set-' + card_return.card_id + '"></select></td><td>' + card_return.card_type + '</td><td><input type="checkbox" id="' + card_return.card_id + '"><label for="' + card_return.card_id + '"></label></td><td><input type="radio" name="featured" id="' + card_return.card_id + 'f"><label for="' + card_return.card_id + 'f"></label></td><td><input type="radio" name="commander" id="' + card_return.card_id + 'c"><label for="' + card_return.card_id + 'c"></label></td><td class="text-center"><a href="" class="delete-card"><svg class="cancel" xmlns="http://www.w3.org/2000/svg"x="0px" y="0px" viewBox="0 0 823.93427 1029.8962375"><title>Cancel</title><path d="m 776.75678,0 c -12.064,0 -24.124,4.608 -33.345,13.828 L 411.94378,345.27301 80.52575,13.879 c -18.443,-18.441 -48.255,-18.441 -66.695,0 -18.441,18.44 -18.441,48.244 0,66.685 l 331.418,331.39601 -331.418,331.399 c -18.441,18.44 -18.441,48.25 0,66.691 9.198,9.198 21.272,13.817 33.347,13.817 12.073,0 24.15,-4.619 33.348,-13.817 l 331.41803,-331.398 331.468,331.445 c 9.197,9.198 21.271,13.82 33.345,13.82 12.074,0 24.101,-4.622 33.346,-13.82 18.442,-18.441 18.442,-48.247 0,-66.687 l -331.464,-331.446 331.464,-331.44501 c 18.442,-18.441 18.442,-48.25 0,-66.691 C 800.88178,4.608 788.81678,0 776.75678,0 Z"/></svg></a></td></tr>');
 

@@ -142,7 +142,7 @@ button {
   &:hover .mana.small::after { transform: translateX(3px) rotate(45deg); }
 }
 
-.container .btn svg {
+.container .btn svg.action {
   fill: $color-text;
   float: left;
   height: 20px;
