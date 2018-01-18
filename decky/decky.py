@@ -1,4 +1,4 @@
-import os, sqlite3, sass, json, smartypants, re, sys
+import os, sqlite3, sass, json, smartypants, re, sys, time
 
 from pprint import pprint
 from HTMLParser import HTMLParser
@@ -789,9 +789,10 @@ def add_deck():
 
         else:
             cur_cards = db.execute(
-                'UPDATE decks SET colors = ?, description = ?, formats = ?, image = ?, legality = ?, name = ?, tags = ? WHERE id = ?',
+                'UPDATE decks SET colors = ?, description = ?, formats = ?, image = ?, legality = ?, name = ?, tags = ?, updated = ? WHERE id = ?',
                 (deck_colors, deck_description, deck_formats, deck_image,
-                 deck_legality, deck_name, deck_tags, deck_id))
+                 deck_legality, deck_name, deck_tags, time.strftime('%Y-%m-%d'), deck_id))
+            print cur_cards
 
         deck_row = cur_cards.lastrowid
         if deck_id != '':
