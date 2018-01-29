@@ -326,6 +326,7 @@ ul {
   border: 1px solid shade($color-background, 1%);
   border-radius: $border-radius;
   box-shadow: 0 10px 50px 2px $color-shadow-dark;
+  display: none;
   left: calc(50% - 12vw);
   padding: 2rem;
   padding-top: 2.5rem;
@@ -364,12 +365,12 @@ ul {
 }
 
 .dialog-bg {
-  position: fixed;
-  z-index: $z-index-fixed - 1;
   background: transparentize($color-background, 0.1);
-  width: 100%;
+  display: none;
   height: 100%;
-  display: block;
-  top: 0;
   left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: $z-index-fixed - 1;
 }

@@ -11,11 +11,6 @@ $(function () {
       'edit_id': ''
     };
   }
-  // Hide delete dialog on page load
-  $('.dialog-bg').hide();
-  $('.dialog').hide();
-  // Hide all tabs on page load
-  $('[class^=tab-]').hide();
   // Show the first tab by default
   $('.tab-1').show();
   // Delete Deck
