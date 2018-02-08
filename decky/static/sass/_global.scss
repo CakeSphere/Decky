@@ -374,3 +374,21 @@ ul {
   width: 100%;
   z-index: $z-index-fixed - 1;
 }
+
+.icon {
+  &.icon-appendices {
+    bottom: -13px;
+  }
+}
+
+.appendices {
+  section {
+    max-width: 900px;
+  }
+}
+
+.grimoire {
+  h1 .icon {
+    bottom: -11px;
+  }
+}

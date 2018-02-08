@@ -791,7 +791,8 @@ def add_deck():
             cur_cards = db.execute(
                 'UPDATE decks SET colors = ?, description = ?, formats = ?, image = ?, legality = ?, name = ?, tags = ?, updated = ? WHERE id = ?',
                 (deck_colors, deck_description, deck_formats, deck_image,
-                 deck_legality, deck_name, deck_tags, time.strftime('%Y-%m-%d'), deck_id))
+                 deck_legality, deck_name, deck_tags,
+                 time.strftime('%Y-%m-%d'), deck_id))
             print cur_cards
 
         deck_row = cur_cards.lastrowid
