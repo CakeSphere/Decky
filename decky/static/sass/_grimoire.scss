@@ -1,0 +1,42 @@
+
+.my-decks {
+  background: transparentize($color-text-weak, 0.98);
+  border-right: 1px solid tint($color-background, 5%);
+  bottom: 0;
+  box-shadow: 0 4px 2px $color-shadow-dark;
+  left: 100px;
+  max-height: 100vw;
+  overflow: hidden;
+  position: fixed;
+  top: 59px;
+  width: 300px;
+
+  &::after {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    background: transparentize(tint($color-background, 0.25), 0.2);
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: $z-index-background; // Pushing blurry background to the "back"
+  }
+
+  .deck {
+    max-width: 300px;
+    min-width: 300px;
+    transition: 0.2s width;
+    width: 300px;
+  }
+
+  &:hover {
+    overflow-y: auto;
+  }
+
+  + .content {
+    margin-left: 385px;
+    width: calc(100vw - 550px);
+  }
+}

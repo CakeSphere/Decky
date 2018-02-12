@@ -67,8 +67,8 @@
 }
 
 @keyframes dialog {
-  from { transform: rotateX(-60deg) scale(0.95); opacity: 0; }
-  to   { transform: rotateX(0) scale(1); opacity: 1; }
+  from { opacity: 0; transform: rotateX(-60deg) scale(0.95); }
+  to   { opacity: 1; transform: rotateX(0) scale(1); }
 }
 
 @for $i from 1 to 11 {
