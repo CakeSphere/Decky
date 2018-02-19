@@ -343,6 +343,10 @@
   text-align: center;
   z-index: $z-index-nav;
 
+  &.hide {
+    display: none;
+  }
+
   .container {
     display: block;
     margin-top: 0;

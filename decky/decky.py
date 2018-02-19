@@ -483,8 +483,6 @@ def card(multiverseId):
         (multiverseId, ))
 
     decks = cur_decks.fetchall()
-
-    print decks
     legality = {}
     tags = {}
     for deck in decks:
