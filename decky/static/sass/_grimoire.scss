@@ -29,7 +29,20 @@
     min-width: 300px;
     transition: 0.2s width;
     width: 300px;
+
+    .deck-img {
+      -webkit-mask-image: linear-gradient(to right, $color-black 0%, transparent 92%, transparent 100%);
+      mask-image: linear-gradient(to right, $color-black 0%, transparent 92%, transparent 100%);
+      opacity: 0.5;
+      position: absolute;
+    }
+
+    .title {
+      position: relative;
+      text-shadow: 0 1px 2px $color-shadow-dark;
+    }
   }
+
 
   &:hover {
     overflow-y: auto;
