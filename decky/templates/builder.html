@@ -57,6 +57,7 @@
                     <a href="/card/{{card.multiverseid}}" target="_blank" class="tooltip" data-img="{{card.multiverseid}}">{{card.name}}</a>
                   </td>
                   <td>
+                    {% if edit_card['unique'][loop.index-1] == false %}
                     <select name="" id="select-set-{{card.multiverseid}}" class="btn">
                       {% for name in edit_card['edit_names'] %}
                         {% if name == card.name %}
@@ -65,6 +66,9 @@
                         {% endif %}
                       {% endfor %}
                     </select>
+                    {% else %}
+                      {{card[1]}}
+                    {% endif %}
                   </td>
                   <td>{{card.type}}</td>
                   <td>

@@ -664,7 +664,7 @@ def builder(id):
     commander = ''
     foil = ''
     edit_id = ''
-    edit_card = {'edit_names': [], 'edit_sets': [], 'edit_ids': []}
+    edit_card = {'edit_names': [], 'edit_sets': [], 'edit_ids': [], 'unique': []}
     if id:
         edit_id = id
         edit_mode = True
@@ -700,6 +700,10 @@ def builder(id):
                 edit_card['edit_names'].append(edit_set[1])
                 edit_card['edit_ids'].append(str(edit_set[0]))
                 edit_card['edit_sets'].append(edit_set[2])
+            if edit_card['edit_names'].count(edit_set[1]) == 1:
+                edit_card['unique'].append(True)
+            else:
+                edit_card['unique'].append(False)
     if card_name:
         card_name = card_name['cardName']
         card_data = db.execute(
