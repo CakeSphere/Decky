@@ -693,7 +693,7 @@ def builder(id):
             edit_sets_data = db.execute(
                 'SELECT multiverseid, name, setId FROM cards WHERE name LIKE "'
                 + HTMLParser().unescape(smartypants.smartypants(card[0])) +
-                '" AND multiverseid != "" AND releaseDate == "" ORDER BY multiverseid DESC LIMIT 5 '
+                '" AND multiverseid != "" AND releaseDate == "" ORDER BY multiverseid DESC '
             )
             edit_sets = edit_sets_data.fetchall()
             for edit_set in edit_sets:
