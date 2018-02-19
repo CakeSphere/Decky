@@ -3,9 +3,6 @@
 .builder {
   grid-template-columns: calc(300px + 3rem) calc(100% - 600px - 7.5rem) calc(300px + 4.5rem);
   input { width: calc(100% - 1.4rem); }
-  h1 {
-    margin-bottom: -0.4rem;
-  }
   .in-deck { opacity: 0.5; }
   .my-cards {
     margin-top: 0;
@@ -63,6 +60,9 @@
 }
 
 .builder-cards {
+  margin: 0 -2.4rem 0 -1.6rem;
+  width: calc(100% + 4rem);
+
   [class^="btn-tab-"] {
     border-radius: $border-radius $border-radius 0 0;
   }
@@ -78,6 +78,10 @@
         width: 45px;
       }
     }
+  }
+
+  .tabs .btn:first-child {
+    margin-left: 1.6rem;
   }
 }
 
