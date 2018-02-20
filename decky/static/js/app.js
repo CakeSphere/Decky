@@ -267,4 +267,14 @@ $(function () {
       }
     }
   });
+  var bulk_edit = $('.bulk-edit');
+  var color_reg = new RegExp(/[0-9]+x/gm);
+  function colorize() {
+    var bulk_edit_text = bulk_edit.html();
+    if (color_reg.test(bulk_edit_text)) {
+      bulk_edit_text = bulk_edit_text.replace(color_reg, '<span class="count">$&</span class="count">')
+      bulk_edit.html(bulk_edit_text);
+    }
+  }
+  colorize();
 });

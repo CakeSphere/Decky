@@ -46,16 +46,27 @@
 }
 
 .bulk-edit {
-  background: $color-text-weak;
-  border-top-left-radius: 0;
+  background: tint($color-background, 5%);
+  border-radius: 0;
   box-shadow: inset 0 -2px 2px $color-shadow;
-  color: $color-background;
+  color: $color-text-weak;
   font-family: 'prestige-elite-std', monospace;
   font-size: 0.833rem;
   -webkit-font-smoothing: subpixel-antialiased;
+  min-height: 500px;
+  padding-left: 1.6rem;
+  padding-right: 2.4rem;
+  transition: background $transition;
+  white-space: pre;
+  width: calc(100% - 4.1rem);
+
+  .count {
+    color: $color-primary;
+  }
 
   &:focus {
-    background: $color-text-weak;
+    background: tint($color-background, 7%);
+    outline: none;
   }
 }
 
