@@ -61,7 +61,7 @@
 
 .builder-cards {
   margin: 0 -2.4rem 0 -1.6rem;
-  width: calc(100% + 4rem);
+  width: calc(100% + 3.15rem);
 
   [class^="btn-tab-"] {
     border-radius: $border-radius $border-radius 0 0;
@@ -75,7 +75,11 @@
     td,
     th {
       &:first-child {
+        padding-left: 1.6rem;
         width: 45px;
+      }
+      &:last-child {
+        padding-right: 2.4rem;
       }
     }
   }
