@@ -13,7 +13,7 @@
     height: 22px;
     margin-bottom: 0;
     margin-right: -4px;
-    transition: $transition/2;
+    transition: $transition / 2;
     vertical-align: bottom;
 
     &.active {
@@ -22,11 +22,8 @@
                   inset 0 0 2px $color-highlight,
                   0 2px 1px $color-shadow;
       color: $color-text;
-      position: relative;
-      vertical-align: bottom;
-
-      &:first-child,
-      &:last-child { border-radius: $border-radius $border-radius 0 0; }
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
   }
 }

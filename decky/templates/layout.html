@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}?v=9BaWAXKO6p">
     <meta name="theme-color" content="#272727">
   </head>
-  <body class="{% if active_page == 'login' %}login{% endif %}">
+  <body class="{% if active_page == 'login' %}login{% endif %}{% if has_footer == False %} full-screen {% endif %}">
     <div class="loader"></div>
     <nav class="top-nav">
       {% with messages = get_flashed_messages(with_categories=true) %}
