@@ -77,6 +77,7 @@ $(function () {
               "featured": false,
               "commander": false
             };
+            console.log(selectSet)
             // Change everything in the row and in the deck object when the
             // user changes the printing.
             $(selectSet).on('change', function () {
@@ -106,8 +107,6 @@ $(function () {
               commander.attr('id', selectSet.value + "c");
               $(row).find($('input:checkbox + label')).attr('for', selectSet.value);
               foil.attr('id', selectSet.value);
-              console.log(cardQuantity)
-              console.log(deck)
               // Add the new printing to the deck object
               deck.cards[selectSet.value] = {
                 "quantity": cardQuantity,
@@ -137,6 +136,45 @@ $(function () {
         }
       }
     });
+  });
+
+  // Change everything in the row and in the deck object when the
+  // user changes the printing.
+  $('[id^=select-set-]').on('change', function () {
+    // Get the parent row of the select element
+    var row = $(this).parents('[class^="row"]')
+    row.attr('class', 'row-' + this.value);
+    // Change the link to point to the new printing
+    var card_link = row.find($('.tooltip'))
+    var cardQuantity = Number(row.find($('.quantity')).text());
+    card_link.attr('href', "/card/" + this.value);
+    card_link.attr('data-img', this.value);
+    // Get the associated inputs
+    var featured = $(row).find($('input:radio[id*="f"]'));
+    var commander = $(row).find($('input:radio[id*="c"]'));
+    var foil = $(row).find($('input:checkbox'));
+    // Delete the old printing from the deck object
+    delete deck.cards[this.value];
+    // Delete any previously added printings
+    // for (var i = 0; i < sets.length; i++) {
+    //   delete deck.cards[sets[i]]
+    // }
+    // Change all of the inputs and their labels to match the new
+    // printing
+    $(row).find($('input:radio[id*="f"] + label')).attr('for', this.value + "f");
+    featured.attr('id', this.value + "f");
+    $(row).find($('input:radio[id*="c"] + label')).attr('for', this.value + "c");
+    commander.attr('id', this.value + "c");
+    $(row).find($('input:checkbox + label')).attr('for', this.value);
+    foil.attr('id', this.value);
+    // Add the new printing to the deck object
+    deck.cards[this.value] = {
+      "quantity": cardQuantity,
+      "foil": false,
+      "featured": false,
+      "commander": false
+    };
+    console.log(deck)
   });
   $('.builder-table tbody').on('click', '.delete-card', function(event) {
     event.preventDefault();
@@ -186,7 +224,6 @@ $(function () {
         success: function(deck_return) {
         }
       });
-      console.log(deck)
       flash('<strong>Double, double toil and trouble!</strong> ' + deck.name + ' was brewed successfully.', 'success')
     }
   });
@@ -268,13 +305,13 @@ $(function () {
       }
     }
   });
-  var bulk_edit = $('.bulk-edit');
-  var color_reg = new RegExp(/[0-9]+x/gm);
+  var bulkEdit = $('.bulk-edit');
+  var colorReg = new RegExp(/[0-9]+x/gm);
   function colorize() {
-    var bulk_edit_text = bulk_edit.html();
-    if (color_reg.test(bulk_edit_text)) {
-      bulk_edit_text = bulk_edit_text.replace(color_reg, '<span class="count">$&</span class="count">')
-      bulk_edit.html(bulk_edit_text);
+    var bulkEditText = bulkEdit.html();
+    if (colorReg.test(bulkEditText)) {
+      bulkEditText = bulkEditText.replace(colorReg, '<span class="count">$&</span class="count">')
+      bulkEdit.html(bulkEditText);
     }
   }
   colorize();
