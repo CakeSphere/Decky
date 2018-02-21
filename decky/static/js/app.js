@@ -4,6 +4,7 @@ $(function () {
     var editMode = true;
     var deck = edit_deck;
     $('.builder-quantity').text(deck.totalQuantity);
+    $('.builder-table').show();
   } else {
     var deck = {
       'totalQuantity': 0,
@@ -31,6 +32,7 @@ $(function () {
   // Add rows to the Builder table when the user clicks Add.
   $('.add-row').click(function(event) {
     event.preventDefault();
+    $('.builder-table').show();
     var cardQuantity = parseInt($('.card-quantity').val());
     var cardName = $('.card-name').val();
     var data = { cardName: cardName };
@@ -53,7 +55,6 @@ $(function () {
               newRow.find('[type=radio]').prop('checked', true);
             }
             var selectSet = document.getElementById('select-set-' + card_return.card_id);
-            // Add options to the set selector
             if (sets.length > 1) {
               for (var i = 0; i < sets.length; i++) {
                 var opt = document.createElement('option');
