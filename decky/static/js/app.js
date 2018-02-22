@@ -1,12 +1,13 @@
 $(function () {
   // Instantiate the deck object for the builder
+  var deck;
   if (typeof edit_deck != 'undefined') {
     var editMode = true;
-    var deck = edit_deck;
+    deck = edit_deck;
     $('.builder-quantity').text(deck.totalQuantity);
     $('.builder-table').show();
   } else {
-    var deck = {
+    deck = {
       'totalQuantity': 0,
       cards: {},
       'edit_id': ''
@@ -137,15 +138,16 @@ $(function () {
       }
     });
   });
-
   // Change everything in the row and in the deck object when the
   // user changes the printing.
-  $('[id^=select-set-]').on('change', function () {
+  $('[id^=select-set-]').on('focus', function () {
+    cardId = this.value;
+  }).change(function() {
     // Get the parent row of the select element
-    var row = $(this).parents('[class^="row"]')
+    var row = $(this).parents('[class^="row"]');
     row.attr('class', 'row-' + this.value);
     // Change the link to point to the new printing
-    var card_link = row.find($('.tooltip'))
+    var card_link = row.find($('.tooltip'));
     var cardQuantity = Number(row.find($('.quantity')).text());
     card_link.attr('href', "/card/" + this.value);
     card_link.attr('data-img', this.value);
@@ -154,7 +156,7 @@ $(function () {
     var commander = $(row).find($('input:radio[id*="c"]'));
     var foil = $(row).find($('input:checkbox'));
     // Delete the old printing from the deck object
-    delete deck.cards[this.value];
+    delete deck.cards[cardId];
     // Delete any previously added printings
     // for (var i = 0; i < sets.length; i++) {
     //   delete deck.cards[sets[i]]
