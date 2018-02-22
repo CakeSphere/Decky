@@ -220,6 +220,12 @@ ul {
   &::selection      { background: initial; color: transparent; }
 }
 
+.ss,
+svg,
+ {
+  paint-order: stroke fill;
+}
+
 // Set symbols
 .ss-common { -webkit-text-stroke: 0.03em $color-text; }
 .ss-rare.ss-grad,
