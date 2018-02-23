@@ -10,7 +10,8 @@ $(function () {
     deck = {
       'totalQuantity': 0,
       cards: {},
-      'edit_id': ''
+      'edit_id': '',
+      makeup: ''
     };
   }
   // Show the first tab by default
@@ -53,6 +54,11 @@ $(function () {
             $('.builder-table tbody').append(newRow);
             if (newRow.is(':first-child')) {
               newRow.find('[type=radio]').prop('checked', true);
+            }
+            if (deck['makeup'].length == 0) {
+              deck['makeup'] = card_return.card_makeup
+            } else {
+              deck['makeup'] = deck['makeup'] + ', ' + card_return.card_makeup
             }
             var selectSet = document.getElementById('select-set-' + card_return.card_id);
             if (sets.length > 1) {
@@ -144,7 +150,6 @@ $(function () {
     $(this).find('option').each(function() {
       sets.push(this.value);
     });
-    console.log(sets);
   }).change(function() {
     // Get the parent row of the select element
     var row = $(this).parents('[class^="row"]');

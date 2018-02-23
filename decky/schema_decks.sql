@@ -18,7 +18,8 @@ create TABLE decks (
   name VARCHAR(50) NOT NULL,
   sideboard VARCHAR(50),
   tags VARCHAR(500),
-  updated VARCHAR(10)
+  updated VARCHAR(10),
+  makeup VARCHAR(500)
 );
 
 create TABLE decksToCards (
@@ -46,7 +47,7 @@ Here's the fun part: drop Combustible Gearhulk. You're either going to gain mass
 
 Remember to choose BOTH ;-) Aren't enter the battlefield effects just the best? Since your opponent will probably choose draw, you'll have exactly what you need in-hand to finish them off.
 
-And that's how you win.", "Standard", "417822", "Standard", 11, "main", "maybe", "Jeskai Fog", "side", "Control, Discard, Izzet", date('now'));
+And that's how you win.", "Standard", "417822", "Standard", 11, "main", "maybe", "Jeskai Fog", "side", "Control, Discard, Izzet", date('now'), "39, 34, 0, 29, 0");
 
 INSERT INTO decksToCards VALUES(NULL, 1, 417815, 0, 0, 0);
 INSERT INTO decksToCards VALUES(NULL, 1, 417815, 0, 0, 0);
