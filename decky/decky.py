@@ -93,6 +93,8 @@ def init_db():
     db = get_db()
     with app.open_resource('schema.sql', mode='r') as f:
         db.cursor().executescript(f.read())
+    with app.open_resource('schema_decks.sql', mode='r') as f:
+        db.cursor().executescript(f.read())
     db.commit()
 
 
@@ -351,7 +353,9 @@ def decks(page):
     sets = cur_sets.fetchall()
     legality = {}
     tags = {}
+    makeup = {}
     for deck in decks:
+        makeup[deck["id"]] = deck["makeup"].split(', ')
         deck_tags = deck["tags"]
         deck_tags = deck_tags.split(', ')
         tags[deck["id"]] = deck_tags
@@ -359,11 +363,14 @@ def decks(page):
         deck_legality = deck_legality.split(', ')
         legality[deck["id"]] = deck_legality
 
+    print makeup
+
     return render_template(
         'decks.html',
         decks=decks,
         sets=sets,
         tags=tags,
+        makeup=makeup,
         legality=legality,
         pagination=pagination)
 
@@ -673,6 +680,7 @@ def builder(id):
         edit_formats = edit_data["formats"]
         edit_tags = edit_data["tags"]
         edit_description = edit_data["description"]
+        edit_makeup = edit_data["makeup"]
         cur = db.execute(
             'SELECT name, setId, count(name), type, multiverseid, foil, featured, commander FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId="'
             + id + '" GROUP BY name')
@@ -705,7 +713,7 @@ def builder(id):
     if card_name:
         card_name = card_name['cardName']
         card_data = db.execute(
-            'SELECT multiverseid, setId, type FROM cards WHERE name LIKE "' +
+            'SELECT multiverseid, setId, type, colorIdentity FROM cards WHERE name LIKE "' +
             HTMLParser().unescape(smartypants.smartypants(card_name)) +
             '" AND multiverseid != "" AND releaseDate == "" ORDER BY multiverseid ASC '
         )
@@ -716,11 +724,13 @@ def builder(id):
                 card_id = unicode(card[0])
                 card_sets[card_id] = unicode(card[1])
                 card_type = unicode(card[2])
+                card_makeup = unicode(card[3])
                 card_return = json.dumps({
                     'card_found': True,
                     'card_id': card_id,
                     'card_sets': card_sets,
-                    'card_type': card_type
+                    'card_type': card_type,
+                    'card_makeup': card_makeup
                 })
 
             return card_return
@@ -755,10 +765,20 @@ def add_deck():
         deck_tags = deck['tags']
         deck_name = titlecase(deck['name'].strip())
         deck_cards = deck['cards']
+        deck_makeup = deck['makeup']
     # This needs to be set to the currently logged-in user.
     deck_author = "Casanova Killing Spree"
     # This needs to be calculated somehow.
     deck_colors = "{r}{b}"
+    deck_makeup = deck['makeup']
+    deck_makeup = deck_makeup.split(', ')
+    deck_makeup_length = len(deck_makeup)
+    deck_makeup_w = float(deck_makeup.count('W')) / deck_makeup_length * 100
+    deck_makeup_u = float(deck_makeup.count('U')) / deck_makeup_length * 100
+    deck_makeup_b = float(deck_makeup.count('B')) / deck_makeup_length * 100
+    deck_makeup_r = float(deck_makeup.count('R')) / deck_makeup_length * 100
+    deck_makeup_g = float(deck_makeup.count('G')) / deck_makeup_length * 100
+    deck_makeup = str(deck_makeup_w) + ', ' + str(deck_makeup_u) + ', ' + str(deck_makeup_b) + ', ' + str(deck_makeup_r) + ', ' + str(deck_makeup_g)
     # This is based on the Featured image selected while building.
     deck_image = "414494"
     deck_likes = 0
@@ -784,10 +804,10 @@ def add_deck():
                 deck_image = card
         if deck_id == '':
             cur_cards = db.execute(
-                'INSERT INTO decks values (null, ?, ?, null, date("now"), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, date("now"))',
+                'INSERT INTO decks values (null, ?, ?, null, date("now"), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, date("now"), ?)',
                 (deck_author, deck_colors, deck_description, deck_formats,
                  deck_image, deck_legality, deck_likes, deck_mainboard,
-                 deck_maybeboard, deck_name, deck_sideboard, deck_tags))
+                 deck_maybeboard, deck_name, deck_sideboard, deck_tags, deck_makeup))
 
         else:
             cur_cards = db.execute(

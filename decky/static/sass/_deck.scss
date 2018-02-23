@@ -78,7 +78,7 @@
 
 .color-bar {
   // Color-bars indicate the color makeup of a deck
-  background: none;
+  background: $color-background;
   bottom: 0;
   box-shadow: 0 0 2px shade($color-background, 10%);
   height: 120px;
@@ -116,6 +116,7 @@
     color: $color-text;
     display: flex;
     justify-content: center;
+    overflow: hidden;
     user-select: none;
   }
 
