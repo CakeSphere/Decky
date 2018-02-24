@@ -77,11 +77,11 @@
       {% for deck in decks %}
       <a class="deck gallery" href="{{url_for('deck', id=deck.id)}}" title="{{deck.name}}">
         <div class="color-bar">
-          <div class="w" style="height: {{makeup[deck.id][0]|int}}%"><span><span class="mana small sw shadow">&nbsp;</span> {{makeup[deck.id][0]|int}}%</span></div>
-          <div class="u" style="height: {{makeup[deck.id][1]|int}}%"><span><span class="mana small su shadow">&nbsp;</span> {{makeup[deck.id][1]|int}}%</span></div>
-          <div class="b" style="height: {{makeup[deck.id][2]|int}}%"><span><span class="mana small sb shadow">&nbsp;</span> {{makeup[deck.id][2]|int}}%</span></div>
-          <div class="r" style="height: {{makeup[deck.id][3]|int}}%"><span><span class="mana small sr shadow">&nbsp;</span> {{makeup[deck.id][3]|int}}%</span></div>
-          <div class="g" style="height: {{makeup[deck.id][4]|int}}%"><span><span class="mana small sg shadow">&nbsp;</span> {{makeup[deck.id][4]|int}}%</span></div>
+          <div class="w" style="height: {{makeup[deck.id][0]}}%"><span><span class="mana small sw shadow">&nbsp;</span> {{makeup[deck.id][0]|int}}%</span></div>
+          <div class="u" style="height: {{makeup[deck.id][1]}}%"><span><span class="mana small su shadow">&nbsp;</span> {{makeup[deck.id][1]|int}}%</span></div>
+          <div class="b" style="height: {{makeup[deck.id][2]}}%"><span><span class="mana small sb shadow">&nbsp;</span> {{makeup[deck.id][2]|int}}%</span></div>
+          <div class="r" style="height: {{makeup[deck.id][3]}}%"><span><span class="mana small sr shadow">&nbsp;</span> {{makeup[deck.id][3]|int}}%</span></div>
+          <div class="g" style="height: {{makeup[deck.id][4]}}%"><span><span class="mana small sg shadow">&nbsp;</span> {{makeup[deck.id][4]|int}}%</span></div>
         </div>
         <div class="deck-img">
           <img alt="{{deck.name}}" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{deck.image}}&type=card">
