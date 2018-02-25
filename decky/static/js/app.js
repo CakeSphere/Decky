@@ -11,7 +11,7 @@ $(function () {
       'totalQuantity': 0,
       cards: {},
       'edit_id': '',
-      makeup: ''
+      makeup: []
     };
   }
   // Show the first tab by default
@@ -55,51 +55,6 @@ $(function () {
             if (newRow.is(':first-child')) {
               newRow.find('[type=radio]').prop('checked', true);
             }
-            if (deck['makeup'].length == 0) {
-              deck['makeup'] = card_return.card_makeup
-            } else {
-              deck['makeup'] = deck['makeup'] + ', ' + card_return.card_makeup
-            }
-            deck_makeup = deck['makeup'].split(', ')
-            var deck_makeup_w = 0
-            var deck_makeup_u = 0
-            var deck_makeup_b = 0
-            var deck_makeup_r = 0
-            var deck_makeup_g = 0
-
-            for (i = 0; i < deck_makeup.length; i++) {
-              if(deck_makeup[i] == 'W') {
-                deck_makeup_w++;
-              }
-            }
-            deck_makeup_w = deck_makeup_w / deck_makeup.length * 100;
-            for (i = 0; i < deck_makeup.length; i++) {
-              if(deck_makeup[i] == 'U') {
-                deck_makeup_u++;
-              }
-            }
-            deck_makeup_u = deck_makeup_u / deck_makeup.length * 100;
-            for (i = 0; i < deck_makeup.length; i++) {
-              if(deck_makeup[i] == 'B') {
-                deck_makeup_b++;
-              }
-            }
-            deck_makeup_b = deck_makeup_b / deck_makeup.length * 100;
-            for (i = 0; i < deck_makeup.length; i++) {
-              if(deck_makeup[i] == 'R') {
-                deck_makeup_r++;
-              }
-            }
-            deck_makeup_r = deck_makeup_r / deck_makeup.length * 100;
-            for (i = 0; i < deck_makeup.length; i++) {
-              if(deck_makeup[i] == 'G') {
-                deck_makeup_g++;
-              }
-            }
-            deck_makeup_g = deck_makeup_g / deck_makeup.length * 100;
-
-            console.log(deck_makeup.length + ' Mana Symbols: ' + deck_makeup_w + '% White, ' + deck_makeup_u + '% Blue, ' + deck_makeup_b + '% Black, ' + deck_makeup_r + '% Red, ' + deck_makeup_g + '% Green')
-            console.log('Colors: ' + deck['makeup'])
             var selectSet = document.getElementById('select-set-' + card_return.card_id);
             if (sets.length > 1) {
               for (var i = 0; i < sets.length; i++) {
@@ -121,7 +76,8 @@ $(function () {
               "quantity": cardQuantity,
               "foil": false,
               "featured": false,
-              "commander": false
+              "commander": false,
+              "makeup": card_return.card_makeup.split(', ')
             };
             // Change everything in the row and in the deck object when the
             // user changes the printing.
@@ -242,6 +198,9 @@ $(function () {
     deck.formats = $('[name="formats"]').val();
     deck.tags = $('[name="tags"]').val();
 
+    for (var card in deck["cards"]) {
+      deck["makeup"].push.apply(deck["makeup"], deck["cards"][card]["makeup"])
+    }
     // Flag cards with foil in the deck object
     var foils = $('input:checkbox:checked');
     foils.each(function(index) {
@@ -273,6 +232,9 @@ $(function () {
         success: function(deck_return) {
         }
       });
+
+
+    console.log(deck)
       flash('<strong>Double, double toil and trouble!</strong> ' + deck.name + ' was brewed successfully.', 'success')
     }
   });
