@@ -4,6 +4,7 @@ $(function () {
   if (typeof edit_deck != 'undefined') {
     var editMode = true;
     deck = edit_deck;
+    console.log(deck)
     $('.builder-quantity').text(deck.totalQuantity);
     $('.builder-table').show();
   } else {

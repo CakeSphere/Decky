@@ -672,6 +672,7 @@ def builder(id):
     foil = ''
     edit_id = ''
     edit_card = {'edit_names': [], 'edit_sets': [], 'edit_ids': [], 'unique': []}
+    edit_makeup = []
     if id:
         edit_id = id
         edit_mode = True
@@ -682,9 +683,8 @@ def builder(id):
         edit_formats = edit_data["formats"]
         edit_tags = edit_data["tags"]
         edit_description = edit_data["description"]
-        edit_makeup = edit_data["makeup"]
         cur = db.execute(
-            'SELECT name, setId, count(name), type, multiverseid, foil, featured, commander FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId="'
+            'SELECT name, setId, count(name), type, colorIdentity, multiverseid, foil, featured, commander FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId="'
             + id + '" GROUP BY name')
         edit_cards = cur.fetchall()
         count = {}
@@ -698,6 +698,8 @@ def builder(id):
             card_commander = card['commander']
             commander[card["multiverseid"]] = card_commander
             card_id = card["multiverseid"]
+            if len(card["colorIdentity"]):
+                edit_makeup.extend(card["colorIdentity"].split(', '))
             edit_sets_data = db.execute(
                 'SELECT multiverseid, name, setId FROM cards WHERE name LIKE "'
                 + HTMLParser().unescape(smartypants.smartypants(card[0])) +
@@ -747,6 +749,7 @@ def builder(id):
         edit_formats=edit_formats,
         edit_featured=edit_featured,
         edit_tags=edit_tags,
+        edit_makeup=edit_makeup,
         edit_description=edit_description,
         edit_cards=edit_cards,
         count=count,

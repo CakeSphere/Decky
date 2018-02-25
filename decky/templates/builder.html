@@ -206,9 +206,14 @@
         'totalQuantity': 0,
         cards: {},
         edit_id: {{edit_id}},
-        makeup: ''
+        makeup: []
       }
     </script>
+    {% for makeup in edit_makeup %}
+      <script>
+        edit_deck.makeup.push('{{makeup}}')
+      </script>
+    {% endfor %}
     {% for card in edit_cards %}
       <script>
         edit_deck.cards['{{card.multiverseid}}'] = {
