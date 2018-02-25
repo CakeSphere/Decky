@@ -199,7 +199,9 @@ $(function () {
     deck.tags = $('[name="tags"]').val();
 
     for (var card in deck["cards"]) {
-      deck["makeup"].push.apply(deck["makeup"], deck["cards"][card]["makeup"])
+      if (deck["cards"][card]["makeup"] != "") {
+        deck["makeup"].push.apply(deck["makeup"], deck["cards"][card]["makeup"])
+      }
     }
     // Flag cards with foil in the deck object
     var foils = $('input:checkbox:checked');
@@ -232,8 +234,6 @@ $(function () {
         success: function(deck_return) {
         }
       });
-
-
     console.log(deck)
       flash('<strong>Double, double toil and trouble!</strong> ' + deck.name + ' was brewed successfully.', 'success')
     }
