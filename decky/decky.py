@@ -580,6 +580,7 @@ def deck(id):
     instants = {}
     enchantments = {}
     artifacts = {}
+    makeup = deck["makeup"].split(", ")
     for card in cards:
         card_count = card[1]
         count[card["multiverseid"]] = card_count
@@ -641,6 +642,7 @@ def deck(id):
         deck=deck,
         cards=cards,
         foil=foil,
+        makeup=makeup,
         deck_image=deck_image,
         deck_tags=deck_tags,
         deck_legality=deck_legality,
@@ -773,11 +775,11 @@ def add_deck():
     deck_makeup = deck['makeup']
     deck_makeup = deck_makeup.split(', ')
     deck_makeup_length = len(deck_makeup)
-    deck_makeup_w = float(deck_makeup.count('W')) / deck_makeup_length * 100
-    deck_makeup_u = float(deck_makeup.count('U')) / deck_makeup_length * 100
-    deck_makeup_b = float(deck_makeup.count('B')) / deck_makeup_length * 100
-    deck_makeup_r = float(deck_makeup.count('R')) / deck_makeup_length * 100
-    deck_makeup_g = float(deck_makeup.count('G')) / deck_makeup_length * 100
+    deck_makeup_w = (float(deck_makeup.count('W')) / deck_makeup_length) * 100
+    deck_makeup_u = (float(deck_makeup.count('U')) / deck_makeup_length) * 100
+    deck_makeup_b = (float(deck_makeup.count('B')) / deck_makeup_length) * 100
+    deck_makeup_r = (float(deck_makeup.count('R')) / deck_makeup_length) * 100
+    deck_makeup_g = (float(deck_makeup.count('G')) / deck_makeup_length) * 100
     deck_makeup = str(deck_makeup_w) + ', ' + str(deck_makeup_u) + ', ' + str(deck_makeup_b) + ', ' + str(deck_makeup_r) + ', ' + str(deck_makeup_g)
     # This is based on the Featured image selected while building.
     deck_image = "414494"
