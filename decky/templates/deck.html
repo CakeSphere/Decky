@@ -87,40 +87,34 @@
         <div class="date-updated">Last updated {{deck_updated}}</div>
       </div>
       <div class="color-bar">
-        <div class="w" style="height: 16.66666667%">
+        <div class="w" style="height: {{makeup[0]}}%">
           <span>
             <span class="mana small sw shadow">&nbsp;</span>
-            16%
+            {{makeup[0]|int}}%
           </span>
         </div>
-        <div class="u" style="height: 16.66666667%">
+        <div class="u" style="height: {{makeup[1]}}%">
           <span>
             <span class="mana small su shadow">&nbsp;</span>
-            16%
+            {{makeup[1]|int}}%
           </span>
         </div>
-        <div class="r" style="height: 16.66666667%">
-          <span>
-            <span class="mana small sr shadow">&nbsp;</span>
-            16%
-          </span>
-        </div>
-        <div class="b" style="height: 16.66666667%">
+        <div class="b" style="height: {{makeup[2]}}%">
           <span>
             <span class="mana small sb shadow">&nbsp;</span>
-            16%
+            {{makeup[2]|int}}%
           </span>
         </div>
-        <div class="g" style="height: 16.66666667%">
+        <div class="r" style="height: {{makeup[3]}}%">
+          <span>
+            <span class="mana small sr shadow">&nbsp;</span>
+            {{makeup[3]|int}}%
+          </span>
+        </div>
+        <div class="g" style="height: {{makeup[4]}}%">
           <span>
             <span class="mana small sg shadow">&nbsp;</span>
-            16%
-          </span>
-        </div>
-        <div class="c" style="height: 16.66666667%">
-          <span>
-            <span class="mana small sc shadow">&nbsp;</span>
-            16%
+            {{makeup[4]|int}}%
           </span>
         </div>
       </div>

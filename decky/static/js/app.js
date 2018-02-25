@@ -60,6 +60,46 @@ $(function () {
             } else {
               deck['makeup'] = deck['makeup'] + ', ' + card_return.card_makeup
             }
+            deck_makeup = deck['makeup'].split(', ')
+            var deck_makeup_w = 0
+            var deck_makeup_u = 0
+            var deck_makeup_b = 0
+            var deck_makeup_r = 0
+            var deck_makeup_g = 0
+
+            for (i = 0; i < deck_makeup.length; i++) {
+              if(deck_makeup[i] == 'W') {
+                deck_makeup_w++;
+              }
+            }
+            deck_makeup_w = deck_makeup_w / deck_makeup.length * 100;
+            for (i = 0; i < deck_makeup.length; i++) {
+              if(deck_makeup[i] == 'U') {
+                deck_makeup_u++;
+              }
+            }
+            deck_makeup_u = deck_makeup_u / deck_makeup.length * 100;
+            for (i = 0; i < deck_makeup.length; i++) {
+              if(deck_makeup[i] == 'B') {
+                deck_makeup_b++;
+              }
+            }
+            deck_makeup_b = deck_makeup_b / deck_makeup.length * 100;
+            for (i = 0; i < deck_makeup.length; i++) {
+              if(deck_makeup[i] == 'R') {
+                deck_makeup_r++;
+              }
+            }
+            deck_makeup_r = deck_makeup_r / deck_makeup.length * 100;
+            for (i = 0; i < deck_makeup.length; i++) {
+              if(deck_makeup[i] == 'G') {
+                deck_makeup_g++;
+              }
+            }
+            deck_makeup_g = deck_makeup_g / deck_makeup.length * 100;
+
+            console.log(deck_makeup.length + ' Mana Symbols: ' + deck_makeup_w + '% White, ' + deck_makeup_u + '% Blue, ' + deck_makeup_b + '% Black, ' + deck_makeup_r + '% Red, ' + deck_makeup_g + '% Green')
+            console.log('Colors: ' + deck['makeup'])
             var selectSet = document.getElementById('select-set-' + card_return.card_id);
             if (sets.length > 1) {
               for (var i = 0; i < sets.length; i++) {
