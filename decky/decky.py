@@ -773,7 +773,6 @@ def add_deck():
     # This needs to be calculated somehow.
     deck_colors = "{r}{b}"
     deck_makeup = deck['makeup']
-    deck_makeup = deck_makeup.split(', ')
     deck_makeup_length = len(deck_makeup)
     deck_makeup_w = (float(deck_makeup.count('W')) / deck_makeup_length) * 100
     deck_makeup_u = (float(deck_makeup.count('U')) / deck_makeup_length) * 100
