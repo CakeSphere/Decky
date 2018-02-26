@@ -23,7 +23,6 @@
           <div class="deck-info">
             <div class="title">{{deck.name}}</div>
             <div class="tags">
-              <span class="author">{{deck.author}}</span>
               {% for legality in legality[deck.id] %}
                 <span class="tag">{{legality}}</span>
               {% endfor %}
