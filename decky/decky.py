@@ -819,7 +819,6 @@ def add_deck():
                 (deck_colors, deck_description, deck_formats, deck_image,
                  deck_legality, deck_name, deck_tags,
                  time.strftime('%Y-%m-%d'), deck_id))
-            print cur_cards
 
         deck_row = cur_cards.lastrowid
         if deck_id != '':
