@@ -363,8 +363,6 @@ def decks(page):
         deck_legality = deck_legality.split(', ')
         legality[deck["id"]] = deck_legality
 
-    print makeup
-
     return render_template(
         'decks.html',
         decks=decks,
