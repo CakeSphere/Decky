@@ -180,10 +180,15 @@
             </p>
           </div>
         </div>
-        {% if card.power != "" %}
+        {% if card.power != ""%}
           <div class="power-toughness">
             {{card.power}} <em>/</em>
             {{card.toughness}}
+          </div>
+        {% endif %}
+        {% if card.loyalty != ""%}
+          <div class="loyalty">
+            {{card.loyalty}}
           </div>
         {% endif %}
       </a>
