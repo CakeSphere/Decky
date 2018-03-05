@@ -151,6 +151,7 @@
     <section class="content grid-5">
       {% for card in cards %}
       <a class="card" href="{{ url_for('card', multiverseId=card.multiverseId)}}" title="{{card.name}}">
+        <div class="grimoire-count">1 in Grimoire</div>
         <div class="card-mana">
           {% if card_mana[card.id]|length > 0 %}
             {% for mana in card_mana[card.id].split(" ") %}
