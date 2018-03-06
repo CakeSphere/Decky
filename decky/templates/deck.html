@@ -127,6 +127,14 @@
     <div class="deck-contents">
       {% if lands|length > 0 %}
       <div class="card-type">
+        {% if 'Commander' in deck['legality'] %}
+        <h2>Commander</h2>
+        <ul class="list-unstyled">
+          <a href="/card/{{commander['multiverseid']}}" title="" class="commander-img">
+            <img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{ commander['multiverseid'] }}&type=card" alt="{{commander['name']}}">
+          </a>
+        </ul>
+        {% endif %}
         <h2>Lands</h2>
         <ul class="list-unstyled">
           {% for card in cards %}
