@@ -50,7 +50,7 @@
         My Grimoire
       </h1>
     </section>
-    <section class="content grid-5" style="margin-bottom: 5.5rem; margin-top: 7.5rem; padding-left: 1.5rem; padding-right: 1.5rem;">
+    <section class="content grid-5" style="margin-bottom: 1.5rem; margin-top: 7.5rem; margin-left: 1.5rem; width: calc(100% - 356px - 3.5rem);">
       {% for card in cards %}
       <a class="card" href="{{ url_for('card', multiverseId=card.multiverseId)}}" title="{{card.name}}">
         <div class="grimoire-count">1 in Grimoire</div>
