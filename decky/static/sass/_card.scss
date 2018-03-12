@@ -424,11 +424,11 @@
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50px" height="31px" version="1" viewBox="0 0 444 270"><path d="M1327 458l-133-46 2-7a260 260 0 0 0-21-156 251 251 0 0 0-33-52l233-79 2 3c4 9 10 18 17 26 7 7 13 11 20 15 19 9 45 12 68 8a79 79 0 0 0 61-53l235 80-5 6a241 241 0 0 0-49 204v6l-264 91c-1 0-61-20-133-46z"/><path d="M129 238l-92-32 1-5A181 181 0 0 0 23 92 175 175 0 0 0 0 56L163 0l1 2c3 7 7 13 13 19 4 4 8 7 14 10 13 7 30 9 47 5a56 56 0 0 0 43-36l163 56-3 4a169 169 0 0 0-34 142v4l-185 64-93-32z"/><path fill="darkgray" d="M160 3L4 57a175 175 0 0 1 35 147l183 64 183-64c-6-32-4-67 8-99 6-17 16-34 28-48L282 3c-8 20-28 35-49 36-23 3-49-3-63-23l-8-13h-1z"/><path d="M151 18L23 61c26 39 37 88 30 135l169 58 170-59c-8-46 3-95 30-134L288 16c-18 30-58 42-90 32-17-5-33-16-42-32l-5 2z"/></svg>');
     background-repeat: no-repeat;
     bottom: 1rem;
-    filter: drop-shadow(0 2px 2px $color-shadow-dark);
     color: $color-text-weak;
+    filter: drop-shadow(0 2px 2px $color-shadow-dark);
     font-family: $font-family-display;
     height: 31px;
-    line-height: 31px;
+    line-height: 34px;
     position: absolute;
     right: 1rem;
     text-align: center;
