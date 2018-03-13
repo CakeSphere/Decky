@@ -302,11 +302,40 @@ svg,
 	background-image: url('../images/mana_u.svg');
 	background-size: 20px 20px;
 	border-radius: 50%;
-	box-shadow: 0 1px 2px $color-shadow;
+	box-shadow: 0 2px 4px $color-shadow;
 	display: inline-block;
 	height: 20px;
 	margin-right: 0.2rem;
 	width: 20px;
+}
+
+.btn-success {
+	animation-duration: 0.2s;
+	animation-iteration-count: 1;
+	animation-name: fadein;
+	animation-timing-function: ease-out;
+	width: 20px;
+	height: 20px;
+	background: transparentize($color-background, 0.75);
+	border-radius: 50%;
+	text-align: center;
+	line-height: 20px;
+	color: $color-background;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 0.03rem;
+	position: relative;
+	font-family: helvetica;
+	right: 0.1rem;
+	box-shadow: 0 2px 4px $color-shadow;
+	svg {
+		width: 18px;
+		fill: $color-text;
+		height: 18px;
+		position: relative;
+		bottom: -3px;
+		left: 1px;
+	}
 }
 
 .help {
