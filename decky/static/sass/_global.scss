@@ -316,7 +316,7 @@ svg,
 	animation-timing-function: ease-out;
 	width: 20px;
 	height: 20px;
-	background: transparentize($color-background, 0.75);
+	background: $color-text;
 	border-radius: 50%;
 	text-align: center;
 	line-height: 20px;
@@ -330,7 +330,7 @@ svg,
 	box-shadow: 0 2px 4px $color-shadow;
 	svg {
 		width: 18px;
-		fill: $color-text;
+		fill: $color-background;
 		height: 18px;
 		position: relative;
 		bottom: -3px;
