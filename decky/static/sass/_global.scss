@@ -381,12 +381,13 @@ svg,
 	border-radius: $border-radius;
 	box-shadow: 0 10px 20px 2px $color-shadow;
 	display: none;
-	left: calc(50% - 12vw);
+	right: 2rem;
 	padding: 2rem;
 	padding-top: 2.5rem;
 	perspective: 2000px;
 	position: fixed;
-	top: calc(50% - 100px);
+	top: 5rem;
+	transform-origin: right 50%;
 	transform-style: preserve-3d;
 	width: 24vw;
 	z-index: $z-index-fixed;
