@@ -21,7 +21,7 @@ $(function () {
   $('.delete').click(function(event) {
     event.preventDefault();
     $('.dialog').show();
-    $('.dialog-bg').fadeIn(300);
+    $('.dialog-bg').fadeIn(100);
   });
   function compareNumbers(a, b) {
     return a - b;
@@ -29,8 +29,8 @@ $(function () {
   // Close dialog
   $('.close').click(function(event) {
     event.preventDefault();
-    $('.dialog').fadeOut(300);
-    $('.dialog-bg').fadeOut(300);
+    $('.dialog').fadeOut(100);
+    $('.dialog-bg').fadeOut(100);
   });
   // Add rows to the Builder table when the user clicks Add.
   $('.add-row').click(function(event) {
@@ -194,6 +194,7 @@ $(function () {
   });
   $('.save-deck').click(function(event) {
     event.preventDefault();
+    $('.save-deck').html('<div class="btn-loader">&nbsp;</div> Saving&hellip;').width(88.15).addClass('c').disable;
     deck.name = $('[name="name"]').val();
     deck.description = $('.description').val();
     deck.formats = $('[name="formats"]').val();
@@ -232,11 +233,14 @@ $(function () {
         data: JSON.stringify(deck),
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
+        complete: function() {
+          setTimeout(function() {$('.save-deck').addClass('g').removeClass('c').text('Success!')}, 1750);
+          setTimeout(function() {$('.save-deck').removeClass('g').text('Save Changes')}, 3000);
+        },
         success: function(deck_return) {
         }
       });
     console.log(deck)
-      flash('<strong>Double, double toil and trouble!</strong> ' + deck.name + ' was brewed successfully.', 'success')
     }
   });
   // Function that does the same thing as the Python Flask flash function.
