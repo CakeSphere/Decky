@@ -121,23 +121,23 @@
       <h3>Most Liked Decks Including <em>{{card.name}}</em></h3>
       <div class="content grid-3">
         {% for deck in decks %}
-          <a href="{{ url_for('deck', id=deck.id)}}" class="deck gallery" title="{{deck.name}}">
+          <a href="{{ url_for('deck', id=deck)}}" class="deck gallery" title="{{names[deck]}}">
             <div class="color-bar">
               <div class="w" style="height: 30%"><span><span class="mana small sw shadow">&nbsp;</span> 30%</span></div>
               <div class="u" style="height: 30%"><span><span class="mana small su shadow">&nbsp;</span> 30%</span></div>
               <div class="r" style="height: 40%"><span><span class="mana small sr shadow">&nbsp;</span> 40%</span></div>
             </div>
             <div class="deck-img">
-              <img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{deck.image}}&type=card" alt="{{card.name}}">
+              <img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{images[deck]}}&type=card" alt="{{card.name}}">
             </div>
             <div class="deck-info">
-              <div class="title">{{deck.name}}</div>
+              <div class="title">{{names[deck]}}</div>
               <div class="tags">
-                <span class="author">{{deck.author}}</span>
-                {% for legality in legality[deck.id] %}
+                <span class="author">{{authors[deck]}}</span>
+                {% for legality in legality[deck] %}
                   <span class="tag">{{legality}}</span>
                 {% endfor %}
-                {% for tag in tags[deck.id] %}
+                {% for tag in tags[deck] %}
                   <span class="tag">{{tag}}</span>
                 {% endfor %}
               </div>

@@ -481,23 +481,37 @@ def card(multiverseId):
     if not card:
         abort(404)
     card_name = card[15]
-    cur_cards = db.execute('SELECT multiverseid FROM cards WHERE name=(?) AND multiverseid != "" ORDER BY multiverseid DESC LIMIT 37',
+    cur_cards = db.execute('SELECT multiverseid FROM cards WHERE name=(?) AND multiverseid != "" ORDER BY multiverseid DESC LIMIT 13',
                            (card_name, ))
     other_cards = cur_cards.fetchall()
-    cur_decks = db.execute(
-        'SELECT DISTINCT decks.id, name, tags, legality, image, likes FROM decksToCards INNER JOIN decks ON deckId=decks.id WHERE cardId=(?) ORDER BY likes DESC',
-        (multiverseId, ))
-
-    decks = cur_decks.fetchall()
+    likes = {}
+    images = {}
+    names = {}
     legality = {}
     tags = {}
-    for deck in decks:
-        deck_tags = deck["tags"]
-        deck_tags = deck_tags.split(', ')
-        tags[deck["id"]] = deck_tags
-        deck_legality = deck["legality"]
-        deck_legality = deck_legality.split(', ')
-        legality[deck["id"]] = deck_legality
+    decks = {}
+    authors = {}
+    for other_card in other_cards:
+      cur_decks = db.execute(
+          'SELECT DISTINCT decks.id, name, tags, legality, image, likes, author FROM decksToCards INNER JOIN decks ON deckId=decks.id WHERE cardId=(?) ORDER BY likes DESC',
+          (other_card['multiverseId'], ))
+
+      cur_decks = cur_decks.fetchall()
+      for deck in cur_decks:
+          names[deck["id"]] = deck["name"]
+          authors[deck["id"]] = deck["author"]
+          likes[deck["id"]] = deck["likes"]
+          decks[deck["id"]] = deck["id"]
+          images[deck["id"]] = deck["image"]
+          deck_tags = deck["tags"]
+          deck_tags = deck_tags.split(', ')
+          tags[deck["id"]] = deck_tags
+          deck_legality = deck["legality"]
+          deck_legality = deck_legality.split(', ')
+          legality[deck["id"]] = deck_legality
+    print decks
+    print tags
+    print images
     card_number = card['number']
     # Use card['layout'] instead of this jank
     flip_card_a = False
@@ -556,7 +570,11 @@ def card(multiverseId):
         decks=decks,
         other_cards=other_cards,
         legality=legality,
-        tags=tags)
+        tags=tags,
+        names=names,
+        likes=likes,
+        images=images,
+        authors=authors)
 
 
 @app.route('/deck/<id>')
