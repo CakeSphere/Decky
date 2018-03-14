@@ -2,83 +2,87 @@
 
 // Style elements (usually text) when selected by user
 ::-moz-selection {
-	background: tint($color-background, 35%);
-	color: transparentize($color-text, 0.3);
+  background: tint($color-background, 35%);
+  color: transparentize($color-text, 0.3);
 }
 
 ::selection {
-	background: tint($color-background, 35%);
-	color: transparentize($color-text, 0.3);
+  background: tint($color-background, 35%);
+  color: transparentize($color-text, 0.3);
 }
 
 html {
-	// Setting a base font-size. All other font-sizes should be in rems
-	// (multiples of this font-size)
-	font-size: $font-size;
+  // Setting a base font-size. All other font-sizes should be in rems
+  // (multiples of this font-size)
+  font-size: $font-size;
 }
 
 body {
-	background: $color-background;
-	color: $color-text;
-	font-family: $font-family-text;
-	font-feature-settings: 'lnum' on, 'dlig' on;
-	font-size: $font-size-default;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-smoothing: antialiased;
-	font-smoothing: antialiased;
-	font-variant-ligatures: discretionary-ligatures;
+  background: $color-background;
+  color: $color-text;
+  font-family: $font-family-text;
+  font-feature-settings: 'lnum' on, 'dlig' on;
+  font-size: $font-size-default;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  font-variant-ligatures: discretionary-ligatures;
 
-	&.full-screen {
-		overflow-y: scroll;
-	}
+  &.full-screen {
+    overflow-y: scroll;
+  }
 }
 
 .lead {
-	font-size: $font-size-lead;
+  font-size: $font-size-lead;
 }
 
 .sidebar {
-	// Sidebars for search filters or card/deck info
+  // Sidebars for search filters or card/deck info
 
-	+ .content {
-		margin-top: 2rem;
-	}
+  + .content {
+    margin-top: 2rem;
+  }
 
-	> h3:first-child {
-		// Making sure things line up with the main content
-		margin-top: 0.6rem;
-	}
+  > h3:first-child {
+    // Making sure things line up with the main content
+    margin-top: 0.6rem;
+  }
 }
 
 .content {
-	// Main content section
-	align-content: start;
-	display: grid;
-	grid-gap: 1rem;
-	width: calc(100% - 356px - 2rem);
+  // Main content section
+  align-content: start;
+  display: grid;
+  grid-gap: 1rem;
+  width: calc(100% - 356px - 2rem);
 
-	> p {
-		max-width: 900px;
-	}
+  > p {
+    max-width: 900px;
+  }
 
-	h1 { margin-top: 0; }
+  h1 { margin-top: 0; }
 
+  &.grid-6 {
+    grid-template-columns: repeat(6, 1fr);
+    .pagination { grid-column: span 6; }
+  }
 
-	&.grid-5 {
-		grid-template-columns: repeat(5, 1fr);
-		.pagination { grid-column: span 5; }
-	}
+  &.grid-5 {
+    grid-template-columns: repeat(5, 1fr);
+    .pagination { grid-column: span 5; }
+  }
 
-	&.grid-4 {
-		grid-template-columns: repeat(4, 1fr);
-		.pagination { grid-column: span 4; }
-	}
+  &.grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+    .pagination { grid-column: span 4; }
+  }
 
-	&.grid-3 {
-		grid-auto-rows: minmax(100px, 122px);
-		grid-template-columns: repeat(3, 1fr);
-		.pagination { grid-column: span 3; }
-	}
+  &.grid-3 {
+    grid-auto-rows: minmax(100px, 122px);
+    grid-template-columns: repeat(3, 1fr);
+    .pagination { grid-column: span 3; }
+  }
 }
 
 h1,
@@ -86,66 +90,66 @@ h2,
 h3,
 h4,
 h5 {
-	font-family: $font-family-display;
-	font-weight: bold;
+  font-family: $font-family-display;
+  font-weight: bold;
 }
 
 h1 {
-	font-size: $font-size-h1;
-	font-style: italic;
-	// Styling the brew icon on the builder page
-	svg {
-		bottom: -3px;
-		fill: $color-text;
-		float: left;
-		height: $font-size-h1;
-		max-width: $font-size-h1;
-		position: relative;
-		margin-right: 0.5rem;
-	}
+  font-size: $font-size-h1;
+  font-style: italic;
+  // Styling the brew icon on the builder page
+  svg {
+    bottom: -3px;
+    fill: $color-text;
+    float: left;
+    height: $font-size-h1;
+    max-width: $font-size-h1;
+    position: relative;
+    margin-right: 0.5rem;
+  }
 }
 
 h2 { font-size: $font-size-h2; }
 
 
 h3 {
-	color: $color-text-weak;
-	font-family: $font-family-text;
-	font-size: $font-size-h3;
-	font-weight: normal;
-	// Emphasis for the card's name on the card page
-	em {
-		color: $color-text;
-	}
+  color: $color-text-weak;
+  font-family: $font-family-text;
+  font-size: $font-size-h3;
+  font-weight: normal;
+  // Emphasis for the card's name on the card page
+  em {
+    color: $color-text;
+  }
 }
 
 a {
-	color: $color-primary;
-	text-decoration: none;
-	transition: color $transition;
+  color: $color-primary;
+  text-decoration: none;
+  transition: color $transition;
 
-	&:hover {
-		@include underline(shade($color-primary, 15%), $color-background);
-		color: shade($color-primary, 15%);
-	}
+  &:hover {
+    @include underline(shade($color-primary, 15%), $color-background);
+    color: shade($color-primary, 15%);
+  }
 
-	&:active {
-		@include underline(shade($color-primary, 25%), $color-background);
-		color: shade($color-primary, 25%);
-	}
-	// Removing some link styles when they're selected by the user
-	&::-moz-selection { color: transparentize($color-primary, 0.3); }
-	&::selection { color: transparentize($color-primary, 0.3); }
-	&:hover::-moz-selection { text-shadow: none; }
-	&:hover::selection { text-shadow: none; }
+  &:active {
+    @include underline(shade($color-primary, 25%), $color-background);
+    color: shade($color-primary, 25%);
+  }
+  // Removing some link styles when they're selected by the user
+  &::-moz-selection { color: transparentize($color-primary, 0.3); }
+  &::selection { color: transparentize($color-primary, 0.3); }
+  &:hover::-moz-selection { text-shadow: none; }
+  &:hover::selection { text-shadow: none; }
 }
 
 label {
-	display: block;
+  display: block;
 }
 
 small {
-	color: $color-text-weak;
+  color: $color-text-weak;
 }
 
 // Magic colors
@@ -175,55 +179,55 @@ small {
 .text-right  { text-align: right; }
 
 ul {
-	list-style-type: '⬩ ';
-	padding-left: 0.8rem;
+  list-style-type: '⬩ ';
+  padding-left: 0.8rem;
 
-	 ul {
-		list-style-type: '◇ ';
-	}
+   ul {
+    list-style-type: '◇ ';
+  }
 }
 
 // Remove all styling (bullets or numbers) from a ul or ol element
 .list-unstyled {
-	list-style: none;
-	padding-left: 0;
+  list-style: none;
+  padding-left: 0;
 }
 
 // Adjustments to the sizes of mana symbols; see _mana.scss
 .mana {
-	color: transparent;
+  color: transparent;
 
-	&.small {
-		height: 0.888rem;
-		width: 0.888rem;
-	}
+  &.small {
+    height: 0.888rem;
+    width: 0.888rem;
+  }
 
-	&.medium {
-		height: 1.333rem;
-		width: 1.333rem;
+  &.medium {
+    height: 1.333rem;
+    width: 1.333rem;
 
-		// Styles specific to Energy counters to make them look similar to colorless
-		// mana for consistency.
-		&.sE {
-			background-color: $color-mtg-c;
-			background-position: 89% 82.75%;
-			border: 2.25px solid $color-mtg-c;
-			border-radius: 100%;
-			height: 1rem;
-			line-height: 1.1;
-			width: 1rem;
-		}
-	}
+    // Styles specific to Energy counters to make them look similar to colorless
+    // mana for consistency.
+    &.sE {
+      background-color: $color-mtg-c;
+      background-position: 89% 82.75%;
+      border: 2.25px solid $color-mtg-c;
+      border-radius: 100%;
+      height: 1rem;
+      line-height: 1.1;
+      width: 1rem;
+    }
+  }
 
-	// Removing some styles from selected mana symbols
-	&::-moz-selection { background: initial; color: transparent; }
-	&::selection      { background: initial; color: transparent; }
+  // Removing some styles from selected mana symbols
+  &::-moz-selection { background: initial; color: transparent; }
+  &::selection      { background: initial; color: transparent; }
 }
 
 .ss,
 svg,
  {
-	paint-order: stroke fill;
+  paint-order: stroke fill;
 }
 
 // Set symbols
@@ -235,217 +239,217 @@ svg,
 // Improve performance by removing animations, shadows, gradients, and masks
 
 .low-graphics {
-	*,
-	*::before,
-	*::after {
-		animation: none !important;
-		box-shadow: none !important;
-		-webkit-mask-image: none !important;
-		mask-image: none !important;
-		text-shadow: none !important;
-		transition: none !important;
-	}
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    box-shadow: none !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+    text-shadow: none !important;
+    transition: none !important;
+  }
 
-	.deck::after,
-	.card::after,
-	.card-bg {
-		display: none !important;
-	}
+  .deck::after,
+  .card::after,
+  .card-bg {
+    display: none !important;
+  }
 }
 
 .loader {
-	bottom: 0;
-	display: none;
-	height: 100%;
-	left: 0;
-	position: fixed;
-	right: 0;
-	top: 0;
-	width: 100%;
-	z-index: 99999;
-	animation: fadein 0.25s ease-out;
+  bottom: 0;
+  display: none;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 99999;
+  animation: fadein 0.25s ease-out;
 
-	&::before {
-		background: transparentize($color-background, 0.05);
-		bottom: 0;
-		content: '';
-		height: 100%;
-		left: 0;
-		position: absolute;
-		right: 0;
-		top: 0;
-		width: 100%;
-	}
+  &::before {
+    background: transparentize($color-background, 0.05);
+    bottom: 0;
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
 
-	&::after {
-		animation-duration: 2s;
-		animation-iteration-count: infinite;
-		animation-name: loader;
-		animation-timing-function: ease-in-out;
-		content: url('../images/favicon-2.png');
-		-webkit-filter: drop-shadow(0 0 100px $color-background);
-		height: 5rem;
-		left: calc(50% - 130px);
-		position: absolute;
-		top: calc(50% - 130px);
-		transform: rotate(0deg);
-		transform-origin: 130px 130px;
-		width: 5rem;
-	}
+  &::after {
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-name: loader;
+    animation-timing-function: ease-in-out;
+    content: url('../images/favicon-2.png');
+    -webkit-filter: drop-shadow(0 0 100px $color-background);
+    height: 5rem;
+    left: calc(50% - 130px);
+    position: absolute;
+    top: calc(50% - 130px);
+    transform: rotate(0deg);
+    transform-origin: 130px 130px;
+    width: 5rem;
+  }
 }
 
 .btn-loader {
-	animation-duration: 2s;
-	animation-iteration-count: infinite;
-	animation-name: loader;
-	animation-timing-function: ease-in-out;
-	background-image: url('../images/mana_u.svg');
-	background-size: 20px 20px;
-	border-radius: 50%;
-	box-shadow: 0 2px 4px $color-shadow;
-	display: inline-block;
-	height: 20px;
-	margin-right: 0.2rem;
-	width: 20px;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-name: loader;
+  animation-timing-function: ease-in-out;
+  background-image: url('../images/mana_u.svg');
+  background-size: 20px 20px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px $color-shadow;
+  display: inline-block;
+  height: 20px;
+  margin-right: 0.2rem;
+  width: 20px;
 }
 
 .btn-success {
-	animation-duration: 0.2s;
-	animation-iteration-count: 1;
-	animation-name: fadein;
-	animation-timing-function: ease-out;
-	width: 20px;
-	height: 20px;
-	background: $color-text;
-	border-radius: 50%;
-	text-align: center;
-	line-height: 20px;
-	color: $color-background;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 0.03rem;
-	position: relative;
-	font-family: helvetica;
-	right: 0.1rem;
-	box-shadow: 0 2px 4px $color-shadow;
-	svg {
-		width: 18px;
-		fill: $color-background;
-		height: 18px;
-		position: relative;
-		bottom: -3px;
-		left: 1px;
-	}
+  animation-duration: 0.2s;
+  animation-iteration-count: 1;
+  animation-name: fadein;
+  animation-timing-function: ease-out;
+  width: 20px;
+  height: 20px;
+  background: $color-text;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  color: $color-background;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.03rem;
+  position: relative;
+  font-family: helvetica;
+  right: 0.1rem;
+  box-shadow: 0 2px 4px $color-shadow;
+  svg {
+    width: 18px;
+    fill: $color-background;
+    height: 18px;
+    position: relative;
+    bottom: -3px;
+    left: 1px;
+  }
 }
 
 .help {
-	color: shade($color-text-weak, 25%);
-	font-style: italic;
-	margin-left: 33px;
+  color: shade($color-text-weak, 25%);
+  font-style: italic;
+  margin-left: 33px;
 }
 
 .token {
-	border-radius: $border-radius * 2.5;
-	margin-bottom: 0.5rem;
-	width: calc(50% - 0.5rem);
+  border-radius: $border-radius * 2.5;
+  margin-bottom: 0.5rem;
+  width: calc(50% - 0.5rem);
 
-	&:nth-child(odd) {
-		margin-right: 0.5rem;
-	}
+  &:nth-child(odd) {
+    margin-right: 0.5rem;
+  }
 }
 
 .weak {
-	color: $color-text-weak;
+  color: $color-text-weak;
 }
 
 .card-preview {
-	animation-duration: 0.2s;
-	animation-iteration-count: 1;
-	animation-name: tooltip;
-	animation-timing-function: ease-out;
-	background: $color-background;
-	border-radius: $border-radius * 4;
-	box-shadow: 0 2px 4px $color-shadow-dark;
-	height: 311px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	z-index: $z-index-fixed;
+  animation-duration: 0.2s;
+  animation-iteration-count: 1;
+  animation-name: tooltip;
+  animation-timing-function: ease-out;
+  background: $color-background;
+  border-radius: $border-radius * 4;
+  box-shadow: 0 2px 4px $color-shadow-dark;
+  height: 311px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  z-index: $z-index-fixed;
 }
 
 .dialog {
-	animation: dialog 0.2s 1;
-	animation-timing-function: cubic-bezier(.72,.73,.56,1.62);
-	background: $color-background;
-	border: 1px solid shade($color-background, 1%);
-	border-radius: $border-radius;
-	box-shadow: 0 10px 20px 2px $color-shadow;
-	display: none;
-	right: 2rem;
-	padding: 2rem;
-	padding-top: 2.5rem;
-	perspective: 2000px;
-	position: fixed;
-	top: 5rem;
-	transform-origin: right 50%;
-	transform-style: preserve-3d;
-	width: 24vw;
-	z-index: $z-index-fixed;
+  animation: dialog 0.2s 1;
+  animation-timing-function: cubic-bezier(.72,.73,.56,1.62);
+  background: $color-background;
+  border: 1px solid shade($color-background, 1%);
+  border-radius: $border-radius;
+  box-shadow: 0 10px 20px 2px $color-shadow;
+  display: none;
+  right: 2rem;
+  padding: 2rem;
+  padding-top: 2.5rem;
+  perspective: 2000px;
+  position: fixed;
+  top: 5rem;
+  transform-origin: right 50%;
+  transform-style: preserve-3d;
+  width: 24vw;
+  z-index: $z-index-fixed;
 
-	em {
-		color: $color-text-weak;
-	}
+  em {
+    color: $color-text-weak;
+  }
 
-	p {
-		margin-top: 0;
-	}
+  p {
+    margin-top: 0;
+  }
 
-	.btn {
-		margin-bottom: 0;
+  .btn {
+    margin-bottom: 0;
 
-		&:last-child {
-			margin-right: 0;
-		}
-	}
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 
-	.btn-cancel {
-		position: absolute;
-		right: 0.5rem;
-		top: 0.5rem;
+  .btn-cancel {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
 
-		&:hover {
-			background: none;
-		}
-	}
+    &:hover {
+      background: none;
+    }
+  }
 }
 
 .dialog-bg {
-	-webkit-backdrop-filter: blur(1px);
-	backdrop-filter: blur(1px);
-	background: transparentize(shade($color-background, 25%), 0.05);
-	display: none;
-	height: 100%;
-	left: 0;
-	position: fixed;
-	top: 0;
-	width: 100%;
-	z-index: $z-index-fixed;
+  -webkit-backdrop-filter: blur(1px);
+  backdrop-filter: blur(1px);
+  background: transparentize(shade($color-background, 25%), 0.05);
+  display: none;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: $z-index-fixed;
 }
 
 .icon {
-	&.icon-appendices {
-		bottom: -13px;
-	}
+  &.icon-appendices {
+    bottom: -13px;
+  }
 }
 
 .appendices {
-	section {
-		max-width: 900px;
-	}
+  section {
+    max-width: 900px;
+  }
 }
 
 .grimoire {
-	h1 .icon {
-		bottom: -11px;
-	}
+  h1 .icon {
+    bottom: -11px;
+  }
 }
