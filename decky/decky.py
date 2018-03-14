@@ -481,7 +481,7 @@ def card(multiverseId):
     if not card:
         abort(404)
     card_name = card[15]
-    cur_cards = db.execute('SELECT multiverseid FROM cards WHERE name=(?) AND multiverseid != "" ORDER BY multiverseid DESC LIMIT 13',
+    cur_cards = db.execute('SELECT multiverseid FROM cards WHERE name=(?) AND multiverseid != "" ORDER BY multiverseid DESC',
                            (card_name, ))
     other_cards = cur_cards.fetchall()
     likes = {}
