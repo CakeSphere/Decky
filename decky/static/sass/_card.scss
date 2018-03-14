@@ -172,10 +172,6 @@
     margin-top: 3rem;
   }
 
-  .content {
-    @include clearfix;
-  }
-
   .sidebar {
     .power-toughness {
       color: $color-text-weak;
@@ -187,6 +183,18 @@
         font-weight: normal;
       }
     }
+  }
+}
+
+.other-card {
+  img {
+    border-radius: 11px;
+    box-shadow: 0 1px 2px $color-shadow-dark;
+    width: 100%;
+  }
+
+  &:hover {
+    background: none;
   }
 }
 

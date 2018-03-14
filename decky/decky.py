@@ -481,8 +481,9 @@ def card(multiverseId):
     if not card:
         abort(404)
     card_name = card[15]
-    cur_cards = db.execute('SELECT multiverseid FROM cards WHERE name=(?)',
+    cur_cards = db.execute('SELECT multiverseid FROM cards WHERE name=(?) AND multiverseid != "" ORDER BY multiverseid DESC LIMIT 37',
                            (card_name, ))
+    other_cards = cur_cards.fetchall()
     cur_decks = db.execute(
         'SELECT DISTINCT decks.id, name, tags, legality, image, likes FROM decksToCards INNER JOIN decks ON deckId=decks.id WHERE cardId=(?) ORDER BY likes DESC',
         (multiverseId, ))
@@ -553,6 +554,7 @@ def card(multiverseId):
         flip_card_a=flip_card_a,
         flip_card_b=flip_card_b,
         decks=decks,
+        other_cards=other_cards,
         legality=legality,
         tags=tags)
 
@@ -916,7 +918,8 @@ def grimoire():
     )
     count = cur_count.fetchone()[0]
     cur_cards = db.execute(
-        'SELECT * FROM cards WHERE multiverseid != "" AND releaseDate == "" AND setCode == "SOI" AND type LIKE "%Creature%" AND rarity LIKE "%Rare"  ORDER BY multiverseId ASC LIMIT 15')
+        'SELECT * FROM cards WHERE multiverseid != "" AND releaseDate == "" AND type LIKE "%Creature%" AND subtypes LIKE "%Spirit%" AND rarity LIKE "%Rare"  ORDER BY multiverseId DESC'
+    )
     cards = cur_cards.fetchall()
     card_mana = {}
     for card in cards:

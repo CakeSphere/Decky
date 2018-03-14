@@ -116,7 +116,6 @@
         {% endif %}
       </div>
     </div>
-
     {% if decks %}
     <div class="most-liked">
       <h3>Most Liked Decks Including <em>{{card.name}}</em></h3>
@@ -156,7 +155,20 @@
           </a>
         {% endfor %}
       </div>
-      {% endif %}
+    {% endif %}
+    {% if other_cards|length > 1 %}
+      <br>
+      <h3>Other Printings of <em>{{card.name}}</em></h3>
+      <section class="content grid-6">
+        {% for other_card in other_cards %}
+          {% if card.multiverseid != other_card.multiverseid and other_card.multiverseid != '' %}
+            <a class="other-card" href="/card/{{other_card.multiverseid}}">
+              <img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{other_card.multiverseId}}&type=card" alt="">
+            </a>
+          {% endif %}
+        {% endfor %}
+      </section>
+    {% endif %}
     </div>
   </section>
 </div>
