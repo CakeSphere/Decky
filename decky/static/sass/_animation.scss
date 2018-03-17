@@ -67,8 +67,8 @@
 }
 
 @keyframes dialog {
-  from { box-shadow: 0 2px 4px $color-shadow; opacity: 0; transform: rotateX(-60deg) scale(0.85); }
-  to   { box-shadow: 0 10px 20px 2px $color-shadow; opacity: 1; transform: rotateX(0) scale(1); }
+  from { box-shadow: 0 2px 4px $color-shadow; filter: blur(4px); opacity: 0; transform: rotateX(-60deg) scale(0.9); }
+  to   { box-shadow: 0 10px 20px 2px $color-shadow; filter: blur(0); opacity: 1; transform: rotateX(0) scale(1); }
 }
 
 @for $i from 1 to 11 {
