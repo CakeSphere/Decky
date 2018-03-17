@@ -138,10 +138,11 @@ a {
     color: shade($color-primary, 25%);
   }
   // Removing some link styles when they're selected by the user
-  &::-moz-selection { color: transparentize($color-primary, 0.3); }
-  &::selection { color: transparentize($color-primary, 0.3); }
+  &::-moz-selection       { color: transparentize($color-primary, 0.3); text-shadow: none !important; }
+  &::selection            { color: transparentize($color-primary, 0.3); text-shadow: none !important; }
+
   &:hover::-moz-selection { text-shadow: none; }
-  &:hover::selection { text-shadow: none; }
+  &:hover::selection      { text-shadow: none; }
 }
 
 label {
@@ -182,7 +183,7 @@ ul {
   list-style-type: '⬩ ';
   padding-left: 0.8rem;
 
-   ul {
+  ul {
     list-style-type: '◇ ';
   }
 }
@@ -254,6 +255,13 @@ svg,
   .card::after,
   .card-bg {
     display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
   }
 }
 

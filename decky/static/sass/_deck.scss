@@ -4,8 +4,9 @@
   // The display for comments and likes
   .edit {
     margin-right: 0.5rem;
+
     svg {
-      cursor: pointer;
+      cursor: default;
       fill: $color-text-weak;
       height: 20px;
       position: relative;
@@ -13,16 +14,19 @@
       transition: fill $transition / 2, stroke $transition / 2;
       width: 20px;
     }
+
     &:hover {
       background: none;
+
       svg {
         fill: $color-text;
       }
     }
   }
+
   .delete {
     svg {
-      cursor: pointer;
+      cursor: default;
       fill: $color-text-weak;
       height: 20px;
       position: relative;
@@ -30,17 +34,21 @@
       transition: fill $transition / 2, stroke $transition / 2;
       width: 20px;
     }
+
     &:hover {
       background: none;
+
       svg {
         fill: $color-text;
       }
     }
   }
+
   .likes,
   .comments,
   .export {
     color: $color-text;
+    cursor: default;
     display: inline-block;
     margin-right: 0.5rem;
     margin-top: 1.25rem;
@@ -49,7 +57,7 @@
     text-decoration: none;
 
     svg {
-      cursor: pointer;
+      cursor: default;
       fill: transparent;
       height: 20px;
       position: relative;
@@ -154,7 +162,7 @@
   box-shadow: inset 0 -2px 0 $color-shadow,
               inset 0 0 2px $color-highlight,
               0 2px 1px $color-bevel;
-  cursor: pointer;
+  cursor: default;
   height: 120px;
   overflow: hidden;
   position: relative;
@@ -467,10 +475,13 @@
 .commander-img {
   img {
     border-radius: 15px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.33);
+    box-shadow: 0 2px 4px $color-shadow;
   }
 
-  &:visited, &:active, &:focus, &:hover {
+  &:visited,
+  &:active,
+  &:focus,
+  &:hover {
     background: none;
     outline: none;
   }
