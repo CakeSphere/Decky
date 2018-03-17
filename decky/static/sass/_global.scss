@@ -205,18 +205,18 @@ ul {
   &.medium {
     height: 1.333rem;
     width: 1.333rem;
+  }
 
-    // Styles specific to Energy counters to make them look similar to colorless
-    // mana for consistency.
-    &.sE {
-      background-color: $color-mtg-c;
-      background-position: 89% 82.75%;
-      border: 2.25px solid $color-mtg-c;
-      border-radius: 100%;
-      height: 1rem;
-      line-height: 1.1;
-      width: 1rem;
-    }
+  // Styles specific to Energy counters to make them look similar to colorless
+  // mana for consistency.
+  &.sE {
+    background-color: $color-mtg-c;
+    background-position: 89% 82.75%;
+    border: 2.25px solid $color-mtg-c;
+    border-radius: 100%;
+    height: 1rem;
+    line-height: 1.1;
+    width: 1rem;
   }
 
   // Removing some styles from selected mana symbols
@@ -258,6 +258,7 @@ svg,
 }
 
 .loader {
+  animation: fadein 0.25s ease-out;
   bottom: 0;
   display: none;
   height: 100%;
@@ -267,7 +268,6 @@ svg,
   top: 0;
   width: 100%;
   z-index: 99999;
-  animation: fadein 0.25s ease-out;
 
   &::before {
     background: transparentize($color-background, 0.05);
@@ -332,13 +332,14 @@ svg,
   font-family: helvetica;
   right: 0.1rem;
   box-shadow: 0 2px 4px $color-shadow;
+
   svg {
-    width: 18px;
+    bottom: -3px;
     fill: $color-background;
     height: 18px;
-    position: relative;
-    bottom: -3px;
     left: 1px;
+    position: relative;
+    width: 18px;
   }
 }
 
@@ -379,7 +380,7 @@ svg,
 
 .dialog {
   animation: dialog 0.2s 1;
-  animation-timing-function: cubic-bezier(.72,.73,.56,1.62);
+  animation-timing-function: ease-in-out;
   background: $color-background;
   border: 1px solid shade($color-background, 1%);
   border-radius: $border-radius;
