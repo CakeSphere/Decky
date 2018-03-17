@@ -7,7 +7,7 @@ button {
               inset 0 0 2px $color-highlight,
               0 2px 1px $color-bevel;
   color: shade($color-text, 15%);
-  cursor: pointer;
+  cursor: default;
   display: inline-block;
   font-family: $font-family-text;
   font-size: $font-size-default;
@@ -65,6 +65,7 @@ button {
     border-color: transparent;
     box-shadow: none;
     color: $color-primary;
+    cursor: pointer;
 
     svg {
       fill: $color-primary;
