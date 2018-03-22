@@ -2,7 +2,7 @@
 
 .top-nav {
   border-bottom: 1px solid tint($color-background, 5%);
-  box-shadow: 0 4px 2px $color-shadow;
+  box-shadow: 0 1px 2px $color-shadow;
   height: 58px;
   left: 101px;
   position: fixed;
@@ -324,24 +324,23 @@
 .sidebar {
   // This is the sidebar where filters, metadata, or the users grimoire
   // appear, depending on the page it's on.
-  width: 300px;
-
   padding: 1.5rem;
+  width: 300px;
   z-index: $z-index-nav;
 
   &::before {
     background: transparentize($color-text-weak, 0.98);
     border-right: 1px solid tint($color-background, 5%);
-    position: fixed;
-    top: 59px;
+    bottom: 0;
+    box-shadow: 0 4px 2px $color-shadow;
+    content: '';
     left: 100px;
     max-height: 100vw;
-    box-shadow: 0 4px 2px $color-shadow-dark;
-    bottom: 0;
     overflow: hidden;
+    position: fixed;
+    top: 59px;
     width: calc(300px + 3rem);
-    content: '';
-
+    z-index: -1;
   }
 
   &::after {
@@ -361,6 +360,7 @@
   .active {
     text-transform: capitalize;
   }
+
   + .content {
     margin-left: 1.5rem;
     width: calc(100vw - 525px);

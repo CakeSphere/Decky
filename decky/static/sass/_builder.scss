@@ -152,7 +152,7 @@ table tbody tr td a.delete-card:hover,
   background: transparentize($color-text-weak, 0.98);
   border-right: 1px solid tint($color-background, 5%);
   bottom: 0;
-  box-shadow: 0 4px 2px $color-shadow-dark;
+  box-shadow: 0 4px 2px $color-shadow;
   right: 0;
   max-height: 100vw;
   overflow: hidden;
