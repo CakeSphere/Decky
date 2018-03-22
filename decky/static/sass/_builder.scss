@@ -160,7 +160,12 @@ table tbody tr td a.delete-card:hover,
   top: 59px;
   width: 300px;
 
+  &::before {
+    display: none;
+  }
+
   &::after {
+    display: none;
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     background: transparentize(tint($color-background, 0.25), 0.2);
@@ -170,6 +175,7 @@ table tbody tr td a.delete-card:hover,
     position: absolute;
     right: 0;
     top: 0;
+    width: calc(300px + 3rem);
     z-index: $z-index-background; // Pushing blurry background to the "back"
   }
 

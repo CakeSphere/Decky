@@ -1,6 +1,5 @@
-import os, sqlite3, sass, json, smartypants, re, sys, time
+import os, sqlite3, sass, json, smartypants, re, time
 
-from pprint import pprint
 from HTMLParser import HTMLParser
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash, Markup, jsonify, Response
 from sassutils.wsgi import SassMiddleware
@@ -8,9 +7,6 @@ from datetime import datetime
 from math import ceil
 from random import randint
 from titlecase import titlecase
-
-reload(sys)
-sys.setdefaultencoding('utf8')
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -27,7 +23,10 @@ app.config.update(
 
 print app.root_path
 
+# Default number of items per page for paginated content
 PER_PAGE = 45
+
+# All Magic: The Gathering Ability Words for use on cards
 ABILITY_WORDS = [
     "battalion", "bloodrush", "channel", "chroma", "cohort", "constellation",
     "converge", "council\'s dilemma", "delirium", "domain", "fateful hour",
@@ -37,6 +36,8 @@ ABILITY_WORDS = [
     "spell mastery", "strive", "sweep", "tempting offer", "threshold",
     "will of the council", "eminence"
 ]
+
+# All Magic: The Gathering Keyword Abilities for use on cards
 KEYWORD_ABILITIES = [
     "Deathtouch", "Defender", "Double Strike", "Enchant", "Equip",
     "First Strike", "Flash", "Flying", "Haste", "Hexproof", "Indestructible",
@@ -61,6 +62,8 @@ KEYWORD_ABILITIES = [
     "Fabricate", "Partner", "Undaunted", "Improvise", "Aftermath", "Embalm",
     "Eternalize", "Afflict"
 ]
+
+# All basic Card types in Magic: The Gathering
 CARD_TYPES = [
     "Land", "Creature", "Artifact", "Enchantment", "Planeswalker", "Instant",
     "Sorcery", "Tribal"
@@ -479,8 +482,9 @@ def card(multiverseId):
     if not card:
         abort(404)
     card_name = card[15]
-    cur_cards = db.execute('SELECT multiverseid FROM cards WHERE name=(?) AND multiverseid != "" ORDER BY multiverseid DESC',
-                           (card_name, ))
+    cur_cards = db.execute(
+        'SELECT multiverseid FROM cards WHERE name=(?) AND multiverseid != "" ORDER BY multiverseid DESC',
+        (card_name, ))
     other_cards = cur_cards.fetchall()
     likes = {}
     images = {}
@@ -490,26 +494,23 @@ def card(multiverseId):
     decks = {}
     authors = {}
     for other_card in other_cards:
-      cur_decks = db.execute(
-          'SELECT DISTINCT decks.id, name, tags, legality, image, likes, author FROM decksToCards INNER JOIN decks ON deckId=decks.id WHERE cardId=(?) ORDER BY likes DESC',
-          (other_card['multiverseId'], ))
+        cur_decks = db.execute(
+            'SELECT DISTINCT decks.id, name, tags, legality, image, likes, author FROM decksToCards INNER JOIN decks ON deckId=decks.id WHERE cardId=(?) ORDER BY likes DESC',
+            (other_card['multiverseId'], ))
 
-      cur_decks = cur_decks.fetchall()
-      for deck in cur_decks:
-          names[deck["id"]] = deck["name"]
-          authors[deck["id"]] = deck["author"]
-          likes[deck["id"]] = deck["likes"]
-          decks[deck["id"]] = deck["id"]
-          images[deck["id"]] = deck["image"]
-          deck_tags = deck["tags"]
-          deck_tags = deck_tags.split(', ')
-          tags[deck["id"]] = deck_tags
-          deck_legality = deck["legality"]
-          deck_legality = deck_legality.split(', ')
-          legality[deck["id"]] = deck_legality
-    print decks
-    print tags
-    print images
+        cur_decks = cur_decks.fetchall()
+        for deck in cur_decks:
+            names[deck["id"]] = deck["name"]
+            authors[deck["id"]] = deck["author"]
+            likes[deck["id"]] = deck["likes"]
+            decks[deck["id"]] = deck["id"]
+            images[deck["id"]] = deck["image"]
+            deck_tags = deck["tags"]
+            deck_tags = deck_tags.split(', ')
+            tags[deck["id"]] = deck_tags
+            deck_legality = deck["legality"]
+            deck_legality = deck_legality.split(', ')
+            legality[deck["id"]] = deck_legality
     card_number = card['number']
     # Use card['layout'] instead of this jank
     flip_card_a = False
@@ -647,7 +648,6 @@ def deck(id):
     deck_description = deck["description"]
     # Convert new lines to html line breaks
     deck_description = Markup('</p><p>'.join(deck_description.split('\n')))
-    print commander
     return render_template(
         'deck.html',
         lands=lands,

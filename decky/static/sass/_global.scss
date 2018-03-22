@@ -326,20 +326,20 @@ svg,
   animation-iteration-count: 1;
   animation-name: fadein;
   animation-timing-function: ease-out;
-  width: 20px;
-  height: 20px;
   background: $color-text;
   border-radius: 50%;
-  text-align: center;
-  line-height: 20px;
+  box-shadow: 0 2px 4px $color-shadow;
   color: $color-background;
+  font-family: helvetica;
+  height: 20px;
+  line-height: 20px;
+  margin-bottom: 0.03rem;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 0.03rem;
   position: relative;
-  font-family: helvetica;
   right: 0.1rem;
-  box-shadow: 0 2px 4px $color-shadow;
+  text-align: center;
+  width: 20px;
 
   svg {
     bottom: -3px;

@@ -21,6 +21,7 @@
     position: absolute;
     right: 0;
     top: 0;
+    width: calc(300px + 3rem);
     z-index: $z-index-background; // Pushing blurry background to the "back"
   }
 
