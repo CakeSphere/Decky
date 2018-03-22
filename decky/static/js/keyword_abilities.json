@@ -1,0 +1,191 @@
+{
+  "deathtouch": {
+    "description": "Deathtouch is a static ability that causes damage dealt by an object to be especially effective against creatures.",
+    "reminder": "Any amount of damage this deals to a creature is enough to destroy it.",
+    "properties": {
+      "type": "static",
+      "evergreen": true
+    },
+    "rulings": [
+      {
+        "description": "If a creature (whether it has deathtouch or not) blocks or is blocked by multiple creatures, those creatures must be put into damage assignment order during the declare blockers step. The creature then assigns its combat damage to those creatures according to the damage assignment order announced for it. It can't assign combat damage to one of those creatures unless each creature that precedes that creature in its order is assigned lethal damage. If a creature with deathtouch blocks or is blocked by multiple creatures, everything works exactly the same way with one exception: assigning even 1 of that creature's damage to a creature is considered to be lethal damage.",
+        "example": "The damage assignment order of an attacking Acidic Slime (a 2/2 creature with deathtouch) is Spined Wurm (a 5/4 creature) then Siege Mastodon (a 3/5 creature) then Runeclaw Bear (a 2/2 creature). Acidic Slime can assign 1 damage to the Wurm and 1 damage to the Mastodon, or 2 damage to the Wurm. It can't assign damage to the Bear. Each creature Acidic Slime deals damage to is destroyed."
+      },
+      {
+        "description": "If an attacking creature with deathtouch and trample becomes blocked, the attacking creature first assigns damage to the creature(s) blocking it. Once all those blocking creatures are assigned lethal damage, any remaining damage is assigned as its controller chooses among those blocking creatures and the player or planeswalker the creature is attacking. However, since the creature has deathtouch, assigning even 1 damage to a creature is considered to be lethal damage.",
+        "example": "Yavimaya Wurm (a 6/4 creature with trample) is equipped with Gorgon Flail (an Equipment that grants the equipped creature +1/+1 and deathtouch). It attacks a player and is blocked by Siege Mastodon (a 3/5 creature). Yavimaya Wurm must assign at least 1 damage to the Mastodon. Its remaining damage may be assigned as its controller chooses between the Mastodon and the defending player. Notably, the Wurm may assign 1 damage to the Mastodon and 6 damage to the defending player. After that damage is dealt to the Mastodon, the Mastodon will be destroyed."
+      },
+      {
+        "description": "If a creature with deathtouch and another creature both block or are blocked by a creature, the other creature may take into account the fact that any combat damage dealt by a creature with deathtouch is considered to be lethal damage.",
+        "example": "An attacking Acidic Slime (a 2/2 creature with deathtouch) and an attacking Yavimaya Wurm (a 6/4 creature with trample) are both blocked by a Palace Guard (a 1/4 creature that can block any number of creatures). The Slime must assign its 2 damage to the Guard. Since the Guard is being assigned lethal damage, the Wurm's 6 damage may be assigned as its controller chooses between the Guard and the defending player. Notably, the Wurm may assign all 6 damage to the defending player. It doesn't matter which creature's damage is assigned first, as long as the final damage assignment follows all the applicable parameters."
+      },
+      {
+        "description": "A regeneration effect can save a creature that's been dealt damage by a source with deathtouch.",
+        "example": ""
+      },
+      {
+        "description": "If multiple state-based actions would destroy a creature at the same time (because it's been dealt lethal damage and been dealt damage by a source with deathtouch), a single regeneration effect will replace all of them and save the creature.",
+        "example": ""
+      },
+      {
+        "description": "If a creature is dealt damage by a source with deathtouch, it'll be destroyed as a state-based action. That means there's no time to react between the time the creature is dealt damage and the time it's destroyed. If you want to put a regeneration shield on it, or sacrifice it for some effect, or anything else, you must do so before the damage is actually dealt.",
+        "example": ""
+      },
+      {
+        "description": "The rules that care about deathtouch function no matter where the source with deathtouch is. In other words, if a spell or ability causes a card with deathtouch that's not on the battlefield to deal damage to a creature (like Selfless Exorcist's ability does, for example), that creature will be destroyed. This isn't the same as damage dealt by a source that has changed zones; see below.",
+        "example": ""
+      },
+      {
+        "description": "If a source of damage hasn't changed zones by the time that damage is dealt, its characteristics are checked to see if it has deathtouch at that time. If the source has changed zones by then, its last existence in the zone it was expected to be in is checked to see if it had deathtouch at that time.",
+        "example": ""
+      },
+      {
+        "description": "If an object with deathtouch gains another instance of deathtouch, the extra instance of deathtouch won't have any particular effect. If that object deals damage to a creature, a single regeneration effect will still save it.",
+        "example": ""
+      }
+    ]
+  },
+  "defender": {
+    "description": "Defender is a static ability that renders a creature unable to attack.",
+    "reminder": "This creature can't attack.",
+    "properties": {
+      "type": "static",
+      "evergreen": true
+    },
+    "rulings": [
+      {
+        "description": "Changing a creature's type no longer affects whether it can attack. A Wall that becomes a non-Wall will still have the defender ability. Likewise, a non-Wall that becomes a Wall won't have the defender ability.",
+        "example": ""
+      }
+    ]
+  },
+  "double strike": {
+    "description": "Double strike is an evergreen keyword ability that allows a creature to deal combat damage twice per combat phase — once during the first combat damage step, along with any creatures that have first strike, and again during the second combat damage step along with creatures that have neither keyword.",
+    "reminder": "This creature deals both first-strike and regular combat damage.",
+    "properties": {
+      "type": "static",
+      "evergreen": true
+    },
+    "rulings": [
+      {
+        "description": "Double strike isn't first strike. Effects that make a creature lose first strike won't make it lose double strike.",
+        "example": ""
+      },
+      {
+        "description": "Creatures with double strike and creatures with first strike deal combat damage in the first combat damage step.",
+        "example": ""
+      },
+      {
+        "description": "All creatures that didn't assign combat damage in the first combat damage step assign combat damage in the second combat damage step. In addition, all creatures with double strike assign combat damage again in the second step.",
+        "example": ""
+      },
+      {
+        "description": "If a creature has both double strike and trample, the combat damage it assigned during the first combat damage step will be considered when determining how much damage can trample through in the second combat damage step.",
+        "example": ""
+      }
+    ]
+  },
+  "enchant": {
+    "description": "Enchant is a keyword ability that restricts what an Aura can target and be attached to. Aura is an enchantment subtype.",
+    "reminder": "This card can only be attached to an (object).",
+    "properties": {
+      "type": "static",
+      "evergreen": true
+    },
+    "rulings": []
+  },
+  "equip": {
+    "description": "Equip is a keyword ability found on artifacts with the subtype \"equipment\". By paying the equip cost, you can attach the artifact to a creature, who is referred to in the text as the \"equipped creature\".",
+    "reminder": "Attach to target creature you control. Equip only as a sorcery.",
+    "properties": {
+      "type": "activated",
+      "evergreen": true
+    },
+    "rulings": []
+  },
+  "first strike": {
+    "description": "First strike is an evergreen keyword ability that changes the rules for combat by adding an additional combat damage step.",
+    "reminder": "This creature deals combat damage before creatures without first strike.",
+    "properties": {
+      "type": "static",
+      "evergreen": true
+    },
+    "rulings": []
+  },
+  "flash": {
+    "description": "Flash is a keyword ability which allows the card it is printed on to be played at any time you could play an Instant.",
+    "reminder": "You may cast this spell any time you could cast an instant.",
+    "properties": {
+      "type": "static",
+      "evergreen": true
+    },
+    "rulings": []
+  },
+  "flying": {
+    "description": "Flying is an evergreen evasion ability that makes creatures without flying unable to block creatures with flying.",
+    "reminder": "This creature can't be blocked except by creatures with flying and/or reach.",
+    "properties": {
+      "type": "evasion",
+      "evergreen": true
+    },
+    "rulings": []
+  },
+  "haste": {
+    "description": "Haste is a keyword ability that allows a creature to circumvent summoning sickness. Creatures with haste can attack or use activated abilities with the {T} or {Q} symbol in the activation cost even if they have not been continuously controlled by a player since the beginning of that player's most recent turn.",
+    "reminder": "This creature can attack and {T} as soon as it comes under your control.",
+    "properties": {
+      "type": "static",
+      "evergreen": true
+    },
+    "rulings": [
+      {
+        "description": "Haste removes the normal \"cannot attack\" restriction due to not being controlled at the start of a player's turn. It does not remove any other combat restrictions.",
+        "example": "It will not make a Wall able to attack, give you a second attack in a turn, or allow you to attack using a Raging Goblin if the defending player has Island Sanctuary activated."
+      }
+    ]
+  },
+  "hexproof": {
+    "description": "Hexproof is a keyword ability that prevents a permanent or player from being the target of spells or abilities played by opponents.",
+    "reminder": "This permanent can't be the target of spells or abilities your opponents control.",
+    "properties": {
+      "type": "static",
+      "evergreen": true
+    },
+    "rulings": [
+      {
+        "description": "A permanent with hexproof can still be the target of spells or abilities controlled by that permanent's controller or that player's teammates. The same is true for a player with hexproof.",
+        "example": ""
+      },
+      {
+        "description": "Aura spells target a permanent or player. You can't cast an Aura spell targeting an opponent's permanent with hexproof.",
+        "example": ""
+      },
+      {
+        "description": "Auras on the battlefield don't target anything. Granting hexproof to a permanent or player doesn't cause opponents' Auras to become unattached.",
+        "example": ""
+      }
+    ]
+  },
+  "indestructible": {
+    "description": "Indestructible is a keyword ability. Indestructible permanents can't be destroyed by rules or effects.",
+    "reminder": "This permanent can't be the target of spells or abilities your opponents control.",
+    "properties": {
+      "type": "static",
+      "evergreen": true
+    },
+    "rulings": [
+      {
+        "description": "Damage accumulates on indestructible creatures, and that damage is removed during the cleanup step.",
+        "example": ""
+      },
+      {
+        "description": "Lethal damage is defined as an amount of damage greater than or equal to a creature’s toughness. Even though an indestructible creature isn't destroyed by lethal damage, that definition is still used for things like assigning trample damage.",
+        "example": ""
+      },
+      {
+        "description": "If a creature with lethal damage on it stops being indestructible, it's destroyed the next time state-based effects are checked.",
+        "example": ""
+      }
+    ]
+  }
+}
