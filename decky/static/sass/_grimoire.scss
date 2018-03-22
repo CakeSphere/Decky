@@ -10,7 +10,7 @@
   position: fixed;
   top: 59px;
   width: 300px;
-  z-index: $z-index-fixed;
+  z-index: $z-index-nav;
 
   &::after {
     -webkit-backdrop-filter: blur(5px);
