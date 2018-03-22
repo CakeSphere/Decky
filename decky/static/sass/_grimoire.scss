@@ -3,13 +3,14 @@
   background: transparentize($color-text-weak, 0.98);
   border-right: 1px solid tint($color-background, 5%);
   bottom: 0;
-  box-shadow: 0 4px 2px $color-shadow-dark;
+  box-shadow: 0 4px 2px $color-shadow;
   left: 100px;
   max-height: 100vw;
   overflow: hidden;
   position: fixed;
   top: 59px;
   width: 300px;
+  z-index: $z-index-fixed;
 
   &::after {
     -webkit-backdrop-filter: blur(5px);
