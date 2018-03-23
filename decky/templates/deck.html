@@ -127,7 +127,7 @@
     <div class="deck-contents">
       {% if lands|length > 0 %}
       <div class="card-type">
-        {% if 'Commander' in deck['legality'] %}
+        {% if 'Commander' in deck['legality'] or 'Brawl' in deck['legality'] %}
         <h2>Commander</h2>
         <ul class="list-unstyled">
           <a href="/card/{{commander['multiverseid']}}" title="" class="commander-img">

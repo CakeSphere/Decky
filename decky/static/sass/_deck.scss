@@ -169,6 +169,24 @@
   transition: none;
   white-space: nowrap;
 
+  &.active::before {
+    animation-duration: $transition * 7;
+    animation-iteration-count: 1;
+    animation-name: slidein;
+    animation-timing-function: cubic-bezier(1, 0.53, 0.67, 1.51);
+    background: linear-gradient(to right, transparent, $color-primary);
+    content: '';
+    height: 100%;
+    left: 0;
+    mix-blend-mode: color-dodge;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transform: translateX(-100%);
+    width: 100%;
+    z-index: 1;
+  }
+
   &::after {
     background: linear-gradient(to bottom, transparent, $color-primary);
     border-radius: $border-radius;
@@ -200,6 +218,8 @@
     transition: transform $transition / 2 cubic-bezier(0.17, 0.67, 0.83, 0.67);
     vertical-align: top;
     width: calc(100% - 195px);
+    position: relative;
+    z-index: 2;
 
     .title {
       font-family: $font-family-display;

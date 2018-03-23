@@ -67,7 +67,7 @@
 }
 
 @keyframes slidein {
-  from { transform: translateX(-100px); opacity: 0.1; }
+  from { transform: translateX(-100%); opacity: 0.1; }
   50% { transform: translateX(0); opacity: 0.1; }
   to { transform: translateX(0); opacity: 0; }
 }

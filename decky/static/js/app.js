@@ -1,4 +1,10 @@
 $(function () {
+  $('.deck.gallery').click(function(e) {
+    $(this).addClass('active');
+  });
+  $('.left-nav li').click(function(e) {
+    $(this).addClass('clicked')
+  });
   // Instantiate the deck object for the builder
   var deck;
   if (typeof edit_deck != 'undefined') {
