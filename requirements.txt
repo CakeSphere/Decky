@@ -1,13 +1,19 @@
-appdirs==1.4.0
+astroid==1.5.3
+backports.functools-lru-cache==1.4
 click==6.7
--e git+https://github.com/CakeSphere/Decky.git@379563b8355572990952f7cfc242f10f5e30cc0b#egg=decky
+configparser==3.5.0
+enum34==1.1.6
 Flask==0.12
+isort==4.2.15
 itsdangerous==0.24
 Jinja2==2.9.5
-libsass==0.12.3
+lazy-object-proxy==1.3.1
 MarkupSafe==0.23
-packaging==16.8
-pyparsing==2.1.10
+mccabe==0.6.1
+pylint==1.7.2
+singledispatch==3.4.0.3
 six==1.10.0
-smartypants==2.0.0
+virtualenv==15.1.0
 Werkzeug==0.11.15
+wrapt==1.10.11
+yapf==0.16.0
