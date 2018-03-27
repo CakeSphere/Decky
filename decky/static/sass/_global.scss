@@ -239,10 +239,27 @@ svg,
 }
 
 // Set symbols
+
+.ss-special {
+  color: #BF4427;
+}
+
+.ss-special.ss-grad {
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #b21f0f), color-stop(50%, #f38300), color-stop(100%, #b21f0f));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, #b21f0f 0%, #f38300 50%, #b21f0f 100%);
+  -webkit-text-stroke: 0.03em #333;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .ss-common { -webkit-text-stroke: 0.03em $color-text; }
 .ss-rare.ss-grad,
 .ss-uncommon.ss-grad,
+.ss-special.ss-grad
 .ss-mythic.ss-grad { -webkit-text-stroke: 0.04em $color-border-strong; }
+
+
 
 // Improve performance by removing animations, shadows, gradients, and masks
 

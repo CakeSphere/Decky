@@ -3,14 +3,14 @@ $(function () {
     $(this).addClass('active');
   });
   $('.left-nav li').click(function(e) {
-    $(this).addClass('clicked')
+    $(this).addClass('clicked');
   });
   // Instantiate the deck object for the builder
   var deck;
   if (typeof edit_deck != 'undefined') {
     var editMode = true;
     deck = edit_deck;
-    console.log(deck)
+    console.log(deck);
     $('.builder-quantity').text(deck.totalQuantity);
     $('.builder-table').show();
   } else {
