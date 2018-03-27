@@ -152,6 +152,12 @@ small {
   color: $color-text-weak;
 }
 
+hr {
+  border-bottom: 0;
+  border-top: 2px solid transparentize($color-text-weak, 0.5);
+  width: 66.6%;
+}
+
 // Magic colors
 // These classes are used to easily color text referring to the five Magic
 // colors
@@ -161,6 +167,8 @@ small {
 .r { color: $color-mtg-r; }
 .g { color: $color-mtg-g; }
 .b { color: $color-mtg-b; }
+
+.primary { color: $color-primary; }
 
 // Utility classes
 

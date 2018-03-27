@@ -140,13 +140,17 @@
       </select>
     </aside>
     {% if cards|length == 0 %}
+      <section class="content no-results text-center">
+        <h1>
+          No suitable cards were found
+          {% if filter_name %} for “<span class="primary">{{filter_name}}</span>.”{% endif %}
+        </h1>
+        <hr>
+        <p class="lead">But not all is lost. Why not try another search?</p>
+      </section>
       <div class="card-bg">
         <img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=373629&type=card" alt="">
       </div>
-      <section class="content no-results">
-        <h1>No suitable cards were found.</h1>
-        <p class="lead">But not all is lost. Why not try again?</p>
-      </section>
     {% endif %}
     <section class="content grid-5">
       {% for card in cards %}
