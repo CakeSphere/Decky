@@ -488,3 +488,27 @@
     margin: auto;
   }
 }
+
+.flip-icon, .foil-icon {
+  position: relative;
+}
+
+.flip-icon img, .foil-icon img {
+  height: 32px;
+  line-height: 5px;
+  position: absolute;
+  right: -1.5rem;
+  top: 0;
+  fill: $color-text-weak;
+  opacity: 0.8;
+}
+
+.foil-icon img {
+  height: 45px;
+  right: -1.75rem;
+  top: -5px;
+}
+
+.flip-icon + .foil-icon img {
+  right: -3rem;
+}

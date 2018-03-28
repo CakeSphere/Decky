@@ -584,7 +584,7 @@ def deck(id):
     if not deck:
         abort(404)
     cur = db.execute(
-        'SELECT name, count(name), type, multiverseid, foil, featured, commander FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId="'
+        'SELECT name, count(name), type, multiverseid, foil, featured, commander, layout, number FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId="'
         + id + '" GROUP BY name')
     cards = cur.fetchall()
     count = {}
