@@ -16,8 +16,9 @@
     @extend %pull-left;
     margin-bottom: 1rem;
     margin-right: 1rem;
-    -webkit-perspective: 1000;
-    perspective: 1000;
+    -webkit-perspective: 1000px;
+    -moz-perspective: 1000px;
+    perspective: 1000px;
     position: relative;
 
     &:hover .flipper {
@@ -48,6 +49,7 @@
     left: 0;
     position: absolute;
     top: 0;
+    transform-style: preserve-3d;
     // Pseudo-element hack to handle cases when card images are broken
     &::before {
       background: url('../images/card_placeholder.svg');
