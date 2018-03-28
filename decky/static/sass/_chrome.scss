@@ -73,7 +73,8 @@
   }
 
   .logo {
-    // Main Decky logo
+    // Main Decky logo'
+    cursor: default;
     display: block;
     height: calc(58px - 0.5rem);
     line-height: 58px;
@@ -82,17 +83,25 @@
     transition: background $transition;
 
     svg {
-      fill: $color-text;
+      fill: $color-text-weak;
       margin-top: 0.6rem;
+      transition: $transition;
       width: 64px;
     }
 
     &:hover {
       background: tint($color-background, 5%);
+      svg {
+        fill: $color-text;
+      }
     }
   }
 
-  ul { margin-top: 0; }
+  ul {
+    border-top: 1px solid tint($color-background, 5%);
+    margin-top: 0;
+  }
+
   li {
     overflow: hidden;
     position: relative;

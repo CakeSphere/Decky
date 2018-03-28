@@ -146,8 +146,15 @@
                 <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
                   {{card.name}}
                 </a>
+                {% if card.layout == 'double-faced' %}
+                  <a href="" class="flip-icon tooltip" data-img="{{card.multiverseId + 1}}">
+                    <img src="../static/images/flip.svg" alt="">
+                  </a>
+                {% endif %}
                 {% if foil[card.multiverseid] %}
-                  <small>Foil</small>
+                  <span class="foil-icon">
+                    <img src="../static/images/foil.svg" alt="">
+                  </span>
                 {% endif %}
               </li>
             {% endif %}
@@ -168,8 +175,15 @@
                 <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
                   {{card.name}}
                 </a>
+                {% if card.layout == 'double-faced' %}
+                  <a href="" class="flip-icon tooltip" data-img="{{card.multiverseId + 1}}">
+                    <img src="../static/images/flip.svg" alt="">
+                  </a>
+                {% endif %}
                 {% if foil[card.multiverseid] %}
-                  <small>Foil</small>
+                  <span class="foil-icon">
+                    <img src="../static/images/foil.svg" alt="">
+                  </span>
                 {% endif %}
               </li>
             {% endif %}
@@ -190,8 +204,15 @@
                 <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
                   {{card.name}}
                 </a>
+                {% if card.layout == 'double-faced' %}
+                  <a href="" class="flip-icon tooltip" data-img="{{card.multiverseId + 1}}">
+                    <img src="../static/images/flip.svg" alt="">
+                  </a>
+                {% endif %}
                 {% if foil[card.multiverseid] %}
-                  <small>Foil</small>
+                  <span class="foil-icon">
+                    <img src="../static/images/foil.svg" alt="">
+                  </span>
                 {% endif %}
               </li>
             {% endif %}
@@ -212,8 +233,15 @@
                 <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
                   {{card.name}}
                 </a>
+                {% if card.layout == 'double-faced' %}
+                  <a href="" class="flip-icon tooltip" data-img="{{card.multiverseId + 1}}">
+                    <img src="../static/images/flip.svg" alt="">
+                  </a>
+                {% endif %}
                 {% if foil[card.multiverseid] %}
-                  <small>Foil</small>
+                  <span class="foil-icon">
+                    <img src="../static/images/foil.svg" alt="">
+                  </span>
                 {% endif %}
               </li>
             {% endif %}
@@ -234,8 +262,15 @@
                 <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
                   {{card.name}}
                 </a>
+                {% if card.layout == 'double-faced' %}
+                  <a href="" class="flip-icon tooltip" data-img="{{card.multiverseId + 1}}">
+                    <img src="../static/images/flip.svg" alt="">
+                  </a>
+                {% endif %}
                 {% if foil[card.multiverseid] %}
-                  <small>Foil</small>
+                  <span class="foil-icon">
+                    <img src="../static/images/foil.svg" alt="">
+                  </span>
                 {% endif %}
               </li>
             {% endif %}
@@ -256,8 +291,15 @@
                 <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
                   {{card.name}}
                 </a>
+                {% if card.layout == 'double-faced' %}
+                  <a href="" class="flip-icon tooltip" data-img="{{card.multiverseId + 1}}">
+                    <img src="../static/images/flip.svg" alt="">
+                  </a>
+                {% endif %}
                 {% if foil[card.multiverseid] %}
-                  <small>Foil</small>
+                  <span class="foil-icon">
+                    <img src="../static/images/foil.svg" alt="">
+                  </span>
                 {% endif %}
               </li>
             {% endif %}
@@ -277,10 +319,17 @@
                 </div>
                 <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
                   {{card.name}}
+                  {% if card.layout == 'double-faced' %}
+                  <a href="" class="flip-icon tooltip" data-img="{{card.multiverseId + 1}}">
+                    <img src="../static/images/flip.svg" alt="">
+                  </a>
+                  {% endif %}
+                  {% if foil[card.multiverseid] %}
+                    <span class="foil-icon">
+                      <img src="../static/images/foil.svg" alt="">
+                    </span>
+                  {% endif %}
                 </a>
-                {% if foil[card.multiverseid] %}
-                  <small>Foil</small>
-                {% endif %}
               </li>
             {% endif %}
           {% endfor %}
