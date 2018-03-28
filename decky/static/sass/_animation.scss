@@ -34,6 +34,12 @@
   100% { background-position: 0 0; }
 }
 
+@keyframes foil-twist {
+  0% { transform: rotateY(-2.5deg) rotateX(2.5deg); }
+  50% { transform: rotateY(2.5deg) rotateX(-2.5deg); }
+  100% { transform: rotateY(-2.5deg) rotateX(2.5deg);}
+}
+
 // Flash notification animation
 
 @keyframes flash {
