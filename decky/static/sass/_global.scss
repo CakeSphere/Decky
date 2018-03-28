@@ -412,6 +412,11 @@ svg,
   }
 }
 
+.tooltip {
+  position: relative;
+  z-index: 2;
+}
+
 .dialog {
   animation: dialog 0.2s 1;
   animation-timing-function: ease-in-out;
