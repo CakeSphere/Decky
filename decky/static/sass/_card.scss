@@ -506,6 +506,7 @@
 
 .flip-icon, .foil-icon {
   position: relative;
+  z-index: 1;
 }
 
 .flip-icon img, .foil-icon img {
