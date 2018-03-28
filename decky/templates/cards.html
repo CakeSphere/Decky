@@ -169,7 +169,7 @@
         </div>
         <div class="card-type">
           <div class="card-rarity">
-            <i class="ss ss-{% if card.setCode.lower() == 'mps_akh' %}akh{% else %}{{card.setCode.lower()}}{% endif %} ss-{{card.rarity.lower()}} {% if card.rarity != 'Common' %}ss-grad{% endif %}">&nbsp;</i>
+            <i class="ss ss-{% if card.setCode.lower() == 'mps_akh' %}akh{% else %}{{card.setCode.lower()}}{% endif %} ss-{% if card.rarity.lower() == 'basic land' %}common{% else %}{{card.rarity.lower()}}{% endif %} {% if card.rarity != 'Common' and card.rarity != 'Basic Land' %}ss-grad{% endif %}">&nbsp;</i>
           </div>
           {{card.type}}
         </div>
