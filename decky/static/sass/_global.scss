@@ -401,15 +401,14 @@ svg,
   animation-name: tooltip;
   animation-timing-function: ease-out;
   height: 311px;
-  overflow: hidden;
+  overflow: visible;
   padding: 0;
   position: absolute;
   z-index: $z-index-fixed;
   img {
-
     background: $color-background;
     border-radius: $border-radius * 4;
-    box-shadow: 0 2px 4px $color-shadow-dark;
+    box-shadow: 0 8px 4px 3px shade($color-shadow, 10%);
   }
 }
 
