@@ -36,7 +36,6 @@
   }
 
   .content {
-
     + aside {
       margin-left: 1.5rem;
       padding: 1.5rem;
@@ -73,7 +72,9 @@
 }
 
 .builder-cards {
+  background-color: tint($color-background, 2.5%);
   margin: 0 -2.4rem 0 -1.6rem;
+  min-height: calc(100vh - 212px);
   width: calc(100% + 3.15rem);
 
   [class^="btn-tab-"] {
@@ -106,7 +107,7 @@
 
 .add-card {
   background: tint($color-background, 5%);
-  box-shadow: inset 0 2px 0 $color-bevel;
+  box-shadow: inset 0 2px 0 $color-bevel, 0 1px 3px $color-shadow;
   padding: 0.5rem 0.5rem 0.2rem;
 
   input {
@@ -140,7 +141,7 @@
 }
 
 table tbody tr td a.delete-card:hover,
-.delete-card:hover  {
+.delete-card:hover {
   background: none;
 }
 

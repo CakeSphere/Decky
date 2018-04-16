@@ -493,9 +493,10 @@ def card(multiverseId):
     tags = {}
     decks = {}
     authors = {}
+    makeup = {}
     for other_card in other_cards:
         cur_decks = db.execute(
-            'SELECT DISTINCT decks.id, name, tags, legality, image, likes, author FROM decksToCards INNER JOIN decks ON deckId=decks.id WHERE cardId=(?) ORDER BY likes DESC',
+            'SELECT DISTINCT decks.id, name, tags, legality, image, likes, author, makeup FROM decksToCards INNER JOIN decks ON deckId=decks.id WHERE cardId=(?) ORDER BY likes DESC',
             (other_card['multiverseId'], ))
 
         cur_decks = cur_decks.fetchall()
@@ -511,6 +512,7 @@ def card(multiverseId):
             deck_legality = deck["legality"]
             deck_legality = deck_legality.split(', ')
             legality[deck["id"]] = deck_legality
+            makeup[deck["id"]] = deck["makeup"].split(", ")
     card_number = card['number']
     # Use card['layout'] instead of this jank
     flip_card_a = False
@@ -573,7 +575,8 @@ def card(multiverseId):
         names=names,
         likes=likes,
         images=images,
-        authors=authors)
+        authors=authors,
+        makeup=makeup)
 
 
 @app.route('/deck/<id>')
