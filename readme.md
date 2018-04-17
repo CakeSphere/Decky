@@ -51,12 +51,13 @@ A sign-in page and dialog box exist. The full-page sign-in will probably not be 
 ---
 
 ### To do:
-**These are next steps and not a comprehensive list of planned features and fixes.**
 
 - Use Scryfall images instead of Gatherer.
 - Implement auth to allow things like My Grimoire to work.
 - Indicate cards that are in a user's Grimoire with an icon.
 - Implement help tooltip on Magic keywords and abilities.
+
+###### These are next steps and not a comprehensive list of planned features and fixes. ######
 
 ---
 
