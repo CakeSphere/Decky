@@ -43,10 +43,8 @@ button {
 
   &:active {
     background: tint($color-background, 5%);
-    outline: none;
   }
 
-  &:focus { outline: none; } // Removing default webkit outline
   &.active {
     background: tint($color-background, 2%);
     border-color: $color-bevel;

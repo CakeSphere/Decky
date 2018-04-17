@@ -29,7 +29,6 @@ textarea {
   &.block { width: calc(100% - 1.4rem); }
   &:focus {
     background: tint($color-background, 4%);
-    outline: none;
   }
 
   &::-webkit-input-placeholder {
