@@ -923,6 +923,7 @@ def grimoire():
     sets = cur_sets.fetchall()
     legality = {}
     tags = {}
+    makeup = {}
     for deck in decks:
         deck_tags = deck["tags"]
         deck_tags = deck_tags.split(', ')
@@ -930,6 +931,7 @@ def grimoire():
         deck_legality = deck["legality"]
         deck_legality = deck_legality.split(', ')
         legality[deck["id"]] = deck_legality
+        makeup[deck["id"]] = deck["makeup"].split(', ')
 
     sql_query = 'FROM cards WHERE multiverseid != "" AND releaseDate == ""'
     cur_count = db.execute(
@@ -991,6 +993,7 @@ def grimoire():
         sets=sets,
         tags=tags,
         legality=legality,
+        makeup=makeup,
         cards=cards,
         card_mana=card_mana,
         card_text=card_text,
