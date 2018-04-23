@@ -28,6 +28,8 @@
   to   { transform: rotateY(360deg); }
 }
 
+// Animations for foil cards
+
 @keyframes foil {
   0%   { background-position: 0 0; }
   50%  { background-position: 100% 100%; }
@@ -49,15 +51,29 @@
   to   { transform: translateY(-5rem); }
 }
 
+// Cards' loading animation
+
 @keyframes load-in {
   from { opacity: 0; transform: translateX(1000px) rotate(15deg); }
   to   { opacity: 1; transform: translateX(0) rotate(0); }
 }
 
+// Decks slide in on page load
+
+@keyframes slidein {
+  from { opacity: 0.1; transform: translateX(-100%); }
+  50% { opacity: 0.1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(0); }
+}
+
+// Tooltips; currently only for card images
+
 @keyframes tooltip {
   from { opacity: 0; transform: translateX(100px) rotate(5deg); }
   to   { opacity: 1; transform: translateX(0) rotate(0); }
 }
+
+// Loading spinner
 
 @keyframes loader {
   from { transform: rotate(0deg);   }
@@ -67,16 +83,14 @@
   to   { transform: rotate(360deg); }
 }
 
+// Simple utility fade-in animation
+
 @keyframes fadein {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
 
-@keyframes slidein {
-  from { opacity: 0.1; transform: translateX(-100%); }
-  50% { opacity: 0.1; transform: translateX(0); }
-  to { opacity: 0; transform: translateX(0); }
-}
+// Animation when a modal dialog appears
 
 @keyframes dialog {
   from {
@@ -93,6 +107,8 @@
     transform: rotateX(0) scale(1);
   }
 }
+
+// Animation loops to stagger loading-in animations
 
 @for $i from 1 to 11 {
   .content > .card:nth-child(#{$i}) { animation-delay: $i * 0.025s; }
