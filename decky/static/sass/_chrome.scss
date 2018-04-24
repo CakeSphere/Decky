@@ -5,6 +5,7 @@
   box-shadow: 0 1px 2px $color-shadow;
   height: 58px;
   left: 101px;
+  padding-left: 1rem;
   position: fixed;
   right: 0;
   top: 0;
@@ -30,20 +31,20 @@
     animation-name: flash;
     animation-timing-function: ease-out;
     background: $color-mtg-b;
-    border-radius: 0 0 $border-radius $border-radius;
+    border-radius: $border-radius;
     box-shadow: inset 0 -2px 0 $color-bevel,
                 inset 0 0 2px $color-highlight,
                 0 2px 1px $color-shadow;
     color: $color-text;
+    display: inline-block;
     left: calc(50% - 250px - 0.25rem);
-    margin: auto;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
     padding: 0.5rem;
-    position: absolute;
     text-align: center;
     text-shadow: 0 1px 0 $color-shadow;
-    top: 0;
     transform: translateY(-4rem);
-    width: 500px;
+    width: auto;
     &.success { background: $color-mtg-g; }
     &.error { background: $color-mtg-r; }
   }
