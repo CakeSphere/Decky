@@ -954,7 +954,7 @@ def grimoire():
     )
     count = cur_count.fetchone()[0]
     cur_cards = db.execute(
-        'SELECT * FROM cards WHERE multiverseid != "" AND releaseDate == "" AND type LIKE "%Creature%" AND subtypes LIKE "%Spirit%" AND rarity LIKE "%Rare" ORDER BY multiverseId DESC LIMIT 15'
+        'SELECT * FROM cards WHERE multiverseid != "" AND releaseDate == "" AND type LIKE "%Creature%" AND subtypes LIKE "%Frog%" ORDER BY multiverseId DESC'
     )
     cards = cur_cards.fetchall()
     card_mana = {}
