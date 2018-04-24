@@ -931,7 +931,7 @@ def grimoire():
     db = get_db()
     cur_count = db.execute('select count(*) from decks')
     count = cur_count.fetchone()[0]
-    cur_decks = db.execute('select * from decks order by likes desc LIMIT 5')
+    cur_decks = db.execute('select * from decks order by likes desc LIMIT 10')
     cur_sets = db.execute(
         'select * from sets order by releaseDate desc limit 5')
     decks = cur_decks.fetchall()
