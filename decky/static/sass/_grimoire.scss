@@ -26,6 +26,10 @@
     z-index: $z-index-background; // Pushing blurry background to the "back"
   }
 
+  &::before {
+    display: none;
+  }
+
   .deck {
     max-width: 300px;
     min-width: 300px;
