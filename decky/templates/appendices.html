@@ -16,47 +16,29 @@
         </ul>
       <h3>Card Types</h3>
         <ul>
-          <li><a href="">Land</a></li>
-          <li><a href="">Creature</a></li>
-          <li><a href="">Artifact</a></li>
-          <li><a href="">Enchantment</a></li>
-          <li><a href="">Planeswalker</a></li>
-          <li><a href="">Instant</a></li>
-          <li><a href="">Sorcery</a></li>
+          {% for card_type in card_types %}
+            <li><a href="{{card_type|lower}}">{{card_type}}</a></li>
+          {% endfor %}
         </ul>
       <h3>Keyword Abilities</h3>
         <ul>
-          <li><a href="">Flying</a></li>
-          <li><a href="">Equip</a></li>
-          <li><a href="">Haste</a></li>
-          <li><a href="">First strike</a></li>
-          <li><a href="">Reach</a></li>
-          <li><a href="">Defender</a></li>
-          <li><a href="">Hexproof</a></li>
+          {% for keyword_ability in keyword_abilities[:8] %}
+            <li><a href="{{keyword_ability|lower}}">{{keyword_ability}}</a></li>
+          {% endfor %}
           <li><a href="">More&hellip;</a></li>
         </ul>
       <h3>Ability Words</h3>
         <ul>
-          <li><a href="">Landfall</a></li>
-          <li><a href="">Revolt</a></li>
-          <li><a href="">Will of the council</a></li>
-          <li><a href="">Eminence</a></li>
-          <li><a href="">Council's dilemma</a></li>
-          <li><a href="">Delirium</a></li>
-          <li><a href="">Heroic</a></li>
-          <li><a href="">Metalcraft</a></li>
+          {% for ability_word in ability_words[:8] %}
+            <li><a href="{{ability_word|lower}}">{{ability_word}}</a></li>
+          {% endfor %}
           <li><a href="">More&hellip;</a></li>
         </ul>
       <h3>Formats</h3>
         <ul>
-          <li><a href="">Standard</a></li>
-          <li><a href="">Modern</a></li>
-          <li><a href="">Legacy</a></li>
-          <li><a href="">Vintage</a></li>
-          <li><a href="">Construced</a></li>
-          <li><a href="">Commander/EDH</a></li>
-          <li><a href="">Pauper</a></li>
-          <li><a href="">Two-Headed Giant</a></li>
+          {% for format in formats[:8] %}
+            <li><a href="{{format|lower}}">{{format}}</a></li>
+          {% endfor %}
           <li><a href="">More&hellip;</a></li>
         </ul>
     </aside>

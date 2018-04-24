@@ -28,13 +28,13 @@ PER_PAGE = 45
 
 # All Magic: The Gathering Ability Words for use on cards
 ABILITY_WORDS = [
-    "battalion", "bloodrush", "channel", "chroma", "cohort", "constellation",
-    "converge", "council\'s dilemma", "delirium", "domain", "fateful hour",
-    "ferocious", "formidable", "grandeur", "hellbent", "heroic", "imprint",
-    "inspired", "join forces", "kinship", "landfall", "lieutenant",
-    "metalcraft", "morbid", "parley", "radiance", "raid", "rally", "revolt",
-    "spell mastery", "strive", "sweep", "tempting offer", "threshold",
-    "will of the council", "eminence"
+    "Battalion", "Bloodrush", "Channel", "Chroma", "Cohort", "Constellation",
+    "Converge", "Council\'s dilemma", "Delirium", "Domain", "Fateful hour",
+    "Ferocious", "Formidable", "Grandeur", "Hellbent", "Heroic", "Imprint",
+    "Inspired", "Join forces", "Kinship", "Landfall", "Lieutenant",
+    "Metalcraft", "Morbid", "Parley", "Radiance", "Raid", "Rally", "Revolt",
+    "Spell mastery", "Strive", "Sweep", "Tempting offer", "Threshold",
+    "Will of the council", "Eminence"
 ]
 
 # All Magic: The Gathering Keyword Abilities for use on cards
@@ -61,6 +61,16 @@ KEYWORD_ABILITIES = [
     "Myriad", "Surge", "Skulk", "Emerge", "Escalate", "Melee", "Crew",
     "Fabricate", "Partner", "Undaunted", "Improvise", "Aftermath", "Embalm",
     "Eternalize", "Afflict"
+]
+
+# Supported Magic: The Gathering formats
+FORMATS = [
+    "Standard", "Modern", "Legacy", "Vintage", "Block Constructed",
+    "Sealed Deck", "Booster Draft", "Rochester Draft", "Cube Draft",
+    "Two-Headed Giant", "Pauper", "Peasant", "Frontier", "Rainbow Stairwell",
+    "Singleton", "Tribal Wars", "Back Draft", "Reject Rare Draft", "Type 4",
+    "Free-For-All", "Star", "Assassin", "Emperor", "Vanguard", "Planar Magic",
+    "Archenemy", "Commander", "Brawl"
 ]
 
 # All basic Card types in Magic: The Gathering
@@ -907,7 +917,12 @@ def settings():
 
 @app.route('/appendices')
 def appendices():
-    return render_template('appendices.html')
+    return render_template(
+        'appendices.html',
+        keyword_abilities=KEYWORD_ABILITIES,
+        ability_words=ABILITY_WORDS,
+        card_types=CARD_TYPES,
+        formats=FORMATS)
 
 
 @app.route('/')
