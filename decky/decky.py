@@ -597,9 +597,15 @@ def deck(id):
     if not deck:
         abort(404)
     cur = db.execute(
-        'SELECT name, count(name), type, multiverseid, foil, featured, commander, layout, number FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId="'
+        'SELECT name, count(name), type, cmc, multiverseid, foil, featured, commander, layout, number FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId="'
         + id + '" GROUP BY name')
     cards = cur.fetchall()
+    cmc = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    for card in cards:
+        if card['cmc'] == '':
+            cmc[0] == cmc[0] + 1
+        else:
+            cmc[int(card['cmc'])] = cmc[int(card['cmc'])] + 1
     count = {}
     foil = {}
     commander = {}
@@ -681,7 +687,8 @@ def deck(id):
         deck_updated=deck_updated,
         count=count,
         commander=commander,
-        deck_description=deck_description)
+        deck_description=deck_description,
+        cmc=cmc)
 
 
 @app.route('/builder/', defaults={'id': False}, methods=['GET', 'POST'])

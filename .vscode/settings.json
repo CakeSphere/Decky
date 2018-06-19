@@ -1,3 +1,7 @@
 {
+<<<<<<< HEAD
     "python.pythonPath": "${workspaceFolder}\\venv\\Scripts\\python.exe"
+=======
+  "python.pythonPath": "${workspaceFolder}/venv/bin/python"
+>>>>>>> 530a95978b73f2c8310cb2e288b4ab9ee46fab28
 }
