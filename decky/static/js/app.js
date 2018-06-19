@@ -254,8 +254,8 @@ $(function () {
     $('.top-nav').append('<div class="' + type + ' flash">' + message + '</div>');
     setTimeout(function() { $('.flash').remove(); }, 5500);
   }
+  // Handle hiding and showing tabs
   $('.tabs .btn').click(function(event) {
-    // Handle hiding and showing tabs
     event.preventDefault();
     var tab = $(this).attr('data-tab');
     $('.tabs .btn').removeClass('active');
@@ -263,6 +263,7 @@ $(function () {
     $(this).addClass('active');
     $('.' + tab).show();
   });
+
   $('.tooltip').hover(function(e) {
     // Card tooltips
     this.t = $(this).attr('data-img');

@@ -202,10 +202,12 @@
   }
 
   &:hover::after { opacity: 0.1; }
-  .color-bar:hover {
-    ~ .deck-info,
-    ~ .deck-img {
-      transform: translateX(63px);
+  &:hover {
+    .color-bar { 
+      transform: translateX(0); 
+      span {
+        opacity: 1;
+      }
     }
   }
 
