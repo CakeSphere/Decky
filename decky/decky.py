@@ -16,6 +16,7 @@ app.wsgi_app = SassMiddleware(
 
 app.config.update(
     dict(
+        DEBUG = True,
         DATABASE=os.path.join(app.root_path, 'decky.db'),
         SECRET_KEY='development key',
         USERNAME='admin',

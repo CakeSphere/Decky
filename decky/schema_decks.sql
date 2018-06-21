@@ -29,6 +29,10 @@ create TABLE decksToCards (
   foil INTEGER,
   featured INTEGER,
   commander INTEGER,
+  mainboard INTEGER,
+  sideboard INTEGER,
+  maybeboard INTEGER,
+  acquireboard INTEGER,
   FOREIGN KEY(deckId) REFERENCES decks(id),
   FOREIGN KEY(cardId) REFERENCES cards(multiverseid)
 );
