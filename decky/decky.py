@@ -615,11 +615,6 @@ def deck(id):
         + id + '" AND acquireboard=1 GROUP BY name')
     acquireboard = cur.fetchall()
     cmc = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    for card in mainboard:
-        if card['cmc'] == '':
-            cmc[0] == cmc[0] + 1
-        else:
-            cmc[int(card['cmc'])] = cmc[int(card['cmc'])] + 1
     mainboard_count = {}
     sideboard_count = {}
     foil = {}
@@ -633,6 +628,10 @@ def deck(id):
     artifacts = {}
     makeup = deck["makeup"].split(", ")
     for card in mainboard:
+        if card['cmc'] == '':
+            cmc[0] == cmc[0] + 1
+        else:
+            cmc[int(card['cmc'])] = cmc[int(card['cmc'])] + 1
         card_count = card[1]
         mainboard_count[card["multiverseid"]] = card_count
         card_foil = card['foil']
