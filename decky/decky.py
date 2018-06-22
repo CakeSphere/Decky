@@ -598,7 +598,7 @@ def deck(id):
     if not deck:
         abort(404)
     cur = db.execute(
-        'SELECT name, count(name), type, cmc, multiverseid, foil, featured, commander, layout, number FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId="'
+        'SELECT name, count(name), type, cmc, multiverseid, foil, featured, commander, layout, number, mainboard, sideboard, maybeboard, acquireboard FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId="'
         + id + '" GROUP BY name')
     cards = cur.fetchall()
     cmc = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -888,7 +888,7 @@ def add_deck():
                     db.execute('INSERT INTO decksToCards VALUES(NULL, ' + str(
                         deck_row) + ', ' + card + ', ' + str(card_foil) + ', '
                                + str(card_featured) + ', ' + str(
-                                   card_commander) + ')')
+                                   card_commander) + ',0,0,0,1)')
                 else:
                     db.execute(
                         'INSERT INTO decksToCards VALUES(NULL, ?, ?, ?, ?, ?);',

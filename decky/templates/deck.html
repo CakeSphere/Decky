@@ -137,7 +137,7 @@
         <h2>Lands</h2>
         <ul class="list-unstyled">
           {% for card in cards %}
-            {% if card.multiverseid in lands %}
+            {% if card.multiverseid in lands and card.mainboard == 1 %}
               <li>
                 <div>
                   {{count[card.multiverseid]}}
@@ -166,7 +166,7 @@
         <h2>Planeswalkers</h2>
         <ul class="list-unstyled">
           {% for card in cards %}
-            {% if card.multiverseid in planeswalkers %}
+            {% if card.multiverseid in planeswalkers and card.mainboard == 1 %}
               <li>
                 <div>
                   {{count[card.multiverseid]}}
@@ -195,7 +195,7 @@
         <h2>Creatures</h2>
         <ul class="list-unstyled">
           {% for card in cards %}
-            {% if card.multiverseid in creatures %}
+            {% if card.multiverseid in creatures and card.mainboard == 1 %}
               <li>
                 <div>
                   {{count[card.multiverseid]}}
@@ -253,7 +253,7 @@
         <h2>Instants</h2>
         <ul class="list-unstyled">
           {% for card in cards %}
-            {% if card.multiverseid in instants %}
+            {% if card.multiverseid in instants and card.mainboard == 1 %}
               <li>
                 <div>
                   {{count[card.multiverseid]}}
@@ -282,7 +282,7 @@
         <h2>Enchantments</h2>
         <ul class="list-unstyled">
           {% for card in cards %}
-            {% if card.multiverseid in enchantments %}
+            {% if card.multiverseid in enchantments and card.mainboard == 1 %}
               <li>
                 <div>
                   {{count[card.multiverseid]}}
@@ -311,7 +311,7 @@
         <h2>Artifacts</h2>
         <ul class="list-unstyled">
           {% for card in cards %}
-            {% if card.multiverseid in artifacts %}
+            {% if card.multiverseid in artifacts and card.mainboard == 1 %}
               <li>
                 <div>
                   {{count[card.multiverseid]}}
@@ -338,6 +338,11 @@
     </div>
     <div class="deck-description">
       <p>
+        {% for card in cards %}
+         {% if card['sideboard'] == 1 %}
+          {{card['name']}}
+         {% endif %}
+        {% endfor %}
         {{deck_description}}
       </p>
     </div>
