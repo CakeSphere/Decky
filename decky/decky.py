@@ -888,10 +888,10 @@ def add_deck():
                     db.execute('INSERT INTO decksToCards VALUES(NULL, ' + str(
                         deck_row) + ', ' + card + ', ' + str(card_foil) + ', '
                                + str(card_featured) + ', ' + str(
-                                   card_commander) + ',0,0,0,1)')
+                                   card_commander) + ', 0, 0, 0, 1)')
                 else:
                     db.execute(
-                        'INSERT INTO decksToCards VALUES(NULL, ?, ?, ?, ?, ?);',
+                        'INSERT INTO decksToCards VALUES(NULL, ?, ?, ?, ?, ?, 0, 0, 0, 1);',
                         (deck_id, card, card_foil, card_featured,
                          card_commander))
                     db.execute(
