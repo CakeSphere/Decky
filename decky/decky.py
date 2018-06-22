@@ -599,15 +599,29 @@ def deck(id):
         abort(404)
     cur = db.execute(
         'SELECT name, count(name), type, cmc, multiverseid, foil, featured, commander, layout, number, mainboard, sideboard, maybeboard, acquireboard FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId="'
-        + id + '" GROUP BY name')
-    cards = cur.fetchall()
+        + id + '" AND mainboard=1 GROUP BY name')
+    mainboard = cur.fetchall()
+    cur = db.execute(
+        'SELECT name, count(name), type, cmc, multiverseid, foil, featured, commander, layout, number, mainboard, sideboard, maybeboard, acquireboard FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId="'
+        + id + '" AND sideboard=1 GROUP BY name')
+    sideboard = cur.fetchall()
+    print sideboard
+    cur = db.execute(
+        'SELECT name, count(name), type, cmc, multiverseid, foil, featured, commander, layout, number, mainboard, sideboard, maybeboard, acquireboard FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId="'
+        + id + '" AND maybeboard=1 GROUP BY name')
+    maybeboard = cur.fetchall()
+    cur = db.execute(
+        'SELECT name, count(name), type, cmc, multiverseid, foil, featured, commander, layout, number, mainboard, sideboard, maybeboard, acquireboard FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId="'
+        + id + '" AND acquireboard=1 GROUP BY name')
+    acquireboard = cur.fetchall()
     cmc = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    for card in cards:
+    for card in mainboard:
         if card['cmc'] == '':
             cmc[0] == cmc[0] + 1
         else:
             cmc[int(card['cmc'])] = cmc[int(card['cmc'])] + 1
-    count = {}
+    mainboard_count = {}
+    sideboard_count = {}
     foil = {}
     commander = {}
     lands = {}
@@ -618,9 +632,9 @@ def deck(id):
     enchantments = {}
     artifacts = {}
     makeup = deck["makeup"].split(", ")
-    for card in cards:
+    for card in mainboard:
         card_count = card[1]
-        count[card["multiverseid"]] = card_count
+        mainboard_count[card["multiverseid"]] = card_count
         card_foil = card['foil']
         foil[card["multiverseid"]] = card_foil
         card_commander = card['commander']
@@ -643,6 +657,10 @@ def deck(id):
             enchantments[card['multiverseid']] = card
         if "Artifact" in card["type"] and "Creature" not in card["type"]:
             artifacts[card['multiverseid']] = card
+
+    for card in sideboard:
+        card_count = card[1]
+        sideboard_count[card["multiverseid"]] = card_count
 
     deck_image = deck["image"]
     deck_tags = deck["tags"]
@@ -678,7 +696,12 @@ def deck(id):
         enchantments=enchantments,
         artifacts=artifacts,
         deck=deck,
-        cards=cards,
+        mainboard=mainboard,
+        mainboard_count=mainboard_count,
+        sideboard=sideboard,
+        sideboard_count=sideboard_count,
+        maybeboard=maybeboard,
+        acquireboard=acquireboard,
         foil=foil,
         makeup=makeup,
         deck_image=deck_image,
@@ -686,7 +709,6 @@ def deck(id):
         deck_legality=deck_legality,
         deck_created=deck_created,
         deck_updated=deck_updated,
-        count=count,
         commander=commander,
         deck_description=deck_description,
         cmc=cmc)

@@ -48,15 +48,15 @@
       $ <span class="price">286.27</span>
     </a>
     <span class="price-source">TCGPlayer</span> <br>
-    <a href="http://www.isleofcards.com" class="btn">
+    <a href="http://www.isleofmainboard.com" class="btn">
       $ <span class="price">283.98</span>
     </a>
-    <span class="price-source">Isle of Cards</span>
+    <span class="price-source">Isle of mainboard</span>
     <h3>Tokens</h3>
     <div class="tokens">
-      <img class="token" src="https://img.scryfall.com/cards/large/en/tsoi/2.jpg?1502459942" alt="">
-      <img class="token" src="https://img.scryfall.com/cards/large/en/te01/2.jpg?1504832144" alt="">
-      <img src="https://img.scryfall.com/cards/normal/en/tavr/4.jpg?1502473146" alt="" class="token">
+      <img class="token" src="https://img.scryfall.com/mainboard/large/en/tsoi/2.jpg?1502459942" alt="">
+      <img class="token" src="https://img.scryfall.com/mainboard/large/en/te01/2.jpg?1504832144" alt="">
+      <img src="https://img.scryfall.com/mainboard/normal/en/tavr/4.jpg?1502473146" alt="" class="token">
     </div>
   </aside>
   <section class="content">
@@ -136,11 +136,11 @@
         {% endif %}
         <h2>Lands</h2>
         <ul class="list-unstyled">
-          {% for card in cards %}
-            {% if card.multiverseid in lands and card.mainboard == 1 %}
+          {% for card in mainboard %}
+            {% if card.multiverseid in lands %}
               <li>
                 <div>
-                  {{count[card.multiverseid]}}
+                  {{mainboard_count[card.multiverseid]}}
                 </div>
                 <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
                   {{card.name}}
@@ -165,11 +165,11 @@
       <div class="card-type">
         <h2>Planeswalkers</h2>
         <ul class="list-unstyled">
-          {% for card in cards %}
-            {% if card.multiverseid in planeswalkers and card.mainboard == 1 %}
+          {% for card in mainboard %}
+            {% if card.multiverseid in planeswalkers %}
               <li>
                 <div>
-                  {{count[card.multiverseid]}}
+                  {{mainboard_count[card.multiverseid]}}
                 </div>
                 <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
                   {{card.name}}
@@ -194,11 +194,11 @@
       <div class="card-type">
         <h2>Creatures</h2>
         <ul class="list-unstyled">
-          {% for card in cards %}
-            {% if card.multiverseid in creatures and card.mainboard == 1 %}
+          {% for card in mainboard %}
+            {% if card.multiverseid in creatures %}
               <li>
                 <div>
-                  {{count[card.multiverseid]}}
+                  {{mainboard_count[card.multiverseid]}}
                 </div>
                 <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
                   {{card.name}}
@@ -223,11 +223,11 @@
       <div class="card-type">
         <h2>Sorceries</h2>
         <ul class="list-unstyled">
-          {% for card in cards %}
+          {% for card in mainboard %}
             {% if card.multiverseid in sorceries %}
               <li>
                 <div>
-                  {{count[card.multiverseid]}}
+                  {{mainboard_count[card.multiverseid]}}
                 </div>
                 <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
                   {{card.name}}
@@ -252,11 +252,11 @@
       <div class="card-type">
         <h2>Instants</h2>
         <ul class="list-unstyled">
-          {% for card in cards %}
-            {% if card.multiverseid in instants and card.mainboard == 1 %}
+          {% for card in mainboard %}
+            {% if card.multiverseid in instants %}
               <li>
                 <div>
-                  {{count[card.multiverseid]}}
+                  {{mainboard_count[card.multiverseid]}}
                 </div>
                 <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
                   {{card.name}}
@@ -281,11 +281,11 @@
       <div class="card-type">
         <h2>Enchantments</h2>
         <ul class="list-unstyled">
-          {% for card in cards %}
-            {% if card.multiverseid in enchantments and card.mainboard == 1 %}
+          {% for card in mainboard %}
+            {% if card.multiverseid in enchantments %}
               <li>
                 <div>
-                  {{count[card.multiverseid]}}
+                  {{mainboard_count[card.multiverseid]}}
                 </div>
                 <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
                   {{card.name}}
@@ -310,11 +310,11 @@
       <div class="card-type">
         <h2>Artifacts</h2>
         <ul class="list-unstyled">
-          {% for card in cards %}
-            {% if card.multiverseid in artifacts and card.mainboard == 1 %}
+          {% for card in mainboard %}
+            {% if card.multiverseid in artifacts %}
               <li>
                 <div>
-                  {{count[card.multiverseid]}}
+                  {{mainboard_count[card.multiverseid]}}
                 </div>
                 <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
                   {{card.name}}
@@ -335,14 +335,36 @@
         </ul>
       </div>
       {% endif %}
+      {% if sideboard|length > 0 %}
+      <div class="card-type">
+        <h2>Sideboard</h2>
+        <ul class="list-unstyled">
+          {% for card in sideboard %}
+              <li>
+                <div>
+                  {{sideboard_count[card.multiverseid]}}
+                </div>
+                <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
+                  {{card.name}}
+                  {% if card.layout == 'double-faced' %}
+                  <a href="" class="flip-icon tooltip" data-img="{{card.multiverseId + 1}}">
+                    <img src="../static/images/flip.svg" alt="">
+                  </a>
+                  {% endif %}
+                  {% if foil[card.multiverseid] %}
+                    <span class="foil-icon">
+                      <img src="../static/images/foil.svg" alt="">
+                    </span>
+                  {% endif %}
+                </a>
+              </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
     </div>
     <div class="deck-description">
       <p>
-        {% for card in cards %}
-         {% if card['sideboard'] == 1 %}
-          {{card['name']}}
-         {% endif %}
-        {% endfor %}
         {{deck_description}}
       </p>
     </div>
