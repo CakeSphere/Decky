@@ -362,6 +362,60 @@
         </ul>
       </div>
       {% endif %}
+      {% if maybeboard|length > 0 %}
+      <div class="card-type">
+        <h2>Maybeboard</h2>
+        <ul class="list-unstyled">
+          {% for card in maybeboard %}
+              <li>
+                <div>
+                  {{maybeboard_count[card.multiverseid]}}
+                </div>
+                <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
+                  {{card.name}}
+                  {% if card.layout == 'double-faced' %}
+                  <a href="" class="flip-icon tooltip" data-img="{{card.multiverseId + 1}}">
+                    <img src="../static/images/flip.svg" alt="">
+                  </a>
+                  {% endif %}
+                  {% if foil[card.multiverseid] %}
+                    <span class="foil-icon">
+                      <img src="../static/images/foil.svg" alt="">
+                    </span>
+                  {% endif %}
+                </a>
+              </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+      {% if acquireboard|length > 0 %}
+      <div class="card-type">
+        <h2>Acquireboard</h2>
+        <ul class="list-unstyled">
+          {% for card in acquireboard %}
+              <li>
+                <div>
+                  {{acquireboard_count[card.multiverseid]}}
+                </div>
+                <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
+                  {{card.name}}
+                  {% if card.layout == 'double-faced' %}
+                  <a href="" class="flip-icon tooltip" data-img="{{card.multiverseId + 1}}">
+                    <img src="../static/images/flip.svg" alt="">
+                  </a>
+                  {% endif %}
+                  {% if foil[card.multiverseid] %}
+                    <span class="foil-icon">
+                      <img src="../static/images/foil.svg" alt="">
+                    </span>
+                  {% endif %}
+                </a>
+              </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
     </div>
     <div class="deck-description">
       <p>
