@@ -392,7 +392,7 @@ def cards(page):
     filter_set = request.args.get('set')
     filter_subtype = request.args.get('subtype')
     filter_type = request.args.get('type')
-    sql_query = 'FROM cards WHERE multiverseid != "" AND releaseDate == ""'
+    sql_query = 'FROM cards WHERE multiverseid != "" AND supertypes != "Basic" AND releaseDate == ""'
     if filter_name:
         sql_query = sql_query + ' AND name LIKE "%' + filter_name + '%"'
     if filter_set:
@@ -412,11 +412,11 @@ def cards(page):
         cur_sets = db.execute('SELECT * FROM sets ORDER BY releaseDate DESC')
     else:
         cur_count = db.execute(
-            'SELECT COUNT(*) FROM cards WHERE multiverseid != ""AND releaseDate ==""'
+            'SELECT COUNT(*) FROM cards WHERE multiverseid != "" AND supertypes != "Basic" AND releaseDate ==""'
         )
         count = cur_count.fetchone()[0]
         cur_cards = db.execute(
-            'SELECT * FROM cards WHERE multiverseid != ""AND releaseDate == "" ORDER BY multiverseId DESC LIMIT '
+            'SELECT * FROM cards WHERE multiverseid != "" AND supertypes != "Basic" AND releaseDate == "" ORDER BY multiverseId DESC LIMIT '
             + str(PER_PAGE) + ' offset ' + str(PER_PAGE * page - PER_PAGE))
         cur_sets = db.execute(
             'SELECT * FROM sets ORDER BY releaseDate DESC LIMIT 5')
