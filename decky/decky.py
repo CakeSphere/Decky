@@ -617,6 +617,8 @@ def deck(id):
     cmc = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     mainboard_count = {}
     sideboard_count = {}
+    maybeboard_count = {}
+    acquireboard_count = {}
     foil = {}
     commander = {}
     lands = {}
@@ -660,6 +662,12 @@ def deck(id):
     for card in sideboard:
         card_count = card[1]
         sideboard_count[card["multiverseid"]] = card_count
+    for card in maybeboard:
+        card_count = card[1]
+        maybeboard_count[card["multiverseid"]] = card_count
+    for card in acquireboard:
+        card_count = card[1]
+        acquireboard_count[card["multiverseid"]] = card_count
 
     deck_image = deck["image"]
     deck_tags = deck["tags"]
@@ -700,7 +708,9 @@ def deck(id):
         sideboard=sideboard,
         sideboard_count=sideboard_count,
         maybeboard=maybeboard,
+        maybeboard_count=maybeboard_count,
         acquireboard=acquireboard,
+        acquireboard_count=acquireboard_count,
         foil=foil,
         makeup=makeup,
         deck_image=deck_image,
