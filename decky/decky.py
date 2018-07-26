@@ -605,7 +605,6 @@ def deck(id):
         'SELECT name, count(name), type, cmc, multiverseid, foil, featured, commander, layout, number, mainboard, sideboard, maybeboard, acquireboard FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId="'
         + id + '" AND sideboard=1 GROUP BY name')
     sideboard = cur.fetchall()
-    print sideboard
     cur = db.execute(
         'SELECT name, count(name), type, cmc, multiverseid, foil, featured, commander, layout, number, mainboard, sideboard, maybeboard, acquireboard FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseid WHERE deckId="'
         + id + '" AND maybeboard=1 GROUP BY name')
