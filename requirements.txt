@@ -3,7 +3,7 @@ astroid==1.5.3
 backports.functools-lru-cache==1.4
 click==6.7
 configparser==3.5.0
-cryptography==2.1.4
+cryptography~=2.3
 enum34==1.1.6
 Flask==0.12
 idna==2.6
@@ -18,7 +18,7 @@ libsass==0.14.5
 MarkupSafe==0.23
 mccabe==0.6.1
 pycrypto==2.6.1
-pygobject==3.26.1
+pygobject==3.28.3
 pylint==1.7.2
 pyxdg==0.25
 SecretStorage==2.3.1
