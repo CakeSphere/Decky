@@ -1,9 +1,9 @@
 /**
  * Global */
- @font-face {
+@font-face {
   font-family: 'Keyrune';
-  src: url('../fonts/keyrune.eot?v=3.2.1');
-  src: url('../fonts/keyrune.eot?#iefix&v=3.2.1') format('embedded-opentype'), url('../fonts/keyrune.woff2?v=3.2.1') format('woff2'), url('../fonts/keyrune.woff?v=3.2.1') format('woff'), url('../fonts/keyrune.ttf?v=3.2.1') format('truetype'), url('../fonts/keyrune.svg?v=3.2.1#keyrune') format('svg');
+  src: url('../fonts/keyrune.eot?v=3.2.5');
+  src: url('../fonts/keyrune.eot?#iefix&v=3.2.5') format('embedded-opentype'), url('../fonts/keyrune.woff2?v=3.2.5') format('woff2'), url('../fonts/keyrune.woff?v=3.2.5') format('woff'), url('../fonts/keyrune.ttf?v=3.2.5') format('truetype'), url('../fonts/keyrune.svg?v=3.2.5#keyrune') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -200,6 +200,18 @@
 }
 .ss-m19:before {
   content: "\e941";
+}
+.ss-1e:before {
+  content: "\e947";
+}
+.ss-2e:before {
+  content: "\e948";
+}
+.ss-2u:before {
+  content: "\e949";
+}
+.ss-3e:before {
+  content: "\e94a";
 }
 /**
  * Expansions */
@@ -530,6 +542,9 @@
 .ss-bbd:before {
   content: "\e942";
 }
+.ss-c18:before {
+  content: "\e946";
+}
 /**
  * Reprint */
 .ss-chr:before {
@@ -713,6 +728,16 @@
   content: "\e682";
 }
 /**
+ * Signature Spellbook */
+.ss-ss1:before {
+  content: "\e944";
+}
+/**
+ * Global Series */
+.ss-gs1:before {
+  content: "\e945";
+}
+/**
  * Promotional */
 .ss-pgru:before {
   content: "\e683";
@@ -789,6 +814,12 @@
 }
 .ss-ptsa:before {
   content: "\e93c";
+}
+.ss-parl3:before {
+  content: "\e943";
+}
+.ss-htr:before {
+  content: "\e687";
 }
 /**
  * Online */
