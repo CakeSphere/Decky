@@ -5,6 +5,7 @@ DROP TABLE if exists users;
 create TABLE users ( 
   id INTEGER PRIMARY KEY autoincrement,
   email VARCHAR(100) NOT NULL,
+  username VARCHAR(32) NOT NULL,
   password VARCHAR(160) NOT NULL
 );
 
