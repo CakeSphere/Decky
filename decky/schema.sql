@@ -1,5 +1,12 @@
 DROP TABLE if exists sets;
 DROP TABLE if exists cards;
+DROP TABLE if exists users;
+
+create TABLE users ( 
+  id INTEGER PRIMARY KEY autoincrement,
+  email VARCHAR(100) NOT NULL,
+  password VARCHAR(160) NOT NULL
+);
 
 create TABLE sets (
   id INTEGER PRIMARY KEY autoincrement,
