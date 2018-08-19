@@ -7,6 +7,7 @@ from datetime import datetime
 from math import ceil
 from random import randint
 from titlecase import titlecase
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 app.config.from_object(__name__)
