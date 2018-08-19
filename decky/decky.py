@@ -8,9 +8,13 @@ from math import ceil
 from random import randint
 from titlecase import titlecase
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import LoginManager, UserMixin
 
 app = Flask(__name__)
 app.config.from_object(__name__)
+
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 app.wsgi_app = SassMiddleware(
     app.wsgi_app, {'decky': ('static/sass', 'static/css', '/static/css')})
@@ -24,6 +28,15 @@ app.config.update(
         PASSWORD='default'))
 
 print app.root_path
+
+@login_manager.user_loader
+def load_user(user_id):
+    print User.get(user_id)
+    return User.get(user_id)
+
+class user(UserMixin):
+    print 'User class'
+
 
 # Default number of items per page for paginated content
 PER_PAGE = 45
