@@ -8,12 +8,12 @@ from math import ceil
 from random import randint
 from titlecase import titlecase
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import LoginManager, UserMixin
+import flask_login
 
 app = Flask(__name__)
 app.config.from_object(__name__)
 
-login_manager = LoginManager()
+login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
 app.wsgi_app = SassMiddleware(
@@ -34,9 +34,9 @@ def load_user(user_id):
     print User.get(user_id)
     return User.get(user_id)
 
-class user(UserMixin):
-    print 'User class'
-
+class user(flask_login.UserMixin):
+    id = 'bradforddjohnson@gmail.com',
+    name = 'CakeSphere'
 
 # Default number of items per page for paginated content
 PER_PAGE = 45
@@ -980,6 +980,9 @@ def appendices():
 @app.route('/')
 @app.route('/grimoire')
 def grimoire():
+    current_user = user()
+    print current_user
+    flask_login.login_user(current_user)
     db = get_db()
     cur_count = db.execute('select count(*) from decks')
     count = cur_count.fetchone()[0]
