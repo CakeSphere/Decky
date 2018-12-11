@@ -37,7 +37,7 @@
   .flipper {
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    transition: transform $transition*2 cubic-bezier(0.17, 0.67, 0.83, 0.67);
   }
 
   .card-img {
@@ -53,6 +53,7 @@
     // Pseudo-element hack to handle cases when card images are broken
     &::before {
       background: url('../images/card_placeholder.svg');
+      background-repeat: no-repeat;
       border: 1px solid tint($color-border-strong, 15%);
       border-radius: $border-radius;
       box-shadow: inset 0 -2px 0 $color-bevel,
@@ -369,7 +370,7 @@
     border-radius: 0;
     box-shadow: none;
     display: inline-block;
-    height: 200px;
+    height: 191px;
     margin-left: -1rem;
     overflow: hidden;
     position: relative;
@@ -388,10 +389,8 @@
     }
 
     img {
-      bottom: 53px;
-      left: -33px;
       position: relative;
-      width: 328px;
+      width: 100%;
 
       &::before {
         background: tint($color-background, 8%);
