@@ -83,17 +83,17 @@
     <div style="display: flex; width: auto;">
       <div class="card-container">
         {% if not flip_card_a and not flip_card_b %}
-          <img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
+          <img class="card-img" src="https://img.scryfall.com/cards/large/en/{{card.setCode|lower}}/{{card.number}}.jpg" alt="{{card.name}}">
         {% endif %}
         {% if flip_card_a %}
           <div class="flipper">
-            <img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
-            <img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId+1}}&type=card" alt="{{card.name}}">
+            <img class="card-img" src="https://img.scryfall.com/cards/large/en/{{card.setCode|lower}}/{{card.number}}.jpg" alt="{{card.name}}">
+            <img class="card-img" src="https://img.scryfall.com/cards/large/en/{{card.setCode|lower}}/{{card.number[:-1]}}b.jpg" alt="{{card.name}}">
           </div>
         {% elif flip_card_b %}
           <div class="flipper">
-            <img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="{{card.name}}">
-            <img class="card-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId-1}}&type=card" alt="{{card.name}}">
+            <img class="card-img" src="https://img.scryfall.com/cards/large/en/{{card.setCode|lower}}/{{card.number}}.jpg" alt="{{card.name}}">
+            <img class="card-img" src="https://img.scryfall.com/cards/large/en/{{card.setCode|lower}}/{{card.number[:-1]}}a.jpg" alt="{{card.name}}">
           </div>
         {% endif %}
       </div>

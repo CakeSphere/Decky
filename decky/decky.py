@@ -38,6 +38,9 @@ class user(flask_login.UserMixin):
     id = 'bradforddjohnson@gmail.com',
     name = 'CakeSphere'
 
+current_user = user()
+print current_user
+
 # Default number of items per page for paginated content
 PER_PAGE = 45
 
@@ -352,6 +355,7 @@ def import_cards():
 
 @app.route('/show_entries/<setId>')
 def show_entries(setId):
+    flask_login.login_user(current_user)
     db = get_db()
     cur_cards = db.execute('select * from cards where setId like "%' + setId +
                            '%" order by multiverseid asc')
@@ -365,6 +369,7 @@ def show_entries(setId):
 @app.route('/decks/', defaults={'page': 1})
 @app.route('/decks/<int:page>')
 def decks(page):
+    flask_login.login_user(current_user)
     PER_PAGE = 36
     db = get_db()
     cur_count = db.execute('select count(*) from decks')
@@ -402,6 +407,7 @@ def decks(page):
 @app.route('/cards/', defaults={'page': 1})
 @app.route('/cards/<int:page>')
 def cards(page):
+    flask_login.login_user(current_user)
     filter_name = request.args.get('name')
     filter_set = request.args.get('set')
     filter_subtype = request.args.get('subtype')
@@ -500,6 +506,7 @@ def cards(page):
 
 @app.route('/card/<multiverseId>')
 def card(multiverseId):
+    flask_login.login_user(current_user)
     db = get_db()
     cur = db.execute('SELECT * FROM cards WHERE multiverseId="' + multiverseId
                      + '"')
@@ -606,6 +613,7 @@ def card(multiverseId):
 
 @app.route('/deck/<id>')
 def deck(id):
+    flask_login.login_user(current_user)
     db = get_db()
     cur = db.execute('SELECT * FROM decks WHERE id="' + id + '"')
     deck = cur.fetchone()
@@ -739,6 +747,7 @@ def deck(id):
 @app.route('/builder/', defaults={'id': False}, methods=['GET', 'POST'])
 @app.route('/builder/<id>', methods=['GET', 'POST'])
 def builder(id):
+    flask_login.login_user(current_user)
     db = get_db()
     card_name = request.get_json()
     card_sets = {}
@@ -848,6 +857,7 @@ def builder(id):
 
 @app.route('/add_deck', methods=['GET', 'POST'])
 def add_deck():
+    flask_login.login_user(current_user)
     deck = request.get_json()
     # Check if we're editing an existing deck
     if deck:
@@ -959,16 +969,19 @@ def add_deck():
 
 @app.route('/login')
 def index():
+    flask_login.login_user(current_user)
     return render_template('login.html')
 
 
 @app.route('/settings')
 def settings():
+    flask_login.login_user(current_user)
     return render_template('settings.html')
 
 
 @app.route('/appendices')
 def appendices():
+    flask_login.login_user(current_user)
     return render_template(
         'appendices.html',
         keyword_abilities=KEYWORD_ABILITIES,
@@ -980,8 +993,6 @@ def appendices():
 @app.route('/')
 @app.route('/grimoire')
 def grimoire():
-    current_user = user()
-    print current_user
     flask_login.login_user(current_user)
     db = get_db()
     cur_count = db.execute('select count(*) from decks')
@@ -1084,5 +1095,6 @@ def delete_deck(id):
 
 @app.errorhandler(404)
 def page_not_found(e):
+    flask_login.login_user(current_user)
     version = randint(0, 2)
     return render_template('404.html', version=version), 404
