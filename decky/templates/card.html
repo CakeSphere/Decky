@@ -107,7 +107,7 @@
             </p>
           </div>
         {% endif %}
-        {% if card.Flavor|length > 0 %}
+        {% if card_flavor|length > 0 %}
           <div class="card-flavor">
             <p>
               {{card_flavor}}
@@ -164,8 +164,8 @@
       <section class="content grid-6">
         {% for other_card in other_cards[:13] %}
           {% if card.multiverseid != other_card.multiverseid and other_card.multiverseid != '' %}
-            <a class="other-card" href="/card/{{other_card.multiverseid}}">
-              <img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{other_card.multiverseId}}&type=card" alt="">
+            <a class="other-card" href="/card/{{other_card.uuid}}">
+              <img src="https://img.scryfall.com/cards/large/en/{{other_card.setCode|lower}}/{{other_card.number}}.jpg" alt="">
             </a>
           {% endif %}
         {% endfor %}
