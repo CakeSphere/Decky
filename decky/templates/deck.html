@@ -121,7 +121,7 @@
         <h1>{{deck.name}}</h1>
         <h2>{{deck.author}}</h2>
       </hgroup>
-      <img class="deck-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{deck_image}}&type=card" alt="{{deck.name}}">
+      <img class="deck-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?uuid={{deck_image}}&type=card" alt="{{deck.name}}">
     </div>
     <div class="deck-contents">
       {% if lands|length > 0 %}
@@ -129,28 +129,28 @@
         {% if 'Commander' in deck['legality'] or 'Brawl' in deck['legality'] %}
         <h2>Commander</h2>
         <ul class="list-unstyled">
-          <a href="/card/{{commander['multiverseid']}}" title="" class="commander-img">
-            <img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{ commander['multiverseid'] }}&type=card" alt="{{commander['name']}}">
+          <a href="/card/{{commander['uuid']}}" title="" class="commander-img">
+            <img src="http://gatherer.wizards.com/Handlers/Image.ashx?uuid={{ commander['uuid'] }}&type=card" alt="{{commander['name']}}">
           </a>
         </ul>
         {% endif %}
         <h2>Lands</h2>
         <ul class="list-unstyled">
           {% for card in mainboard %}
-            {% if card.multiverseid in lands %}
+            {% if card.uuid in lands %}
               <li>
                 <div>
-                  {{mainboard_count[card.multiverseid]}}
+                  {{mainboard_count[card.uuid]}}
                 </div>
-                <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
+                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.uuid}}">
                   {{card.name}}
                 </a>
                 {% if card.layout == 'double-faced' %}
-                  <a href="" class="flip-icon tooltip" data-img="{{card.multiverseId + 1}}">
+                  <a href="" class="flip-icon tooltip" data-img="{{card.uuid + 1}}">
                     <img src="../static/images/flip.svg" alt="">
                   </a>
                 {% endif %}
-                {% if foil[card.multiverseid] %}
+                {% if foil[card.uuid] %}
                   <span class="foil-icon">
                     <img src="../static/images/foil.svg" alt="">
                   </span>
@@ -166,20 +166,20 @@
         <h2>Planeswalkers</h2>
         <ul class="list-unstyled">
           {% for card in mainboard %}
-            {% if card.multiverseid in planeswalkers %}
+            {% if card.uuid in planeswalkers %}
               <li>
                 <div>
-                  {{mainboard_count[card.multiverseid]}}
+                  {{mainboard_count[card.uuid]}}
                 </div>
-                <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
+                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.uuid}}">
                   {{card.name}}
                 </a>
                 {% if card.layout == 'double-faced' %}
-                  <a href="" class="flip-icon tooltip" data-img="{{card.multiverseId + 1}}">
+                  <a href="" class="flip-icon tooltip" data-img="{{card.uuid + 1}}">
                     <img src="../static/images/flip.svg" alt="">
                   </a>
                 {% endif %}
-                {% if foil[card.multiverseid] %}
+                {% if foil[card.uuid] %}
                   <span class="foil-icon">
                     <img src="../static/images/foil.svg" alt="">
                   </span>
@@ -195,20 +195,20 @@
         <h2>Creatures</h2>
         <ul class="list-unstyled">
           {% for card in mainboard %}
-            {% if card.multiverseid in creatures %}
+            {% if card.uuid in creatures %}
               <li>
                 <div>
-                  {{mainboard_count[card.multiverseid]}}
+                  {{mainboard_count[card.uuid]}}
                 </div>
-                <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
+                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.uuid}}">
                   {{card.name}}
                 </a>
                 {% if card.layout == 'double-faced' %}
-                  <a href="" class="flip-icon tooltip" data-img="{{card.multiverseId + 1}}">
+                  <a href="" class="flip-icon tooltip" data-img="{{card.uuid + 1}}">
                     <img src="../static/images/flip.svg" alt="">
                   </a>
                 {% endif %}
-                {% if foil[card.multiverseid] %}
+                {% if foil[card.uuid] %}
                   <span class="foil-icon">
                     <img src="../static/images/foil.svg" alt="">
                   </span>
@@ -224,20 +224,20 @@
         <h2>Sorceries</h2>
         <ul class="list-unstyled">
           {% for card in mainboard %}
-            {% if card.multiverseid in sorceries %}
+            {% if card.uuid in sorceries %}
               <li>
                 <div>
-                  {{mainboard_count[card.multiverseid]}}
+                  {{mainboard_count[card.uuid]}}
                 </div>
-                <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
+                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.uuid}}">
                   {{card.name}}
                 </a>
                 {% if card.layout == 'double-faced' %}
-                  <a href="" class="flip-icon tooltip" data-img="{{card.multiverseId + 1}}">
+                  <a href="" class="flip-icon tooltip" data-img="{{card.uuid + 1}}">
                     <img src="../static/images/flip.svg" alt="">
                   </a>
                 {% endif %}
-                {% if foil[card.multiverseid] %}
+                {% if foil[card.uuid] %}
                   <span class="foil-icon">
                     <img src="../static/images/foil.svg" alt="">
                   </span>
@@ -253,20 +253,20 @@
         <h2>Instants</h2>
         <ul class="list-unstyled">
           {% for card in mainboard %}
-            {% if card.multiverseid in instants %}
+            {% if card.uuid in instants %}
               <li>
                 <div>
-                  {{mainboard_count[card.multiverseid]}}
+                  {{mainboard_count[card.uuid]}}
                 </div>
-                <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
+                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.uuid}}">
                   {{card.name}}
                 </a>
                 {% if card.layout == 'double-faced' %}
-                  <a href="" class="flip-icon tooltip" data-img="{{card.multiverseId + 1}}">
+                  <a href="" class="flip-icon tooltip" data-img="{{card.uuid + 1}}">
                     <img src="../static/images/flip.svg" alt="">
                   </a>
                 {% endif %}
-                {% if foil[card.multiverseid] %}
+                {% if foil[card.uuid] %}
                   <span class="foil-icon">
                     <img src="../static/images/foil.svg" alt="">
                   </span>
@@ -282,20 +282,20 @@
         <h2>Enchantments</h2>
         <ul class="list-unstyled">
           {% for card in mainboard %}
-            {% if card.multiverseid in enchantments %}
+            {% if card.uuid in enchantments %}
               <li>
                 <div>
-                  {{mainboard_count[card.multiverseid]}}
+                  {{mainboard_count[card.uuid]}}
                 </div>
-                <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
+                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.uuid}}">
                   {{card.name}}
                 </a>
                 {% if card.layout == 'double-faced' %}
-                  <a href="" class="flip-icon tooltip" data-img="{{card.multiverseId + 1}}">
+                  <a href="" class="flip-icon tooltip" data-img="{{card.uuid + 1}}">
                     <img src="../static/images/flip.svg" alt="">
                   </a>
                 {% endif %}
-                {% if foil[card.multiverseid] %}
+                {% if foil[card.uuid] %}
                   <span class="foil-icon">
                     <img src="../static/images/foil.svg" alt="">
                   </span>
@@ -311,19 +311,19 @@
         <h2>Artifacts</h2>
         <ul class="list-unstyled">
           {% for card in mainboard %}
-            {% if card.multiverseid in artifacts %}
+            {% if card.uuid in artifacts %}
               <li>
                 <div>
-                  {{mainboard_count[card.multiverseid]}}
+                  {{mainboard_count[card.uuid]}}
                 </div>
-                <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
+                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.uuid}}">
                   {{card.name}}
                   {% if card.layout == 'double-faced' %}
-                  <a href="" class="flip-icon tooltip" data-img="{{card.multiverseId + 1}}">
+                  <a href="" class="flip-icon tooltip" data-img="{{card.uuid + 1}}">
                     <img src="../static/images/flip.svg" alt="">
                   </a>
                   {% endif %}
-                  {% if foil[card.multiverseid] %}
+                  {% if foil[card.uuid] %}
                     <span class="foil-icon">
                       <img src="../static/images/foil.svg" alt="">
                     </span>
@@ -342,16 +342,16 @@
           {% for card in sideboard %}
               <li>
                 <div>
-                  {{sideboard_count[card.multiverseid]}}
+                  {{sideboard_count[card.uuid]}}
                 </div>
-                <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
+                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.uuid}}">
                   {{card.name}}
                   {% if card.layout == 'double-faced' %}
-                  <a href="" class="flip-icon tooltip" data-img="{{card.multiverseId + 1}}">
+                  <a href="" class="flip-icon tooltip" data-img="{{card.uuid + 1}}">
                     <img src="../static/images/flip.svg" alt="">
                   </a>
                   {% endif %}
-                  {% if foil[card.multiverseid] %}
+                  {% if foil[card.uuid] %}
                     <span class="foil-icon">
                       <img src="../static/images/foil.svg" alt="">
                     </span>
@@ -369,16 +369,16 @@
           {% for card in maybeboard %}
               <li>
                 <div>
-                  {{maybeboard_count[card.multiverseid]}}
+                  {{maybeboard_count[card.uuid]}}
                 </div>
-                <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
+                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.uuid}}">
                   {{card.name}}
                   {% if card.layout == 'double-faced' %}
-                  <a href="" class="flip-icon tooltip" data-img="{{card.multiverseId + 1}}">
+                  <a href="" class="flip-icon tooltip" data-img="{{card.uuid + 1}}">
                     <img src="../static/images/flip.svg" alt="">
                   </a>
                   {% endif %}
-                  {% if foil[card.multiverseid] %}
+                  {% if foil[card.uuid] %}
                     <span class="foil-icon">
                       <img src="../static/images/foil.svg" alt="">
                     </span>
@@ -396,16 +396,16 @@
           {% for card in acquireboard %}
               <li>
                 <div>
-                  {{acquireboard_count[card.multiverseid]}}
+                  {{acquireboard_count[card.uuid]}}
                 </div>
-                <a href="{{ url_for('card', multiverseId=card.multiverseId)}}" class="tooltip{% if foil[card.multiverseid] %} foil{% endif %}" data-img="{{card.multiverseId}}">
+                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.uuid}}">
                   {{card.name}}
                   {% if card.layout == 'double-faced' %}
-                  <a href="" class="flip-icon tooltip" data-img="{{card.multiverseId + 1}}">
+                  <a href="" class="flip-icon tooltip" data-img="{{card.uuid + 1}}">
                     <img src="../static/images/flip.svg" alt="">
                   </a>
                   {% endif %}
-                  {% if foil[card.multiverseid] %}
+                  {% if foil[card.uuid] %}
                     <span class="foil-icon">
                       <img src="../static/images/foil.svg" alt="">
                     </span>
