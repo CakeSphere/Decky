@@ -4,5 +4,5 @@
 *.egg-info
 venv/
 static/css
-static/jason-x.bak
-static/jason.bak
+static/json/
+decky.db
