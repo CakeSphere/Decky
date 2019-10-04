@@ -152,7 +152,7 @@
         <img src="http://gatherer.wizards.com/Handlers/Image.ashx?uuid=373629&type=card" alt="">
       </div>
     {% endif %}
-    <section class="content grid-5">
+    <section class="content grid-6">
       {% for card in cards %}
       <a class="card" href="{{ url_for('card', uuid=card.uuid)}}" title="{{card.name}}">
         <div class="grimoire-count">
@@ -168,7 +168,7 @@
         </div>
         <div class="title">{{card.name}}</div>
         <div class="card-img">
-          <img alt="{{card.name}}" src="https://img.scryfall.com/cards/art_crop/en/{{card.setCode|lower}}/{{card.number}}.jpg">
+          <img alt="{{card.name}}" src="https://img.scryfall.com/cards/art_crop/front/{{card.scryfallId[0]}}/{{card.scryfallId[1]}}/{{card.scryfallId}}.jpg">
         </div>
         <div class="card-type">
           <div class="card-rarity">

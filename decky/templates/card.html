@@ -3,7 +3,7 @@
 {% block title %}{{card.name}}{% endblock %}
 {% block body %}
 <div class="card-bg">
-  <img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{card.multiverseId}}&type=card" alt="">
+  <img src="https://img.scryfall.com/cards/art_crop/front/{{card.scryfallId[0]}}/{{card.scryfallId[1]}}/{{card.scryfallId}}.jpg" alt="">
 </div>
 <div class="container card">
   <aside class="sidebar">
@@ -83,7 +83,7 @@
     <div style="display: flex; width: auto;">
       <div class="card-container">
         {% if not flip_card_a and not flip_card_b %}
-          <img class="card-img" src="https://img.scryfall.com/cards/large/en/{{card.setCode|lower}}/{{card.number}}.jpg" alt="{{card.name}}">
+          <img class="card-img" src="https://img.scryfall.com/cards/large/front/{{card.scryfallId[0]}}/{{card.scryfallId[1]}}/{{card.scryfallId}}.jpg" alt="{{card.name}}">
         {% endif %}
         {% if flip_card_a %}
           <div class="flipper">
@@ -130,7 +130,7 @@
               <div class="g" style="height: {{makeup[deck][4]|int}}%"><span><span class="mana small sg shadow">&nbsp;</span> {{makeup[deck][4]|int}}%</span></div>
             </div>
             <div class="deck-img">
-              <img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{images[deck]}}&type=card" alt="{{card.name}}">
+              <img src="https://img.scryfall.com/cards/art_crop/front/{{images[deck][0]}}/{{images[deck][1]}}/{{images[deck]}}.jpg" alt="{{card.name}}">
             </div>
             <div class="deck-info">
               <div class="title">{{names[deck]}}</div>
@@ -165,7 +165,7 @@
         {% for other_card in other_cards[:13] %}
           {% if card.multiverseid != other_card.multiverseid and other_card.multiverseid != '' %}
             <a class="other-card" href="/card/{{other_card.uuid}}">
-              <img src="https://img.scryfall.com/cards/large/en/{{other_card.setCode|lower}}/{{other_card.number}}.jpg" alt="">
+              <img src="https://img.scryfall.com/cards/large/front/{{other_card.scryfallId[0]}}/{{other_card.scryfallId[1]}}/{{other_card.scryfallId}}.jpg" alt="">
             </a>
           {% endif %}
         {% endfor %}

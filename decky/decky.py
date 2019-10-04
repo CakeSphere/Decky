@@ -288,6 +288,15 @@ def initdb_command():
     init_db()
     print('\033[92m\033[1mInitialized the database.\033[0m')
 
+@app.cli.command('reset_decks')
+def initdb_command():
+    warning = raw_input('This will delete all decks. Are you sure? y/n   ')
+    if warning == 'y':
+        db = get_db()
+        with app.open_resource('schema_decks.sql', mode='r') as f:
+            db.cursor().executescript(f.read())
+        db.commit()
+    print('All decks removed successfully.')
 
 @app.cli.command('import_cards')
 def import_cards():
@@ -330,7 +339,7 @@ def import_cards():
                 set["type"]))
                 for card in set['cards']:
                     card = format_card(card)
-                    query = "INSERT INTO `cards` (artist, borderColor, colorIdentity, colorIndicator, colors, convertedManaCost, duelDeck, faceConvertedManaCost, flavorText, foreignData, frameEffect, frameVersion, hand, hasFoil, hasNonFoil, isAlternative, isOnlineOnly, isOversized, isReserved, isStarter, isTimeshifted, layout, legalities, life, loyalty, manaCost, mcmId, mcmMetaId, mcmName, multiverseId, name, names, number, originalText, originalType, power, prices, printings, purchaseUrls, rarity, rulings, scryfallId, scryfallOracleId, scryfallIllustrationId, setCode, side, subtypes, supertypes, tcgplayerProductId, tcgplayerPurchaseUrl, text, toughness, type, types, uuid, variations, watermark) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
+                    query = "INSERT INTO `cards` (artist, borderColor, colorIdentity, colorIndicator, colors, convertedManaCost, duelDeck, faceConvertedManaCost, flavorText, foreignData, frameEffect, frameVersion, hand, hasFoil, hasNonFoil, isAlternative, isOnlineOnly, isOversized, isReserved, isStarter, isTimeshifted, layout, legalities, life, loyalty, manaCost, mcmId, mcmMetaId, mcmName, multiverseId, name, names, number, originalText, originalType, power, prices, printings, purchaseUrls, rarity, releaseDate, rulings, scryfallId, scryfallOracleId, scryfallIllustrationId, setCode, setId, side, subtypes, supertypes, tcgplayerProductId, tcgplayerPurchaseUrl, text, toughness, type, types, uuid, variations, watermark) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
                     db.execute(query, \
                         (card["artist"], \
                         card["borderColor"], \
@@ -372,11 +381,13 @@ def import_cards():
                         card["printings"], \
                         unicode(card["purchaseUrls"]), \
                         card["rarity"], \
+                        set["releaseDate"], \
                         card["rulings"], \
                         card["scryfallId"], \
                         card["scryfallOracleId"], \
                         card["scryfallIllustrationId"], \
                         set["code"], \
+                        set["name"],
                         card["side"], \
                         card["subtypes"], \
                         card["supertypes"], \
@@ -473,14 +484,14 @@ def cards(page):
         cur_sets = db.execute('SELECT * FROM sets')
     else:
         cur_count = db.execute(
-            'SELECT COUNT(*) FROM cards WHERE uuid != "" AND supertypes != "Basic" AND multiverseId != ""'
+            'SELECT COUNT(*) FROM cards WHERE supertypes != "Basic" AND hasNonFoil="1"'
         )
         count = cur_count.fetchone()[0]
         cur_cards = db.execute(
-            'SELECT * FROM cards WHERE supertypes != "Basic" AND multiverseId != "" ORDER BY "multiverseId" ASC LIMIT '
+            'SELECT * FROM cards WHERE supertypes != "Basic" AND hasNonFoil = "1" ORDER BY "releaseDate" DESC, "number" ASC LIMIT '
             + str(PER_PAGE) + ' offset ' + str(PER_PAGE * page - PER_PAGE))
         cur_sets = db.execute(
-            'SELECT * FROM sets LIMIT 5')
+            'SELECT * FROM sets WHERE tcgplayerGroupId != "" ORDER BY releaseDate DESC LIMIT 5')
         cards = cur_cards.fetchall()
     pagination = Pagination(page, PER_PAGE, count)
     card_mana = {}
@@ -554,9 +565,9 @@ def card(uuid):
     card = cur.fetchone()
     if not card:
         abort(404)
-    card_name = card[15]
+    card_name = card['name']
     cur_cards = db.execute(
-        'SELECT uuid, setCode, number FROM cards WHERE name=(?) AND uuid != "" ORDER BY uuid DESC',
+        'SELECT uuid, scryfallId, setCode, number FROM cards WHERE name=(?) AND uuid != "" ORDER BY releaseDate DESC',
         (card_name, ))
     other_cards = cur_cards.fetchall()
     likes = {}
@@ -570,7 +581,7 @@ def card(uuid):
     for other_card in other_cards:
         cur_decks = db.execute(
             'SELECT DISTINCT decks.id, name, tags, legality, image, likes, author, makeup FROM decksToCards INNER JOIN decks ON deckId=decks.id WHERE cardId=(?) ORDER BY likes DESC',
-            (other_card['uuid'], ))
+            (other_card['scryfallId'], ))
 
         cur_decks = cur_decks.fetchall()
         for deck in cur_decks:
@@ -586,6 +597,7 @@ def card(uuid):
             deck_legality = deck_legality.split(', ')
             legality[deck["id"]] = deck_legality
             makeup[deck["id"]] = deck["makeup"].split(", ")
+            print deck
     card_number = card['number']
     # Use card['layout'] instead of this jank
     flip_card_a = False
@@ -661,20 +673,20 @@ def deck(id):
     if not deck:
         abort(404)
     cur = db.execute(
-        'SELECT name, count(name), type, convertedManaCost, multiverseId, foil, featured, commander, layout, number, mainboard, sideboard, maybeboard, acquireboard FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseId WHERE deckId="'
-        + id + '" AND mainboard=1 GROUP BY name')
+        'SELECT name, count(name), type, convertedManaCost, uuid, foil, featured, commander, layout, number, scryfallId, mainboard, sideboard, maybeboard, acquireboard FROM decksToCards INNER JOIN cards ON cardId=cards.scryfallId WHERE deckId="'
+        + id + '" AND mainboard=1 GROUP BY name;')
     mainboard = cur.fetchall()
     cur = db.execute(
-        'SELECT name, count(name), type, convertedManaCost, multiverseId, foil, featured, commander, layout, number, mainboard, sideboard, maybeboard, acquireboard FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseId WHERE deckId="'
-        + id + '" AND sideboard=1 GROUP BY name')
+        'SELECT name, count(name), type, convertedManaCost, uuid, foil, featured, commander, layout, number, scryfallId, mainboard, sideboard, maybeboard, acquireboard FROM decksToCards INNER JOIN cards ON cardId=cards.scryfallId WHERE deckId="'
+        + id + '" AND sideboard=1 GROUP BY name;')
     sideboard = cur.fetchall()
     cur = db.execute(
-        'SELECT name, count(name), type, convertedManaCost, multiverseId, foil, featured, commander, layout, number, mainboard, sideboard, maybeboard, acquireboard FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseId WHERE deckId="'
-        + id + '" AND maybeboard=1 GROUP BY name')
+        'SELECT name, count(name), type, convertedManaCost, uuid, foil, featured, commander, layout, number, scryfallId, mainboard, sideboard, maybeboard, acquireboard FROM decksToCards INNER JOIN cards ON cardId=cards.scryfallId WHERE deckId="'
+        + id + '" AND maybeboard=1 GROUP BY name;')
     maybeboard = cur.fetchall()
     cur = db.execute(
-        'SELECT name, count(name), type, convertedManaCost, multiverseId, foil, featured, commander, layout, number, mainboard, sideboard, maybeboard, acquireboard FROM decksToCards INNER JOIN cards ON cardId=cards.multiverseId WHERE deckId="'
-        + id + '" AND acquireboard=1 GROUP BY name')
+        'SELECT name, count(name), type, convertedManaCost, uuid, foil, featured, commander, layout, number, scryfallId, mainboard, sideboard, maybeboard, acquireboard FROM decksToCards INNER JOIN cards ON cardId=cards.scryfallId WHERE deckId="'
+        + id + '" AND acquireboard=1 GROUP BY name;')
     acquireboard = cur.fetchall()
     convertedManaCost = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     mainboard_count = {}
@@ -697,39 +709,40 @@ def deck(id):
         else:
             convertedManaCost[int(card['convertedManaCost'])] = convertedManaCost[int(card['convertedManaCost'])] + 1
         card_count = card[1]
-        mainboard_count[card["multiverseId"]] = card_count
+        mainboard_count[card["uuid"]] = card_count
         card_foil = card['foil']
-        foil[card["multiverseId"]] = card_foil
+        foil[card["uuid"]] = card_foil
         card_commander = card['commander']
         if card_commander == 1:
             commander = card
 
         # Sort the cards by type
         if "Land" in card["type"]:
-            lands[card['multiverseId']] = card
+            lands[card['uuid']] = card
         if "Planeswalker" in card["type"]:
-            planeswalkers[card['multiverseId']] = card
+            planeswalkers[card['uuid']] = card
         if "Creature" in card["type"] and "Land" not in card["type"]:
-            creatures[card['multiverseId']] = card
+            creatures[card['uuid']] = card
         if "Sorcery" in card["type"]:
-            sorceries[card['multiverseId']] = card
+            sorceries[card['uuid']] = card
         if "Instant" in card["type"]:
-            instants[card['multiverseId']] = card
+            instants[card['uuid']] = card
         if "Enchantment" in card["type"] and "Artifact" not in card[
                 "type"] and "Creature" not in card["type"]:
-            enchantments[card['multiverseId']] = card
+            enchantments[card['uuid']] = card
         if "Artifact" in card["type"] and "Creature" not in card["type"]:
-            artifacts[card['multiverseId']] = card
+            artifacts[card['uuid']] = card
+
 
     for card in sideboard:
         card_count = card[1]
-        sideboard_count[card["multiverseId"]] = card_count
+        sideboard_count[card["uuid"]] = card_count
     for card in maybeboard:
         card_count = card[1]
-        maybeboard_count[card["multiverseId"]] = card_count
+        maybeboard_count[card["uuid"]] = card_count
     for card in acquireboard:
         card_count = card[1]
-        acquireboard_count[card["multiverseId"]] = card_count
+        acquireboard_count[card["uuid"]] = card_count
 
     deck_image = deck["image"]
     deck_tags = deck["tags"]
@@ -755,6 +768,7 @@ def deck(id):
     deck_description = deck["description"]
     # Convert new lines to html line breaks
     deck_description = Markup('</p><p>'.join(deck_description.split('\n')))
+    print commander
     return render_template(
         'deck.html',
         lands=lands,
@@ -792,6 +806,7 @@ def builder(id):
     db = get_db()
     card_name = request.get_json()
     card_sets = {}
+    card_release = {}
     edit_mode = False
     edit_name = ''
     edit_featured = ''
@@ -855,24 +870,29 @@ def builder(id):
     if card_name:
         card_name = card_name['cardName']
         card_data = db.execute(
-            'SELECT uuid, setId, type, colorIdentity FROM cards WHERE name LIKE "'
-            + HTMLParser().unescape(smartypants.smartypants(card_name)) +
-            '" AND uuid != "" AND releaseDate == "" ORDER BY uuid ASC '
+            'SELECT uuid, setId, type, colorIdentity, scryfallId, releaseDate FROM cards WHERE name LIKE "'
+            + card_name +
+            '" AND uuid != "" ORDER BY releaseDate DESC '
         )
         card_data = card_data.fetchall()
         if card_data:
             card_id = ''
             for card in card_data:
                 card_id = unicode(card[0])
-                card_sets[card_id] = unicode(card[1])
                 card_type = unicode(card[2])
                 card_makeup = unicode(card[3])
+                card_image = unicode(card[4])
+                card_sets[card_image] = unicode(card[1])
+                card_release[card_image] = unicode(card[5])
+                print card_release
                 card_return = json.dumps({
                     'card_found': True,
                     'card_id': card_id,
                     'card_sets': card_sets,
                     'card_type': card_type,
-                    'card_makeup': card_makeup
+                    'card_makeup': card_makeup,
+                    'card_image': card_image,
+                    'card_release': card_release
                 })
 
             return card_return
@@ -916,13 +936,17 @@ def add_deck():
     deck_colors = "{r}{b}"
     deck_makeup = deck['makeup']
     deck_makeup_length = len(deck_makeup)
-    deck_makeup_w = (float(deck_makeup.count('W')) / deck_makeup_length) * 100
-    deck_makeup_u = (float(deck_makeup.count('U')) / deck_makeup_length) * 100
-    deck_makeup_b = (float(deck_makeup.count('B')) / deck_makeup_length) * 100
-    deck_makeup_r = (float(deck_makeup.count('R')) / deck_makeup_length) * 100
-    deck_makeup_g = (float(deck_makeup.count('G')) / deck_makeup_length) * 100
-    deck_makeup = str(deck_makeup_w) + ', ' + str(deck_makeup_u) + ', ' + str(
-        deck_makeup_b) + ', ' + str(deck_makeup_r) + ', ' + str(deck_makeup_g)
+    if deck_makeup_length != 0:
+        deck_makeup_w = (float(deck_makeup.count('W')) / deck_makeup_length) * 100
+        deck_makeup_u = (float(deck_makeup.count('U')) / deck_makeup_length) * 100
+        deck_makeup_b = (float(deck_makeup.count('B')) / deck_makeup_length) * 100
+        deck_makeup_r = (float(deck_makeup.count('R')) / deck_makeup_length) * 100
+        deck_makeup_g = (float(deck_makeup.count('G')) / deck_makeup_length) * 100
+        deck_makeup = str(deck_makeup_w) + ', ' + str(deck_makeup_u) + ', ' + str(
+            deck_makeup_b) + ', ' + str(deck_makeup_r) + ', ' + str(deck_makeup_g)
+        print deck_makeup
+    else:
+        deck_makeup = "0.0, 0.0, 0.0, 0.0, 0.0"
     # This is based on the Featured image selected while building.
     deck_image = "414494"
     deck_likes = 0
@@ -945,7 +969,7 @@ def add_deck():
         db = get_db()
         for card in deck_cards:
             if deck_cards[card]['featured'] == 1:
-                deck_image = card
+                deck_image = deck_cards[card]['image']
         if deck_id == '':
             cur_cards = db.execute(
                 'INSERT INTO decks values (null, ?, ?, null, date("now"), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, date("now"), ?)',
@@ -980,10 +1004,7 @@ def add_deck():
                 else:
                     card_commander = 0
                 if deck_id == '':
-                    db.execute('INSERT INTO decksToCards VALUES(NULL, ' + str(
-                        deck_row) + ', ' + card + ', ' + str(card_foil) + ', '
-                               + str(card_featured) + ', ' + str(
-                                   card_commander) + ', 0, 0, 0, 1)')
+                    db.execute('INSERT INTO decksToCards VALUES(NULL, ' + str(deck_row) + ', "' + deck_cards[card]['image'] + '", ' + str(card_foil) + ', ' + str(card_featured) + ', ' + str(card_commander) + ', 0, 0, 0, 1)')
                 else:
                     db.execute(
                         'INSERT INTO decksToCards VALUES(NULL, ?, ?, ?, ?, ?, 0, 0, 0, 1);',

@@ -409,6 +409,7 @@ svg,
     background: $color-background;
     border-radius: $border-radius * 4;
     box-shadow: 0 8px 4px 3px shade($color-shadow, 10%);
+    height: 100%;
   }
 }
 

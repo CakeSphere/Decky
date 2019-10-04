@@ -1,9 +1,9 @@
 /**
  * Global */
-@font-face {
+ @font-face {
   font-family: 'Keyrune';
-  src: url('../fonts/keyrune.eot?v=3.2.5');
-  src: url('../fonts/keyrune.eot?#iefix&v=3.2.5') format('embedded-opentype'), url('../fonts/keyrune.woff2?v=3.2.5') format('woff2'), url('../fonts/keyrune.woff?v=3.2.5') format('woff'), url('../fonts/keyrune.ttf?v=3.2.5') format('truetype'), url('../fonts/keyrune.svg?v=3.2.5#keyrune') format('svg');
+  src: url('../fonts/keyrune.eot?v=3.4.3');
+  src: url('../fonts/keyrune.eot?#iefix&v=3.4.3') format('embedded-opentype'), url('../fonts/keyrune.woff2?v=3.4.3') format('woff2'), url('../fonts/keyrune.woff?v=3.4.3') format('woff'), url('../fonts/keyrune.ttf?v=3.4.3') format('truetype'), url('../fonts/keyrune.svg?v=3.4.3#keyrune') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -200,6 +200,9 @@
 }
 .ss-m19:before {
   content: "\e941";
+}
+.ss-m20:before {
+  content: "\e95d";
 }
 .ss-1e:before {
   content: "\e947";
@@ -482,6 +485,18 @@
 .ss-dom:before {
   content: "\e93f";
 }
+/* Guilds of Ravnica Block */
+.ss-grn:before,
+.ss-gk1:before {
+  content: "\e94b";
+}
+.ss-rna:before,
+.ss-gk2:before {
+  content: "\e959";
+}
+.ss-war:before {
+  content: "\e95a";
+}
 /**
  * Command Zone */
 .ss-van:before {
@@ -585,6 +600,12 @@
 }
 .ss-a25:before {
   content: "\e93d";
+}
+.ss-uma:before {
+  content: "\e958";
+}
+.ss-mh1:before {
+  content: "\e95b";
 }
 /**
  * Beginner */
@@ -732,10 +753,50 @@
 .ss-ss1:before {
   content: "\e944";
 }
+.ss-ss2:before {
+  content: "\e95c";
+}
 /**
  * Global Series */
 .ss-gs1:before {
   content: "\e945";
+}
+/**
+ * Guild Kits */
+.ss-azorius:before {
+  content: "\e94e";
+}
+.ss-boros:before {
+  content: "\e94f";
+}
+.ss-dimir:before {
+  content: "\e950";
+}
+.ss-golgari:before {
+  content: "\e951";
+}
+.ss-gruul:before {
+  content: "\e952";
+}
+.ss-izzet:before {
+  content: "\e953";
+}
+.ss-orzhov:before {
+  content: "\e954";
+}
+.ss-rakdos:before {
+  content: "\e955";
+}
+.ss-selesnya:before {
+  content: "\e956";
+}
+.ss-simic:before {
+  content: "\e957";
+}
+/**
+ * Other Supplemental Products */
+.ss-gnt:before {
+  content: "\e94d";
 }
 /**
  * Promotional */
@@ -821,9 +882,12 @@
 .ss-htr:before {
   content: "\e687";
 }
+.ss-med:before {
+  content: "\e94c";
+}
 /**
  * Online */
-.ss-med:before {
+.ss-me1:before {
   content: "\e68d";
 }
 .ss-me2:before {

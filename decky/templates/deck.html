@@ -54,9 +54,9 @@
     <span class="price-source">Isle of mainboard</span>
     <h3>Tokens</h3>
     <div class="tokens">
-      <img class="token" src="https://img.scryfall.com/cards/large/en/tbbd/1.jpg?1535413451" alt="">
-      <img class="token" src="https://img.scryfall.com/cards/large/en/tbbd/1.jpg?1535413451" alt="">
-      <img src="https://img.scryfall.com/cards/large/en/tbbd/1.jpg?1535413451" alt="" class="token">
+      <img class="token" src="https://img.scryfall.com/cards/large/front/0/4/0419a202-6e32-4f0a-a032-72f6c00cae5e.jpg?1562639654" alt="">
+      <img class="token" src="https://img.scryfall.com/cards/large/front/c/d/cd8be597-f402-4fb0-9135-897c4a0946f6.jpg?1562640051" alt="">
+      <img class="token" src="https://img.scryfall.com/cards/large/front/5/0/50ce1db3-417c-4c22-84e5-c463addde476.jpg?1562639801" alt="">
     </div>
   </aside>
   <section class="content">
@@ -121,7 +121,7 @@
         <h1>{{deck.name}}</h1>
         <h2>{{deck.author}}</h2>
       </hgroup>
-      <img class="deck-img" src="http://gatherer.wizards.com/Handlers/Image.ashx?uuid={{deck_image}}&type=card" alt="{{deck.name}}">
+      <img class="deck-img" src="https://img.scryfall.com/cards/art_crop/front/{{deck_image[0]}}/{{deck_image[1]}}/{{deck_image}}.jpg" alt="{{deck.name}}">
     </div>
     <div class="deck-contents">
       {% if lands|length > 0 %}
@@ -130,7 +130,7 @@
         <h2>Commander</h2>
         <ul class="list-unstyled">
           <a href="/card/{{commander['uuid']}}" title="" class="commander-img">
-            <img src="http://gatherer.wizards.com/Handlers/Image.ashx?uuid={{ commander['uuid'] }}&type=card" alt="{{commander['name']}}">
+            <img src="https://img.scryfall.com/cards/large/front/{{commander['scryfallId'][0]}}/{{commander['scryfallId'][1]}}/{{commander['scryfallId']}}.jpg" alt="{{commander['name']}}">
           </a>
         </ul>
         {% endif %}
@@ -142,7 +142,7 @@
                 <div>
                   {{mainboard_count[card.uuid]}}
                 </div>
-                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.uuid}}">
+                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.scryfallId}}">
                   {{card.name}}
                 </a>
                 {% if card.layout == 'double-faced' %}
@@ -171,7 +171,7 @@
                 <div>
                   {{mainboard_count[card.uuid]}}
                 </div>
-                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.uuid}}">
+                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.scryfallId}}">
                   {{card.name}}
                 </a>
                 {% if card.layout == 'double-faced' %}
@@ -200,7 +200,7 @@
                 <div>
                   {{mainboard_count[card.uuid]}}
                 </div>
-                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.uuid}}">
+                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.scryfallId}}">
                   {{card.name}}
                 </a>
                 {% if card.layout == 'double-faced' %}
@@ -229,7 +229,7 @@
                 <div>
                   {{mainboard_count[card.uuid]}}
                 </div>
-                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.uuid}}">
+                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.scryfallId}}">
                   {{card.name}}
                 </a>
                 {% if card.layout == 'double-faced' %}
@@ -258,7 +258,7 @@
                 <div>
                   {{mainboard_count[card.uuid]}}
                 </div>
-                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.uuid}}">
+                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.scryfallId}}">
                   {{card.name}}
                 </a>
                 {% if card.layout == 'double-faced' %}
@@ -287,7 +287,7 @@
                 <div>
                   {{mainboard_count[card.uuid]}}
                 </div>
-                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.uuid}}">
+                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.scryfallId}}">
                   {{card.name}}
                 </a>
                 {% if card.layout == 'double-faced' %}
@@ -316,7 +316,7 @@
                 <div>
                   {{mainboard_count[card.uuid]}}
                 </div>
-                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.uuid}}">
+                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.scryfallId}}">
                   {{card.name}}
                   {% if card.layout == 'double-faced' %}
                   <a href="" class="flip-icon tooltip" data-img="{{card.uuid + 1}}">
@@ -344,7 +344,7 @@
                 <div>
                   {{sideboard_count[card.uuid]}}
                 </div>
-                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.uuid}}">
+                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.scryfallId}}">
                   {{card.name}}
                   {% if card.layout == 'double-faced' %}
                   <a href="" class="flip-icon tooltip" data-img="{{card.uuid + 1}}">
@@ -371,7 +371,7 @@
                 <div>
                   {{maybeboard_count[card.uuid]}}
                 </div>
-                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.uuid}}">
+                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.scryfallId}}">
                   {{card.name}}
                   {% if card.layout == 'double-faced' %}
                   <a href="" class="flip-icon tooltip" data-img="{{card.uuid + 1}}">
@@ -398,7 +398,7 @@
                 <div>
                   {{acquireboard_count[card.uuid]}}
                 </div>
-                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.uuid}}">
+                <a href="{{ url_for('card', uuid=card.uuid)}}" class="tooltip{% if foil[card.uuid] %} foil{% endif %}" data-img="{{card.scryfallId}}">
                   {{card.name}}
                   {% if card.layout == 'double-faced' %}
                   <a href="" class="flip-icon tooltip" data-img="{{card.uuid + 1}}">

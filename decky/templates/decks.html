@@ -84,7 +84,7 @@
           {% if makeup[deck.id][4]|int != 0 %}<div class="g" style="height: {{makeup[deck.id][4]}}%"><span><span class="mana small sg shadow">&nbsp;</span> {{makeup[deck.id][4]|int}}%</span></div>{% endif %}
         </div>
         <div class="deck-img">
-          <img alt="{{deck.name}}" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{deck.image}}&type=card">
+          <img alt="{{deck.name}}" src="https://img.scryfall.com/cards/art_crop/front/{{deck.image[0]}}/{{deck.image[1]}}/{{deck.image}}.jpg">
         </div>
         <div class="deck-info">
           <div class="title">{{deck.name}}</div>

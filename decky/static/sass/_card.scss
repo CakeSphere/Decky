@@ -28,7 +28,6 @@
 
   .card-container,
   .card-img {
-    height: 311px;
     width: 223px;
   }
 
@@ -370,7 +369,7 @@
     border-radius: 0;
     box-shadow: none;
     display: inline-block;
-    height: 191px;
+    margin-bottom: -5px;
     margin-left: -1rem;
     overflow: hidden;
     position: relative;

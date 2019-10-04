@@ -62,7 +62,7 @@
               <tr class="row-{{card.multiverseid}}">
                 <td class="text-right quantity">{{count[card.multiverseid]}}</td>
                 <td>
-                  <a href="/card/{{card.multiverseid}}" target="_blank" class="tooltip" data-img="{{card.multiverseid}}">{{card.name}}</a>
+                  <a href="/card/{{card.multiverseid}}" target="_blank" class="tooltip" data-img="{{card.scryfallId}}">{{card.name}}</a>
                 </td>
                 <td>
                   {% if edit_card['unique'][loop.index-1] == false %}
